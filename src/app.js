@@ -38,13 +38,26 @@ const limiter = rateLimit({
     message: 'Too many requests from this IP, please try again after 15 minutes'
 });
 
-// Middlewares
-app.use(cors({
-    origin: '*', // Adjust this to match your production UI domain when deploying
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+// Parse allowed origins from CORS_ORIGINS environment variable
+const allowedOrigins = process.env.CORS_ORIGINS
+    ? process.env.CORS_ORIGINS.split(',').map(origin => origin.trim()).filter(Boolean)
+    : ['*'];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        // Allow requests with no origin (such as mobile apps, curl, or same-origin)
+        if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error(`Origin ${origin} not allowed by CORS`));
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    allowOrigin: '*'
-}));
+    credentials: true
+};
+
+// Middlewares
+app.use(cors(corsOptions));
 app.use(limiter);
 app.use(helmet({
     contentSecurityPolicy: false,
