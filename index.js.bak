@@ -1,0 +1,1141 @@
+import express from 'express';
+import cors from 'cors';
+import { open } from 'sqlite';
+import sqlite3 from 'sqlite3';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import https from "https";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const app = express();
+const PORT = process.env.PORT || 5003;
+
+app.use(cors());
+app.use(express.json());
+
+// Database Connections
+let quotesDb;
+let deenbotDb;
+let quranDb;
+let prayersDb;
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+const agent = new https.Agent({
+  rejectUnauthorized: false,
+});
+
+async function initDatabases() {
+  quotesDb = await open({
+    filename: path.join(__dirname, 'db', 'quotes.sqlite'),
+    driver: sqlite3.Database
+  });
+
+  deenbotDb = await open({
+    filename: path.join(__dirname, 'db', 'deenbot.sqlite'),
+    driver: sqlite3.Database
+  });
+
+  quranDb = await open({
+    filename: path.join(__dirname, 'db', 'quran.sqlite'),
+    driver: sqlite3.Database
+  });
+
+  prayersDb = await open({
+    filename: path.join(__dirname, 'db', 'prayers.sqlite'),
+    driver: sqlite3.Database
+  });
+
+  // Ensure tables exist
+  await prayersDb.exec(`
+    CREATE TABLE IF NOT EXISTS prayer_timings (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT,
+      city TEXT,
+      country TEXT,
+      method INTEGER,
+      fajr TEXT,
+      sunrise TEXT,
+      dhuhr TEXT,
+      asr TEXT,
+      maghrib TEXT,
+      isha TEXT,
+      UNIQUE(date, city, country, method)
+    );
+  `);
+  await deenbotDb.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE,
+      email TEXT UNIQUE,
+      password TEXT,
+      role TEXT DEFAULT 'user',
+      settings TEXT DEFAULT '{}',
+      bookmarks TEXT DEFAULT '[]',
+      favorites TEXT DEFAULT '[]'
+    );
+  `);
+
+  // Migration: Add role column if it doesn't exist
+  try {
+    await deenbotDb.exec('ALTER TABLE users ADD COLUMN role TEXT DEFAULT "user"');
+  } catch (e) {
+    // Column might already exist
+  }
+
+  await deenbotDb.exec(`
+    CREATE TABLE IF NOT EXISTS prayer_logs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT,
+      date TEXT,
+      prayer_name TEXT,
+      status INTEGER DEFAULT 0,
+      UNIQUE(username, date, prayer_name),
+      FOREIGN KEY(username) REFERENCES users(username)
+    );
+  `);
+
+  await quranDb.exec(`
+    CREATE TABLE IF NOT EXISTS surahs (
+      id INTEGER PRIMARY KEY,
+      name_simple TEXT,
+      name_arabic TEXT,
+      verses_count INTEGER,
+      revelation_place TEXT
+    );
+  `);
+
+  // Migration: Add revelation_place column if it doesn't exist
+  try {
+    await quranDb.exec('ALTER TABLE surahs ADD COLUMN revelation_place TEXT');
+  } catch (e) {
+    // Column might already exist
+  }
+
+  await quranDb.exec(`
+    CREATE TABLE IF NOT EXISTS ayahs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        surah_number INTEGER,
+        verse_number INTEGER,
+        text_uthmani TEXT,
+        verse_key TEXT UNIQUE,
+        FOREIGN KEY(surah_number) REFERENCES surahs(id)
+    );
+
+    CREATE TABLE IF NOT EXISTS translations (
+      id INTEGER PRIMARY KEY,
+      name TEXT,
+      language_name TEXT,
+      author_name TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS tafsirs (
+      id INTEGER PRIMARY KEY,
+      name TEXT,
+      language_name TEXT,
+      author_name TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS ayah_translations (
+        verse_key TEXT,
+        translation_id INTEGER,
+        text TEXT,
+        PRIMARY KEY(verse_key, translation_id),
+        FOREIGN KEY(verse_key) REFERENCES ayahs(verse_key),
+        FOREIGN KEY(translation_id) REFERENCES translations(id)
+    );
+
+    CREATE TABLE IF NOT EXISTS ayah_tafsirs (
+        verse_key TEXT,
+        tafsir_id INTEGER,
+        text TEXT,
+        PRIMARY KEY(verse_key, tafsir_id),
+        FOREIGN KEY(verse_key) REFERENCES ayahs(verse_key),
+        FOREIGN KEY(tafsir_id) REFERENCES tafsirs(id)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_ayahs_surah ON ayahs(surah_number);
+    CREATE INDEX IF NOT EXISTS idx_ayahs_key ON ayahs(verse_key);
+  `);
+
+  await seedQuranData();
+  registerAdminRoutes();
+  console.log('Databases initialized and Admin Routes Registered');
+}
+
+async function seedBasicQuran(force = false) {
+  const count = await quranDb.get('SELECT COUNT(*) as count FROM ayahs');
+  if (count.count === 0 || force) {
+    console.log(force ? 'Force Seeding Basic Quran...' : 'Seeding Basic Quran...');
+    try {
+      const chaptersRes = await fetch('https://api.quran.com/api/v4/chapters', { agent });
+      const { chapters } = await chaptersRes.json();
+
+      await quranDb.exec('BEGIN TRANSACTION');
+      if (force) {
+        await quranDb.run('DELETE FROM ayahs');
+        await quranDb.run('DELETE FROM surahs');
+      }
+      const insertSurah = await quranDb.prepare('INSERT OR REPLACE INTO surahs (id, name_simple, name_arabic, verses_count, revelation_place) VALUES (?, ?, ?, ?, ?)');
+      const insertAyah = await quranDb.prepare('INSERT INTO ayahs (surah_number, verse_number, text_uthmani, verse_key) VALUES (?, ?, ?, ?)');
+
+      for (const chapter of chapters) {
+        await insertSurah.run(chapter.id, chapter.name_simple, chapter.name_arabic, chapter.verses_count, chapter.revelation_place);
+
+        // Only seed ayahs if they are missing or forced
+        const ayahCount = await quranDb.get('SELECT COUNT(*) as count FROM ayahs WHERE surah_number = ?', [chapter.id]);
+        if (ayahCount.count === 0 || force) {
+          const versesRes = await fetch(`https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${chapter.id}`, { agent });
+          const { verses } = await versesRes.json();
+          for (const v of verses) {
+            await insertAyah.run(chapter.id, parseInt(v.verse_key.split(':')[1]), v.text_uthmani, v.verse_key);
+          }
+        }
+      }
+      await insertSurah.finalize();
+      await insertAyah.finalize();
+      await quranDb.exec('COMMIT');
+      console.log('Basic Quran text seeded.');
+    } catch (err) {
+      await quranDb.exec('ROLLBACK').catch(() => { });
+      console.error('Failed to seed basic Quran text:', err);
+    }
+  }
+}
+
+async function seedTranslationMetadata(force = false) {
+  const transCount = await quranDb.get('SELECT COUNT(*) as count FROM translations');
+  if (transCount.count === 0 || force) {
+    console.log('Fetching translations metadata...');
+    const res = await fetch('https://api.quran.com/api/v4/resources/translations', { agent });
+    const { translations } = await res.json();
+
+    await quranDb.exec('BEGIN TRANSACTION');
+    if (force) await quranDb.run('DELETE FROM translations');
+    const ins = await quranDb.prepare('INSERT INTO translations (id, name, language_name, author_name) VALUES (?, ?, ?, ?)');
+    for (const t of translations) {
+      await ins.run(t.id, t.name, t.language_name, t.author_name);
+    }
+    await ins.finalize();
+    await quranDb.exec('COMMIT');
+    console.log(`Stored metadata for ${translations.length} translations.`);
+    seedAllTranslations(translations.map(t => t.id));
+  }
+}
+
+async function seedTafsirMetadata(force = false) {
+  const tafsirCount = await quranDb.get('SELECT COUNT(*) as count FROM tafsirs');
+  if (tafsirCount.count === 0 || force) {
+    console.log('Fetching tafsirs metadata...');
+    const res = await fetch('https://api.quran.com/api/v4/resources/tafsirs', { agent });
+    const { tafsirs } = await res.json();
+
+    await quranDb.exec('BEGIN TRANSACTION');
+    if (force) await quranDb.run('DELETE FROM tafsirs');
+    const ins = await quranDb.prepare('INSERT INTO tafsirs (id, name, language_name, author_name) VALUES (?, ?, ?, ?)');
+    for (const t of tafsirs) {
+      await ins.run(t.id, t.name, t.language_name, t.author_name);
+    }
+    await ins.finalize();
+    await quranDb.exec('COMMIT');
+    console.log(`Stored metadata for ${tafsirs.length} tafsirs.`);
+    seedAllTafsirs(tafsirs.map(t => t.id));
+  }
+}
+
+async function seedQuranData(force = false) {
+  console.log('Checking Quran database...');
+  await seedBasicQuran(force);
+  await seedTranslationMetadata(force);
+  await seedTafsirMetadata(force);
+}
+
+async function seedAllTranslations(ids) {
+  console.log(`Background: Starting to seed ${ids.length} translations...`);
+
+  // Fetch all verse keys once to map them by index
+  let allAyahs;
+  try {
+    allAyahs = await quranDb.all('SELECT verse_key FROM ayahs ORDER BY id ASC');
+  } catch (e) {
+    console.error('Failed to fetch ayahs for translation mapping:', e.message);
+    return;
+  }
+
+  for (const id of ids) {
+    try {
+      const exists = await quranDb.get('SELECT 1 FROM ayah_translations WHERE translation_id = ? LIMIT 1', [id]);
+      if (exists) continue;
+
+      console.log(`Seeding translation ID ${id}...`);
+      const res = await fetch(`https://api.quran.com/api/v4/quran/translations/${id}`, { agent });
+
+      if (!res.ok) {
+        console.warn(`Translation ID ${id} fetch skipped: HTTP ${res.status}`);
+        continue;
+      }
+
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.warn(`Translation ID ${id} fetch skipped: Non-JSON response received`);
+        continue;
+      }
+
+      const { translations } = await res.json();
+      if (!translations || !Array.isArray(translations)) {
+        console.warn(`Translation ID ${id} had no valid translations array.`);
+        continue;
+      }
+
+      await quranDb.exec('BEGIN TRANSACTION');
+      const ins = await quranDb.prepare('INSERT INTO ayah_translations (verse_key, translation_id, text) VALUES (?, ?, ?)');
+      for (let i = 0; i < translations.length; i++) {
+        const item = translations[i];
+        // Use verse_key from API if available, otherwise fallback to ordered mapping
+        const key = item.verse_key || allAyahs[i]?.verse_key;
+
+        if (key) {
+          await ins.run(key, id, item.text.replace(/<[^>]*>?/gm, ''));
+        }
+      }
+      await ins.finalize();
+      await quranDb.exec('COMMIT');
+
+      // Small pause to be nice to the API
+      await new Promise(r => setTimeout(r, 1000));
+    } catch (e) {
+      console.error(`Failed to seed translation ${id}:`, e.message);
+      await quranDb.exec('ROLLBACK').catch(() => { });
+    }
+  }
+  console.log('Background: All translations processed.');
+}
+
+async function seedAllTafsirs(ids) {
+  console.log(`Background: Starting to seed ${ids.length} tafsirs...`);
+
+  // Fetch all verse keys once to map them by index
+  let allAyahs;
+  try {
+    allAyahs = await quranDb.all('SELECT verse_key FROM ayahs ORDER BY id ASC');
+  } catch (e) {
+    console.error('Failed to fetch ayahs for tafsir mapping:', e.message);
+    return;
+  }
+
+  for (const id of ids) {
+    try {
+      const exists = await quranDb.get('SELECT 1 FROM ayah_tafsirs WHERE tafsir_id = ? LIMIT 1', [id]);
+      if (exists) continue;
+
+      console.log(`Seeding tafsir ID ${id}...`);
+      const res = await fetch(`https://api.quran.com/api/v4/quran/tafsirs/${id}`, { agent });
+
+      if (!res.ok) {
+        console.warn(`Tafsir ID ${id} fetch skipped: HTTP ${res.status}`);
+        continue;
+      }
+
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.warn(`Tafsir ID ${id} fetch skipped: Non-JSON response received`);
+        continue;
+      }
+
+      const data = await res.json();
+      const tafsirs = data.tafsirs || data.translations; // API inconsistent sometimes
+
+      if (!tafsirs || !Array.isArray(tafsirs)) {
+        console.warn(`Tafsir ID ${id} had no valid tafsirs array.`);
+        continue;
+      }
+
+      await quranDb.exec('BEGIN TRANSACTION');
+      const ins = await quranDb.prepare('INSERT INTO ayah_tafsirs (verse_key, tafsir_id, text) VALUES (?, ?, ?)');
+      for (let i = 0; i < tafsirs.length; i++) {
+        const item = tafsirs[i];
+        // Use verse_key from API if available, otherwise fallback to ordered mapping
+        const key = item.verse_key || allAyahs[i]?.verse_key;
+
+        if (key) {
+          await ins.run(key, id, item.text);
+        }
+      }
+      await ins.finalize();
+      await quranDb.exec('COMMIT');
+
+      // Small pause
+      await new Promise(r => setTimeout(r, 1000));
+    } catch (e) {
+      console.error(`Failed to seed tafsir ${id}:`, e.message);
+      await quranDb.exec('ROLLBACK').catch(() => { });
+    }
+  }
+  console.log('Background: All tafsirs processed.');
+}
+
+async function seedPrayerTimes(city = 'Addis Ababa', country = 'Ethiopia', method = 2, year = new Date().getFullYear(), force = false) {
+  try {
+    const existing = await prayersDb.get(
+      'SELECT COUNT(*) as count FROM prayer_timings WHERE city = ? AND country = ? AND method = ? AND date LIKE ?',
+      [city, country, method, `${year}-%`]
+    );
+
+    if (existing.count > 0 && !force) {
+      console.log(`Prayer times for ${city}, ${year} already seeded.`);
+      return;
+    }
+
+    console.log(`Seeding prayer times for ${city}, ${year}...`);
+    const res = await fetch(`https://api.aladhan.com/v1/calendarByCity/${year}?city=${city}&country=${country}&method=${method}`, { agent });
+    const data = await res.json();
+
+    if (data && data.data) {
+      await prayersDb.exec('BEGIN TRANSACTION');
+      if (force) {
+        await prayersDb.run('DELETE FROM prayer_timings WHERE city = ? AND country = ? AND method = ? AND date LIKE ?', [city, country, method, `${year}-%`]);
+      }
+
+      const ins = await prayersDb.prepare(`
+        INSERT INTO prayer_timings (date, city, country, method, fajr, sunrise, dhuhr, asr, maghrib, isha)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `);
+
+      for (const month of Object.values(data.data)) {
+        for (const day of month) {
+          const date = day.date.gregorian.date; // YYYY-MM-DD
+          const t = day.timings;
+          await ins.run(
+            date, city, country, method,
+            t.Fajr.split(' ')[0], t.Sunrise.split(' ')[0], t.Dhuhr.split(' ')[0],
+            t.Asr.split(' ')[0], t.Maghrib.split(' ')[0], t.Isha.split(' ')[0]
+          );
+        }
+      }
+      await ins.finalize();
+      await prayersDb.exec('COMMIT');
+      console.log(`Successfully seeded ${city} prayer times for ${year}.`);
+    }
+  } catch (err) {
+    console.error('Failed to seed prayer times:', err.message);
+    await prayersDb.exec('ROLLBACK').catch(() => { });
+  }
+}
+
+// --- Resources ---
+
+app.get('/api/resources/translations', async (req, res) => {
+  try {
+    const translations = await quranDb.all('SELECT id, name, language_name FROM translations ORDER BY name ASC');
+    const trimmed = translations.map(t => ({
+      ...t,
+      name: t.name.trim(),
+      language_name: t.language_name.trim()
+    }));
+    res.json(trimmed);
+  } catch (err) {
+    console.error('Failed to fetch translations metadata:', err);
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.get('/api/resources/tafsirs', async (req, res) => {
+  try {
+    const tafsirs = await quranDb.all('SELECT id, name, language_name FROM tafsirs ORDER BY name ASC');
+    const trimmed = tafsirs.map(t => ({
+      ...t,
+      name: t.name.trim(),
+      language_name: t.language_name.trim()
+    }));
+    res.json(trimmed);
+  } catch (err) {
+    console.error('Failed to fetch tafsirs metadata:', err);
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+
+app.get('/api/surahs', async (req, res) => {
+  try {
+    const surahs = await quranDb.all('SELECT * FROM surahs ORDER BY id ASC');
+    res.setHeader('x-total-count', surahs.length);
+    res.setHeader('Access-Control-Expose-Headers', 'x-total-count');
+    res.json(surahs);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch surahs' });
+  }
+});
+
+app.get('/api/surahs/:id', async (req, res) => {
+  try {
+    const surah = await quranDb.get('SELECT * FROM surahs WHERE id = ?', [req.params.id]);
+    if (!surah) return res.status(404).json({ error: 'Surah not found' });
+    res.json(surah);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.get('/api/surahs/:id/ayahs', async (req, res) => {
+  const surahId = parseInt(req.params.id);
+  const translationId = parseInt(req.query.translationId) || 131;
+  const tafsirId = parseInt(req.query.tafsirId) || 169;
+  const page = parseInt(req.query.page);
+  const limit = parseInt(req.query.limit) || 20;
+
+  try {
+    let query = `
+      SELECT 
+        a.id,
+        a.verse_number,
+        a.text_uthmani,
+        t.text as translation,
+        taf.text as tafsir
+      FROM ayahs a
+      LEFT JOIN ayah_translations t ON a.verse_key = t.verse_key AND t.translation_id = ?
+      LEFT JOIN ayah_tafsirs taf ON a.verse_key = taf.verse_key AND taf.tafsir_id = ?
+      WHERE a.surah_number = ?
+      ORDER BY a.verse_number ASC
+    `;
+    let params = [translationId, tafsirId, surahId];
+
+    if (page) {
+      const offset = (page - 1) * limit;
+      query += ` LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+    }
+
+    const ayahs = await quranDb.all(query, params);
+
+    // Get total count for pagination headers
+    const countResult = await quranDb.get('SELECT COUNT(*) as count FROM ayahs WHERE surah_number = ?', [surahId]);
+    const totalCount = countResult.count;
+
+    res.setHeader('x-total-count', totalCount);
+    res.setHeader('Access-Control-Expose-Headers', 'x-total-count');
+    res.json(ayahs);
+  } catch (err) {
+    console.error('Failed to fetch ayahs:', err);
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+// --- User Settings and Bookmarks ---
+app.get('/api/user/settings/:username', async (req, res) => {
+  try {
+    const user = await deenbotDb.get('SELECT settings FROM users WHERE username = ?', [req.params.username]);
+    res.json(user ? JSON.parse(user.settings) : {});
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.post('/api/user/settings', async (req, res) => {
+  const { username, settings } = req.body;
+  try {
+    await deenbotDb.run('UPDATE users SET settings = ? WHERE username = ?', [JSON.stringify(settings), username]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.get('/api/user/bookmarks/:username', async (req, res) => {
+  try {
+    const user = await deenbotDb.get('SELECT bookmarks FROM users WHERE username = ?', [req.params.username]);
+    res.json(user ? JSON.parse(user.bookmarks) : []);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.post('/api/user/bookmarks', async (req, res) => {
+  const { username, bookmarks } = req.body;
+  try {
+    await deenbotDb.run('UPDATE users SET bookmarks = ? WHERE username = ?', [JSON.stringify(bookmarks), username]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+// --- Auth Endpoints ---
+
+app.post('/api/auth/register', async (req, res) => {
+  const { username, email, password } = req.body;
+  try {
+    const existing = await deenbotDb.get('SELECT id FROM users WHERE username = ? OR email = ?', [username, email]);
+    if (existing) {
+      return res.status(400).json({ error: 'Username or email already exists' });
+    }
+
+    await deenbotDb.run(
+      'INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)',
+      [username, email, password, 'user'] // Note: Hashing skipped due to install restrictions
+    );
+
+    res.json({ success: true, user: { username, email } });
+  } catch (err) {
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+  const { username, password } = req.body; // username can be email or username
+  try {
+    const user = await deenbotDb.get(
+      'SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?',
+      [username, username, password]
+    );
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    res.json({
+      success: true,
+      user: {
+        username: user.username,
+        email: user.email,
+        role: user.role || 'user'
+      },
+      settings: JSON.parse(user.settings || '{}'),
+      bookmarks: JSON.parse(user.bookmarks || '[]'),
+      favorites: JSON.parse(user.favorites || '[]')
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+// --- Settings & Sync ---
+
+app.post('/api/user/settings', async (req, res) => {
+  const { username, settings } = req.body;
+  try {
+    await deenbotDb.run('UPDATE users SET settings = ? WHERE username = ?', [JSON.stringify(settings), username]);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update settings' });
+  }
+});
+
+// --- Bookmark Management ---
+
+app.get('/api/bookmarks/:username', async (req, res) => {
+  try {
+    const user = await deenbotDb.get('SELECT bookmarks FROM users WHERE username = ?', [req.params.username]);
+    res.json(JSON.parse(user?.bookmarks || '[]'));
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch bookmarks' });
+  }
+});
+
+app.post('/api/bookmarks/toggle', async (req, res) => {
+  const { username, item } = req.body;
+  try {
+    const user = await deenbotDb.get('SELECT bookmarks FROM users WHERE username = ?', [username]);
+    let bookmarks = JSON.parse(user?.bookmarks || '[]');
+
+    const exists = bookmarks.some(b => b.id === item.id);
+    if (exists) {
+      bookmarks = bookmarks.filter(b => b.id !== item.id);
+    } else {
+      bookmarks = [item, ...bookmarks];
+    }
+
+    await deenbotDb.run('UPDATE users SET bookmarks = ? WHERE username = ?', [JSON.stringify(bookmarks), username]);
+    res.json({ success: true, action: exists ? 'removed' : 'added', bookmarks });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to toggle bookmark' });
+  }
+});
+
+// --- Favorite Management ---
+
+app.get('/api/favorites/:username', async (req, res) => {
+  try {
+    const user = await deenbotDb.get('SELECT favorites FROM users WHERE username = ?', [req.params.username]);
+    res.json(JSON.parse(user?.favorites || '[]'));
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch favorites' });
+  }
+});
+
+app.post('/api/favorites/toggle', async (req, res) => {
+  const { username, item } = req.body;
+  try {
+    const user = await deenbotDb.get('SELECT favorites FROM users WHERE username = ?', [username]);
+    let favorites = JSON.parse(user?.favorites || '[]');
+
+    const exists = favorites.some(f => f.id === item.id);
+    if (exists) {
+      favorites = favorites.filter(f => f.id !== item.id);
+    } else {
+      favorites = [item, ...favorites];
+    }
+
+    await deenbotDb.run('UPDATE users SET favorites = ? WHERE username = ?', [JSON.stringify(favorites), username]);
+    res.json({ success: true, action: exists ? 'removed' : 'added', favorites });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to toggle favorite' });
+  }
+});
+
+app.post('/api/bookmarks/delete', async (req, res) => {
+  const { username, id } = req.body;
+  try {
+    const user = await deenbotDb.get('SELECT bookmarks FROM users WHERE username = ?', [username]);
+    let bookmarks = JSON.parse(user?.bookmarks || '[]');
+    bookmarks = bookmarks.filter(b => b.id !== id);
+    await deenbotDb.run('UPDATE users SET bookmarks = ? WHERE username = ?', [JSON.stringify(bookmarks), username]);
+    res.json({ success: true, bookmarks });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete bookmark' });
+  }
+});
+
+app.post('/api/favorites/delete', async (req, res) => {
+  const { username, id } = req.body;
+  try {
+    const user = await deenbotDb.get('SELECT favorites FROM users WHERE username = ?', [username]);
+    let favorites = JSON.parse(user?.favorites || '[]');
+    favorites = favorites.filter(f => f.id !== id);
+    await deenbotDb.run('UPDATE users SET favorites = ? WHERE username = ?', [JSON.stringify(favorites), username]);
+    res.json({ success: true, favorites });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete favorite' });
+  }
+});
+
+// --- Prayer Tracking ---
+
+app.get('/api/prayers/times', async (req, res) => {
+  const { city = 'Addis Ababa', country = 'Ethiopia', method = 2, date = new Date().toISOString().split('T')[0].split('-').reverse().join('-') } = req.query;
+  console.log(city, country, method, date);
+  try {
+    // 1. Try Local DB first
+    const local = await prayersDb.get(
+      'SELECT fajr as Fajr, sunrise as Sunrise, dhuhr as Dhuhr, asr as Asr, maghrib as Maghrib, isha as Isha FROM prayer_timings WHERE city = ? AND country = ? AND method = ? AND date = ?',
+      [city, country, parseInt(method), date]
+    );
+
+    if (local) {
+      return res.json(local);
+    }
+
+    // 2. Fallback to API if not seeded and try to seed in background
+    console.log(`Cache miss for ${city} on ${date}. Fetching from Aladhan API...`);
+    const response = await fetch(`https://api.aladhan.com/v1/timingsByCity/${date}?city=${city}&country=${country}&method=${method}`, { agent });
+    const data = await response.json();
+
+    if (data && data.data && data.data.timings) {
+      // Trigger background seeding for the whole year so we don't miss again
+      seedPrayerTimes(city, country, method, new Date(date).getFullYear());
+      res.json(data.data.timings);
+    } else {
+      console.warn('Aladhan API returned unexpected format:', data);
+      res.status(502).json({ error: 'Invalid response from prayer times provider', details: data });
+    }
+  } catch (err) {
+    console.error('Failed to fetch prayer times:', err.message);
+    res.status(500).json({ error: 'Failed to fetch prayer times', message: err.message });
+  }
+});
+
+app.get('/api/prayers/status/:username/:date', async (req, res) => {
+  const { username, date } = req.params;
+  try {
+    const logs = await deenbotDb.all('SELECT prayer_name, status FROM prayer_logs WHERE username = ? AND date = ?', [username, date]);
+    res.json(logs);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch prayer status' });
+  }
+});
+
+app.post('/api/prayers/toggle', async (req, res) => {
+  const { username, date, prayer_name } = req.body;
+  try {
+    const existing = await deenbotDb.get('SELECT status FROM prayer_logs WHERE username = ? AND date = ? AND prayer_name = ?', [username, date, prayer_name]);
+
+    if (existing) {
+      const newStatus = existing.status === 1 ? 0 : 1;
+      await deenbotDb.run('UPDATE prayer_logs SET status = ? WHERE username = ? AND date = ? AND prayer_name = ?', [newStatus, username, date, prayer_name]);
+      res.json({ success: true, status: newStatus });
+    } else {
+      await deenbotDb.run('INSERT INTO prayer_logs (username, date, prayer_name, status) VALUES (?, ?, ?, 1)', [username, date, prayer_name]);
+      res.json({ success: true, status: 1 });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to toggle prayer status' });
+  }
+});
+
+app.get('/api/prayers/weekly/:username', async (req, res) => {
+  const { username } = req.params;
+  try {
+    const weeklyData = await deenbotDb.all(`
+      SELECT date, COUNT(*) as completed_count 
+      FROM prayer_logs 
+      WHERE username = ? AND status = 1 
+      AND date >= date('now', '-7 days')
+      GROUP BY date
+      ORDER BY date DESC
+    `, [username]);
+    res.json(weeklyData);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch weekly stats' });
+  }
+});
+
+app.get('/api/prayers/monthly/:username/:month', async (req, res) => {
+  const { username, month } = req.params; // month format: YYYY-MM
+  try {
+    const monthlyData = await deenbotDb.all(`
+      SELECT date, COUNT(*) as completed_count 
+      FROM prayer_logs 
+      WHERE username = ? AND status = 1 
+      AND date LIKE ?
+      GROUP BY date
+      ORDER BY date ASC
+    `, [username, `${month}-%`]);
+    res.json(monthlyData);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch monthly stats' });
+  }
+});
+
+app.post('/api/user/settings', async (req, res) => {
+  const { username, settings } = req.body;
+  try {
+    await deenbotDb.run('UPDATE users SET settings = ? WHERE username = ?', [JSON.stringify(settings || {}), username]);
+    res.json({ success: true, settings });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update settings' });
+  }
+});
+
+app.post('/api/user/location', async (req, res) => {
+  const { username, location } = req.body; // location: { city, country, method }
+  try {
+    const user = await deenbotDb.get('SELECT settings FROM users WHERE username = ?', [username]);
+    let settings = JSON.parse(user?.settings || '{}');
+    settings.location = location;
+    await deenbotDb.run('UPDATE users SET settings = ? WHERE username = ?', [JSON.stringify(settings), username]);
+    res.json({ success: true, settings });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update location' });
+  }
+});
+
+// --- Data Endpoints ---
+
+app.get('/api/quotes/random', async (req, res) => {
+  try {
+    const quote = await quotesDb.get(`
+      SELECT 
+          words._id as id,
+          words.Wisdom AS arabic_txt, 
+          words.enWisdom AS english_txt, 
+          source.artitle AS source, 
+          topic.artitle AS topic
+      FROM words
+      INNER JOIN source ON words.Source = source._id
+      INNER JOIN topic ON words.Topic = topic._id
+      WHERE words.enWisdom IS NOT NULL AND words.enWisdom != ''
+      ORDER BY RANDOM() LIMIT 1
+    `);
+    res.json(quote);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch quote' });
+  }
+});
+
+app.get('/api/ayahs/random', async (req, res) => {
+  const { translationId = 87 } = req.query;
+  try {
+    const startAyah = await quranDb.get('SELECT id FROM ayahs ORDER BY RANDOM() LIMIT 1');
+    if (!startAyah) return res.status(404).json({ error: 'No ayahs found' });
+
+    const ayahs = await quranDb.all(`
+      SELECT 
+        a.text_uthmani as arabicText,
+        COALESCE(t.text, 'Translation not yet available') as translationText,
+        a.verse_number as verseNumber,
+        s.name_simple as surahName,
+        s.id as surahNumber
+      FROM ayahs a
+      JOIN surahs s ON a.surah_number = s.id
+      LEFT JOIN ayah_translations t ON a.verse_key = t.verse_key AND t.translation_id = ?
+      WHERE a.id >= ?
+      ORDER BY a.id ASC
+      LIMIT 7
+    `, [translationId, startAyah.id]);
+
+    res.json(ayahs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.get('/api/ayahs/single', async (req, res) => {
+  const { translationId = 87 } = req.query;
+  try {
+    const ayah = await quranDb.get(`
+      SELECT 
+        a.text_uthmani as arabicText,
+        COALESCE(t.text, 'Translation not yet available') as translationText,
+        a.verse_number as verseNumber,
+        s.name_simple as surahName,
+        s.id as surahNumber
+      FROM ayahs a
+      JOIN surahs s ON a.surah_number = s.id
+      LEFT JOIN ayah_translations t ON a.verse_key = t.verse_key AND t.translation_id = ?
+      ORDER BY RANDOM()
+      LIMIT 1
+    `, [translationId]);
+    res.json(ayah);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed' });
+  }
+});
+
+app.get('/api/ayahs/tafsir', async (req, res) => {
+  const { verseKey, tafsirId = 90 } = req.query;
+  try {
+    const tafsir = await quranDb.get(`
+      SELECT text FROM ayah_tafsirs 
+      WHERE verse_key = ? AND tafsir_id = ?
+    `, [verseKey, tafsirId]);
+
+    if (!tafsir) {
+      return res.json({ text: "Interpretation for this verse is being prepared. Please check back shortly or try a different Tafsir provider in Settings." });
+    }
+    res.json(tafsir);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch tafsir' });
+  }
+});
+
+// --- Admin Endpoints ---
+
+app.post('/api/admin/seed', async (req, res) => {
+  const { force = false, types = ['quran', 'translations', 'tafsirs', 'prayers'] } = req.body;
+  try {
+    console.log(`Manual seed triggered (force=${force}, types=${types.join(',')})`);
+
+    const results = {};
+
+    // 1. Basic Quran
+    if (types.includes('quran')) {
+      if (force) await seedBasicQuran(true);
+      else seedBasicQuran(false);
+      results.quran = 'seeded';
+    }
+
+    // 2. Translations
+    if (types.includes('translations')) {
+      if (force) await seedTranslationMetadata(true);
+      else seedTranslationMetadata(false);
+      results.translations = 'seeded';
+    }
+
+    // 3. Tafsirs
+    if (types.includes('tafsirs')) {
+      if (force) await seedTafsirMetadata(true);
+      else seedTafsirMetadata(false);
+      results.tafsirs = 'seeded';
+    }
+
+    // 4. Prayer Times
+    if (types.includes('prayers')) {
+      if (force) await seedPrayerTimes('Addis Ababa', 'Ethiopia', 2, new Date().getFullYear(), true);
+      else seedPrayerTimes('Addis Ababa', 'Ethiopia', 2, new Date().getFullYear(), false);
+      results.prayers = 'seeded';
+    }
+
+    res.json({
+      success: true,
+      message: force ? 'Selected data seeded successfully.' : 'Seeding started in background for selected types.',
+      results
+    });
+
+  } catch (err) {
+    console.error('Seed failed:', err);
+    res.status(500).json({ error: 'Seeding failed', message: err.message });
+  }
+});
+
+// New Admin Stats & User Management
+app.get('/api/admin/stats', async (req, res) => {
+  try {
+    const userCount = await deenbotDb.get('SELECT COUNT(*) as count FROM users');
+    const prayerLogCount = await deenbotDb.get('SELECT COUNT(*) as count FROM prayer_logs');
+    const surahCount = await quranDb.get('SELECT COUNT(*) as count FROM surahs');
+    const translationCount = await quranDb.get('SELECT COUNT(*) as count FROM translations');
+    const tafsirCount = await quranDb.get('SELECT COUNT(*) as count FROM tafsirs');
+    const prayerTimingCount = await prayersDb.get('SELECT COUNT(*) as count FROM prayer_timings');
+
+    res.json({
+      users: userCount.count,
+      prayerLogs: prayerLogCount.count,
+      surahs: surahCount.count,
+      translations: translationCount.count,
+      tafsirs: tafsirCount.count,
+      prayerTimings: prayerTimingCount.count
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch stats' });
+  }
+});
+
+app.get('/api/admin/users', async (req, res) => {
+  try {
+    const users = await deenbotDb.all('SELECT id, username, email, role FROM users ORDER BY id DESC');
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
+
+app.delete('/api/admin/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await deenbotDb.get('SELECT username FROM users WHERE id = ?', [id]);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    await deenbotDb.run('DELETE FROM prayer_logs WHERE username = ?', [user.username]);
+    await deenbotDb.run('DELETE FROM users WHERE id = ?', [id]);
+
+    res.json({ success: true, message: 'User and their logs deleted' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete user' });
+  }
+});
+
+
+
+// --- Generic CRUD Helper ---
+function createCrudEndpoints(app, resourcePath, db, tableName, allowedFields, idField = 'id') {
+  // GET All (Paginated)
+  app.get(`/api/admin/${resourcePath}`, async (req, res) => {
+    const { page = 1, limit = 10, sort = idField, order = 'DESC', search } = req.query;
+    const offset = (page - 1) * limit;
+
+    try {
+      let query = `SELECT * FROM ${tableName}`;
+      const params = [];
+
+      // Simple generic search if requested
+      if (search) {
+        const searchField = allowedFields.find(f => !f.endsWith('_id') && !f.includes('number'));
+        if (searchField) {
+          query += ` WHERE ${searchField} LIKE ?`;
+          params.push(`%${search}%`);
+        }
+      }
+
+      query += ` ORDER BY ${sort} ${order} LIMIT ? OFFSET ?`;
+      params.push(limit, offset);
+
+      const items = await db.all(query, params);
+      const countResult = await db.get(`SELECT COUNT(*) as count FROM ${tableName}`);
+
+      res.json({
+        data: items,
+        total: countResult.count,
+        page: parseInt(page),
+        limit: parseInt(limit)
+      });
+    } catch (err) {
+      console.error(`List ${resourcePath} failed:`, err);
+      res.status(500).json({ error: 'Failed to fetch items' });
+    }
+  });
+
+  // GET One
+  app.get(`/api/admin/${resourcePath}/:id`, async (req, res) => {
+    try {
+      const item = await db.get(`SELECT * FROM ${tableName} WHERE ${idField} = ?`, [req.params.id]);
+      if (!item) return res.status(404).json({ error: 'Item not found' });
+      res.json(item);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch item' });
+    }
+  });
+
+  // CREATE
+  app.post(`/api/admin/${resourcePath}`, async (req, res) => {
+    const data = req.body;
+    try {
+      const fields = allowedFields.filter(f => data[f] !== undefined);
+      if (fields.length === 0) return res.status(400).json({ error: 'No valid fields provided' });
+
+      const placeholders = fields.map(() => '?').join(',');
+      const values = fields.map(f => data[f]);
+
+      await db.run(
+        `INSERT INTO ${tableName} (${fields.join(',')}) VALUES (${placeholders})`,
+        values
+      );
+      res.json({ success: true, message: 'Item created' });
+    } catch (err) {
+      console.error(`Create ${resourcePath} failed:`, err);
+      res.status(500).json({ error: 'Failed to create item', details: err.message });
+    }
+  });
+
+  // UPDATE
+  app.put(`/api/admin/${resourcePath}/:id`, async (req, res) => {
+    const data = req.body;
+    try {
+      const fields = allowedFields.filter(f => data[f] !== undefined);
+      if (fields.length === 0) return res.status(400).json({ error: 'No valid fields provided' });
+
+      const setClause = fields.map(f => `${f} = ?`).join(',');
+      const values = [...fields.map(f => data[f]), req.params.id];
+
+      await db.run(
+        `UPDATE ${tableName} SET ${setClause} WHERE ${idField} = ?`,
+        values
+      );
+      res.json({ success: true, message: 'Item updated' });
+    } catch (err) {
+      console.error(`Update ${resourcePath} failed:`, err);
+      res.status(500).json({ error: 'Failed to update item', details: err.message });
+    }
+  });
+
+  // DELETE
+  app.delete(`/api/admin/${resourcePath}/:id`, async (req, res) => {
+    try {
+      if (tableName === 'users') {
+        const user = await db.get('SELECT username FROM users WHERE id = ?', [req.params.id]);
+        if (user) {
+          await db.run('DELETE FROM prayer_logs WHERE username = ?', [user.username]);
+        }
+      }
+      await db.run(`DELETE FROM ${tableName} WHERE ${idField} = ?`, [req.params.id]);
+      res.json({ success: true, message: 'Item deleted' });
+    } catch (err) {
+      console.error(`Delete ${resourcePath} failed:`, err);
+      res.status(500).json({ error: 'Failed to delete item' });
+    }
+  });
+}
+
+function registerAdminRoutes() {
+  createCrudEndpoints(app, 'users', deenbotDb, 'users', ['username', 'email', 'password', 'role', 'settings', 'bookmarks', 'favorites']);
+  createCrudEndpoints(app, 'surahs', quranDb, 'surahs', ['name_simple', 'name_arabic', 'verses_count', 'revelation_place']);
+  createCrudEndpoints(app, 'ayahs', quranDb, 'ayahs', ['surah_number', 'verse_number', 'text_uthmani', 'verse_key']);
+  createCrudEndpoints(app, 'translations', quranDb, 'translations', ['name', 'language_name', 'author_name']);
+  createCrudEndpoints(app, 'tafsirs', quranDb, 'tafsirs', ['name', 'language_name', 'author_name']);
+  createCrudEndpoints(app, 'prayer_timings', prayersDb, 'prayer_timings', ['date', 'city', 'country', 'method', 'fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']);
+  createCrudEndpoints(app, 'prayer_logs', deenbotDb, 'prayer_logs', ['username', 'date', 'prayer_name', 'status']);
+}
+
+initDatabases().then(() => {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${PORT}`);
+  });
+});
