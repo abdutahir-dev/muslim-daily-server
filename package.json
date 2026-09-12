@@ -5,13 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "node index.js",
-    "build": "node --check index.js",
-    "lint": "node --check index.js src/app.js src/db/connection.js src/docs/docsRouter.js src/docs/openapiSpec.js src/utils/calendarUtils.js src/services/hadithService.js src/services/duaService.js src/services/analyticsService.js src/routes/firebaseRoutes.js src/lib/firebaseConfig.js src/lib/firebase.js src/lib/firebaseAdmin.js src/middleware/firebaseAuth.js src/utils/firestoreError.js && tsc --noEmit",
+    "build:ui": "esbuild src/ui/index.tsx --bundle --minify --sourcemap --outfile=public/ui/bundle.js --loader:.js=jsx --define:process.env.NODE_ENV='\"production\"'",
+    "build:static": "node scripts/build_static_docs.js",
+    "build": "npm run build:ui && npm run build:static && node --check index.js",
+    "lint": "node --check index.js src/app.js src/db/connection.js src/docs/docsRouter.js src/docs/openapiSpec.js src/utils/calendarUtils.js src/services/hadithService.js src/services/duaService.js src/services/analyticsService.js src/routes/firebaseRoutes.js src/lib/firebaseConfig.js src/lib/firebase.js src/lib/firebaseAdmin.js src/middleware/firebaseAuth.js src/utils/firestoreError.js scripts/build_static_docs.js && tsc --noEmit",
     "start": "node index.js",
     "postman": "node generate_postman.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "antd": "^6.6.3",
     "bcryptjs": "^3.0.3",
     "compression": "^1.8.1",
     "cors": "latest",
@@ -27,6 +31,8 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "sql.js": "^1.14.2",
     "zod": "^4.3.6"
   },
@@ -35,6 +41,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "esbuild": "^0.28.2",
     "jest": "^29.0.0",
     "supertest": "^6.0.0",
     "typescript": "^7.0.2"

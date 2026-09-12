@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
@@ -76,6 +77,13 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Documentation and Swagger UI routes
 app.use(docsRouter);
 
+// Interactive UI testing playground at /ui
+const publicUiDir = path.join(process.cwd(), 'public/ui');
+app.use('/ui', express.static(publicUiDir));
+app.get(/^\/ui(\/.*)?$/, (req, res) => {
+    res.sendFile(path.join(publicUiDir, 'index.html'));
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/quran', quranRoutes);
@@ -112,6 +120,7 @@ app.get('/', (req, res) => {
         swagger: '/swagger',
         openApiSpec: '/api/openapi.json',
         endpoints: {
+            ui: '/ui',
             docs: '/docs',
             swagger: '/swagger',
             auth: '/api/auth',

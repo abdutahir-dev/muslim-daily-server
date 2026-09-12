@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="MuslimDaily API" />
+  <meta name="theme-color" content="#059669" />
+  <title>Muslim Daily — Interactive API Tester</title>
+
+  <link rel="manifest" href="/ui/manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <!-- Reputable CDN for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <style>
+    :root {
+      --ios-system-bg: #f2f2f7;
+      --ios-card-bg: #ffffff;
+      --ios-primary: #059669;
+      --ios-border: #e5e5ea;
+      --ios-text: #1c1c1e;
+      --ios-secondary: #8e8e93;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+      background-color: var(--ios-system-bg);
+      color: var(--ios-text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    #root {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* iOS Glassmorphic frosted header */
+    .ios-glass-bar {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.85);
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
+    }
+
+    /* Tactile button active animations */
+    button:active {
+      transform: scale(0.985);
+      transition: transform 0.08s ease;
+    }
+
+    /* Code & JSON display */
+    pre, code {
+      font-family: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/ui/sw.js')
+          .then((reg) => console.log('[PWA] ServiceWorker registered with scope:', reg.scope))
+          .catch((err) => console.warn('[PWA] ServiceWorker registration error:', err));
+      });
+    }
+  </script>
+  <script src="/ui/bundle.js" defer></script>
+</body>
+</html>

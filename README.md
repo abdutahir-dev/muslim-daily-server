@@ -1,12 +1,21 @@
 # Muslim Daily Server
 
 [![CI Pipeline](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/ci.yml/badge.svg)](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/ci.yml)
+[![GitHub Pages](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/pages.yml/badge.svg)](https://abdutahir-dev.github.io/)
 [![Production Deployment](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-blue.svg)](package.json)
-[![OpenAPI 3.0](https://img.shields.io/badge/OpenAPI-3.0.3-green.svg)](src/docs/openapiSpec.js)
+[![OpenAPI 3.0](https://img.shields.io/badge/OpenAPI-3.0.3-green.svg)](api/openapi.json)
 
 Production-grade RESTful API server providing comprehensive Islamic digital services: Holy Quran with audio recitations & translations, accurate astronomical prayer timings & habit tracking, authenticated Hadith collections, authentic Duas & Azkar, multi-system calendar conversions (Gregorian, Hijri, Ethiopian), fasting logs, spiritual journaling, community challenges, and interactive developer documentation.
+
+### 🌐 Live Portals & Deployments
+
+- **Interactive UI Playground**: [https://abdutahir-dev.github.io/ui](https://abdutahir-dev.github.io/ui) (or `/ui` on running server)
+- **Developer Documentation**: [https://abdutahir-dev.github.io/docs](https://abdutahir-dev.github.io/docs) (or `/docs` on running server)
+- **Swagger UI Playground**: [https://abdutahir-dev.github.io/swagger](https://abdutahir-dev.github.io/swagger) (or `/swagger` on running server)
+- **OpenAPI 3.0 Spec**: [https://abdutahir-dev.github.io/api/openapi.json](https://abdutahir-dev.github.io/api/openapi.json)
+
 
 ---
 

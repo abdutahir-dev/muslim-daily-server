@@ -1,4 +1,63 @@
-<!DOCTYPE html>
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { openApiSpec } from '../src/docs/openapiSpec.js';
+import { getSwaggerHtml, getDocsHtml } from '../src/docs/docsRouter.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '..');
+
+function ensureDir(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
+}
+
+console.log('🚀 Starting static docs & GitHub Pages asset build...');
+
+// 1. Generate OpenAPI spec JSON files (/api/openapi.json and /swagger.json)
+ensureDir(path.join(rootDir, 'api'));
+const openApiJsonContent = JSON.stringify(openApiSpec, null, 2);
+fs.writeFileSync(path.join(rootDir, 'api/openapi.json'), openApiJsonContent, 'utf8');
+fs.writeFileSync(path.join(rootDir, 'swagger.json'), openApiJsonContent, 'utf8');
+console.log('✅ Generated api/openapi.json and swagger.json');
+
+// 2. Generate Swagger UI pages (/swagger/index.html and /swagger.html)
+ensureDir(path.join(rootDir, 'swagger'));
+const swaggerHtml = getSwaggerHtml();
+fs.writeFileSync(path.join(rootDir, 'swagger/index.html'), swaggerHtml, 'utf8');
+fs.writeFileSync(path.join(rootDir, 'swagger.html'), swaggerHtml, 'utf8');
+console.log('✅ Generated swagger/index.html and swagger.html');
+
+// 3. Generate Developer Docs pages (/docs/index.html and /docs.html)
+ensureDir(path.join(rootDir, 'docs'));
+const docsHtml = getDocsHtml();
+fs.writeFileSync(path.join(rootDir, 'docs/index.html'), docsHtml, 'utf8');
+fs.writeFileSync(path.join(rootDir, 'docs.html'), docsHtml, 'utf8');
+console.log('✅ Generated docs/index.html and docs.html');
+
+// 4. Copy UI assets from public/ui to ui/ for direct static hosting
+ensureDir(path.join(rootDir, 'ui'));
+const publicUiDir = path.join(rootDir, 'public/ui');
+if (fs.existsSync(publicUiDir)) {
+  const uiFiles = fs.readdirSync(publicUiDir);
+  for (const file of uiFiles) {
+    const src = path.join(publicUiDir, file);
+    const dest = path.join(rootDir, 'ui', file);
+    if (fs.statSync(src).isFile()) {
+      fs.copyFileSync(src, dest);
+    }
+  }
+  // Also create ui.html
+  if (fs.existsSync(path.join(publicUiDir, 'index.html'))) {
+    fs.copyFileSync(path.join(publicUiDir, 'index.html'), path.join(rootDir, 'ui.html'));
+  }
+  console.log('✅ Synchronized public/ui to ui/ and ui.html');
+}
+
+// 5. Generate Root Portal Landing index.html
+const rootPortalHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -303,4 +362,79 @@
     &copy; 2026 Muslim Daily Engineering. Built with Node.js, Express, TypeScript & Cloud Firestore.
   </footer>
 </body>
-</html>
+</html>`;
+
+fs.writeFileSync(path.join(rootDir, 'index.html'), rootPortalHtml, 'utf8');
+console.log('✅ Generated root index.html portal landing');
+
+// 6. Generate 404.html with GitHub Pages SPA redirect router
+const notFoundHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting — Muslim Daily</title>
+  <script>
+    // GitHub Pages SPA Routing / Subpath Handler
+    (function() {
+      var path = window.location.pathname;
+      var repoBase = '';
+      
+      // Handle project repos like /repo-name/docs
+      var segments = path.split('/').filter(Boolean);
+      var first = segments[0] || '';
+      var target = path;
+
+      // Clean normal routes: /docs, /swagger, /ui, /api/openapi.json
+      if (path.endsWith('/docs') || path === '/docs') {
+        window.location.replace((repoBase || '') + '/docs/');
+        return;
+      }
+      if (path.endsWith('/swagger') || path === '/swagger' || path.endsWith('/swager')) {
+        window.location.replace((repoBase || '') + '/swagger/');
+        return;
+      }
+      if (path.endsWith('/ui') || path === '/ui') {
+        window.location.replace((repoBase || '') + '/ui/');
+        return;
+      }
+      
+      // Fallback redirect to home if route not found
+      if (path !== '/' && !path.endsWith('/index.html')) {
+        // Attempt redirecting to the nearest directory or root
+        if (segments.includes('docs')) {
+          window.location.replace('/docs/');
+          return;
+        }
+        if (segments.includes('swagger') || segments.includes('swager')) {
+          window.location.replace('/swagger/');
+          return;
+        }
+        if (segments.includes('ui')) {
+          window.location.replace('/ui/');
+          return;
+        }
+      }
+    })();
+  </script>
+  <meta http-equiv="refresh" content="3; url=/">
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; background: #f8fafc; color: #0f172a; }
+    h1 { font-size: 24px; margin-bottom: 12px; }
+    p { color: #64748b; font-size: 16px; }
+    a { color: #059669; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Page Not Found (404)</h1>
+  <p>The requested page was not found on this static host.</p>
+  <p><a href="/">Return to Muslim Daily API Hub &rarr;</a></p>
+  <p style="margin-top: 20px; font-size: 14px;">
+    Quick links: <a href="/ui/">Interactive UI</a> | <a href="/docs/">Developer Docs</a> | <a href="/swagger/">Swagger UI</a>
+  </p>
+</body>
+</html>`;
+
+fs.writeFileSync(path.join(rootDir, '404.html'), notFoundHtml, 'utf8');
+console.log('✅ Generated 404.html for GitHub Pages SPA routing');
+
+console.log('🎉 Static build complete!');

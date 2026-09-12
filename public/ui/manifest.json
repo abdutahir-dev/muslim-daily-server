@@ -1,0 +1,18 @@
+{
+  "short_name": "MuslimDaily API",
+  "name": "Muslim Daily API Interactive Playground",
+  "description": "Interactive testing playground and diagnostic console for Muslim Daily API endpoints and Cloud Firestore",
+  "icons": [
+    {
+      "src": "https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2.1.1/assets/fill/compass-fill.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/ui",
+  "background_color": "#f8fafc",
+  "theme_color": "#059669",
+  "display": "standalone",
+  "orientation": "portrait-primary"
+}
