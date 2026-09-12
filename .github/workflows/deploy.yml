@@ -1,0 +1,82 @@
+name: Production Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  pre-deploy-check:
+    name: Pre-deployment Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Lint & Typecheck
+        run: npm run lint
+
+      - name: Run Test Suite
+        run: npm test
+
+      - name: Verify Build
+        run: npm run build
+
+  deploy-cloud-run:
+    name: Deploy to Cloud Run
+    needs: pre-deploy-check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Google Auth (Workload Identity Federation / Service Account)
+        if: env.GCP_WORKLOAD_IDENTITY_PROVIDER != ''
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+        env:
+          GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+
+      - name: Deploy to Cloud Run
+        if: env.GCP_PROJECT_ID != ''
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: muslim-daily-server
+          region: ${{ secrets.GCP_REGION || 'europe-west2' }}
+          source: ./
+          env_vars: |
+            NODE_ENV=production
+            PORT=3000
+            CORS_ORIGINS=${{ secrets.CORS_ORIGINS || '*' }}
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Post-Deployment Health Check
+        if: steps.deploy.outputs.url != ''
+        run: |
+          echo "Verifying service health at ${{ steps.deploy.outputs.url }}/health"
+          curl --fail --retry 5 --retry-connrefused --retry-delay 3 "${{ steps.deploy.outputs.url }}/health" || exit 1
+          echo "Health check succeeded!"
