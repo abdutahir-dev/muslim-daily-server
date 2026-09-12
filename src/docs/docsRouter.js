@@ -31,42 +31,47 @@ export const getSwaggerHtml = () => {
     .top-nav {
       background: #0f172a;
       color: #fff;
-      padding: 14px 24px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .top-nav .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      white-space: nowrap;
     }
     .top-nav .badge {
       background: #10b981;
       color: #064e3b;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 9999px;
       letter-spacing: 0.5px;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .nav-links a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.9rem;
-      padding: 6px 14px;
+      font-size: 0.85rem;
+      padding: 5px 10px;
       border-radius: 6px;
       transition: all 0.2s;
+      white-space: nowrap;
     }
     .nav-links a:hover {
       color: #fff;
@@ -76,6 +81,18 @@ export const getSwaggerHtml = () => {
       background: #10b981;
       color: #064e3b;
       font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .top-nav {
+        padding: 10px 12px;
+      }
+      .nav-links a {
+        font-size: 0.78rem;
+        padding: 4px 8px;
+      }
+      .top-nav .brand {
+        font-size: 0.95rem;
+      }
     }
     #swagger-ui {
       max-width: 1400px;
@@ -209,30 +226,35 @@ export const getDocsHtml = () => {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 28px;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 16px;
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .brand-icon {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
     }
 
     .brand-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
     .brand-version {
@@ -249,21 +271,23 @@ export const getDocsHtml = () => {
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 8px;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.2s ease;
       border: 1px solid transparent;
+      white-space: nowrap;
     }
 
     .btn-primary {

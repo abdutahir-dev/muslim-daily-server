@@ -93,46 +93,63 @@ const rootPortalHtml = `<!DOCTYPE html>
     header {
       background: #0f172a;
       color: #fff;
-      padding: 16px 28px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: #fff;
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
+      white-space: nowrap;
     }
     .badge {
       background: #10b981;
       color: #064e3b;
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 9999px;
       text-transform: uppercase;
     }
     .header-nav {
       display: flex;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .header-nav a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 6px;
       transition: all 0.2s;
+      white-space: nowrap;
     }
     .header-nav a:hover {
       color: #fff;
       background: rgba(255,255,255,0.1);
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 10px 12px;
+      }
+      .brand {
+        font-size: 0.95rem;
+      }
+      .header-nav a {
+        font-size: 0.78rem;
+        padding: 4px 8px;
+      }
     }
     main {
       flex: 1;

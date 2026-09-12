@@ -180,14 +180,14 @@ export const App: React.FC = () => {
     >
       <Layout style={{ minHeight: '100vh', backgroundColor: '#f2f2f7' }}>
         {/* Navigation Bar */}
-        <Header style={{ padding: 0, height: 'auto', backgroundColor: '#ffffff' }}>
-          <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+        <Header style={{ padding: 0, height: 'auto', backgroundColor: '#ffffff', lineHeight: 'normal' }}>
+          <div style={{ maxWidth: 1400, margin: '0 auto', width: '100%' }}>
             <AuthBar authState={authState} onUpdateAuth={handleUpdateAuth} />
           </div>
         </Header>
 
         {/* Main Content Area */}
-        <Content style={{ padding: '20px 16px', maxWidth: 1400, margin: '0 auto', width: '100%' }}>
+        <Content style={{ padding: '16px 12px', maxWidth: 1400, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
           {/* Quick Deck Benchmark */}
           <QuickDeck
             onSelectEndpoint={setSelectedEndpoint}
@@ -198,9 +198,10 @@ export const App: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '320px 1fr',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
               gap: 16,
               minHeight: 650,
+              width: '100%',
             }}
           >
             {/* Left Column: Endpoints Directory */}

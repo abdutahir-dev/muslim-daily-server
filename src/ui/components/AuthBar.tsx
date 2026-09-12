@@ -42,16 +42,25 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
     <div
       style={{
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '12px 20px',
+        padding: '10px 16px',
         backgroundColor: '#ffffff',
         borderBottom: '1px solid #f0f0f0',
         borderRadius: '12px 12px 0 0',
+        gap: '10px',
       }}
     >
-      <Space size="middle">
-        <Space size="small">
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '8px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div
             style={{
               width: 10,
@@ -59,32 +68,44 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
               borderRadius: '50%',
               backgroundColor: '#10b981',
               boxShadow: '0 0 8px #10b981',
+              flexShrink: 0,
             }}
           />
-          <Text strong style={{ fontSize: 14 }}>
+          <Text strong style={{ fontSize: 14, whiteSpace: 'nowrap' }}>
             Muslim Daily Server
           </Text>
-          <Tag color="emerald" style={{ margin: 0, borderRadius: 10 }}>
+          <Tag color="emerald" style={{ margin: 0, borderRadius: 10, fontSize: 11 }}>
             v2.0.0
           </Tag>
-        </Space>
-        <Tag icon={<CloudServerOutlined />} color="cyan" style={{ borderRadius: 10 }}>
-          Port 3000
-        </Tag>
-        <Tag icon={<SafetyCertificateOutlined />} color="purple" style={{ borderRadius: 10 }}>
-          Firestore Connected
-        </Tag>
-      </Space>
+        </div>
 
-      <Space size="middle">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+          <Tag icon={<CloudServerOutlined />} color="cyan" style={{ margin: 0, borderRadius: 10, fontSize: 11 }}>
+            Port 3000
+          </Tag>
+          <Tag icon={<SafetyCertificateOutlined />} color="purple" style={{ margin: 0, borderRadius: 10, fontSize: 11 }}>
+            Firestore Connected
+          </Tag>
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '8px',
+          justifyContent: 'flex-start',
+        }}
+      >
         <Tooltip title="View Interactive Swagger UI">
           <Button
             type="text"
             icon={<BookOutlined />}
             href="/swagger"
             target="_blank"
-            size="small"
-            style={{ borderRadius: 8 }}
+            size="middle"
+            style={{ borderRadius: 8, padding: '4px 10px', fontSize: 13 }}
           >
             Swagger UI
           </Button>
@@ -96,8 +117,8 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
             icon={<BookOutlined />}
             href="/docs"
             target="_blank"
-            size="small"
-            style={{ borderRadius: 8 }}
+            size="middle"
+            style={{ borderRadius: 8, padding: '4px 10px', fontSize: 13 }}
           >
             REST Docs
           </Button>
@@ -111,12 +132,13 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
             borderRadius: 8,
             backgroundColor: hasToken ? '#059669' : undefined,
             borderColor: hasToken ? '#059669' : undefined,
+            fontSize: 13,
           }}
           size="middle"
         >
           {hasToken ? 'Authenticated' : 'Configure Auth'}
         </Button>
-      </Space>
+      </div>
 
       <Modal
         title={
