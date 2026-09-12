@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "User profile with settings and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "prayerLog": {
+      "title": "Prayer Log",
+      "description": "Daily record of completed prayers",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 10 },
+        "prayerName": { "type": "string", "enum": ["fajr", "dhuhr", "asr", "maghrib", "isha"] },
+        "status": { "type": "boolean" },
+        "prayedAs": { "type": "string", "maxLength": 32 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "date", "prayerName", "status"]
+    },
+    "fastingLog": {
+      "title": "Fasting Log",
+      "description": "Daily record of fasting habits",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 10 },
+        "isFasting": { "type": "boolean" },
+        "fastingType": { "type": "string", "maxLength": 64 },
+        "notes": { "type": "string", "maxLength": 500 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "date", "isFasting"]
+    },
+    "journalEntry": {
+      "title": "Journal Entry",
+      "description": "Personal spiritual reflections",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 10 },
+        "notes": { "type": "string", "maxLength": 2000 },
+        "mood": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "date", "notes"]
+    },
+    "bookmark": {
+      "title": "User Bookmark",
+      "description": "Saved Ayahs, Hadith, or Duas",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "itemType": { "type": "string", "enum": ["ayah", "hadith", "dua"] },
+        "itemId": { "type": "string", "maxLength": 128 },
+        "metadata": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "itemType", "itemId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profile documents"
+    },
+    "/users/{userId}/prayerLogs/{logId}": {
+      "schema": "prayerLog",
+      "description": "User prayer tracking documents"
+    },
+    "/users/{userId}/fastingLogs/{logId}": {
+      "schema": "fastingLog",
+      "description": "User fasting tracking documents"
+    },
+    "/users/{userId}/journalEntries/{entryId}": {
+      "schema": "journalEntry",
+      "description": "User spiritual reflections"
+    },
+    "/users/{userId}/bookmarks/{bookmarkId}": {
+      "schema": "bookmark",
+      "description": "User saved bookmarks"
+    }
+  }
+}

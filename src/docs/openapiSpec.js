@@ -40,6 +40,7 @@ export const openApiSpec = {
     { name: "Social & Community", description: "Study circles, community groups, challenges, and leaderboards" },
     { name: "Analytics", description: "User activity logging, streaks, summaries, and usage trends" },
     { name: "Search", description: "Global unified search across Quran, Hadith, Duas, and quotes" },
+    { name: "Firebase & Cloud Firestore", description: "Firebase Authentication and Cloud Firestore persistent document storage" },
     { name: "Admin", description: "Database administration, content management, and data seeding" }
   ],
   components: {
@@ -736,6 +737,71 @@ export const openApiSpec = {
         tags: ["Admin"],
         summary: "Database Record Statistics",
         responses: { 200: { description: "Total count of records across all database tables" } }
+      }
+    },
+    "/api/firebase/config": {
+      get: {
+        tags: ["Firebase & Cloud Firestore"],
+        summary: "Get Public Firebase Client Configuration",
+        responses: { 200: { description: "Client configuration parameters for Firebase SDK initialization" } }
+      }
+    },
+    "/api/firebase/health": {
+      get: {
+        tags: ["Firebase & Cloud Firestore"],
+        summary: "Test Firestore Database Connectivity",
+        responses: { 200: { description: "Firestore connection health status" } }
+      }
+    },
+    "/api/firebase/sync-user": {
+      post: {
+        tags: ["Firebase & Cloud Firestore"],
+        summary: "Sync User Profile to Firestore",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  displayName: { type: "string", example: "Abdullah" }
+                }
+              }
+            }
+          }
+        },
+        responses: { 200: { description: "Profile document updated in Firestore" } }
+      }
+    },
+    "/api/firebase/prayer-logs": {
+      get: {
+        tags: ["Firebase & Cloud Firestore"],
+        summary: "Fetch User Prayer Logs from Firestore",
+        security: [{ bearerAuth: [] }],
+        responses: { 200: { description: "List of prayer logs stored in Firestore" } }
+      },
+      post: {
+        tags: ["Firebase & Cloud Firestore"],
+        summary: "Save Prayer Log to Firestore",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["date", "prayerName", "status"],
+                properties: {
+                  date: { type: "string", example: "2026-09-12" },
+                  prayerName: { type: "string", enum: ["fajr", "dhuhr", "asr", "maghrib", "isha"] },
+                  status: { type: "boolean", example: true },
+                  prayedAs: { type: "string", example: "jamaah" }
+                }
+              }
+            }
+          }
+        },
+        responses: { 200: { description: "Saved prayer record in Firestore" } }
       }
     }
   }

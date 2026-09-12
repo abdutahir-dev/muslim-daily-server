@@ -18,6 +18,7 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 - **🤲 Duas & Azkar**: Morning/evening dhikr, prayer supplications, transliterations, and references.
 - **📅 Multi-Calendar Transformation**: Mathematical Julian Day Number (JDN) conversions between Gregorian, Islamic Hijri, and Ethiopian calendar systems.
 - **🔐 Security & Middleware**: Helmet security headers, CORS origin whitelisting via `CORS_ORIGINS`, Morgan HTTP logging, and JWT authentication.
+- **🔥 Firebase & Cloud Firestore**: Firebase Authentication token verification and Cloud Firestore cloud persistence for user profiles, prayer tracking logs, fasting logs, and spiritual journaling.
 - **⚡ Developer Experience**: Built-in interactive documentation at `/docs` and full Swagger UI at `/swagger` (and `/swager`).
 
 ---

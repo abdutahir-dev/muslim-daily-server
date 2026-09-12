@@ -24,6 +24,7 @@ import userInfoRoutes from './routes/userInfoRoutes.js'
 
 import fastingRoutes from './routes/fastingRoutes.js';
 import journalRoutes from './routes/journalRoutes.js';
+import firebaseRoutes from './routes/firebaseRoutes.js';
 import docsRouter from './docs/docsRouter.js';
 
 dotenv.config();
@@ -92,6 +93,7 @@ app.use('/api/calendar', calendarRoutes);
 app.use('/api/user-info', userInfoRoutes);
 app.use('/api/fasting', fastingRoutes);
 app.use('/api/journal', journalRoutes);
+app.use('/api/firebase', firebaseRoutes);
 
 // Legacy/Compatibility routes
 app.use('/api', quranRoutes);
@@ -113,6 +115,7 @@ app.get('/', (req, res) => {
             docs: '/docs',
             swagger: '/swagger',
             auth: '/api/auth',
+            firebase: '/api/firebase',
             quran: '/api/quran',
             prayers: '/api/prayers',
             hadith: '/api/hadith',
