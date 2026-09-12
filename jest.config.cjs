@@ -1,5 +1,4 @@
-export default {
+module.exports = {
   testEnvironment: 'node',
   transform: {},
-  extensionsToTreatAsEsm: ['.js'],
 };

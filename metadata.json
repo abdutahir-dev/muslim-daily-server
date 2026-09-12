@@ -1,0 +1,6 @@
+{
+  "name": "Muslim Daily Server",
+  "description": "Backend API service for Muslim Daily providing prayer times, Quran, Hadith, Duas, and calendar features with interactive developer documentation (/docs) and Swagger playground (/swagger).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

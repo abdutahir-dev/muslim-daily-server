@@ -10,13 +10,13 @@ export function gregorianToJDN(year, month, day) {
 }
 
 export function jdnToGregorian(jdn) {
-    let a = jdn + 32044;
+    let a = Math.floor(jdn) + 32044;
     let b = Math.floor((4 * a + 3) / 146097);
     let c = a - Math.floor((146097 * b) / 4);
     let d = Math.floor((4 * c + 3) / 1461);
     let e = c - Math.floor((1461 * d) / 4);
     let m = Math.floor((5 * e + 2) / 153);
-    let day = e - Math.floor((153 * m + 2) / 5) + 1;
+    let day = Math.floor(e - Math.floor((153 * m + 2) / 5) + 1);
     let month = m + 3 - 12 * Math.floor(m / 10);
     let year = b * 100 + d - 4800 + Math.floor(m / 10);
     return { year, month, day };
@@ -30,10 +30,10 @@ export function hijriToJDN(year, month, day) {
 }
 
 export function jdnToHijri(jdn) {
-    const z = Math.floor(jdn - 1948439.5);
-    const year = Math.floor((30 * z + 10646) / 10631);
-    const month = Math.min(12, Math.ceil((z - 29 - hijriToJDN(year, 1, 1) + 1) / 29.5) + 1);
-    const day = z - hijriToJDN(year, month, 1) + 1;
+    const l = jdn - 1948439.5;
+    const year = Math.floor((30 * l + 10646) / 10631);
+    const month = Math.min(12, Math.ceil((jdn - 29 - hijriToJDN(year, 1, 1)) / 29.5) + 1);
+    const day = Math.round(jdn - hijriToJDN(year, month, 1) + 1);
     return { year, month, day };
 }
 

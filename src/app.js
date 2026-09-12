@@ -24,6 +24,7 @@ import userInfoRoutes from './routes/userInfoRoutes.js'
 
 import fastingRoutes from './routes/fastingRoutes.js';
 import journalRoutes from './routes/journalRoutes.js';
+import docsRouter from './docs/docsRouter.js';
 
 dotenv.config();
 
@@ -45,12 +46,21 @@ app.use(cors({
     allowOrigin: '*'
 }));
 app.use(limiter);
-app.use(helmet()); // Security Headers
+app.use(helmet({
+    contentSecurityPolicy: false,
+    frameguard: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false,
+    crossOriginOpenerPolicy: false
+}));
 app.use(compression()); // Gzip compression
 app.use(morgan('combined')); // HTTP request logger
 
 app.use(express.json({ limit: '10mb' })); // Protect against large payloads
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Documentation and Swagger UI routes
+app.use(docsRouter);
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -73,7 +83,44 @@ app.use('/api/journal', journalRoutes);
 // Legacy/Compatibility routes
 app.use('/api', quranRoutes);
 
+app.get('/', (req, res) => {
+    // If request is from browser navigation, redirect to documentation portal
+    if (req.headers.accept && req.headers.accept.includes('text/html')) {
+        return res.redirect('/docs');
+    }
+
+    res.json({
+        name: 'Muslim Daily API Server',
+        status: 'running',
+        version: '2.0.0',
+        documentation: '/docs',
+        swagger: '/swagger',
+        openApiSpec: '/api/openapi.json',
+        endpoints: {
+            docs: '/docs',
+            swagger: '/swagger',
+            auth: '/api/auth',
+            quran: '/api/quran',
+            prayers: '/api/prayers',
+            hadith: '/api/hadith',
+            duas: '/api/duas',
+            calendar: '/api/calendar',
+            audio: '/api/audio',
+            social: '/api/social',
+            fasting: '/api/fasting',
+            journal: '/api/journal',
+            userInfo: '/api/user-info',
+            analytics: '/api/analytics',
+            health: '/health'
+        }
+    });
+});
+
 app.get('/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 

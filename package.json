@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "node index.js",
+    "build": "node --check index.js",
+    "lint": "node --check index.js src/app.js src/db/connection.js src/docs/docsRouter.js src/docs/openapiSpec.js src/utils/calendarUtils.js src/services/hadithService.js src/services/duaService.js src/services/analyticsService.js",
+    "start": "node index.js",
     "postman": "node generate_postman.js",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -22,8 +25,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
-    "sqlite": "latest",
-    "sqlite3": "latest",
+    "sql.js": "^1.14.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {

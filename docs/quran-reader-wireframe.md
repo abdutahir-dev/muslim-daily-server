@@ -108,7 +108,7 @@ Landing page for Quran section with quick actions and resume context.
 
 - `ContinueReadingCard` shows last read surah + ayah range, with quick resume.
 - `RandomAyahGenerator` fetches a random ayah and shows a compact preview.
-- `SurahListPreview` shows top 5-10 surahs with “View All”.
+- `SurahListPreview` shows top 5-10 surahs with ï¿½View Allï¿½.
 - `RecentSurahsRow` is horizontally scrollable.
 
 ### State Interactions
