@@ -7,6 +7,7 @@ import {
   CalendarOutlined,
   CloudServerOutlined,
   FireOutlined,
+  ReadOutlined,
 } from '@ant-design/icons';
 import type { ApiEndpoint } from '../types.js';
 import { ENDPOINTS } from '../constants/endpoints.js';
@@ -59,6 +60,14 @@ export const QuickDeck: React.FC<QuickDeckProps> = ({ onSelectEndpoint, onExecut
       endpointId: 'calendar-convert',
       badge: 'GET',
       badgeColor: 'purple',
+    },
+    {
+      title: 'Quranic Lexicon',
+      desc: '2,092 entries with root morphology & Ayah transclusion',
+      icon: <ReadOutlined style={{ fontSize: 20, color: '#0284c7' }} />,
+      endpointId: 'qamus-info',
+      badge: 'GET',
+      badgeColor: 'blue',
     },
     {
       title: 'System Health',

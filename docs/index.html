@@ -512,6 +512,7 @@
       <div class="nav-section-title">Core Services</div>
       <ul class="nav-menu">
         <li class="nav-item"><a href="#quran">📖 Quran & Audio</a></li>
+        <li class="nav-item"><a href="#qamus">🔍 Quranic Lexicon (Qamus)</a></li>
         <li class="nav-item"><a href="#prayers">🕌 Prayer Times & Tracking</a></li>
         <li class="nav-item"><a href="#hadith">📜 Hadith Collections</a></li>
         <li class="nav-item"><a href="#duas">🤲 Duas & Azkar</a></li>
@@ -540,7 +541,8 @@
         <div class="hero-tags">
           <span class="hero-pill">✓ Express + Node 22</span>
           <span class="hero-pill">✓ Pure WASM SQLite Engine</span>
-          <span class="hero-pill">✓ 6 Isolated Domain Databases</span>
+          <span class="hero-pill">✓ 7 Isolated Domain Databases</span>
+          <span class="hero-pill">✓ Fusha Quranic Lexicon (2,092 Entries)</span>
           <span class="hero-pill">✓ OpenAPI 3.0 Standard</span>
           <span class="hero-pill">✓ JWT Bearer Auth</span>
         </div>
@@ -555,6 +557,10 @@
           <div class="feature-card">
             <h3>📖 quran.sqlite</h3>
             <p>114 Surahs, 6,236 Ayahs, Uthmani calligraphy script, multi-language translations (Sahih International, etc.), and classical Tafsirs.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🔍 qamus.sqlite</h3>
+            <p>Quranic Arabic Lexicon (Fusha): 2,092 certified entries, 947 verbs, 1,045 nouns, 100 particles, 1,091 distinct roots, 7,700 Ayah occurrences, and 39+ grammar color classes.</p>
           </div>
           <div class="feature-card">
             <h3>🕌 prayers.sqlite</h3>
@@ -738,6 +744,165 @@ print("Hijri date:", response.json())
           <div class="endpoint-body">
             <p class="endpoint-desc">Streams recitation MP3 files directly to browser or mobile audio player. Default reciter: Mishari Rashid Al-Afasy.</p>
             <p>Example: <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">/api/audio/1/1</code> streams Bismillah.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Qamus Quranic Lexicon -->
+      <section id="qamus">
+        <h2 class="section-title">🔍 Qamus Quranic Lexicon (Fusha)</h2>
+        <p class="section-lead">High-precision Quranic lexicon engine over 2,092 certified entries, 1,091 distinct roots, 7,700 Ayah occurrences, root morphology, semantic categories, and 39+ part-of-speech color classes for syntactic glossing.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus</span>
+            </div>
+            <span class="endpoint-summary">Lexicon information & statistics</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns dataset overview, certified counts (2,092 lemmas, 947 verbs, 1,045 nouns, 100 particles, 1,091 roots), and root directories.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/entries</span>
+            </div>
+            <span class="endpoint-summary">Browse paginated lexicon entries</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Paginated vocabulary browsing with filters for grammatical section (verb, noun, particle), category, root, and search term.</p>
+            <table class="param-table">
+              <thead>
+                <tr><th>Query Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="param-name">page</span></td><td><span class="param-type">integer</span></td><td>1</td><td>Target page number</td></tr>
+                <tr><td><span class="param-name">limit</span></td><td><span class="param-type">integer</span></td><td>20</td><td>Entries per page (max 100)</td></tr>
+                <tr><td><span class="param-name">section</span></td><td><span class="param-type">string</span></td><td>-</td><td>Filter by: verb, noun, particle</td></tr>
+                <tr><td><span class="param-name">category</span></td><td><span class="param-type">string</span></td><td>-</td><td>Filter by semantic category</td></tr>
+                <tr><td><span class="param-name">root</span></td><td><span class="param-type">string</span></td><td>-</td><td>Filter by Arabic root (e.g. ر ح م)</td></tr>
+                <tr><td><span class="param-name">search</span></td><td><span class="param-type">string</span></td><td>-</td><td>Keyword search in Arabic, transliteration, or meaning</td></tr>
+              </tbody>
+            </table>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/entries?limit=5&section=verb" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/entries?limit=5&section=verb')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/search</span>
+            </div>
+            <span class="endpoint-summary">Diacritic-tolerant lexical search</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Searches across vocalized Arabic headwords, unvocalized text, root letters, transliterations, and English meanings.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/search?q=mercy" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/search?q=mercy')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/ayah/:ref</span>
+            </div>
+            <span class="endpoint-summary">Ayah vocabulary transclusion & token spine</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Resolves all dictionary entries and token segments occurring in any Ayah (e.g. 1:1, 9:69, 114:1) with grammatical roles and contextual senses.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/ayah/1:1" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/ayah/1:1')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/roots</span>
+            </div>
+            <span class="endpoint-summary">Catalog of 1,091 distinct Quranic roots</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Lists distinct roots with total lemma occurrences and derived vocabulary words.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/roots?limit=8" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/roots?limit=8')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/grammar-classes</span>
+            </div>
+            <span class="endpoint-summary">Quranic Grammar syntax color ontology</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns 39+ Quranic Grammar part-of-speech classes with descriptions, hex color codes, and linguistic roles for syntactic highlighting.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/grammar-classes" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/grammar-classes')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/qamus/daily</span>
+            </div>
+            <span class="endpoint-summary">Word of the day with Ayah context</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns a deterministic Quranic word of the day matching the current calendar date.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/qamus/daily" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/qamus/daily')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
           </div>
         </div>
       </section>

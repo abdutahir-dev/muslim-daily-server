@@ -22,36 +22,42 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 ## 🌟 Key Features
 
 - **📖 Holy Quran Engine**: Full 114 Surahs, 6,236 Ayahs, Uthmani script, translations (Sahih International), classical Tafsir exegesis, and Ayah-by-Ayah audio streaming.
+- **🔍 Fusha Qamus Quranic Lexicon**: 2,092 certified entries, 1,091 distinct roots, morphology, 7,700 Ayah occurrence transclusions, and 39+ syntactic part-of-speech color classes.
 - **🕌 Prayer Times & Tracker**: High-precision astronomical calculation methods (MWL, ISNA, Umm Al-Qura, Egypt) with user habit tracking, streaks, and analytics.
 - **📜 Hadith Collections**: Canonical collections (Sahih al-Bukhari, Sahih Muslim, Sunan an-Nasa'i) with Arabic text, English translations, and daily Hadith scheduling.
 - **🤲 Duas & Azkar**: Morning/evening dhikr, prayer supplications, transliterations, and references.
 - **📅 Multi-Calendar Transformation**: Mathematical Julian Day Number (JDN) conversions between Gregorian, Islamic Hijri, and Ethiopian calendar systems.
 - **🔐 Security & Middleware**: Helmet security headers, CORS origin whitelisting via `CORS_ORIGINS`, Morgan HTTP logging, and JWT authentication.
 - **🔥 Firebase & Cloud Firestore**: Firebase Authentication token verification and Cloud Firestore cloud persistence for user profiles, prayer tracking logs, fasting logs, and spiritual journaling.
-- **⚡ Developer Experience**: Built-in interactive documentation at `/docs` and full Swagger UI at `/swagger` (and `/swager`).
+- **⚡ Developer Experience**: Built-in interactive documentation at `/docs`, UI playground at `/ui`, and full Swagger UI at `/swagger`.
 
 ---
 
 ## 📁 Architecture & Folder Structure
+
+> 💡 **For detailed architectural diagrams, subsystem deep-dives, and database schemas, see [ARCHITECTURE.md](ARCHITECTURE.md).**
 
 ```text
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml                 # PR & push automated lint, typecheck, tests
 │       └── deploy.yml             # Production deployment pipeline & health verification
+├── data/
+│   └── qamus/                     # Certified lexicon entries, manifest, spine & ontology
 ├── server/
 │   └── app.ts                     # TypeScript entry point (morgan, helmet, cors)
 ├── src/
 │   ├── app.js                     # Express application & route configuration
 │   ├── db/
-│   │   └── connection.js          # Multi-database manager using WASM sql.js
+│   │   └── connection.js          # Multi-database manager using WASM sql.js (7 databases)
 │   ├── docs/
 │   │   ├── docsRouter.js          # Interactive /docs and /swagger UI router
 │   │   └── openapiSpec.js         # OpenAPI 3.0.3 specification
-│   ├── controllers/               # Express request controllers
-│   ├── middleware/                # JWT auth, validation, rate limiting
-│   ├── routes/                    # RESTful route definitions
-│   ├── services/                  # Business logic (hadith, analytics, prayers, etc.)
+│   ├── controllers/               # Express request controllers (qamus, hadith, prayers, etc.)
+│   ├── middleware/                # JWT auth, Firebase auth, validation, rate limiting
+│   ├── routes/                    # RESTful route definitions (/qamus, /api/quran, etc.)
+│   ├── services/                  # Business logic (qamusService, hadithService, etc.)
+│   ├── ui/                        # React + Ant Design interactive workbench
 │   └── utils/                     # Calendar conversions, astronomical math
 ├── __tests__/                     # Jest unit and integration test suites
 ├── db/                            # Domain SQLite database storage files
@@ -59,8 +65,9 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 ```
 
 ### Database Architecture
-Muslim Daily utilizes domain-partitioned databases powered by a persistent WebAssembly SQLite layer (`sql.js`), eliminating native compilation dependencies (`glibc` issues) while ensuring fast ACID storage:
+Muslim Daily utilizes 7 domain-partitioned databases powered by a persistent WebAssembly SQLite layer (`sql.js`), eliminating native compilation dependencies (`glibc` issues) while ensuring fast ACID storage:
 - `quran.sqlite`: Surahs, Ayahs, Uthmani calligraphy, and audio metadata
+- `qamus.sqlite`: Fusha Quranic Arabic Lexicon (2,092 entries, 1,091 roots, Ayah transclusions)
 - `prayers.sqlite`: Prayer calculation caches and geographical coordinates
 - `hadith.sqlite`: Hadith books, sections, narrations, and daily schedules
 - `dua.sqlite`: Classified supplications, Arabic text, and transliterations

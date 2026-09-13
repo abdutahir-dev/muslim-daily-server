@@ -12,7 +12,8 @@ export const API_CATEGORIES = [
   'Spiritual Journal',
   'Social & Challenges',
   'Analytics & Streaks',
-  'Search & System'
+  'Search & System',
+  'Qamus Quranic Lexicon'
 ] as const;
 
 export const ENDPOINTS: ApiEndpoint[] = [
@@ -318,5 +319,112 @@ export const ENDPOINTS: ApiEndpoint[] = [
     method: 'GET',
     path: '/',
     description: 'Returns API server name, version, and catalog of mounted endpoint routes.'
+  },
+  // 13. Qamus Quranic Lexicon (Fusha)
+  {
+    id: 'qamus-info',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Qamus Overview & Statistics',
+    method: 'GET',
+    path: '/qamus',
+    description: 'Returns summary statistics (2,092 entries, 1,091 roots, 7,700 Ayah occurrences) and catalog of endpoints.'
+  },
+  {
+    id: 'qamus-entries',
+    category: 'Qamus Quranic Lexicon',
+    name: 'List Lexicon Entries (Paginated)',
+    method: 'GET',
+    path: '/qamus/entries',
+    description: 'Browse entries with pagination and optional filters by section (verb, noun, particle), category, or root.',
+    params: [
+      { name: 'page', type: 'query', required: false, defaultValue: '1', description: 'Page number' },
+      { name: 'limit', type: 'query', required: false, defaultValue: '10', description: 'Page limit' },
+      { name: 'section', type: 'query', required: false, defaultValue: '', description: 'Section: verb, noun, or particle' }
+    ]
+  },
+  {
+    id: 'qamus-search',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Search Quranic Lexicon',
+    method: 'GET',
+    path: '/qamus/search',
+    description: 'Search across Arabic headwords, roots, transliterations, and meanings with diacritic-tolerant normalization.',
+    params: [
+      { name: 'q', type: 'query', required: true, defaultValue: 'رحم', description: 'Search keyword (e.g. رحم, كتب, mercy)' }
+    ]
+  },
+  {
+    id: 'qamus-ayah',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Lookup Ayah Vocabulary',
+    method: 'GET',
+    path: '/qamus/ayah/1:1',
+    description: 'Retrieves all certified vocabulary entries, transliterations, and grammatical senses occurring in a given Ayah.',
+    params: [
+      { name: 'ref', type: 'path', required: true, defaultValue: '1:1', description: 'Surah:Ayah reference (e.g. 1:1, 9:69)' }
+    ]
+  },
+  {
+    id: 'qamus-roots',
+    category: 'Qamus Quranic Lexicon',
+    name: 'List Quranic Roots',
+    method: 'GET',
+    path: '/qamus/roots',
+    description: 'List all 1,091 distinct Quranic Arabic triliteral and quadrilateral roots with sample words and entry counts.',
+    params: [
+      { name: 'page', type: 'query', required: false, defaultValue: '1', description: 'Page number' },
+      { name: 'limit', type: 'query', required: false, defaultValue: '15', description: 'Number of roots' }
+    ]
+  },
+  {
+    id: 'qamus-root-entries',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Get Vocabulary by Root',
+    method: 'GET',
+    path: '/qamus/roots/ر%20ح%20م',
+    description: 'Retrieves all verbal and nominal entries stemming from an Arabic root.',
+    params: [
+      { name: 'root', type: 'path', required: true, defaultValue: 'ر ح م', description: 'Arabic root with or without spaces' }
+    ]
+  },
+  {
+    id: 'qamus-sections',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Get Section Breakdowns',
+    method: 'GET',
+    path: '/qamus/sections',
+    description: 'Returns entry counts and total Quranic occurrences across Verbs, Nouns, and Particles.'
+  },
+  {
+    id: 'qamus-categories',
+    category: 'Qamus Quranic Lexicon',
+    name: 'List Semantic Categories',
+    method: 'GET',
+    path: '/qamus/categories',
+    description: 'Returns all 55 semantic and thematic categories in the Quranic lexicon.'
+  },
+  {
+    id: 'qamus-daily',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Daily Quranic Word',
+    method: 'GET',
+    path: '/qamus/daily',
+    description: 'Fetches the deterministic Quranic word of the day with root analysis and example Ayah transclusion.'
+  },
+  {
+    id: 'qamus-random',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Random Lexicon Word',
+    method: 'GET',
+    path: '/qamus/random',
+    description: 'Retrieves a random certified Quranic vocabulary entry.'
+  },
+  {
+    id: 'qamus-grammar-classes',
+    category: 'Qamus Quranic Lexicon',
+    name: 'Quranic Grammar (QG) Classes',
+    method: 'GET',
+    path: '/qamus/grammar-classes',
+    description: 'Returns grammatical part-of-speech ontology, semantic roles, and light/dark color hexes.'
   }
 ];

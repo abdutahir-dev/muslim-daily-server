@@ -17,6 +17,7 @@ export let quranDb;
 export let prayersDb;
 export let duaDb;
 export let hadithDb;
+export let qamusDb;
 
 class SqliteWrapper {
   constructor(filePath, SQL) {
@@ -120,8 +121,8 @@ class SqliteWrapper {
 let isInitialized = false;
 
 export async function initDatabases() {
-  if (isInitialized && deenbotDb) {
-    return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb };
+  if (isInitialized && deenbotDb && qamusDb) {
+    return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb };
   }
 
   const SQL = await initSqlJs();
@@ -132,6 +133,7 @@ export async function initDatabases() {
   duaDb = new SqliteWrapper(path.join(dbDir, 'dua.sqlite'), SQL);
   hadithDb = new SqliteWrapper(path.join(dbDir, 'hadith.sqlite'), SQL);
   quotesDb = new SqliteWrapper(path.join(dbDir, 'quotes.sqlite'), SQL);
+  qamusDb = new SqliteWrapper(path.join(dbDir, 'qamus.sqlite'), SQL);
 
   // Setup prayers table
   await prayersDb.exec(`
@@ -571,9 +573,106 @@ export async function initDatabases() {
     `);
   }
 
+  // Setup Qamus Quranic Lexicon tables
+  await qamusDb.exec(`
+    CREATE TABLE IF NOT EXISTS entries (
+      id TEXT PRIMARY KEY,
+      headword TEXT,
+      translit TEXT,
+      root TEXT,
+      root_translit TEXT,
+      category TEXT,
+      section TEXT,
+      definition TEXT,
+      meaning TEXT,
+      senses_json TEXT,
+      usage_json TEXT,
+      tags_json TEXT,
+      total_uses INTEGER,
+      source_keys_json TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_entries_root ON entries(root);
+    CREATE INDEX IF NOT EXISTS idx_entries_section ON entries(section);
+    CREATE INDEX IF NOT EXISTS idx_entries_category ON entries(category);
+    CREATE INDEX IF NOT EXISTS idx_entries_headword ON entries(headword);
+
+    CREATE TABLE IF NOT EXISTS ayah_vocabulary (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      entry_id TEXT,
+      surah_number INTEGER,
+      ayah_number INTEGER,
+      ayah_ref TEXT,
+      ar_text TEXT,
+      en_text TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_ayah_vocab_ref ON ayah_vocabulary(ayah_ref);
+    CREATE INDEX IF NOT EXISTS idx_ayah_vocab_surah ON ayah_vocabulary(surah_number, ayah_number);
+    CREATE INDEX IF NOT EXISTS idx_ayah_vocab_entry ON ayah_vocabulary(entry_id);
+  `);
+
+  const qamusEntryCount = await qamusDb.get('SELECT COUNT(*) as count FROM entries');
+  if (!qamusEntryCount || qamusEntryCount.count === 0) {
+    const jsonlPath = path.join(rootDir, 'data', 'qamus', 'entries.jsonl');
+    if (fs.existsSync(jsonlPath)) {
+      try {
+        const lines = fs.readFileSync(jsonlPath, 'utf8').split('\n').filter(Boolean);
+        await qamusDb.exec('BEGIN TRANSACTION;');
+        const entryStmt = qamusDb.prepare('INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        const ayahStmt = qamusDb.prepare('INSERT INTO ayah_vocabulary (entry_id, surah_number, ayah_number, ayah_ref, ar_text, en_text) VALUES (?, ?, ?, ?, ?, ?)');
+
+        for (const line of lines) {
+          const e = JSON.parse(line);
+          await entryStmt.run([
+            e.id,
+            e.headword || '',
+            e.translit || '',
+            e.root || '',
+            e.root_translit || '',
+            e.category || '',
+            e.section || '',
+            e.definition || '',
+            e.meaning || '',
+            JSON.stringify(e.senses || []),
+            JSON.stringify(e.usage || []),
+            JSON.stringify(e.tags || []),
+            e.total_uses || 0,
+            JSON.stringify(e.source_keys || [])
+          ]);
+
+          if (e.usage && Array.isArray(e.usage)) {
+            for (const u of e.usage) {
+              if (u.examples && Array.isArray(u.examples)) {
+                for (const ex of u.examples) {
+                  if (ex.ref) {
+                    const parts = ex.ref.split(':');
+                    const surah = parseInt(parts[0], 10) || null;
+                    const ayah = parseInt(parts[1], 10) || null;
+                    await ayahStmt.run([
+                      e.id,
+                      surah,
+                      ayah,
+                      ex.ref,
+                      ex.ar || '',
+                      ex.en || ''
+                    ]);
+                  }
+                }
+              }
+            }
+          }
+        }
+        await qamusDb.exec('COMMIT;');
+        qamusDb.save();
+        console.log(`[db] Seeded ${lines.length} Qamus lexicon entries into qamus.sqlite.`);
+      } catch (seedErr) {
+        console.warn('[db] Failed to seed Qamus database:', seedErr.message);
+      }
+    }
+  }
+
   isInitialized = true;
-  console.log('[db] All 6 databases initialized successfully.');
-  return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb };
+  console.log('[db] All 7 databases initialized successfully.');
+  return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb };
 }
 
 export const getDb = async () => {

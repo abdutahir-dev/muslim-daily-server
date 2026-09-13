@@ -26,6 +26,7 @@ import userInfoRoutes from './routes/userInfoRoutes.js'
 import fastingRoutes from './routes/fastingRoutes.js';
 import journalRoutes from './routes/journalRoutes.js';
 import firebaseRoutes from './routes/firebaseRoutes.js';
+import qamusRoutes from './routes/qamusRoutes.js';
 import docsRouter from './docs/docsRouter.js';
 
 dotenv.config();
@@ -103,6 +104,10 @@ app.use('/api/fasting', fastingRoutes);
 app.use('/api/journal', journalRoutes);
 app.use('/api/firebase', firebaseRoutes);
 
+// Qamus Arabic Lexicon routes (accessible under /qamus and /api/qamus)
+app.use('/qamus', qamusRoutes);
+app.use('/api/qamus', qamusRoutes);
+
 // Legacy/Compatibility routes
 app.use('/api', quranRoutes);
 
@@ -123,6 +128,8 @@ app.get('/', (req, res) => {
             ui: '/ui',
             docs: '/docs',
             swagger: '/swagger',
+            qamus: '/qamus',
+            qamusApi: '/api/qamus',
             auth: '/api/auth',
             firebase: '/api/firebase',
             quran: '/api/quran',

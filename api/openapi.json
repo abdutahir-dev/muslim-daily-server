@@ -93,6 +93,10 @@
       "description": "Firebase Authentication and Cloud Firestore persistent document storage"
     },
     {
+      "name": "Qamus Quranic Lexicon",
+      "description": "Fusha 2,092-entry Quranic Arabic morphology (Sarf), syntax (Nahw), i'rab transclusions, root lexicon, and grammatical color classes"
+    },
+    {
       "name": "Admin",
       "description": "Database administration, content management, and data seeding"
     }
@@ -1901,6 +1905,365 @@
         "responses": {
           "200": {
             "description": "Saved prayer record in Firestore"
+          }
+        }
+      }
+    },
+    "/qamus": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Qamus Lexicon Overview & Statistics",
+        "description": "Returns metadata, dataset version, statistics (2,092 entries, 947 verbs, 1,045 nouns, 100 particles, 1,091 roots), and available endpoints.",
+        "responses": {
+          "200": {
+            "description": "Qamus service overview and summary stats"
+          }
+        }
+      }
+    },
+    "/qamus/entries": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "List Quranic Lexicon Entries (Paginated)",
+        "description": "Fetch paginated lexicon entries with optional filters for section (verb, noun, particle), semantic category, root, or search keyword.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Items per page (max 100)"
+          },
+          {
+            "name": "section",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "verb",
+                "noun",
+                "particle"
+              ]
+            },
+            "description": "Filter by part-of-speech category"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter by semantic category"
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter by Arabic triliteral/quadrilateral root (e.g. 'ك ت ب')"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search keyword in headword, transliteration, root, or meaning"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of lexicon entries with senses and Quranic references"
+          }
+        }
+      }
+    },
+    "/qamus/entries/{id}": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Get Lexicon Entry by ID or Headword",
+        "description": "Returns full lexical details including Arabic headword, transliteration, root morphology, definition, senses, and exact Quranic usage examples with English translations.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Entry ID (e.g. 00107b99a50e) or Arabic headword"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full lexicon entry record"
+          },
+          "404": {
+            "description": "Entry not found"
+          }
+        }
+      }
+    },
+    "/qamus/search": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Search Quranic Lexicon",
+        "description": "Search across Arabic headwords, roots, English definitions, transliterations, and meanings with diacritic normalization.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search query string (Arabic or English)"
+          },
+          {
+            "name": "section",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "verb",
+                "noun",
+                "particle"
+              ]
+            },
+            "description": "Optional filter by section"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            },
+            "description": "Maximum results (max 100)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results with relevance sorting"
+          }
+        }
+      }
+    },
+    "/qamus/roots": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "List Distinct Quranic Roots",
+        "description": "Retrieves all 1,091 distinct Quranic Arabic roots with entry counts and sample vocabulary words.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter roots by Arabic characters or transliteration"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of Arabic roots"
+          }
+        }
+      }
+    },
+    "/qamus/roots/{root}": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Get All Vocabulary Derived from a Root",
+        "description": "Returns all verbal forms, derived nouns, and occurrences stemming from the specified Arabic root (e.g., 'ك ت ب' or 'كتب').",
+        "parameters": [
+          {
+            "name": "root",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Arabic root (e.g. 'ر ح م' or 'رحم')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entries and forms belonging to this root"
+          }
+        }
+      }
+    },
+    "/qamus/sections": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Get Section Breakdowns (Verbs, Nouns, Particles)",
+        "description": "Returns entry counts and total occurrences across the 3 primary grammatical sections.",
+        "responses": {
+          "200": {
+            "description": "Section breakdown with linguistic descriptions"
+          }
+        }
+      }
+    },
+    "/qamus/categories": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "List All 55 Semantic Categories",
+        "description": "Returns all thematic categories in the lexicon with entry counts.",
+        "responses": {
+          "200": {
+            "description": "List of semantic categories"
+          }
+        }
+      }
+    },
+    "/qamus/ayah/{ref}": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Lookup Vocabulary Transclusion for a Quranic Ayah",
+        "description": "Returns all certified vocabulary entries, senses, and word tokens occurring in a specific Ayah (e.g. '1:1' or '9:69').",
+        "parameters": [
+          {
+            "name": "ref",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Surah:Ayah reference (e.g. '1:1' or '9:69')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vocabulary entries and usage spine tokens for the Ayah"
+          }
+        }
+      }
+    },
+    "/qamus/daily": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Get Daily Featured Quranic Word",
+        "description": "Returns a deterministic word of the day with root morphology, sense breakdown, and example Ayah transclusion.",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional date in YYYY-MM-DD format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Daily word of the day"
+          }
+        }
+      }
+    },
+    "/qamus/random": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Get Random Quranic Word",
+        "description": "Returns a randomly selected word from the 2,092 lexicon entries.",
+        "parameters": [
+          {
+            "name": "section",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "verb",
+                "noun",
+                "particle"
+              ]
+            },
+            "description": "Optional section filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Random lexicon entry"
+          }
+        }
+      }
+    },
+    "/qamus/grammar-classes": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Quranic Grammar (QG) Color & Syntax Ontology",
+        "description": "Returns the 39+ Quranic Grammar syntax classes, tokens, dark/light RGB color codes, and semantic role specifications from the Fusha qamus.dawah.wiki engine.",
+        "responses": {
+          "200": {
+            "description": "Ontology and grammatical color matrix"
+          }
+        }
+      }
+    },
+    "/qamus/manifest": {
+      "get": {
+        "tags": [
+          "Qamus Quranic Lexicon"
+        ],
+        "summary": "Raw Dataset Manifest & Schema Metadata",
+        "description": "Returns the certified dataset manifest, entry counts, distinct lemmas, distinct roots, and schema version.",
+        "responses": {
+          "200": {
+            "description": "Qamus entry manifest"
           }
         }
       }
