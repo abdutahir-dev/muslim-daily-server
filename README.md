@@ -21,6 +21,7 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 
 ## 🌟 Key Features
 
+- **✨ Asmaul Husna (The 99 Names of Allah)**: Full trilingual support for **Arabic (العربية)**, **Amharic (አማርኛ)**, and **English**, featuring translations, theological descriptions, 100% Quranic verse citations with Arabic Ayah texts, authenticated Hadith references, and contemplation features (Name of the Day, diacritic-tolerant search).
 - **📖 Holy Quran Engine**: Full 114 Surahs, 6,236 Ayahs, Uthmani script, translations (Sahih International), classical Tafsir exegesis, and Ayah-by-Ayah audio streaming.
 - **🔍 Fusha Qamus Quranic Lexicon**: 2,092 certified entries, 1,091 distinct roots, morphology, 7,700 Ayah occurrence transclusions, and 39+ syntactic part-of-speech color classes.
 - **🕌 Prayer Times & Tracker**: High-precision astronomical calculation methods (MWL, ISNA, Umm Al-Qura, Egypt) with user habit tracking, streaks, and analytics.
@@ -65,7 +66,8 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 ```
 
 ### Database Architecture
-Muslim Daily utilizes 7 domain-partitioned databases powered by a persistent WebAssembly SQLite layer (`sql.js`), eliminating native compilation dependencies (`glibc` issues) while ensuring fast ACID storage:
+Muslim Daily utilizes 8 domain-partitioned databases powered by a persistent WebAssembly SQLite layer (`sql.js`), eliminating native compilation dependencies (`glibc` issues) while ensuring fast ACID storage:
+- `asmaul_husna.sqlite`: 99 Beautiful Names of Allah (Arabic, Amharic, English translations, theological commentary & citations)
 - `quran.sqlite`: Surahs, Ayahs, Uthmani calligraphy, and audio metadata
 - `qamus.sqlite`: Fusha Quranic Arabic Lexicon (2,092 entries, 1,091 roots, Ayah transclusions)
 - `prayers.sqlite`: Prayer calculation caches and geographical coordinates

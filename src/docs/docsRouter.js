@@ -701,6 +701,8 @@ export const getDocsHtml = () => {
       <ul class="nav-menu">
         <li class="nav-item"><a href="#quran">📖 Quran & Audio</a></li>
         <li class="nav-item"><a href="#qamus">🔍 Quranic Lexicon (Qamus)</a></li>
+        <li class="nav-item"><a href="#asmaul-husna">✨ Asmaul Husna (99 Names)</a></li>
+        <li class="nav-item"><a href="#dictionary">📚 Trilingual Dictionary & Translation</a></li>
         <li class="nav-item"><a href="#prayers">🕌 Prayer Times & Tracking</a></li>
         <li class="nav-item"><a href="#hadith">📜 Hadith Collections</a></li>
         <li class="nav-item"><a href="#duas">🤲 Duas & Azkar</a></li>
@@ -729,7 +731,9 @@ export const getDocsHtml = () => {
         <div class="hero-tags">
           <span class="hero-pill">✓ Express + Node 22</span>
           <span class="hero-pill">✓ Pure WASM SQLite Engine</span>
-          <span class="hero-pill">✓ 7 Isolated Domain Databases</span>
+          <span class="hero-pill">✓ 9 Isolated Domain Databases</span>
+          <span class="hero-pill">✓ Trilingual Dictionary & Translation (Arabic, Amharic, English)</span>
+          <span class="hero-pill">✓ Asmaul Husna (99 Names, Trilingual)</span>
           <span class="hero-pill">✓ Fusha Quranic Lexicon (2,092 Entries)</span>
           <span class="hero-pill">✓ OpenAPI 3.0 Standard</span>
           <span class="hero-pill">✓ JWT Bearer Auth</span>
@@ -742,6 +746,14 @@ export const getDocsHtml = () => {
         <p class="section-lead">Muslim Daily uses domain-partitioned databases powered by a persistent WebAssembly SQLite layer (<code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">sql.js</code>) ensuring fast queries without native compilation dependencies.</p>
         
         <div class="card-grid">
+          <div class="feature-card">
+            <h3>📚 dictionary.sqlite</h3>
+            <p>Trilingual lexicon spanning Arabic, Amharic (አማርኛ), and English with root indexing, part-of-speech categorization, definitions, antonyms/synonyms, and neural translation.</p>
+          </div>
+          <div class="feature-card">
+            <h3>✨ asmaul_husna.sqlite</h3>
+            <p>The 99 Beautiful Names of Allah with transliteration, Arabic text, Amharic (አማርኛ), English, deep theological explanations, and Quran/Hadith references.</p>
+          </div>
           <div class="feature-card">
             <h3>📖 quran.sqlite</h3>
             <p>114 Surahs, 6,236 Ayahs, Uthmani calligraphy script, multi-language translations (Sahih International, etc.), and classical Tafsirs.</p>
@@ -1095,6 +1107,328 @@ print("Hijri date:", response.json())
         </div>
       </section>
 
+      <!-- Asmaul Husna (The 99 Names of Allah) -->
+      <section id="asmaul-husna">
+        <h2 class="section-title">✨ Asmaul Husna (The 99 Names of Allah - أسماء الله الحسنى)</h2>
+        <p class="section-lead">Comprehensive service providing the 99 Beautiful Names of Allah with transliterations, Arabic calligraphy script, detailed theological explanations, Quranic citations with Arabic Ayah texts, authenticated Hadith references, and full trilingual support for <strong>Arabic (العربية)</strong>, <strong>Amharic (አማርኛ)</strong>, and <strong>English</strong>.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna</span>
+            </div>
+            <span class="endpoint-summary">List all 99 Names (with multilingual support & search)</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns all 99 Names of Allah. Use <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?lang=am</code> for Amharic, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?lang=en</code> for English, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?lang=ar</code> for Arabic, or omit for the full multilingual package.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna?lang=all&limit=5" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna?lang=all&limit=5')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna/:identifier</span>
+            </div>
+            <span class="endpoint-summary">Lookup by Number (1-99), Transliteration, or Arabic</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Fetches a specific Name of Allah using its canonical number (1–99), Arabic name (e.g. <code>الرحمن</code>), or transliteration (e.g. <code>Ar-Rahman</code>). Includes Quranic reference and Hadith citation.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna/1?lang=am" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna/1?lang=am')">Test Amharic (አማርኛ)</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna/daily</span>
+            </div>
+            <span class="endpoint-summary">Name of the Day (Contemplation Widget)</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns a deterministic Name of Allah for the current calendar date. Ideal for mobile home screen widgets and daily reflection notifications.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna/daily?lang=en" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna/daily?lang=en')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna/random</span>
+            </div>
+            <span class="endpoint-summary">Random Name of Allah</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns a random Name of Allah with theological description and scripture citations.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna/random?lang=all" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna/random?lang=all')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna/search</span>
+            </div>
+            <span class="endpoint-summary">Trilingual Search (Arabic, Amharic, English)</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Executes diacritic-tolerant search across Arabic names, Amharic Ge'ez script meanings (e.g. <code>ንጉሥ</code>, <code>ሩኅሩህ</code>, <code>ሰላም</code>), and English definitions (e.g. <code>Merciful</code>, <code>King</code>, <code>Peace</code>).</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna/search?q=ንጉሥ&lang=am" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna/search?q=ንጉሥ&lang=am')">Search Amharic "ንጉሥ"</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/asmaul-husna/stats</span>
+            </div>
+            <span class="endpoint-summary">Dataset Verification & Capabilities</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Displays certification metrics: 99 total names, 100% Quranic citation coverage, verified Hadith source matrix, and supported languages.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/asmaul-husna/stats" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/asmaul-husna/stats')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 24px;">Code Example: Fetching in Amharic and English</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+// JavaScript / Node.js
+const res = await fetch('http://localhost:3000/asmaul-husna/1?lang=am');
+const name = await res.json();
+console.log(name.transliteration); // Ar-Rahman
+console.log(name.translation);     // እጅግ በጣም ሩኅሩህ
+console.log(name.description);     // በዚህ ዓለም ላሉ ፍጥረታት ሁሉ ምህረቱና እዝነቱ እጅግ ሰፊና ሁሉን አቀፍ የሆነው ጌታ።
+console.log(name.reference.quran); // Surah Al-Fatihah 1:3
+        </div>
+      </section>
+
+      <!-- Trilingual Dictionary & Translation -->
+      <section id="dictionary">
+        <h2 class="section-title">📚 Trilingual Dictionary & Translation Service (Arabic, Amharic, English)</h2>
+        <p class="section-lead">A comprehensive cross-referenced vocabulary and translation service bridging <strong>Arabic (العربية)</strong>, <strong>Amharic (አማርኛ)</strong>, and <strong>English</strong>. Features include root word analysis, grammatical part-of-speech categorization, contextual trilingual definitions, parallel examples, automatic script detection, and bidirectional translation powered by high-accuracy lexicon alignment with seamless Gemini AI fallback.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/dictionary</span>
+            </div>
+            <span class="endpoint-summary">Browse & Filter Trilingual Dictionary Entries</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns paginated entries with trilingual headwords, definitions, synonyms, and examples. Supports query parameters <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?q=</code>, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?lang=ar|am|en|all</code>, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?category=</code>, and <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">?pos=</code>.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/dictionary?limit=5&lang=all" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/dictionary?limit=5&lang=all')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/dictionary/lookup/{word}</span>
+            </div>
+            <span class="endpoint-summary">Direct Word Lookup Across Any of the 3 Languages</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Resolves a headword in Arabic (e.g. <code>سَلَام</code> or unvocalized <code>سلام</code>), Amharic (e.g. <code>ሰላም</code> or <code>ኢማን</code>), or English (e.g. <code>peace</code>, <code>mercy</code>).</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/dictionary/lookup/ሰላም" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/dictionary/lookup/ሰላም')">Lookup Amharic "ሰላም"</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/dictionary/search</span>
+            </div>
+            <span class="endpoint-summary">Fuzzy & Diacritic-Tolerant Trilingual Search</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Performs full-text search across Arabic roots, clean text, Amharic translations, English definitions, and phonetic transliterations.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/dictionary/search?q=رحمة&lang=all" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/dictionary/search?q=رحمة&lang=all')">Search Arabic "رحمة"</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/dictionary/daily</span>
+            </div>
+            <span class="endpoint-summary">Word of the Day</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Retrieves a deterministic daily vocabulary selection for language enrichment and reflection.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/dictionary/daily" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/dictionary/daily')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/dictionary/autocomplete</span>
+            </div>
+            <span class="endpoint-summary">Typeahead Search Autocomplete</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Provides fast instant prefix matching for search boxes across Latin, Ge'ez, and Arabic keyboards.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/dictionary/autocomplete?q=peac" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/dictionary/autocomplete?q=peac')">Autocomplete "peac"</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-post">POST</span>
+              <span class="endpoint-url">/translation/translate</span>
+            </div>
+            <span class="endpoint-summary">Trilingual Translation (Arabic, Amharic, English)</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Translates input text between Arabic, Amharic, and English. Automatically detects input language if omitted or set to <code>"auto"</code>. Combines lexical phrase alignment with Gemini AI neural models for fluid sentence-level translations.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value='POST /translation/translate {"text":"السلام عليكم ورحمة الله","targetLang":"en"}' readonly>
+                <button class="runner-btn" onclick="runPostRequest(this, '/translation/translate', {text:'السلام عليكم ورحمة الله', targetLang:'en'})">Translate Arabic &rarr; English</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-post">POST</span>
+              <span class="endpoint-url">/translation/detect</span>
+            </div>
+            <span class="endpoint-summary">Script & Language Detection</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Detects Arabic, Amharic (Ethiopic script), or English (Latin script) with confidence scores and script classification.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value='POST /translation/detect {"text":"አላህ ይርዳን"}' readonly>
+                <button class="runner-btn" onclick="runPostRequest(this, '/translation/detect', {text:'አላህ ይርዳን'})">Detect Script</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <div class="endpoint-path">
+              <span class="method-badge method-get">GET</span>
+              <span class="endpoint-url">/translation/pairs</span>
+            </div>
+            <span class="endpoint-summary">Supported Language Pairs</span>
+          </div>
+          <div class="endpoint-body">
+            <p class="endpoint-desc">Returns the list of 6 fully supported bidirectional language translation pairs.</p>
+            <div class="runner-box">
+              <div class="runner-bar">
+                <input type="text" class="runner-input" value="/translation/pairs" readonly>
+                <button class="runner-btn" onclick="runRequest(this, '/translation/pairs')">Test Live Request</button>
+              </div>
+              <pre class="runner-response"></pre>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 24px;">Code Example: Translating Text (JavaScript)</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+// Translate between Arabic, Amharic, and English
+const response = await fetch('http://localhost:3000/translation/translate', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    text: 'ሰላም ለሁላችሁ ይሁን',
+    sourceLang: 'am',
+    targetLang: 'ar'
+  })
+});
+const data = await response.json();
+console.log('Arabic Translation:', data.translatedText); // السلام عليكم
+console.log('Translation Engine:', data.engine);         // trilingual-lexicon
+        </div>
+      </section>
+
       <!-- Prayers -->
       <section id="prayers">
         <h2 class="section-title">🕌 Prayer Times & Tracking</h2>
@@ -1445,6 +1779,25 @@ print("Hijri date:", response.json())
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ from: 'gregorian', to: 'hijri', date: '2026-09-12' })
+        });
+        const data = await res.json();
+        resPre.innerText = JSON.stringify(data, null, 2);
+      } catch (err) {
+        resPre.innerText = 'Request error: ' + err.message;
+      }
+    }
+
+    // Live test generic POST request
+    async function runPostRequest(btn, endpoint, payload) {
+      const runnerBox = btn.closest('.runner-box');
+      const resPre = runnerBox.querySelector('.runner-response');
+      resPre.style.display = 'block';
+      resPre.innerText = 'Posting to ' + endpoint + '...';
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: typeof payload === 'string' ? payload : JSON.stringify(payload)
         });
         const data = await res.json();
         resPre.innerText = JSON.stringify(data, null, 2);

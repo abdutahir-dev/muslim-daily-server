@@ -2,6 +2,8 @@ import type { ApiEndpoint } from '../types.js';
 
 export const API_CATEGORIES = [
   'All',
+  'Trilingual Dictionary & Translation',
+  'Asmaul Husna (99 Names)',
   'Firebase & Firestore',
   'Prayers & Timings',
   'Quran & Tafsir',
@@ -17,6 +19,204 @@ export const API_CATEGORIES = [
 ] as const;
 
 export const ENDPOINTS: ApiEndpoint[] = [
+  // 0. Trilingual Dictionary & Translation Service (Arabic, Amharic, English)
+  {
+    id: 'dict-browse',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Browse Trilingual Dictionary',
+    method: 'GET',
+    path: '/dictionary',
+    description: 'Retrieves cross-referenced dictionary entries across Arabic, Amharic, and English with root words, grammatical categories, definitions, and examples.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Target output format: all, ar, am, or en' },
+      { name: 'category', type: 'query', defaultValue: '', description: 'Filter by category (e.g. faith, greetings, worship, family)' },
+      { name: 'pos', type: 'query', defaultValue: '', description: 'Filter by part of speech (noun, verb, adjective, particle)' },
+      { name: 'limit', type: 'query', defaultValue: '10', description: 'Number of results (1-100)' },
+      { name: 'page', type: 'query', defaultValue: '1', description: 'Page offset' }
+    ]
+  },
+  {
+    id: 'dict-lookup',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Word Lookup (Arabic / Amharic / English)',
+    method: 'GET',
+    path: '/dictionary/lookup/ሰላም',
+    description: 'Instantly resolves a headword across any of the three languages (Arabic vocalized or unvocalized, Amharic Ge\'ez, or English).',
+    params: [
+      { name: 'word', type: 'path', required: true, defaultValue: 'ሰላም', description: 'Word to look up (e.g. ሰላም, سَلَام, سلام, peace, mercy)' },
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Output language filter (all, ar, am, en)' }
+    ]
+  },
+  {
+    id: 'dict-search',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Trilingual Search (Diacritic-Tolerant)',
+    method: 'GET',
+    path: '/dictionary/search',
+    description: 'Fuzzy and diacritic-insensitive multi-field search across Arabic roots/clean words, Amharic translations, English definitions, and phonetic transliterations.',
+    params: [
+      { name: 'q', type: 'query', required: true, defaultValue: 'رحمة', description: 'Search query in Arabic, Amharic, or English' },
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Output language filter (all, ar, am, en)' }
+    ]
+  },
+  {
+    id: 'dict-daily',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Daily Word of the Day',
+    method: 'GET',
+    path: '/dictionary/daily',
+    description: 'Deterministic daily vocabulary selection with Arabic, Amharic, and English definitions for spiritual vocabulary building.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Output language filter (all, ar, am, en)' }
+    ]
+  },
+  {
+    id: 'dict-random',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Random Vocabulary Word',
+    method: 'GET',
+    path: '/dictionary/random',
+    description: 'Retrieves a random trilingual vocabulary entry with full etymology and contextual examples.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Output language filter (all, ar, am, en)' }
+    ]
+  },
+  {
+    id: 'dict-autocomplete',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Typeahead Autocomplete',
+    method: 'GET',
+    path: '/dictionary/autocomplete',
+    description: 'Fast prefix suggestions for interactive search bars supporting Arabic, Ge\'ez (Amharic), and Latin (English) inputs.',
+    params: [
+      { name: 'q', type: 'query', required: true, defaultValue: 'peac', description: 'Prefix text to autocomplete' },
+      { name: 'limit', type: 'query', defaultValue: '8', description: 'Max suggestions (1-20)' }
+    ]
+  },
+  {
+    id: 'dict-categories',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'List Semantic Categories',
+    method: 'GET',
+    path: '/dictionary/categories',
+    description: 'Returns all thematic category classifications (faith, worship, greetings, ethics, family, etc.) and word counts.'
+  },
+  {
+    id: 'dict-pos',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'List Parts of Speech',
+    method: 'GET',
+    path: '/dictionary/parts-of-speech',
+    description: 'Returns available grammatical part-of-speech categories and frequencies (noun, verb, adjective, particle, phrase).'
+  },
+  {
+    id: 'translation-translate',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Translate (Arabic / Amharic / English)',
+    method: 'POST',
+    path: '/translation/translate',
+    description: 'Translates sentences or terms between Arabic, Amharic, and English. Features automatic script detection, dual lexicon and Gemini AI neural translation fallback.',
+    sampleBody: {
+      text: 'السلام عليكم ورحمة الله وبركاته',
+      sourceLang: 'ar',
+      targetLang: 'am'
+    }
+  },
+  {
+    id: 'translation-detect',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Detect Language & Script',
+    method: 'POST',
+    path: '/translation/detect',
+    description: 'Identifies whether text is written in Arabic (Arabic script), Amharic (Ethiopic Ge\'ez script), or English (Latin script) with confidence scores.',
+    sampleBody: {
+      text: 'አላህ ይርዳን እና ይጠብቀን'
+    }
+  },
+  {
+    id: 'translation-pairs',
+    category: 'Trilingual Dictionary & Translation',
+    name: 'Get Supported Translation Pairs',
+    method: 'GET',
+    path: '/translation/pairs',
+    description: 'Returns all 6 supported bidirectional language translation pairs and engine capabilities.'
+  },
+  // 0. Asmaul Husna (The 99 Beautiful Names of Allah)
+  {
+    id: 'asmaul-husna-all',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Get All 99 Names (Multilingual)',
+    method: 'GET',
+    path: '/asmaul-husna',
+    description: 'Retrieves all 99 Names of Allah with Arabic calligraphy, transliteration, English, Amharic, and Arabic translations, theological explanations, and Quranic/Hadith citations.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Language localization: all, en, am (አማርኛ), or ar (العربية)' },
+      { name: 'limit', type: 'query', defaultValue: '10', description: 'Items per page (e.g. 10, or empty for all 99)' }
+    ]
+  },
+  {
+    id: 'asmaul-husna-amharic',
+    category: 'Asmaul Husna (99 Names)',
+    name: '99 Names in Amharic (አማርኛ)',
+    method: 'GET',
+    path: '/asmaul-husna?lang=am',
+    description: 'Retrieves the Names of Allah localized in Amharic (Ge\'ez script) translations and theological descriptions.'
+  },
+  {
+    id: 'asmaul-husna-by-id',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Lookup Name by Number or Arabic',
+    method: 'GET',
+    path: '/asmaul-husna/1',
+    description: 'Fetches a specific Name of Allah using canonical number (1 to 99), Arabic script (e.g. الرحمن), or transliteration (e.g. Ar-Rahman).',
+    params: [
+      { name: 'identifier', type: 'path', required: true, defaultValue: '1', description: 'Number 1-99, Arabic name, or transliteration' },
+      { name: 'lang', type: 'query', defaultValue: 'am', description: 'Language localization: all, en, am, ar' }
+    ]
+  },
+  {
+    id: 'asmaul-husna-daily',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Daily Name of Allah (Contemplation)',
+    method: 'GET',
+    path: '/asmaul-husna/daily',
+    description: 'Deterministic Name of the Day for contemplation and digital home screen widgets.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'en', description: 'Language: all, en, am, ar' }
+    ]
+  },
+  {
+    id: 'asmaul-husna-random',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Random Name of Allah',
+    method: 'GET',
+    path: '/asmaul-husna/random',
+    description: 'Returns a random Name of Allah with theological commentary and Quran/Hadith references.',
+    params: [
+      { name: 'lang', type: 'query', defaultValue: 'all', description: 'Language: all, en, am, ar' }
+    ]
+  },
+  {
+    id: 'asmaul-husna-search',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Trilingual Search (Arabic / Amharic / English)',
+    method: 'GET',
+    path: '/asmaul-husna/search',
+    description: 'Diacritic-tolerant multi-field search across Arabic, Amharic Ge\'ez meanings, and English definitions.',
+    params: [
+      { name: 'q', type: 'query', required: true, defaultValue: 'ንጉሥ', description: 'Search term in Amharic (e.g. ንጉሥ, ሩኅሩህ), Arabic (e.g. رحيم), or English (e.g. King, Peace)' },
+      { name: 'lang', type: 'query', defaultValue: 'am', description: 'Response language localization' }
+    ]
+  },
+  {
+    id: 'asmaul-husna-stats',
+    category: 'Asmaul Husna (99 Names)',
+    name: 'Dataset Verification & Metrics',
+    method: 'GET',
+    path: '/asmaul-husna/stats',
+    description: 'Dataset statistics: 99 verified names, 100% reference coverage, language matrix, and Hadith sources.'
+  },
+
   // 1. Firebase & Cloud Firestore
   {
     id: 'firebase-config',

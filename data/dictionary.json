@@ -1,0 +1,2780 @@
+[
+  {
+    "id": "dict_001",
+    "word_ar": "إِيمَان",
+    "word_ar_clean": "ايمان",
+    "word_am": "እምነት",
+    "word_en": "Faith / Belief",
+    "transliteration_ar": "Iman",
+    "transliteration_am": "Imnet",
+    "part_of_speech": "noun",
+    "category": "Faith & Spirituality",
+    "root_ar": "أ م ن",
+    "definition_ar": "التصديق الجازم بالقلب والإقرار باللسان والعمل بالأركان.",
+    "definition_am": "በልብ ማመን፣ በአንደበት መመስከርና በተግባር ማረጋገጥ።",
+    "definition_en": "Firm conviction in the heart, verbal confession, and righteous action according to divine guidance.",
+    "synonyms": {
+      "ar": [
+        "تصديق",
+        "يقين",
+        "عقيدة"
+      ],
+      "am": [
+        "አስተምህሮ",
+        "ጽናት"
+      ],
+      "en": [
+        "conviction",
+        "creed",
+        "trust"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "كفر",
+        "شك"
+      ],
+      "am": [
+        "ክህደት",
+        "ጥርጣሬ"
+      ],
+      "en": [
+        "disbelief",
+        "doubt"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الإِيمَانُ بِاللَّهِ يَبْعَثُ فِي النَّفْسِ الطُّمَأْنِينَةَ.",
+        "am": "በአላህ ማመን በነፍስ ውስጥ መረጋጋትን ያሰፍናል።",
+        "en": "Belief in God brings tranquility to the soul."
+      }
+    ]
+  },
+  {
+    "id": "dict_002",
+    "word_ar": "صَلَاة",
+    "word_ar_clean": "صلاة",
+    "word_am": "ሶላት / ጸሎት",
+    "word_en": "Prayer / Worship",
+    "transliteration_ar": "Salah",
+    "transliteration_am": "Solat / Tselot",
+    "part_of_speech": "noun",
+    "category": "Worship & Law",
+    "root_ar": "ص ل و",
+    "definition_ar": "عبادة مخصوصة تفتتح بالتكبير وتختتم بالتسليم بأقوال وأفعال مخصوصة.",
+    "definition_am": "በተክቢራ ተጀምሮ በማሰላመት የሚጠናቀቅ የተደነገገ የአምልኮ ተግባር።",
+    "definition_en": "The prescribed ritual worship comprising specific recitations and physical postures.",
+    "synonyms": {
+      "ar": [
+        "دعاء",
+        "عبادة"
+      ],
+      "am": [
+        "አምልኮ",
+        "ልመና"
+      ],
+      "en": [
+        "devotion",
+        "supplication"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "أَقَامَ الْمُسْلِمُ الصَّلَاةَ فِي وَقْتِهَا.",
+        "am": "ሙስሊሙ ሶላቱን በሰዓቱ ሰገደ።",
+        "en": "The Muslim established the prayer on its designated time."
+      }
+    ]
+  },
+  {
+    "id": "dict_003",
+    "word_ar": "رَحْمَة",
+    "word_ar_clean": "رحمة",
+    "word_am": "እዝነት / ምህረት",
+    "word_en": "Mercy / Compassion",
+    "transliteration_ar": "Rahmah",
+    "transliteration_am": "Iznet / Mihret",
+    "part_of_speech": "noun",
+    "category": "Faith & Spirituality",
+    "root_ar": "ر ح م",
+    "definition_ar": "رقة في القلب تقتضي الإحسان والعطف على المرحوم.",
+    "definition_am": "ለፍጥረታት መልካም መሻት፣ ርኅራኄና ይቅርታን የሚገልጽ የልብ ቸርነት።",
+    "definition_en": "A tender inclination of the heart prompting kindness, forgiveness, and benevolence toward others.",
+    "synonyms": {
+      "ar": [
+        "عطف",
+        "شفقة",
+        "رأفة"
+      ],
+      "am": [
+        "ርኅራኄ",
+        "ቸርነት"
+      ],
+      "en": [
+        "compassion",
+        "clemency",
+        "grace"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "قسوة",
+        "غلظة"
+      ],
+      "am": [
+        "ጭካኔ",
+        "ጥላቻ"
+      ],
+      "en": [
+        "cruelty",
+        "harshness"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "رَحْمَةُ اللَّهِ وَسِعَتْ كُلَّ شَيْءٍ.",
+        "am": "የአላህ እዝነት ሁሉንም ነገር አዳረሰች።",
+        "en": "The mercy of God encompasses all things."
+      }
+    ]
+  },
+  {
+    "id": "dict_004",
+    "word_ar": "سَلَام",
+    "word_ar_clean": "سلام",
+    "word_am": "ሰላም",
+    "word_en": "Peace / Tranquility",
+    "transliteration_ar": "Salam",
+    "transliteration_am": "Selam",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "س ل م",
+    "definition_ar": "الأمان والاستقرار والبراءة من كل عيب ونقص والتحية المعروفة.",
+    "definition_am": "መረጋጋት፣ ከጉዳትና ከስጋት ነፃ መሆን፤ እንዲሁም የሰላምታ ቃል ነው።",
+    "definition_en": "State of serenity, security, harmony, and absence of disturbance; also the universal greeting.",
+    "synonyms": {
+      "ar": [
+        "أمن",
+        "طمأنينة",
+        "صلح"
+      ],
+      "am": [
+        "ጸጥታ",
+        "ዕርቅ"
+      ],
+      "en": [
+        "harmony",
+        "security",
+        "serenity"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "حرب",
+        "خوف",
+        "نزاع"
+      ],
+      "am": [
+        "ጦርነት",
+        "ሽብር",
+        "ግጭት"
+      ],
+      "en": [
+        "war",
+        "conflict",
+        "turmoil"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ.",
+        "am": "የአላህ ሰላምና እዝነት በእናንተ ላይ ይሁን።",
+        "en": "May peace and the mercy of God be upon you."
+      }
+    ]
+  },
+  {
+    "id": "dict_005",
+    "word_ar": "عِلْم",
+    "word_ar_clean": "علم",
+    "word_am": "ዕውቀት",
+    "word_en": "Knowledge / Science",
+    "transliteration_ar": "'Ilm",
+    "transliteration_am": "Iwqet",
+    "part_of_speech": "noun",
+    "category": "Knowledge & Education",
+    "root_ar": "ع ل م",
+    "definition_ar": "إدراك الشيء على حقيقته إدراكاً جازماً.",
+    "definition_am": "አንድን ነገር እንደ እውነተኛ ባህሪው በትክክል መረዳትና ማወቅ።",
+    "definition_en": "The clear comprehension and awareness of reality based on proof and understanding.",
+    "synonyms": {
+      "ar": [
+        "معرفة",
+        "فهم",
+        "دراية"
+      ],
+      "am": [
+        "መረዳት",
+        "ጥበብ"
+      ],
+      "en": [
+        "wisdom",
+        "learning",
+        "comprehension"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "جهل"
+      ],
+      "am": [
+        "ድንቁርና"
+      ],
+      "en": [
+        "ignorance"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ.",
+        "am": "ዕውቀትን መፈለግ በእያንዳንዱ ሙስሊም ላይ ግዴታ ነው።",
+        "en": "Seeking knowledge is an obligation upon every Muslim."
+      }
+    ]
+  },
+  {
+    "id": "dict_006",
+    "word_ar": "صَبْر",
+    "word_ar_clean": "صبر",
+    "word_am": "ትዕግሥት",
+    "word_en": "Patience / Perseverance",
+    "transliteration_ar": "Sabr",
+    "transliteration_am": "Ti'igist",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "ص ب ر",
+    "definition_ar": "حبس النفس عن الجزع واللسان عن الشكوى والجوارح عن المعصية.",
+    "definition_am": "ነፍስን ከመቁነጥነጥ፣ አንደበትን ከማማረርና አካልን ከክፋት መግታት።",
+    "definition_en": "Steadfast endurance, self-restraint in hardship, and perseverance in doing good.",
+    "synonyms": {
+      "ar": [
+        "ثبات",
+        "تحمل",
+        "جلد"
+      ],
+      "am": [
+        "ጽናት",
+        "ቻይነት"
+      ],
+      "en": [
+        "endurance",
+        "fortitude",
+        "steadfastness"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "جزع",
+        "تضجر"
+      ],
+      "am": [
+        "መቁነጥነጥ",
+        "ብስጭት"
+      ],
+      "en": [
+        "impatience",
+        "despair"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ.",
+        "am": "በእርግጥ አላህ ከታጋሾች ጋር ነው።",
+        "en": "Indeed, God is with those who are patient."
+      }
+    ]
+  },
+  {
+    "id": "dict_007",
+    "word_ar": "شُكْر",
+    "word_ar_clean": "شكر",
+    "word_am": "ምስጋና",
+    "word_en": "Gratitude / Thanks",
+    "transliteration_ar": "Shukr",
+    "transliteration_am": "Misgana",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "ش ك ر",
+    "definition_ar": "الاعتراف بالنعمة وإظهار الثناء على المنعم.",
+    "definition_am": "ውለታን ማወቅና ለለጋሹ አድናቆትንና ውዳሴን ማቅረብ።",
+    "definition_en": "Heartfelt recognition and acknowledgment of blessings received, coupled with praise of the Giver.",
+    "synonyms": {
+      "ar": [
+        "حمد",
+        "ثناء",
+        "اعتراف بالجميل"
+      ],
+      "am": [
+        "ውዳሴ",
+        "ክብር"
+      ],
+      "en": [
+        "appreciation",
+        "thanksgiving"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "جحود",
+        "كفران النعمة"
+      ],
+      "am": [
+        "ውለታ ቢስነት"
+      ],
+      "en": [
+        "ingratitude",
+        "unthankfulness"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الشُّكْرُ يَزِيدُ فِي النِّعَمِ.",
+        "am": "ምስጋና ጸጋዎችን ይጨምራል።",
+        "en": "Gratitude increases blessings."
+      }
+    ]
+  },
+  {
+    "id": "dict_008",
+    "word_ar": "كِتَاب",
+    "word_ar_clean": "كتاب",
+    "word_am": "መጽሐፍ",
+    "word_en": "Book / Scripture",
+    "transliteration_ar": "Kitab",
+    "transliteration_am": "Metsihaf",
+    "part_of_speech": "noun",
+    "category": "Knowledge & Education",
+    "root_ar": "ك ت ب",
+    "definition_ar": "مجموعة من الصحف المكتوبة المضمومة بين غلافين.",
+    "definition_am": "የተጻፉ ገጾችን በአንድ ላይ የያዘ መጽሐፍ ወይም ቅዱስ ጽሑፍ።",
+    "definition_en": "A written work or collection of pages bound together; also a divine revelation.",
+    "synonyms": {
+      "ar": [
+        "سفر",
+        "مصحف",
+        "مؤلف"
+      ],
+      "am": [
+        "ድርሰት",
+        "ጽሑፍ"
+      ],
+      "en": [
+        "volume",
+        "text",
+        "scroll"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "قَرَأْتُ كِتَاباً مُفِيداً عَنِ التَّارِيخِ.",
+        "am": "ስለ ታሪክ የሚተርክ ጠቃሚ መጽሐፍ አነበብኩ።",
+        "en": "I read a beneficial book about history."
+      }
+    ]
+  },
+  {
+    "id": "dict_009",
+    "word_ar": "بَيْت",
+    "word_ar_clean": "بيت",
+    "word_am": "ቤት",
+    "word_en": "House / Home",
+    "transliteration_ar": "Bayt",
+    "transliteration_am": "Bet",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "ب ي ت",
+    "definition_ar": "مكان الإقامة والسكن للإنسان وعائلته.",
+    "definition_am": "ሰውና ቤተሰቡ የሚኖሩበት መኖሪያ ሕንፃ ወይም ስፍራ።",
+    "definition_en": "A dwelling place or structure providing shelter and security for a family.",
+    "synonyms": {
+      "ar": [
+        "منزل",
+        "دار",
+        "مسكن"
+      ],
+      "am": [
+        "መኖሪያ",
+        "ማረፊያ"
+      ],
+      "en": [
+        "home",
+        "residence",
+        "dwelling"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "زَارَ الضُّيُوفُ بَيْتَنَا بِفَرَحٍ.",
+        "am": "እንግዶች ቤታችንን በደስታ ጎበኙ።",
+        "en": "The guests visited our house with joy."
+      }
+    ]
+  },
+  {
+    "id": "dict_010",
+    "word_ar": "قَلْب",
+    "word_ar_clean": "قلب",
+    "word_am": "ልብ",
+    "word_en": "Heart",
+    "transliteration_ar": "Qalb",
+    "transliteration_am": "Lib",
+    "part_of_speech": "noun",
+    "category": "Human & Health",
+    "root_ar": "ق ل ب",
+    "definition_ar": "عضو عضلي يضخ الدم في الجسم، ومقر العواطف والإدراك والنية.",
+    "definition_am": "ደም የሚረጭ የሰውነት ክፍል፤ የስሜት፣ የፍቅርና የሐሳብ ማዕከል።",
+    "definition_en": "The central physical organ pumping blood, and the metaphorical seat of emotions, intention, and spiritual perception.",
+    "synonyms": {
+      "ar": [
+        "فؤاد",
+        "صدر",
+        "لب"
+      ],
+      "am": [
+        "ኅሊና",
+        "መንፈስ"
+      ],
+      "en": [
+        "soul",
+        "core",
+        "mind"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ.",
+        "am": "አዋጅ! አላህን በማስታወስ ልቦች ይረጋጋሉ።",
+        "en": "Unquestionably, by the remembrance of God hearts are assured."
+      }
+    ]
+  },
+  {
+    "id": "dict_011",
+    "word_ar": "شَمْس",
+    "word_ar_clean": "شمس",
+    "word_am": "ፀሐይ",
+    "word_en": "Sun",
+    "transliteration_ar": "Shams",
+    "transliteration_am": "Tsehay",
+    "part_of_speech": "noun",
+    "category": "Nature & Universe",
+    "root_ar": "ش م س",
+    "definition_ar": "النجم المضيء الذي تدور حوله الأرض وتستمد منه الضوء والدفء.",
+    "definition_am": "ምድር የምትዞረውና ብርሃንና ሙቀት የምታገኝበት ዋናው ብሩህ ኮከብ።",
+    "definition_en": "The radiant celestial body at the center of the solar system providing light and warmth to the earth.",
+    "synonyms": {
+      "ar": [
+        "سراج",
+        "ذكاء"
+      ],
+      "am": [
+        "ብርሃን"
+      ],
+      "en": [
+        "sunlight",
+        "solar star"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "قمر"
+      ],
+      "am": [
+        "ጨረቃ"
+      ],
+      "en": [
+        "moon"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "تَشْرُقُ الشَّمْسُ مِنْ جِهَةِ الشَّرْقِ كُلَّ صَبَاحٍ.",
+        "am": "ፀሐይ በየማለዳው ከምሥራቅ አቅጣጫ ትወጣለች።",
+        "en": "The sun rises from the east every morning."
+      }
+    ]
+  },
+  {
+    "id": "dict_012",
+    "word_ar": "قَمَر",
+    "word_ar_clean": "قمر",
+    "word_am": "ጨረቃ",
+    "word_en": "Moon",
+    "transliteration_ar": "Qamar",
+    "transliteration_am": "Chereqa",
+    "part_of_speech": "noun",
+    "category": "Nature & Universe",
+    "root_ar": "ق م ر",
+    "definition_ar": "الجرم السماوي التابع للأرض ويعكس ضوء الشمس ليلاً.",
+    "definition_am": "በምሽት የፀሐይን ብርሃን በማንጸባረቅ የሚያበራው የምድር ሳተላይት።",
+    "definition_en": "The natural satellite of the earth, illuminating the night sky by reflecting sunlight.",
+    "synonyms": {
+      "ar": [
+        "هلال",
+        "بدر"
+      ],
+      "am": [
+        "ወርኃዊ ብርሃን"
+      ],
+      "en": [
+        "crescent",
+        "satellite"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "شمس"
+      ],
+      "am": [
+        "ፀሐይ"
+      ],
+      "en": [
+        "sun"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "يَبْدُو الْقَمَرُ بَدْراً مُنِيراً فِي لَيْلَةِ الرَّابِعَ عَشَرَ.",
+        "am": "በአሥራ አራተኛው ሌሊት ጨረቃ ሙሉ ብሩህ ሆና ትታያለች።",
+        "en": "The moon appears as a radiant full moon on the fourteenth night."
+      }
+    ]
+  },
+  {
+    "id": "dict_013",
+    "word_ar": "مَاء",
+    "word_ar_clean": "ماء",
+    "word_am": "ውሃ",
+    "word_en": "Water",
+    "transliteration_ar": "Ma'",
+    "transliteration_am": "Wiha",
+    "part_of_speech": "noun",
+    "category": "Nature & Universe",
+    "root_ar": "م و ه",
+    "definition_ar": "سائل شفاف لا لون له ولا رائحة وهو أساس حياة الكائنات الحية.",
+    "definition_am": "ቀለምና ሽታ የሌለው ፈሳሽ፤ የሕያዋን ፍጥረታት ሁሉ የሕይወት መሠረት።",
+    "definition_en": "A transparent liquid that forms the seas, lakes, rivers, and rain and is the basis of the fluids of living organisms.",
+    "synonyms": {
+      "ar": [
+        "غيث",
+        "سائل الحياة"
+      ],
+      "am": [
+        "ፈሳሽ"
+      ],
+      "en": [
+        "liquid",
+        "aqua"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "وَجَعَلْنَا مِنَ الْمَاءِ كُلَّ شَيْءٍ حَيٍّ.",
+        "am": "ሕያው የሆነውን ነገር ሁሉ ከውሃ ፈጠርን።",
+        "en": "And We made from water every living thing."
+      }
+    ]
+  },
+  {
+    "id": "dict_014",
+    "word_ar": "صَدِيق",
+    "word_ar_clean": "صديق",
+    "word_am": "ጓደኛ / ወዳጅ",
+    "word_en": "Friend / Companion",
+    "transliteration_ar": "Sadiq",
+    "transliteration_am": "Gwadegna / Wedaj",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "ص د ق",
+    "definition_ar": "الشخص الذي تصدقه المودة وتتبادل معه الثقة والنصيحة الصادقة.",
+    "definition_am": "ፍቅሩ እውነተኛ የሆነ፣ አመኔታ የሚጣልበትና በመልካም የሚረዳ ጓደኛ።",
+    "definition_en": "A person with whom one shares mutual affection, trust, and sincere companionship.",
+    "synonyms": {
+      "ar": [
+        "صاحب",
+        "رفيق",
+        "خليل"
+      ],
+      "am": [
+        "አጋር",
+        "ባልንጀራ"
+      ],
+      "en": [
+        "companion",
+        "associate",
+        "ally"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "عدو",
+        "خصم"
+      ],
+      "am": [
+        "ጠላት"
+      ],
+      "en": [
+        "enemy",
+        "adversary"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الصَّدِيقُ وَقْتَ الضِّيقِ.",
+        "am": "እውነተኛ ጓደኛ በመከራ ጊዜ ይታወቃል።",
+        "en": "A friend in need is a friend indeed."
+      }
+    ]
+  },
+  {
+    "id": "dict_015",
+    "word_ar": "عَدْل",
+    "word_ar_clean": "عدل",
+    "word_am": "ፍትሕ",
+    "word_en": "Justice / Equity",
+    "transliteration_ar": "'Adl",
+    "transliteration_am": "Fitih",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "ع د ل",
+    "definition_ar": "إعطاء كل ذي حق حقه ووضع الأمور في نصابها الصحيح دون ميل أو ظلم.",
+    "definition_am": "ለእያንዳንዱ ባለመብት መብቱን መስጠትና ያለምንም አድልዎ እኩል ማስተናገድ።",
+    "definition_en": "The quality of being fair, impartial, and giving each person their rightful due without prejudice.",
+    "synonyms": {
+      "ar": [
+        "إنصاف",
+        "قسط",
+        "حق"
+      ],
+      "am": [
+        "እኩልነት",
+        "እውነት"
+      ],
+      "en": [
+        "fairness",
+        "impartiality",
+        "equity"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "ظلم",
+        "جور"
+      ],
+      "am": [
+        "ግፍ",
+        "አድልዎ"
+      ],
+      "en": [
+        "injustice",
+        "tyranny",
+        "oppression"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْعَدْلُ أَسَاسُ الْمُلْكِ.",
+        "am": "ፍትሕ የመንግሥትና የመልካም አስተዳደር መሠረት ነው።",
+        "en": "Justice is the foundation of governance."
+      }
+    ]
+  },
+  {
+    "id": "dict_016",
+    "word_ar": "صِدْق",
+    "word_ar_clean": "صدق",
+    "word_am": "እውነት / ታማኝነት",
+    "word_en": "Truthfulness / Honesty",
+    "transliteration_ar": "Sidq",
+    "transliteration_am": "Iwnet / Tamagnhinet",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "ص د ق",
+    "definition_ar": "مطابقة القول والعمل للواقع والحقيقة دون كذب أو تحريف.",
+    "definition_am": "ቃልና ተግባር ከእውነታ ጋር መጣጣም፤ ከሐሰትና ከማታለል መራቅ።",
+    "definition_en": "The state or character of speaking truth and being loyal, upright, and sincere in deeds.",
+    "synonyms": {
+      "ar": [
+        "أمانة",
+        "وفاء",
+        "صراحة"
+      ],
+      "am": [
+        "ቅንነት",
+        "ጽድቅ"
+      ],
+      "en": [
+        "veracity",
+        "integrity",
+        "sincerity"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "كذب",
+        "خيانة"
+      ],
+      "am": [
+        "ውሸት",
+        "ክህደት"
+      ],
+      "en": [
+        "falsehood",
+        "deceit",
+        "lying"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الصِّدْقُ يَهْدِي إِلَى الْبِرِّ.",
+        "am": "እውነት መናገር ወደ መልካም ሥራ ይመራል።",
+        "en": "Truthfulness leads to righteousness."
+      }
+    ]
+  },
+  {
+    "id": "dict_017",
+    "word_ar": "أُمّ",
+    "word_ar_clean": "ام",
+    "word_am": "እናት",
+    "word_en": "Mother",
+    "transliteration_ar": "Umm",
+    "transliteration_am": "Inat",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "أ م م",
+    "definition_ar": "الوالدة التي حملت وأنجبت وربت بحنان ومحبة.",
+    "definition_am": "ልጅን አርግዛ የወለደችና በፍቅርና በእንክብካቤ ያሳደገች ሴት ወላጅ።",
+    "definition_en": "A female parent who bears, nurtures, and cares for children with unconditional love.",
+    "synonyms": {
+      "ar": [
+        "والدة"
+      ],
+      "am": [
+        "እማማ"
+      ],
+      "en": [
+        "mom",
+        "parent"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أب"
+      ],
+      "am": [
+        "አባት"
+      ],
+      "en": [
+        "father"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْجَنَّةُ تَحْتَ أَقْدَامِ الأُمَّهَاتِ.",
+        "am": "ጀነት በእናቶች እግር ሥር ናት።",
+        "en": "Paradise lies beneath the feet of mothers."
+      }
+    ]
+  },
+  {
+    "id": "dict_018",
+    "word_ar": "أَب",
+    "word_ar_clean": "اب",
+    "word_am": "አባት",
+    "word_en": "Father",
+    "transliteration_ar": "Ab",
+    "transliteration_am": "Abat",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "أ ب و",
+    "definition_ar": "الوالد الذي يعول أسرته ويسعى في حمايتها وتربيتها.",
+    "definition_am": "ቤተሰቡን የሚያስተዳድር፣ የሚንከባከብና የሚጠብቅ ወንድ ወላጅ።",
+    "definition_en": "A male parent who protects, guides, and provides for his family.",
+    "synonyms": {
+      "ar": [
+        "والد"
+      ],
+      "am": [
+        "አባባ"
+      ],
+      "en": [
+        "dad",
+        "patriarch"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أم"
+      ],
+      "am": [
+        "እናት"
+      ],
+      "en": [
+        "mother"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "رِضَا الرَّبِّ فِي رِضَا الْوَالِدِ.",
+        "am": "የአላህ ውዴታ በወላጅ ውዴታ ውስጥ ይገኛል።",
+        "en": "The pleasure of the Lord is in the pleasure of the father."
+      }
+    ]
+  },
+  {
+    "id": "dict_019",
+    "word_ar": "جَمِيل",
+    "word_ar_clean": "جميل",
+    "word_am": "ቆንጆ / ውብ",
+    "word_en": "Beautiful / Handsome",
+    "transliteration_ar": "Jameel",
+    "transliteration_am": "Qonjo / Wib",
+    "part_of_speech": "adjective",
+    "category": "Greetings & Ethics",
+    "root_ar": "ج م ل",
+    "definition_ar": "صفة لكل ما يسُرّ العين والقلب بحسن خلقه ومظهره.",
+    "definition_am": "ለዓይንና ለልብ ደስታን የሚሰጥ፣ መልካም መልክ ወይም ግብረገብ ያለው።",
+    "definition_en": "Possessing qualities that give great pleasure or satisfaction to seeing, hearing, or thinking.",
+    "synonyms": {
+      "ar": [
+        "حسن",
+        "بديع",
+        "وسيم"
+      ],
+      "am": [
+        "ማራኪ",
+        "ደስ የሚል"
+      ],
+      "en": [
+        "attractive",
+        "gorgeous",
+        "pleasant"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "قبيح"
+      ],
+      "am": [
+        "አስቀያሚ"
+      ],
+      "en": [
+        "ugly",
+        "unpleasant"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ.",
+        "am": "በእርግጥ አላህ ውብ ነው፤ ውበትንም ይወዳል ።",
+        "en": "Indeed, God is Beautiful and loves beauty."
+      }
+    ]
+  },
+  {
+    "id": "dict_020",
+    "word_ar": "كَبِير",
+    "word_ar_clean": "كبير",
+    "word_am": "ትልቅ",
+    "word_en": "Big / Great / Large",
+    "transliteration_ar": "Kabeer",
+    "transliteration_am": "Tiliq",
+    "part_of_speech": "adjective",
+    "category": "General & Daily",
+    "root_ar": "ك ب ر",
+    "definition_ar": "عظيم الحجم أو القدر أو العمر أو الشأن.",
+    "definition_am": "በመጠን፣ በክብር ወይም በዕድሜ ከፍ ያለ።",
+    "definition_en": "Of considerable size, extent, magnitude, importance, or age.",
+    "synonyms": {
+      "ar": [
+        "عظيم",
+        "ضخم"
+      ],
+      "am": [
+        "ሰፊ",
+        "ግዙፍ"
+      ],
+      "en": [
+        "grand",
+        "huge",
+        "senior"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "صغير"
+      ],
+      "am": [
+        "ትንሽ"
+      ],
+      "en": [
+        "small",
+        "little"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "اللَّهُ أَكْبَرُ مِنْ كُلِّ شَيْءٍ.",
+        "am": "አላህ ከሁሉም ነገር በላይ ታላቅ ነው።",
+        "en": "God is greater than everything."
+      }
+    ]
+  },
+  {
+    "id": "dict_021",
+    "word_ar": "صَغِير",
+    "word_ar_clean": "صغير",
+    "word_am": "ትንሽ",
+    "word_en": "Small / Young / Little",
+    "transliteration_ar": "Sagheer",
+    "transliteration_am": "Tinish",
+    "part_of_speech": "adjective",
+    "category": "General & Daily",
+    "root_ar": "ص غ ر",
+    "definition_ar": "قليل الحجم أو السن أو المقدار.",
+    "definition_am": "በመጠን ወይም በዕድሜ አነስተኛ የሆነ።",
+    "definition_en": "Limited in size, dimension, or age; not big.",
+    "synonyms": {
+      "ar": [
+        "ضئيل",
+        "يسير"
+      ],
+      "am": [
+        "አነስተኛ"
+      ],
+      "en": [
+        "tiny",
+        "minor",
+        "short"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "كبير"
+      ],
+      "am": [
+        "ትልቅ"
+      ],
+      "en": [
+        "large",
+        "big"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْعَطْفُ عَلَى الصَّغِيرِ مِنْ حُسْنِ الْخُلُقِ.",
+        "am": "ለታናናሾች ማዘን ከመልካም ሥነ-ምግባር አንዱ ነው።",
+        "en": "Kindness to the young is part of good character."
+      }
+    ]
+  },
+  {
+    "id": "dict_022",
+    "word_ar": "قَرَأَ",
+    "word_ar_clean": "قرا",
+    "word_am": "አነበበ",
+    "word_en": "To Read / Recite",
+    "transliteration_ar": "Qara'a",
+    "transliteration_am": "Anebäbä",
+    "part_of_speech": "verb",
+    "category": "Knowledge & Education",
+    "root_ar": "ق ر أ",
+    "definition_ar": "تتبع الكلمات المكتوبة ونطق بها أو تدبر معانيها.",
+    "definition_am": "የተጻፉ ቃላትን በዓይን መመልከት፣ ድምፅ ማሰማትና መልእክቱን መረዳት።",
+    "definition_en": "To look at and comprehend the meaning of written characters or words; to recite.",
+    "synonyms": {
+      "ar": [
+        "تلا",
+        "طالع"
+      ],
+      "am": [
+        "ቀራ"
+      ],
+      "en": [
+        "recite",
+        "peruse",
+        "study"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ.",
+        "am": "በፈጠረው ጌታህ ስም አንብብ።",
+        "en": "Read in the name of your Lord who created."
+      }
+    ]
+  },
+  {
+    "id": "dict_023",
+    "word_ar": "كَتَبَ",
+    "word_ar_clean": "كتب",
+    "word_am": "ጻፈ",
+    "word_en": "To Write / Record",
+    "transliteration_ar": "Kataba",
+    "transliteration_am": "Tsafe",
+    "part_of_speech": "verb",
+    "category": "Knowledge & Education",
+    "root_ar": "ك ت ب",
+    "definition_ar": "خط الحروف والكلمات بالقلم على ورقة أو وسيلة أخرى.",
+    "definition_am": "በብዕር ወይም በመሳሪያ ፊደላትንና ቃላትን በወረቀት ላይ ማስፈር።",
+    "definition_en": "To mark letters, words, or symbols on a surface with a pen, pencil, or keyboard.",
+    "synonyms": {
+      "ar": [
+        "خطّ",
+        "دوّن",
+        "سجّل"
+      ],
+      "am": [
+        "መዘገበ",
+        "አሰፈረ"
+      ],
+      "en": [
+        "compose",
+        "record",
+        "inscribe"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "محا"
+      ],
+      "am": [
+        "ፋቀ"
+      ],
+      "en": [
+        "erase",
+        "delete"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "كَتَبَ الطَّالِبُ الدَّرْسَ بِعِنَايَةٍ.",
+        "am": "ተማሪው ትምህርቱን በጥንቃቄ ጻፈ።",
+        "en": "The student wrote the lesson carefully."
+      }
+    ]
+  },
+  {
+    "id": "dict_024",
+    "word_ar": "شَكَرَ",
+    "word_ar_clean": "شكر",
+    "word_am": "አመሰገነ",
+    "word_en": "To Thank / Appreciate",
+    "transliteration_ar": "Shakara",
+    "transliteration_am": "Amesegänä",
+    "part_of_speech": "verb",
+    "category": "Greetings & Ethics",
+    "root_ar": "ش ك ر",
+    "definition_ar": "أثنى على المحسن وذكر فضله باللسان والقلب.",
+    "definition_am": "መልካም ላደረገ ሰው አድናቆትንና ምስጋናን ማቅረብ።",
+    "definition_en": "To express gratitude to someone for a favor, kindness, or gift.",
+    "synonyms": {
+      "ar": [
+        "حمد",
+        "أثنى"
+      ],
+      "am": [
+        "አሞገሰ"
+      ],
+      "en": [
+        "praise",
+        "express gratitude"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "جحد"
+      ],
+      "am": [
+        "ካደ"
+      ],
+      "en": [
+        "be ungrateful"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "شَكَرَ الرَّجُلُ جَارَهُ عَلَى الْمُسَاعَدَةِ.",
+        "am": "ሰውየው ጎረቤቱን ለእርዳታው አመሰገነው።",
+        "en": "The man thanked his neighbor for the assistance."
+      }
+    ]
+  },
+  {
+    "id": "dict_025",
+    "word_ar": "ذَهَبَ",
+    "word_ar_clean": "ذهب",
+    "word_am": "ሄደ",
+    "word_en": "To Go / Depart",
+    "transliteration_ar": "Dhahaba",
+    "transliteration_am": "Hedä",
+    "part_of_speech": "verb",
+    "category": "General & Daily",
+    "root_ar": "ذ ه ب",
+    "definition_ar": "انتقل من مكان إلى مكان آخر سيراً أو ركوباً.",
+    "definition_am": "ከአንድ ስፍራ ወደ ሌላ ስፍራ በእግር ወይም በትራንስፖርት ተንቀሳቀሰ።",
+    "definition_en": "To move from one place to another; to depart.",
+    "synonyms": {
+      "ar": [
+        "سار",
+        "مضى",
+        "انطلق"
+      ],
+      "am": [
+        "ተጓዘ"
+      ],
+      "en": [
+        "travel",
+        "depart",
+        "proceed"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "جاء",
+        "أتى",
+        "حضر"
+      ],
+      "am": [
+        "መጣ"
+      ],
+      "en": [
+        "come",
+        "arrive"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "ذَهَبَ النَّاسُ إِلَى الْمَسْجِدِ لِصَلَاةِ الْجُمُعَةِ.",
+        "am": "ሰዎች ለጁሙዓ ሶላት ወደ መስጊድ ሄዱ።",
+        "en": "People went to the mosque for Friday prayer."
+      }
+    ]
+  },
+  {
+    "id": "dict_026",
+    "word_ar": "أَكَلَ",
+    "word_ar_clean": "اكل",
+    "word_am": "በላ",
+    "word_en": "To Eat",
+    "transliteration_ar": "Akala",
+    "transliteration_am": "Bäla",
+    "part_of_speech": "verb",
+    "category": "Food & Health",
+    "root_ar": "أ ك ل",
+    "definition_ar": "تناول الطعام ومضغه وبلعه للتغذية.",
+    "definition_am": "ምግብን ወደ አፍ አስገብቶ በማኘክ መዋጥ።",
+    "definition_en": "To take food into the mouth, chew it, and swallow it for nourishment.",
+    "synonyms": {
+      "ar": [
+        "طعم",
+        "تناول الطعام"
+      ],
+      "am": [
+        "ተመገበ"
+      ],
+      "en": [
+        "consume",
+        "dine"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "صام"
+      ],
+      "am": [
+        "ጾመ"
+      ],
+      "en": [
+        "fast"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "أَكَلَتِ الْعَائِلَةُ طَعَامَ الْعَشَاءِ مَعاً.",
+        "am": "ቤተሰቡ የእራት ምግቡን በጋራ ተመገበ።",
+        "en": "The family ate dinner together."
+      }
+    ]
+  },
+  {
+    "id": "dict_027",
+    "word_ar": "شَرِبَ",
+    "word_ar_clean": "شرب",
+    "word_am": "ጠጣ",
+    "word_en": "To Drink",
+    "transliteration_ar": "Shariba",
+    "transliteration_am": "Tetta",
+    "part_of_speech": "verb",
+    "category": "Food & Health",
+    "root_ar": "ش ر ب",
+    "definition_ar": "جرع السائل كالمياه أو العصير.",
+    "definition_am": "ፈሳሽን እንደ ውሃ ወይም ጭማቂ ወደ ሆድ አስገባ።",
+    "definition_en": "To swallow liquid substances such as water, milk, or juice.",
+    "synonyms": {
+      "ar": [
+        "تجرّع",
+        "ارتوى"
+      ],
+      "am": [
+        "ተጎነጨ"
+      ],
+      "en": [
+        "sip",
+        "quench thirst"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "شَرِبَ الْمُسَافِرُ مَاءً بَارِداً بَعْدَ تَعَبٍ.",
+        "am": "ተጓዡ ከድካም በኋላ ቀዝቃዛ ውሃ ጠጣ።",
+        "en": "The traveler drank cold water after fatigue."
+      }
+    ]
+  },
+  {
+    "id": "dict_028",
+    "word_ar": "مَسْجِد",
+    "word_ar_clean": "مسجد",
+    "word_am": "መስጊድ",
+    "word_en": "Mosque",
+    "transliteration_ar": "Masjid",
+    "transliteration_am": "Mesgid",
+    "part_of_speech": "noun",
+    "category": "Worship & Law",
+    "root_ar": "س ج د",
+    "definition_ar": "مكان مخصص للصلاة والعبادة وذكر الله تعالى.",
+    "definition_am": "ለአላህ አምልኮ፣ ለሶላትና ለቁርኣን ትምህርት የተዘጋጀ ቅዱስ ስፍራ።",
+    "definition_en": "A place of worship where Muslims perform congregational prayers and seek spiritual guidance.",
+    "synonyms": {
+      "ar": [
+        "جامع",
+        "بيت الله"
+      ],
+      "am": [
+        "የአምልኮ ስፍራ"
+      ],
+      "en": [
+        "sanctuary",
+        "house of prayer"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "تَوَجَّهَ الْمُصَلُّونَ نَحْوَ الْمَسْجِدِ عِنْدَ الأَذَانِ.",
+        "am": "አዛን በተባለ ጊዜ ሰጋጆች ወደ መስጊዱ አመሩ።",
+        "en": "The worshippers headed toward the mosque when the call to prayer sounded."
+      }
+    ]
+  },
+  {
+    "id": "dict_029",
+    "word_ar": "يَوْم",
+    "word_ar_clean": "يوم",
+    "word_am": "ቀን",
+    "word_en": "Day",
+    "transliteration_ar": "Yawm",
+    "transliteration_am": "Qen",
+    "part_of_speech": "noun",
+    "category": "Time & Calendar",
+    "root_ar": "ي و م",
+    "definition_ar": "الوقت الممتد من طلوع الفجر إلى غروب الشمس أو مدة 24 ساعة.",
+    "definition_am": "ከማለዳ እስከ ምሽት ያለው የብርሃን ጊዜ ወይም የ24 ሰዓት ክፍለ ጊዜ።",
+    "definition_en": "The period of light between dawn and sunset; or a full 24-hour cycle.",
+    "synonyms": {
+      "ar": [
+        "نهار"
+      ],
+      "am": [
+        "ዕለት"
+      ],
+      "en": [
+        "date",
+        "daytime"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "ليل"
+      ],
+      "am": [
+        "ሌሊት"
+      ],
+      "en": [
+        "night"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْيَوْمَ نُكْمِلُ عَمَلَنَا بِكُلِّ هِمَّةٍ.",
+        "am": "ዛሬ ሥራችንን በሙሉ ትጋት እናጠናቅቃለን።",
+        "en": "Today we complete our work with full diligence."
+      }
+    ]
+  },
+  {
+    "id": "dict_030",
+    "word_ar": "لَيْل",
+    "word_ar_clean": "ليل",
+    "word_am": "ሌሊት / ምሽት",
+    "word_en": "Night",
+    "transliteration_ar": "Layl",
+    "transliteration_am": "Lelit / Mishit",
+    "part_of_speech": "noun",
+    "category": "Time & Calendar",
+    "root_ar": "ل ي ل",
+    "definition_ar": "الوقت الممتد من غروب الشمس إلى طلوع الفجر الذي تسكن فيه المخلوقات.",
+    "definition_am": "ፀሐይ ከገባችበት ጊዜ አንስቶ እስከ ንጋት ድረስ ያለው የጨለማና የእረፍት ጊዜ።",
+    "definition_en": "The period of darkness between sunset and sunrise, appointed for rest and contemplation.",
+    "synonyms": {
+      "ar": [
+        "مساء",
+        "دجى"
+      ],
+      "am": [
+        "ጨለማ"
+      ],
+      "en": [
+        "nighttime",
+        "evening"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "نهار",
+        "يوم"
+      ],
+      "am": [
+        "ቀን"
+      ],
+      "en": [
+        "day",
+        "daylight"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "قِيَامُ اللَّيْلِ دَأْبُ الصَّالِحِينَ.",
+        "am": "የሌሊት ሰላት የደጋግ ሰዎች ልማድ ነው።",
+        "en": "Night prayer is the steadfast practice of the righteous."
+      }
+    ]
+  },
+  {
+    "id": "dict_031",
+    "word_ar": "مَدْرَسَة",
+    "word_ar_clean": "مدرسة",
+    "word_am": "ትምህርት ቤት",
+    "word_en": "School",
+    "transliteration_ar": "Madrasah",
+    "transliteration_am": "Timhirt Bet",
+    "part_of_speech": "noun",
+    "category": "Knowledge & Education",
+    "root_ar": "د ر س",
+    "definition_ar": "مؤسسة تعليمية يتعلم فيها الطلاب العلوم والمعارف.",
+    "definition_am": "ተማሪዎች ዕውቀትና ጥበብን የሚማሩበት የትምህርት ተቋም።",
+    "definition_en": "An institution for educating children or learners in various subjects and skills.",
+    "synonyms": {
+      "ar": [
+        "معهد",
+        "كلية"
+      ],
+      "am": [
+        "የዕውቀት ማዕከል"
+      ],
+      "en": [
+        "academy",
+        "institute"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "يَذْهَبُ الأَطْفَالُ إِلَى الْمَدْرَسَةِ صَبَاحاً.",
+        "am": "ልጆች በጠዋት ወደ ትምህርት ቤት ይሄዳሉ።",
+        "en": "Children go to school in the morning."
+      }
+    ]
+  },
+  {
+    "id": "dict_032",
+    "word_ar": "طَرِيق",
+    "word_ar_clean": "طريق",
+    "word_am": "መንገድ",
+    "word_en": "Path / Road / Way",
+    "transliteration_ar": "Tareeq",
+    "transliteration_am": "Menged",
+    "part_of_speech": "noun",
+    "category": "General & Daily",
+    "root_ar": "ط ر ق",
+    "definition_ar": "المسلك أو الشارع الذي يسير فيه الناس؛ ومجازاً المنهج والسلوك.",
+    "definition_am": "ሰዎች የሚሄዱበት ጎዳና፤ እንዲሁም በዘይቤያዊ መንገድ የሕይወት አቅጣጫ።",
+    "definition_en": "A route, street, or direction for traveling; metaphorically, a course of action or conduct.",
+    "synonyms": {
+      "ar": [
+        "سبيل",
+        "صراط",
+        "مسلك"
+      ],
+      "am": [
+        "ጎዳና",
+        "አቅጣጫ"
+      ],
+      "en": [
+        "street",
+        "highway",
+        "trail"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ.",
+        "am": "ቀጥተኛውን መንገድ ምራን።",
+        "en": "Guide us to the straight path."
+      }
+    ]
+  },
+  {
+    "id": "dict_033",
+    "word_ar": "مَحَبَّة",
+    "word_ar_clean": "محبة",
+    "word_am": "ፍቅር",
+    "word_en": "Love / Affection",
+    "transliteration_ar": "Mahabbah",
+    "transliteration_am": "Fiqir",
+    "part_of_speech": "noun",
+    "category": "Greetings & Ethics",
+    "root_ar": "ح ب ب",
+    "definition_ar": "ميل القلب العميق وإرادة الخير للمحبوب والتعلق به.",
+    "definition_am": "የልብ ጥልቅ ስሜት፤ ለተፈቃሪው መልካም ነገርን የመሻት ልባዊ ቁርኝት።",
+    "definition_en": "Deep personal attachment, profound fondness, and goodwill toward another.",
+    "synonyms": {
+      "ar": [
+        "ود",
+        "عشق",
+        "إخاء"
+      ],
+      "am": [
+        "መዋደድ",
+        "አድናቆት"
+      ],
+      "en": [
+        "love",
+        "devotion",
+        "kindness"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "بغض",
+        "كراهية"
+      ],
+      "am": [
+        "ጥላቻ"
+      ],
+      "en": [
+        "hatred",
+        "enmity"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْمَحَبَّةُ فِي اللَّهِ أَوْثَقُ عُرَى الإِيمَانِ.",
+        "am": "በአላህ መንገድ መዋደድ ጠንካራ የእምነት መገለጫ ነው።",
+        "en": "Loving for the sake of God is the firmest bond of faith."
+      }
+    ]
+  },
+  {
+    "id": "dict_034",
+    "word_ar": "طَعَام",
+    "word_ar_clean": "طعام",
+    "word_am": "ምግብ",
+    "word_en": "Food",
+    "transliteration_ar": "Ta'am",
+    "transliteration_am": "Migib",
+    "part_of_speech": "noun",
+    "category": "Food & Health",
+    "root_ar": "ط ع م",
+    "definition_ar": "كل ما يؤكل لسد الجوع وتغذية الجسم.",
+    "definition_am": "ርሃብን ለማስታገስና አካልን ለመገንባት የሚበላ ነገር ሁሉ።",
+    "definition_en": "Nutritious substance that people or animals eat or drink in order to maintain life and growth.",
+    "synonyms": {
+      "ar": [
+        "أكل",
+        "غذاء",
+        "قوت"
+      ],
+      "am": [
+        "ቀለብ",
+        "ሥርዓተ-ምግብ"
+      ],
+      "en": [
+        "nourishment",
+        "sustenance",
+        "meal"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "قَدَّمَتِ الأُمُّ طَعَاماً لَذِيذاً لِلأُسْرَةِ.",
+        "am": "እናት ለቤተሰቡ ጣፋጭ ምግብ አዘጋጀች።",
+        "en": "The mother prepared delicious food for the family."
+      }
+    ]
+  },
+  {
+    "id": "dict_035",
+    "word_ar": "عَمَل",
+    "word_ar_clean": "عمل",
+    "word_am": "ሥራ",
+    "word_en": "Work / Action / Deed",
+    "transliteration_ar": "'Amal",
+    "transliteration_am": "Sira",
+    "part_of_speech": "noun",
+    "category": "General & Daily",
+    "root_ar": "ع م ل",
+    "definition_ar": "النشاط أو المجهود المبذول لتحقيق نفع أو إنجاز مهمة.",
+    "definition_am": "ጥቅምን ለማስገኘት ወይም ግብን ለመምታት የሚደረግ ልፋትና ጥረት።",
+    "definition_en": "Activity involving mental or physical effort done in order to achieve a purpose or result.",
+    "synonyms": {
+      "ar": [
+        "فعل",
+        "صنع",
+        "شغل"
+      ],
+      "am": [
+        "ሙያ",
+        "ጥረት"
+      ],
+      "en": [
+        "labor",
+        "profession",
+        "deed"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "بطالة",
+        "كسل"
+      ],
+      "am": [
+        "ስራ አጥነት",
+        "ስንፍና"
+      ],
+      "en": [
+        "idleness",
+        "laziness"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلاً أَنْ يُتْقِنَهُ.",
+        "am": "አላህ አንዳችሁ ሥራ በሰራ ጊዜ አሳምሮ ሲሰራው ይወደዋል።",
+        "en": "God loves that when one of you does a work, he perfects it."
+      }
+    ]
+  },
+  {
+    "id": "dict_036",
+    "word_ar": "مَرْحَباً",
+    "word_ar_clean": "مرحبا",
+    "word_am": "እንኳን ደህና መጣህ / ሰላም",
+    "word_en": "Welcome / Hello",
+    "transliteration_ar": "Marhaban",
+    "transliteration_am": "Inkwam dehna metah / Selam",
+    "part_of_speech": "particle",
+    "category": "Greetings & Ethics",
+    "root_ar": "ر ح ب",
+    "definition_ar": "تحية ترحيب تقال للقادم تفيد سعة المكان وأهلاً به.",
+    "definition_am": "የመጣን እንግዳ ለመቀበልና ሰላምታ ለመስጠት የሚነገር የደስታ ቃል ።",
+    "definition_en": "A warm friendly greeting used to welcome someone or say hello.",
+    "synonyms": {
+      "ar": [
+        "أهلاً وسهلاً"
+      ],
+      "am": [
+        "እንኳን መጣችሁ"
+      ],
+      "en": [
+        "greetings",
+        "hi"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "وداعاً"
+      ],
+      "am": [
+        "ደህና ሁን"
+      ],
+      "en": [
+        "goodbye",
+        "farewell"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "مَرْحَباً بِكُمْ فِي مَنْزِلِنَا.",
+        "am": "እንኳን ወደ ቤታችን በደህና መጣችሁ።",
+        "en": "Welcome to our home."
+      }
+    ]
+  },
+  {
+    "id": "dict_037",
+    "word_ar": "شُكْراً",
+    "word_ar_clean": "شكرا",
+    "word_am": "አመሰግናለሁ",
+    "word_en": "Thank you",
+    "transliteration_ar": "Shukran",
+    "transliteration_am": "Ameseginalehugn",
+    "part_of_speech": "particle",
+    "category": "Greetings & Ethics",
+    "root_ar": "ش ك ر",
+    "definition_ar": "كلمة تقال للإعراب عن الامتنان لمن قدم معروفاً.",
+    "definition_am": "መልካም ላደረገ ሰው ምስጋናን ለመግለጽ የሚነገር ቃል።",
+    "definition_en": "An expression of gratitude used to show appreciation for kindness or service.",
+    "synonyms": {
+      "ar": [
+        "جزاك الله خيراً"
+      ],
+      "am": [
+        "እግዜር ይስጥልኝ"
+      ],
+      "en": [
+        "thanks",
+        "much obliged"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "شُكْراً جَزِيلاً عَلَى كَرَمِكَ.",
+        "am": "ስለ ቸርነትህ በጣም አመሰግናለሁ።",
+        "en": "Thank you very much for your generosity."
+      }
+    ]
+  },
+  {
+    "id": "dict_038",
+    "word_ar": "نَعَمْ",
+    "word_ar_clean": "نعم",
+    "word_am": "አዎ",
+    "word_en": "Yes",
+    "transliteration_ar": "Na'am",
+    "transliteration_am": "Awo",
+    "part_of_speech": "particle",
+    "category": "General & Daily",
+    "root_ar": "ن ع م",
+    "definition_ar": "حرف جواب يفيد الإثبات والتصديق.",
+    "definition_am": "ስምምነትን ወይም እውነታን ለማረጋገጥ የሚሰጥ አዎንታዊ መልስ።",
+    "definition_en": "An affirmative particle used to give an affirmative response or agreement.",
+    "synonyms": {
+      "ar": [
+        "أجل",
+        "بلى"
+      ],
+      "am": [
+        "እሺ"
+      ],
+      "en": [
+        "aye",
+        "indeed"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "لا"
+      ],
+      "am": [
+        "አይ"
+      ],
+      "en": [
+        "no"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "نَعَمْ، أَنَا جَاهِزٌ لِلذَّهَابِ.",
+        "am": "አዎ፣ ለመሄድ ዝግጁ ነኝ።",
+        "en": "Yes, I am ready to go."
+      }
+    ]
+  },
+  {
+    "id": "dict_039",
+    "word_ar": "لَا",
+    "word_ar_clean": "لا",
+    "word_am": "አይ / አይደለም",
+    "word_en": "No / Not",
+    "transliteration_ar": "La",
+    "transliteration_am": "Ay / Aydellem",
+    "part_of_speech": "particle",
+    "category": "General & Daily",
+    "root_ar": "ل أ",
+    "definition_ar": "حرف نفي وجواب بالرفض أو الإنكار.",
+    "definition_am": "ተቃውሞን፣ አለመስማማትን ወይም ውድቅ ማድረግን የሚያመለክት ቃል።",
+    "definition_en": "A negative particle used to indicate denial, refusal, or negation.",
+    "synonyms": {
+      "ar": [
+        "كلا"
+      ],
+      "am": [
+        "አይሆንም"
+      ],
+      "en": [
+        "nope",
+        "negative"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "نعم"
+      ],
+      "am": [
+        "አዎ"
+      ],
+      "en": [
+        "yes"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "لَا، لَيْسَ عِنْدِي مَانِعٌ.",
+        "am": "አይ፣ ምንም ተቃውሞ የለኝም።",
+        "en": "No, I have no objection."
+      }
+    ]
+  },
+  {
+    "id": "dict_040",
+    "word_ar": "مَنْ",
+    "word_ar_clean": "من",
+    "word_am": "ማን",
+    "word_en": "Who",
+    "transliteration_ar": "Man",
+    "transliteration_am": "Man",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "م ن",
+    "definition_ar": "اسم استفهام يستعمل للسؤال عن العاقل.",
+    "definition_am": "ስለ ሰው ማንነት ለመጠየቅ የሚያገለግል የጥያቄ ቃል።",
+    "definition_en": "An interrogative pronoun used to ask about the identity of a person.",
+    "synonyms": {},
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "مَنْ أَنْتَ؟",
+        "am": "አንተ ማን ነህ?",
+        "en": "Who are you?"
+      }
+    ]
+  },
+  {
+    "id": "dict_041",
+    "word_ar": "مَاذَا",
+    "word_ar_clean": "ماذا",
+    "word_am": "ምን",
+    "word_en": "What",
+    "transliteration_ar": "Madha",
+    "transliteration_am": "Min",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "م ذ",
+    "definition_ar": "اسم استفهام يستعمل للسؤال عن غير العاقل والأفعال.",
+    "definition_am": "ስለ አንድ ነገር ወይም ድርጊት ለመጠየቅ የሚያገለግል የጥያቄ ቃል።",
+    "definition_en": "An interrogative pronoun used to inquire about things, ideas, or actions.",
+    "synonyms": {
+      "ar": [
+        "ما"
+      ],
+      "am": [
+        "ምንድን"
+      ],
+      "en": [
+        "which"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "مَاذَا تَقْرَأُ الْآنَ؟",
+        "am": "አሁን ምን እያነበብክ ነው?",
+        "en": "What are you reading now?"
+      }
+    ]
+  },
+  {
+    "id": "dict_042",
+    "word_ar": "أَيْنَ",
+    "word_ar_clean": "اين",
+    "word_am": "የት",
+    "word_en": "Where",
+    "transliteration_ar": "Ayna",
+    "transliteration_am": "Yet",
+    "part_of_speech": "adverb",
+    "category": "General & Daily",
+    "root_ar": "أ ي ن",
+    "definition_ar": "اسم استفهام يستعمل للسؤال عن المكان.",
+    "definition_am": "ስለ አንድ ስፍራ ወይም ቦታ አቅጣጫ ለመጠየቅ የሚያገለግል።",
+    "definition_en": "An interrogative adverb used to ask about a location or place.",
+    "synonyms": {},
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "أَيْنَ يَقَعُ الْمَسْجِدُ؟",
+        "am": "መስጊዱ የት ይገኛል?",
+        "en": "Where is the mosque located?"
+      }
+    ]
+  },
+  {
+    "id": "dict_043",
+    "word_ar": "مَتَى",
+    "word_ar_clean": "متى",
+    "word_am": "መቼ",
+    "word_en": "When",
+    "transliteration_ar": "Mata",
+    "transliteration_am": "Meche",
+    "part_of_speech": "adverb",
+    "category": "Time & Calendar",
+    "root_ar": "م ت ى",
+    "definition_ar": "اسم استفهام يستعمل للسؤال عن الزمان.",
+    "definition_am": "ስለ ጊዜና ወቅት ለመጠየቅ የሚያገለግል የጥያቄ ቃል።",
+    "definition_en": "An interrogative adverb used to ask about time.",
+    "synonyms": {},
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "مَتَى يَبْدَأُ الدَّرْسُ؟",
+        "am": "ትምህርቱ መቼ ይጀምራል?",
+        "en": "When does the lesson begin?"
+      }
+    ]
+  },
+  {
+    "id": "dict_044",
+    "word_ar": "كَيْفَ",
+    "word_ar_clean": "كيف",
+    "word_am": "እንዴት",
+    "word_en": "How",
+    "transliteration_ar": "Kayfa",
+    "transliteration_am": "Indet",
+    "part_of_speech": "adverb",
+    "category": "General & Daily",
+    "root_ar": "ك ي ف",
+    "definition_ar": "اسم استفهام يستعمل للسؤال عن الحال أو الكيفية.",
+    "definition_am": "ስለ ሁኔታ ወይም ስለ አፈጻጸም ዘዴ ለመጠየቅ የሚያገለግል።",
+    "definition_en": "An interrogative word used to ask about manner, condition, or state.",
+    "synonyms": {},
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "كَيْفَ حَالُكَ الْيَوْمَ؟",
+        "am": "ዛሬ እንዴት ነህ?",
+        "en": "How are you today?"
+      }
+    ]
+  },
+  {
+    "id": "dict_045",
+    "word_ar": "أَنَا",
+    "word_ar_clean": "انا",
+    "word_am": "እኔ",
+    "word_en": "I / Me",
+    "transliteration_ar": "Ana",
+    "transliteration_am": "Ine",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "أ ن",
+    "definition_ar": "ضمير رفع منفصل للمتكلم المفرد مذكراً أو مؤنثاً.",
+    "definition_am": "ተናጋሪው ራሱን ለመግለጽ የሚጠቀምበት የግል ተውላጠ ስም።",
+    "definition_en": "First-person singular personal pronoun referring to the speaker.",
+    "synonyms": {},
+    "antonyms": {
+      "ar": [
+        "أنت"
+      ],
+      "am": [
+        "አንተ"
+      ],
+      "en": [
+        "you"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "أَنَا مُسْلِمٌ أَعْبُدُ اللَّهَ وَحْدَهُ.",
+        "am": "እኔ አላህን ብቻ የማመልክ ሙስሊም ነኝ።",
+        "en": "I am a Muslim worshiping God alone."
+      }
+    ]
+  },
+  {
+    "id": "dict_046",
+    "word_ar": "أَنْتَ",
+    "word_ar_clean": "انت",
+    "word_am": "አንተ",
+    "word_en": "You (singular masculine)",
+    "transliteration_ar": "Anta",
+    "transliteration_am": "Ante",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "أ ن ت",
+    "definition_ar": "ضمير منفصل لمخاطبة المفرد المذكر.",
+    "definition_am": "ለአንድ ወንድ ተደማጭ የሚነገር ተውላጠ ስም።",
+    "definition_en": "Second-person singular masculine pronoun.",
+    "synonyms": {},
+    "antonyms": {
+      "ar": [
+        "أنا"
+      ],
+      "am": [
+        "እኔ"
+      ],
+      "en": [
+        "I"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "أَنْتَ أَخِي فِي اللَّهِ.",
+        "am": "አንተ በአላህ መንገድ ወንድሜ ነህ።",
+        "en": "You are my brother in faith."
+      }
+    ]
+  },
+  {
+    "id": "dict_047",
+    "word_ar": "هُوَ",
+    "word_ar_clean": "هو",
+    "word_am": "እሱ",
+    "word_en": "He / Him",
+    "transliteration_ar": "Huwa",
+    "transliteration_am": "Isu",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "ه و",
+    "definition_ar": "ضمير منفصل للغائب المفرد المذكر.",
+    "definition_am": "ስለሌለ ወይም ስለማይታይ አንድ ወንድ የሚነገር ተውላጠ ስም።",
+    "definition_en": "Third-person singular masculine personal pronoun.",
+    "synonyms": {},
+    "antonyms": {
+      "ar": [
+        "هي"
+      ],
+      "am": [
+        "እሷ"
+      ],
+      "en": [
+        "she"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "قُلْ هُوَ اللَّهُ أَحَدٌ.",
+        "am": "እሱ አላህ አንድ ነው በል።",
+        "en": "Say: He is God, the One."
+      }
+    ]
+  },
+  {
+    "id": "dict_048",
+    "word_ar": "هِيَ",
+    "word_ar_clean": "هي",
+    "word_am": "እሷ",
+    "word_en": "She / Her",
+    "transliteration_ar": "Hiya",
+    "transliteration_am": "Iswa",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "ه ي",
+    "definition_ar": "ضمير منفصل للغائبة المفردة المؤنثة.",
+    "definition_am": "ስለ አንዲት ሴት የሚነገር ተውላጠ ስም።",
+    "definition_en": "Third-person singular feminine personal pronoun.",
+    "synonyms": {},
+    "antonyms": {
+      "ar": [
+        "هو"
+      ],
+      "am": [
+        "እሱ"
+      ],
+      "en": [
+        "he"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "هِيَ طَالِبَةٌ مُجْتَهِدَةٌ فِي مَدْرَسَتِهَا.",
+        "am": "እሷ በትምህርት ቤቷ ትጉህ ተማሪ ናት።",
+        "en": "She is a hardworking student at her school."
+      }
+    ]
+  },
+  {
+    "id": "dict_049",
+    "word_ar": "نَحْنُ",
+    "word_ar_clean": "نحن",
+    "word_am": "እኛ",
+    "word_en": "We / Us",
+    "transliteration_ar": "Nahnu",
+    "transliteration_am": "Igna",
+    "part_of_speech": "pronoun",
+    "category": "General & Daily",
+    "root_ar": "ن ح ن",
+    "definition_ar": "ضمير منفصل لجمع المتكلمين أو المتكلم المعظم نفسه.",
+    "definition_am": "ተናጋሪዎች በጋራ ራሳቸውን የሚገልጹበት ተውላጠ ስም።",
+    "definition_en": "First-person plural personal pronoun.",
+    "synonyms": {},
+    "antonyms": {
+      "ar": [
+        "هم"
+      ],
+      "am": [
+        "እነሱ"
+      ],
+      "en": [
+        "they"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "نَحْنُ أُمَّةٌ وَاحِدَةٌ.",
+        "am": "እኛ አንዲት ሕዝብ ነን።",
+        "en": "We are one community."
+      }
+    ]
+  },
+  {
+    "id": "dict_050",
+    "word_ar": "أَخ",
+    "word_ar_clean": "اخ",
+    "word_am": "ወንድም",
+    "word_en": "Brother",
+    "transliteration_ar": "Akh",
+    "transliteration_am": "Wendimm",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "أ خ و",
+    "definition_ar": "الرجل أو الصبي الذي يشاركك نفس الوالدين أو أحدهما، وأخوة الدين والإنسانية.",
+    "definition_am": "ከአንድ ወላጅ የተወለደ ወንድ፤ እንዲሁም የእምነት ወይም የሰብአዊነት ወንድም።",
+    "definition_en": "A male sibling; or a fellow believer in brotherhood.",
+    "synonyms": {
+      "ar": [
+        "شقيق"
+      ],
+      "am": [
+        "የደም ወንድም"
+      ],
+      "en": [
+        "sibling",
+        "kinsman"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أخت"
+      ],
+      "am": [
+        "እህት"
+      ],
+      "en": [
+        "sister"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ.",
+        "am": "ምእመናን ወንድማማቾች ብቻ ናቸው።",
+        "en": "The believers are but brothers."
+      }
+    ]
+  },
+  {
+    "id": "dict_051",
+    "word_ar": "أُخْت",
+    "word_ar_clean": "اخت",
+    "word_am": "እህት",
+    "word_en": "Sister",
+    "transliteration_ar": "Ukht",
+    "transliteration_am": "Ihit",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "أ خ و",
+    "definition_ar": "الأنثى التي تشاركك نفس الوالدين أو أحدهما.",
+    "definition_am": "ከአንድ ወላጅ የተወለደች ሴት፤ እንዲሁም የእምነት እህት።",
+    "definition_en": "A female sibling; or a female coreligionist.",
+    "synonyms": {
+      "ar": [
+        "شقيقة"
+      ],
+      "am": [
+        "የደም እህት"
+      ],
+      "en": [
+        "sister"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أخ"
+      ],
+      "am": [
+        "ወንድም"
+      ],
+      "en": [
+        "brother"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "تُسَاعِدُ الأُخْتُ أُمَّهَا فِي الْبَيْتِ.",
+        "am": "እህት እናቷን በቤት ውስጥ ትረዳለች።",
+        "en": "The sister helps her mother at home."
+      }
+    ]
+  },
+  {
+    "id": "dict_052",
+    "word_ar": "جَنَّة",
+    "word_ar_clean": "جنة",
+    "word_am": "ጀነት / ገነት",
+    "word_en": "Paradise / Garden",
+    "transliteration_ar": "Jannah",
+    "transliteration_am": "Jennet / Genet",
+    "part_of_speech": "noun",
+    "category": "Faith & Spirituality",
+    "root_ar": "ج ن ن",
+    "definition_ar": "دار النعيم المقيم التي أعدها الله لعباده المؤمنين المتقين.",
+    "definition_am": "አላህ ለደጋግ አማኞች ያዘጋጃት ዘላለማዊ የድሎትና የደስታ አገር።",
+    "definition_en": "The eternal abode of peace, joy, and reward prepared for the righteous in the hereafter.",
+    "synonyms": {
+      "ar": [
+        "فردوس",
+        "روضة"
+      ],
+      "am": [
+        "መንግሥተ ሰማያት"
+      ],
+      "en": [
+        "paradise",
+        "heaven"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "نار",
+        "جهنم"
+      ],
+      "am": [
+        "ጀሀነም",
+        "እሳት"
+      ],
+      "en": [
+        "hell",
+        "fire"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "ادْخُلُوا الْجَنَّةَ بِمَا كُنْتُمْ تَعْمَلُونَ.",
+        "am": "በሰጣችሁት በጎ ሥራ ምክንያት ገነትን ግቡ።",
+        "en": "Enter Paradise for what you used to do."
+      }
+    ]
+  },
+  {
+    "id": "dict_053",
+    "word_ar": "صَدَقَة",
+    "word_ar_clean": "صدقة",
+    "word_am": "ሶደቃ / ምጽዋት",
+    "word_en": "Charity / Voluntary Alms",
+    "transliteration_ar": "Sadaqah",
+    "transliteration_am": "Sedeqa / Mitswat",
+    "part_of_speech": "noun",
+    "category": "Worship & Law",
+    "root_ar": "ص د ق",
+    "definition_ar": "ما يعطى للفقير والمحتاج تقرباً إلى الله ونيل الثواب.",
+    "definition_am": "ለአላህ ውዴታ ሲባል ለድሆችና ለችግረኞች የሚሰጥ በጎ ስጦታና ምጽዋት።",
+    "definition_en": "Voluntary giving of alms or assistance to the needy for the pleasure of God.",
+    "synonyms": {
+      "ar": [
+        "إحسان",
+        "بذل",
+        "معونة"
+      ],
+      "am": [
+        "ስጦታ",
+        "ለጋስነት"
+      ],
+      "en": [
+        "almsgiving",
+        "donation",
+        "benevolence"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "بخل",
+        "شح"
+      ],
+      "am": [
+        "ስስት",
+        "ንፉግነት"
+      ],
+      "en": [
+        "miserliness",
+        "greed"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الصَّدَقَةُ تُطْفِئُ الْخَطِيئَةَ كَمَا يُطْفِئُ الْمَاءُ النَّارَ.",
+        "am": "ውሃ እሳትን እንደሚያጠፋ ምጽዋትም ኃጢአትን ታብሳለች።",
+        "en": "Charity extinguishes sin just as water extinguishes fire."
+      }
+    ]
+  },
+  {
+    "id": "dict_054",
+    "word_ar": "صَوْم",
+    "word_ar_clean": "صوم",
+    "word_am": "ጾም",
+    "word_en": "Fasting",
+    "transliteration_ar": "Sawm",
+    "transliteration_am": "Tsom",
+    "part_of_speech": "noun",
+    "category": "Worship & Law",
+    "root_ar": "ص و م",
+    "definition_ar": "الإمساك عن المفطرات من طلوع الفجر إلى غروب الشمس بنية العبادة.",
+    "definition_am": "ከንጋት ጀምሮ እስከ ፀሐይ መግቢያ ድረስ ከአመጋገብና ከመሳሰሉት መታቀብ።",
+    "definition_en": "Abstinence from food, drink, and desires from dawn until sunset for worship.",
+    "synonyms": {
+      "ar": [
+        "صيام",
+        "إمساك"
+      ],
+      "am": [
+        "መታቀብ"
+      ],
+      "en": [
+        "abstinence",
+        "fast"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "فطر"
+      ],
+      "am": [
+        "ማፍጠር"
+      ],
+      "en": [
+        "breaking fast"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "صَوْمُ رَمَضَانَ رُكْنٌ مِنْ أَرْكَانِ الإِسْلَامِ.",
+        "am": "የረመዳን ጾም ከእስልምና ማዕዘናት አንዱ ነው።",
+        "en": "Fasting Ramadan is a pillar among the pillars of Islam."
+      }
+    ]
+  },
+  {
+    "id": "dict_055",
+    "word_ar": "حَجّ",
+    "word_ar_clean": "حج",
+    "word_am": "ሐጅ / የንግደት ጉዞ",
+    "word_en": "Pilgrimage / Hajj",
+    "transliteration_ar": "Hajj",
+    "transliteration_am": "Hajj / Nigdet",
+    "part_of_speech": "noun",
+    "category": "Worship & Law",
+    "root_ar": "ح ج ج",
+    "definition_ar": "قصد مكة المكرمة لأداء مناسك مخصوصة في وقت مخصوص.",
+    "definition_am": "በተወሰነ ወቅት የተቀደሱትን የመካ ስፍራዎች በመጎብኘት የሚፈጸም አምልኮ።",
+    "definition_en": "The annual pilgrimage to Mecca performed by Muslims at least once in a lifetime if capable.",
+    "synonyms": {
+      "ar": [
+        "قصد",
+        "زيارة البيت الحرام"
+      ],
+      "am": [
+        "ቅዱስ ጉዞ"
+      ],
+      "en": [
+        "pilgrimage",
+        "visitation"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "أَدَّى الْمُسْلِمُ فَرِيضَةَ الْحَجِّ بِإِخْلَاصٍ.",
+        "am": "ሙስሊሙ የሐጅ ግዴታውን በቅንነት ፈጸመ።",
+        "en": "The Muslim performed the obligation of Hajj with sincerity."
+      }
+    ]
+  },
+  {
+    "id": "dict_056",
+    "word_ar": "نُور",
+    "word_ar_clean": "نور",
+    "word_am": "ብርሃን",
+    "word_en": "Light / Illumination",
+    "transliteration_ar": "Noor",
+    "transliteration_am": "Birhan",
+    "part_of_speech": "noun",
+    "category": "Nature & Universe",
+    "root_ar": "ن و ر",
+    "definition_ar": "الضياء الساطع الذي يكشف الأشياء ويزيل الظلمات؛ ومجازاً الهدى والإيمان.",
+    "definition_am": "ጨለማን አስወግዶ ነገሮችን ግልጽ የሚያደርግ ብሩህነት፤ እንዲሁም ቅን መመሪያ።",
+    "definition_en": "Radiance that makes things visible; metaphorically, divine guidance and clarity of truth.",
+    "synonyms": {
+      "ar": [
+        "ضياء",
+        "إشراق",
+        "هدى"
+      ],
+      "am": [
+        "ጸዳል",
+        "ማብሪያ"
+      ],
+      "en": [
+        "brightness",
+        "radiance",
+        "glow"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "ظلام",
+        "عتمة"
+      ],
+      "am": [
+        "ጨለማ"
+      ],
+      "en": [
+        "darkness",
+        "gloom"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "اللَّهُ نُورُ السَّمَاوَاتِ وَالأَرْضِ.",
+        "am": "አላህ የሰማያትና የምድር ብርሃን ነው።",
+        "en": "God is the Light of the heavens and the earth."
+      }
+    ]
+  },
+  {
+    "id": "dict_057",
+    "word_ar": "ظَلَام",
+    "word_ar_clean": "ظلام",
+    "word_am": "ጨለማ",
+    "word_en": "Darkness / Obscurity",
+    "transliteration_ar": "Dhalam",
+    "transliteration_am": "Chelema",
+    "part_of_speech": "noun",
+    "category": "Nature & Universe",
+    "root_ar": "ظ ل م",
+    "definition_ar": "انعدام النور وغياب الرؤية؛ ومجازاً الضلال والجهل.",
+    "definition_am": "የብርሃን አለመኖር ወይም መጥፋት፤ እንዲሁም በዘይቤያዊ መንገድ ጥመት።",
+    "definition_en": "The absence of light; metaphorically, state of ignorance, confusion, or error.",
+    "synonyms": {
+      "ar": [
+        "عتمة",
+        "دجى"
+      ],
+      "am": [
+        "ድንግዝግዝ"
+      ],
+      "en": [
+        "shadow",
+        "dimness"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "نور",
+        "ضياء"
+      ],
+      "am": [
+        "ብርሃን"
+      ],
+      "en": [
+        "light"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "يُخْرِجُهُمْ مِنَ الظُّلُمَاتِ إِلَى النُّورِ.",
+        "am": "ከጨለማዎች ወደ ብርሃን ያወጣቸዋል።",
+        "en": "He brings them out from darknesses into the light."
+      }
+    ]
+  },
+  {
+    "id": "dict_058",
+    "word_ar": "أَبْيَض",
+    "word_ar_clean": "ابيض",
+    "word_am": "ነጭ",
+    "word_en": "White",
+    "transliteration_ar": "Abyad",
+    "transliteration_am": "Nech",
+    "part_of_speech": "adjective",
+    "category": "Colors & Appearance",
+    "root_ar": "ب ي ض",
+    "definition_ar": "لون ناصع كالثلج يعبر عن النقاء والصفاء.",
+    "definition_am": "እንደ በረዶ ያለ ደማቅ ቀለም፤ የንጽሕናና የሰላም ምልክት።",
+    "definition_en": "The color of pure snow or milk, reflecting all visible rays of the spectrum.",
+    "synonyms": {
+      "ar": [
+        "ناصع",
+        "صافٍ"
+      ],
+      "am": [
+        "ጽዱ"
+      ],
+      "en": [
+        "fair",
+        "snowy",
+        "pure"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أسود"
+      ],
+      "am": [
+        "ጥቁር"
+      ],
+      "en": [
+        "black"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "ارْتَدَى الرَّجُلُ ثَوْباً أَبْيَضَ نَظِيفاً.",
+        "am": "ሰውየው ንጹሕ ነጭ ልብስ ለበሰ።",
+        "en": "The man wore a clean white garment."
+      }
+    ]
+  },
+  {
+    "id": "dict_059",
+    "word_ar": "أَسْوَد",
+    "word_ar_clean": "اسود",
+    "word_am": "ጥቁር",
+    "word_en": "Black",
+    "transliteration_ar": "Aswad",
+    "transliteration_am": "Tiqur",
+    "part_of_speech": "adjective",
+    "category": "Colors & Appearance",
+    "root_ar": "س و د",
+    "definition_ar": "لون مظلم كلون الليل الحالك أو الفحم.",
+    "definition_am": "እንደ ከሰል ወይም እንደ ጥቁር ሌሊት ያለ ጥልቅ ቀለም።",
+    "definition_en": "Of the very darkest color owing to the absence of or complete absorption of light.",
+    "synonyms": {
+      "ar": [
+        "داكن",
+        "حالك"
+      ],
+      "am": [
+        "ድቅድቅ"
+      ],
+      "en": [
+        "dark",
+        "ebony",
+        "jet"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "أبيض"
+      ],
+      "am": [
+        "ነጭ"
+      ],
+      "en": [
+        "white"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْحَجَرُ الأَسْوَدُ مَوْضِعُ إِجْلَالٍ فِي الْكَعْبَةِ.",
+        "am": "ጥቁሩ ድንጋይ በካዕባ ዘንድ የተከበረ ስፍራ አለው።",
+        "en": "The Black Stone holds an esteemed position at the Kaabah."
+      }
+    ]
+  },
+  {
+    "id": "dict_060",
+    "word_ar": "وَاحِد",
+    "word_ar_clean": "واحد",
+    "word_am": "አንድ",
+    "word_en": "One",
+    "transliteration_ar": "Wahid",
+    "transliteration_am": "And",
+    "part_of_speech": "noun",
+    "category": "Numbers & Quantities",
+    "root_ar": "و ح د",
+    "definition_ar": "أول الأعداد الفردية، ورمز للوحدانية والانفراد.",
+    "definition_am": "የመጀመሪያው ቁጥር፤ እንዲሁም የአንድነት መገለጫ።",
+    "definition_en": "The lowest cardinal number; 1; symbolizing unity and uniqueness.",
+    "synonyms": {
+      "ar": [
+        "أحد",
+        "فرد"
+      ],
+      "am": [
+        "ብቸኛ"
+      ],
+      "en": [
+        "single",
+        "sole",
+        "lone"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "إِلَهُكُمْ إِلَهٌ وَاحِدٌ.",
+        "am": "አምላካችሁ አንድ አምላክ ብቻ ነው።",
+        "en": "Your God is One God."
+      }
+    ]
+  },
+  {
+    "id": "dict_061",
+    "word_ar": "اثْنَان",
+    "word_ar_clean": "اثنان",
+    "word_am": "ሁለት",
+    "word_en": "Two",
+    "transliteration_ar": "Ithnan",
+    "transliteration_am": "Hulet",
+    "part_of_speech": "noun",
+    "category": "Numbers & Quantities",
+    "root_ar": "ث ن ي",
+    "definition_ar": "العدد التالي للواحد وهو زوجي.",
+    "definition_am": "ከአንድ ቀጥሎ የሚመጣው ተከታይ ቁጥር፤ 2።",
+    "definition_en": "The cardinal number equal to 1 + 1.",
+    "synonyms": {
+      "ar": [
+        "زوج"
+      ],
+      "am": [
+        "ጥንድ"
+      ],
+      "en": [
+        "pair",
+        "couple"
+      ]
+    },
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "حَضَرَ اثْنَانِ مِنَ الطُّلَّابِ.",
+        "am": "ሁለት ተማሪዎች ተገኙ።",
+        "en": "Two of the students attended."
+      }
+    ]
+  },
+  {
+    "id": "dict_062",
+    "word_ar": "ثَلَاثَة",
+    "word_ar_clean": "ثلاثة",
+    "word_am": "ሦስት",
+    "word_en": "Three",
+    "transliteration_ar": "Thalathah",
+    "transliteration_am": "Sost",
+    "part_of_speech": "noun",
+    "category": "Numbers & Quantities",
+    "root_ar": "ث ل ث",
+    "definition_ar": "العدد التالي للاثنين.",
+    "definition_am": "ከሁለት ቀጥሎ የሚመጣው ተከታይ ቁጥር፤ 3።",
+    "definition_en": "The cardinal number between two and four.",
+    "synonyms": {},
+    "antonyms": {},
+    "examples": [
+      {
+        "ar": "تَوَضَّأَ فَغَسَلَ يَدَيْهِ ثَلَاثَ مَرَّاتٍ.",
+        "am": "ውዱእ አደረገና እጆቹን ሦስት ጊዜ አጠበ።",
+        "en": "He performed ablution and washed his hands three times."
+      }
+    ]
+  },
+  {
+    "id": "dict_063",
+    "word_ar": "صِحَّة",
+    "word_ar_clean": "صحة",
+    "word_am": "ጤና",
+    "word_en": "Health / Wellness",
+    "transliteration_ar": "Sihhah",
+    "transliteration_am": "Tena",
+    "part_of_speech": "noun",
+    "category": "Food & Health",
+    "root_ar": "ص ح ح",
+    "definition_ar": "حالة السلامة والعافية وخلو البدن والنفس من الأمراض والعلل.",
+    "definition_am": "የአካልና የአእምሮ ከበሽታ ነፃ መሆንና የተሟላ የደህንነት ሁኔታ።",
+    "definition_en": "The state of being free from illness or injury; physical and mental well-being.",
+    "synonyms": {
+      "ar": [
+        "عافية",
+        "سلامة"
+      ],
+      "am": [
+        "ደህንነት"
+      ],
+      "en": [
+        "wellness",
+        "vigor",
+        "fitness"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "مرض",
+        "سقم"
+      ],
+      "am": [
+        "ህመም",
+        "በሽታ"
+      ],
+      "en": [
+        "disease",
+        "sickness",
+        "illness"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الصِّحَّةُ تَاجٌ عَلَى رُؤُوسِ الأَصِحَّاءِ.",
+        "am": "ጤና በጤነኞች ራስ ላይ ያለ አክሊል ነው።",
+        "en": "Health is a crown on the heads of healthy people."
+      }
+    ]
+  },
+  {
+    "id": "dict_064",
+    "word_ar": "مَدِينَة",
+    "word_ar_clean": "مدينة",
+    "word_am": "ከተማ",
+    "word_en": "City / Town",
+    "transliteration_ar": "Madeenah",
+    "transliteration_am": "Ketema",
+    "part_of_speech": "noun",
+    "category": "Family & Society",
+    "root_ar": "م د ن",
+    "definition_ar": "تجمع سكاني وعمراني كبير تتوفر فيه الخدمات والمرافق الحضارية.",
+    "definition_am": "በርካታ ሰዎች የሚኖሩበትና የተለያዩ አገልግሎቶች የተሟሉለት ትልቅ ማዕከል።",
+    "definition_en": "A large human settlement with extensive systems for housing, transportation, and commerce.",
+    "synonyms": {
+      "ar": [
+        "حاضرة",
+        "بلدة"
+      ],
+      "am": [
+        "መዲና"
+      ],
+      "en": [
+        "metropolis",
+        "urban center"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "قرية",
+        "ريف"
+      ],
+      "am": [
+        "ገጠር"
+      ],
+      "en": [
+        "village",
+        "countryside"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "الْمَدِينَةُ الْمُنَوَّرَةُ مَهْجَرُ رَسُولِ اللَّهِ.",
+        "am": "መዲና የአላህ መልእክተኛ የተሰደዱባት የተባረከች ከተማ ናት።",
+        "en": "Al-Madinah is the radiant city of emigration of the Messenger of God."
+      }
+    ]
+  },
+  {
+    "id": "dict_065",
+    "word_ar": "سَفَر",
+    "word_ar_clean": "سفر",
+    "word_am": "ጉዞ",
+    "word_en": "Travel / Journey",
+    "transliteration_ar": "Safar",
+    "transliteration_am": "Guzo",
+    "part_of_speech": "noun",
+    "category": "General & Daily",
+    "root_ar": "س ف ر",
+    "definition_ar": "قطع المسافات والانتقال من بلد إلى بلد آخر لغرض مشروع.",
+    "definition_am": "ከአንድ ሀገር ወይም አካባቢ ወደ ሌላ ለሥራ ወይም ለዕረፍት የሚደረግ ጉዞ።",
+    "definition_en": "The movement of people between distant geographical locations.",
+    "synonyms": {
+      "ar": [
+        "رحلة",
+        "ترحال"
+      ],
+      "am": [
+        "መንገደኝነት"
+      ],
+      "en": [
+        "voyage",
+        "trip",
+        "expedition"
+      ]
+    },
+    "antonyms": {
+      "ar": [
+        "إقامة",
+        "استقرار"
+      ],
+      "am": [
+        "መቀመጥ"
+      ],
+      "en": [
+        "residence",
+        "stay"
+      ]
+    },
+    "examples": [
+      {
+        "ar": "السَّفَرُ قِطْعَةٌ مِنَ الْعَذَابِ وَفِيهِ فَوَائِدُ.",
+        "am": "ጉዞ ድካም ቢኖረውም በርካታ ጥቅሞች አሉት።",
+        "en": "Travel involves hardship yet yields great benefits."
+      }
+    ]
+  }
+]

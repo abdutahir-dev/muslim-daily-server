@@ -27,6 +27,9 @@ import fastingRoutes from './routes/fastingRoutes.js';
 import journalRoutes from './routes/journalRoutes.js';
 import firebaseRoutes from './routes/firebaseRoutes.js';
 import qamusRoutes from './routes/qamusRoutes.js';
+import asmaulHusnaRoutes from './routes/asmaulHusnaRoutes.js';
+import dictionaryRoutes from './routes/dictionaryRoutes.js';
+import translationRoutes from './routes/translationRoutes.js';
 import docsRouter from './docs/docsRouter.js';
 
 dotenv.config();
@@ -108,6 +111,18 @@ app.use('/api/firebase', firebaseRoutes);
 app.use('/qamus', qamusRoutes);
 app.use('/api/qamus', qamusRoutes);
 
+// Asmaul Husna (99 Names of Allah) routes (accessible under /asmaul-husna and /api/asmaul-husna)
+app.use('/asmaul-husna', asmaulHusnaRoutes);
+app.use('/api/asmaul-husna', asmaulHusnaRoutes);
+
+// Trilingual Dictionary routes (accessible under /dictionary and /api/dictionary)
+app.use('/dictionary', dictionaryRoutes);
+app.use('/api/dictionary', dictionaryRoutes);
+
+// Translation routes (accessible under /translation and /api/translation)
+app.use('/translation', translationRoutes);
+app.use('/api/translation', translationRoutes);
+
 // Legacy/Compatibility routes
 app.use('/api', quranRoutes);
 
@@ -128,6 +143,12 @@ app.get('/', (req, res) => {
             ui: '/ui',
             docs: '/docs',
             swagger: '/swagger',
+            dictionary: '/dictionary',
+            dictionaryApi: '/api/dictionary',
+            translation: '/translation',
+            translationApi: '/api/translation',
+            asmaulHusna: '/asmaul-husna',
+            asmaulHusnaApi: '/api/asmaul-husna',
             qamus: '/qamus',
             qamusApi: '/api/qamus',
             auth: '/api/auth',

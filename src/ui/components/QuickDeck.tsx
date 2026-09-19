@@ -8,6 +8,8 @@ import {
   CloudServerOutlined,
   FireOutlined,
   ReadOutlined,
+  StarOutlined,
+  TranslationOutlined,
 } from '@ant-design/icons';
 import type { ApiEndpoint } from '../types.js';
 import { ENDPOINTS } from '../constants/endpoints.js';
@@ -21,6 +23,22 @@ interface QuickDeckProps {
 
 export const QuickDeck: React.FC<QuickDeckProps> = ({ onSelectEndpoint, onExecuteImmediately }) => {
   const quickCards = [
+    {
+      title: 'Trilingual Lexicon',
+      desc: 'Arabic, Amharic & English dictionary with AI translation',
+      icon: <TranslationOutlined style={{ fontSize: 20, color: '#0d9488' }} />,
+      endpointId: 'dict-browse',
+      badge: 'GET',
+      badgeColor: 'green',
+    },
+    {
+      title: '99 Names of Allah',
+      desc: 'Asmaul Husna with Arabic, Amharic & English translations',
+      icon: <StarOutlined style={{ fontSize: 20, color: '#059669' }} />,
+      endpointId: 'asmaul-husna-all',
+      badge: 'GET',
+      badgeColor: 'green',
+    },
     {
       title: "Today's Prayers",
       desc: 'Astronomical timings for Fajr, Dhuhr, Asr, Maghrib, Isha',

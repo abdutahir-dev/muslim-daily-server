@@ -18,6 +18,8 @@ export let prayersDb;
 export let duaDb;
 export let hadithDb;
 export let qamusDb;
+export let asmaulHusnaDb;
+export let dictionaryDb;
 
 class SqliteWrapper {
   constructor(filePath, SQL) {
@@ -121,8 +123,8 @@ class SqliteWrapper {
 let isInitialized = false;
 
 export async function initDatabases() {
-  if (isInitialized && deenbotDb && qamusDb) {
-    return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb };
+  if (isInitialized && deenbotDb && qamusDb && asmaulHusnaDb && dictionaryDb) {
+    return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb, asmaulHusnaDb, dictionaryDb };
   }
 
   const SQL = await initSqlJs();
@@ -134,6 +136,8 @@ export async function initDatabases() {
   hadithDb = new SqliteWrapper(path.join(dbDir, 'hadith.sqlite'), SQL);
   quotesDb = new SqliteWrapper(path.join(dbDir, 'quotes.sqlite'), SQL);
   qamusDb = new SqliteWrapper(path.join(dbDir, 'qamus.sqlite'), SQL);
+  asmaulHusnaDb = new SqliteWrapper(path.join(dbDir, 'asmaul_husna.sqlite'), SQL);
+  dictionaryDb = new SqliteWrapper(path.join(dbDir, 'dictionary.sqlite'), SQL);
 
   // Setup prayers table
   await prayersDb.exec(`
@@ -670,9 +674,147 @@ export async function initDatabases() {
     }
   }
 
+  // Setup Asmaul Husna table and seed if empty
+  await asmaulHusnaDb.exec(`
+    CREATE TABLE IF NOT EXISTS asmaul_husna (
+      number INTEGER PRIMARY KEY,
+      name_ar TEXT NOT NULL,
+      name_ar_clean TEXT NOT NULL,
+      transliteration TEXT NOT NULL,
+      translation_en TEXT NOT NULL,
+      translation_am TEXT NOT NULL,
+      translation_ar TEXT NOT NULL,
+      description_en TEXT NOT NULL,
+      description_am TEXT NOT NULL,
+      description_ar TEXT NOT NULL,
+      quran_reference TEXT,
+      surah_number INTEGER,
+      ayah_number INTEGER,
+      ayah_ar TEXT,
+      hadith_reference TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_asmaul_husna_translit ON asmaul_husna(transliteration);
+    CREATE INDEX IF NOT EXISTS idx_asmaul_husna_clean ON asmaul_husna(name_ar_clean);
+  `);
+
+  const asmaCountRow = await asmaulHusnaDb.get('SELECT COUNT(*) as count FROM asmaul_husna');
+  if (!asmaCountRow || asmaCountRow.count === 0) {
+    const asmaDataPath = path.join(rootDir, 'data', 'asmaul-husna.json');
+    if (fs.existsSync(asmaDataPath)) {
+      try {
+        const rawAsma = fs.readFileSync(asmaDataPath, 'utf8');
+        const asmaList = JSON.parse(rawAsma);
+        const asmaStmt = asmaulHusnaDb.prepare(`
+          INSERT INTO asmaul_husna (
+            number, name_ar, name_ar_clean, transliteration,
+            translation_en, translation_am, translation_ar,
+            description_en, description_am, description_ar,
+            quran_reference, surah_number, ayah_number, ayah_ar, hadith_reference
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `);
+
+        for (const item of asmaList) {
+          await asmaStmt.run([
+            item.number,
+            item.name_ar,
+            item.name_ar_clean || '',
+            item.transliteration,
+            item.translation?.en || '',
+            item.translation?.am || '',
+            item.translation?.ar || '',
+            item.description?.en || '',
+            item.description?.am || '',
+            item.description?.ar || '',
+            item.reference?.quran || '',
+            item.reference?.surah_number || null,
+            item.reference?.ayah_number || null,
+            item.reference?.ayah_ar || '',
+            item.reference?.hadith || ''
+          ]);
+        }
+        asmaulHusnaDb.save();
+        console.log(`[db] Seeded ${asmaList.length} Asmaul Husna records into asmaul_husna.sqlite.`);
+      } catch (err) {
+        console.warn('[db] Failed to seed asmaul_husna table:', err.message);
+      }
+    }
+  }
+
+  // Setup dictionary table
+  await dictionaryDb.exec(`
+    CREATE TABLE IF NOT EXISTS dictionary_entries (
+      id TEXT PRIMARY KEY,
+      word_ar TEXT NOT NULL,
+      word_ar_clean TEXT NOT NULL,
+      word_am TEXT NOT NULL,
+      word_en TEXT NOT NULL,
+      transliteration_ar TEXT,
+      transliteration_am TEXT,
+      part_of_speech TEXT,
+      category TEXT,
+      root_ar TEXT,
+      definition_ar TEXT,
+      definition_am TEXT,
+      definition_en TEXT,
+      synonyms_json TEXT,
+      antonyms_json TEXT,
+      examples_json TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_dict_ar_clean ON dictionary_entries(word_ar_clean);
+    CREATE INDEX IF NOT EXISTS idx_dict_am ON dictionary_entries(word_am);
+    CREATE INDEX IF NOT EXISTS idx_dict_en ON dictionary_entries(word_en);
+    CREATE INDEX IF NOT EXISTS idx_dict_cat ON dictionary_entries(category);
+    CREATE INDEX IF NOT EXISTS idx_dict_pos ON dictionary_entries(part_of_speech);
+  `);
+
+  const dictCount = await dictionaryDb.get('SELECT COUNT(*) as count FROM dictionary_entries');
+  if (dictCount && dictCount.count === 0) {
+    const dictDataPath = path.join(rootDir, 'data', 'dictionary.json');
+    if (fs.existsSync(dictDataPath)) {
+      try {
+        const rawDict = fs.readFileSync(dictDataPath, 'utf8');
+        const dictList = JSON.parse(rawDict);
+        const dictStmt = dictionaryDb.prepare(`
+          INSERT INTO dictionary_entries (
+            id, word_ar, word_ar_clean, word_am, word_en,
+            transliteration_ar, transliteration_am,
+            part_of_speech, category, root_ar,
+            definition_ar, definition_am, definition_en,
+            synonyms_json, antonyms_json, examples_json
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `);
+
+        for (const item of dictList) {
+          await dictStmt.run([
+            item.id,
+            item.word_ar,
+            item.word_ar_clean || '',
+            item.word_am,
+            item.word_en,
+            item.transliteration_ar || '',
+            item.transliteration_am || '',
+            item.part_of_speech || '',
+            item.category || '',
+            item.root_ar || '',
+            item.definition_ar || '',
+            item.definition_am || '',
+            item.definition_en || '',
+            JSON.stringify(item.synonyms || {}),
+            JSON.stringify(item.antonyms || {}),
+            JSON.stringify(item.examples || [])
+          ]);
+        }
+        dictionaryDb.save();
+        console.log(`[db] Seeded ${dictList.length} dictionary records into dictionary.sqlite.`);
+      } catch (err) {
+        console.warn('[db] Failed to seed dictionary table:', err.message);
+      }
+    }
+  }
+
   isInitialized = true;
-  console.log('[db] All 7 databases initialized successfully.');
-  return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb };
+  console.log('[db] All 9 databases initialized successfully.');
+  return { quotesDb, deenbotDb, quranDb, prayersDb, duaDb, hadithDb, qamusDb, asmaulHusnaDb, dictionaryDb };
 }
 
 export const getDb = async () => {

@@ -3,7 +3,7 @@ export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 export interface EndpointParam {
   name: string;
   type: 'path' | 'query' | 'header';
-  required: boolean;
+  required?: boolean;
   defaultValue?: string;
   description: string;
   options?: string[];
@@ -19,6 +19,7 @@ export interface ApiEndpoint {
   params?: EndpointParam[];
   sampleBody?: Record<string, unknown>;
   requiresAuth?: boolean;
+  headers?: Record<string, string>;
 }
 
 export interface RequestState {

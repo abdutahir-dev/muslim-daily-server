@@ -365,6 +365,7 @@ const rootPortalHtml = `<!DOCTYPE html>
         Supported Digital Islamic Services
       </div>
       <ul class="features-list">
+        <li><i class="fa-solid fa-check"></i> <div><strong>Asmaul Husna (99 Names):</strong> Complete 99 Names of Allah with Arabic, Amharic, English, theological descriptions & references</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Quran & Tafsir:</strong> 114 Surahs, Ayah search, Uthmani scripts & English translations</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Quranic Lexicon (Qamus):</strong> 2,092 certified entries, 1,091 roots, morphology & Ayah transclusion</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Prayer Calculations:</strong> Astronomical timings with 7 international methods (MWL, ISNA, etc.)</div></li>

@@ -8,13 +8,14 @@
     "build:ui": "esbuild src/ui/index.tsx --bundle --minify --sourcemap --outfile=public/ui/bundle.js --loader:.js=jsx --define:process.env.NODE_ENV='\"production\"'",
     "build:static": "node scripts/build_static_docs.js",
     "build": "npm run build:ui && npm run build:static && node --check index.js",
-    "lint": "node --check index.js src/app.js src/db/connection.js src/docs/docsRouter.js src/docs/openapiSpec.js src/utils/calendarUtils.js src/services/hadithService.js src/services/duaService.js src/services/analyticsService.js src/services/qamusService.js src/controllers/qamusController.js src/routes/qamusRoutes.js src/routes/firebaseRoutes.js src/lib/firebaseConfig.js src/lib/firebase.js src/lib/firebaseAdmin.js src/middleware/firebaseAuth.js src/utils/firestoreError.js scripts/build_static_docs.js && tsc --noEmit",
+    "lint": "node --check index.js src/app.js src/db/connection.js src/docs/docsRouter.js src/docs/openapiSpec.js src/services/dictionaryService.js src/services/translationService.js src/controllers/dictionaryController.js src/controllers/translationController.js src/routes/dictionaryRoutes.js src/routes/translationRoutes.js src/utils/calendarUtils.js src/services/hadithService.js src/services/duaService.js src/services/analyticsService.js src/services/qamusService.js src/controllers/qamusController.js src/routes/qamusRoutes.js src/routes/firebaseRoutes.js src/lib/firebaseConfig.js src/lib/firebase.js src/lib/firebaseAdmin.js src/middleware/firebaseAuth.js src/utils/firestoreError.js scripts/build_static_docs.js && tsc --noEmit",
     "start": "node index.js",
     "postman": "node generate_postman.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
   },
   "dependencies": {
     "@ant-design/icons": "^6.3.4",
+    "@google/genai": "^2.23.0",
     "antd": "^6.6.3",
     "bcryptjs": "^3.0.3",
     "compression": "^1.8.1",

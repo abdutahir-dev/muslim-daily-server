@@ -1,0 +1,2279 @@
+[
+  {
+    "number": 1,
+    "name_ar": "الرَّحْمَٰنُ",
+    "name_ar_clean": "الرحمن",
+    "transliteration": "Ar-Rahman",
+    "translation": {
+      "en": "The Entirely Merciful",
+      "am": "እጅግ በጣም ሩኅሩህ",
+      "ar": "ذو الرحمة الشاملة لجميع الخلائق"
+    },
+    "description": {
+      "en": "The One whose vast mercy encompasses all of creation in this world.",
+      "am": "በዚህ ዓለም ላሉ ፍጥረታት ሁሉ ምህረቱና እዝነቱ እጅግ ሰፊና ሁሉን አቀፍ የሆነው ጌታ።",
+      "ar": "الذي وسعت رحمته كل شيء في الدنيا وعمت جميع الخلائق."
+    },
+    "reference": {
+      "quran": "Surah Al-Fatihah 1:3",
+      "surah_number": 1,
+      "ayah_number": 3,
+      "ayah_ar": "الرَّحْمَٰنِ الرَّحِيمِ",
+      "hadith": "Sahih al-Bukhari 2736"
+    }
+  },
+  {
+    "number": 2,
+    "name_ar": "الرَّحِيمُ",
+    "name_ar_clean": "الرحيم",
+    "transliteration": "Ar-Rahim",
+    "translation": {
+      "en": "The Especially Merciful",
+      "am": "እጅግ በጣም አዛኝ",
+      "ar": "ذو الرحمة الخاصة بالمؤمنين"
+    },
+    "description": {
+      "en": "The One who bestows particular and everlasting mercy upon the believers.",
+      "am": "በመጨረሻው ዓለም ለአማኝ ባሮቹ ብቻ ልዩ እዝነቱን የሚለግስ አዛኝ ጌታ።",
+      "ar": "الذي يوصل رحمته الخاصة إلى عباده المؤمنين هداية وتوفيقاً في الدنيا والآخرة."
+    },
+    "reference": {
+      "quran": "Surah Al-Ahzab 33:43",
+      "surah_number": 33,
+      "ayah_number": 43,
+      "ayah_ar": "وَكَانَ بِالْمُؤْمِنِينَ رَحِيمًا",
+      "hadith": "Sahih Muslim 2754"
+    }
+  },
+  {
+    "number": 3,
+    "name_ar": "الْمَلِكُ",
+    "name_ar_clean": "الملك",
+    "transliteration": "Al-Malik",
+    "translation": {
+      "en": "The King / Sovereign",
+      "am": "ንጉሥ / የሁሉ ባለቤት",
+      "ar": "الملك الحق ذو السلطان المطلق"
+    },
+    "description": {
+      "en": "The Absolute Sovereign and Supreme Ruler of the entire universe.",
+      "am": "የፍጥረተ-ዓለሙ ሁሉ ፍጹም ገዥና ባለቤት፣ ተጋሪ የሌለው ልዑቅ ንጉሥ።",
+      "ar": "المتصرف في ملكه كيف يشاء، المتصرف في خلقه أمراً ونهياً."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ",
+      "hadith": "Sahih al-Bukhari 7382"
+    }
+  },
+  {
+    "number": 4,
+    "name_ar": "الْقُدُّوسُ",
+    "name_ar_clean": "القدوس",
+    "transliteration": "Al-Quddus",
+    "translation": {
+      "en": "The Absolutely Pure",
+      "am": "ቅዱስ / ከጉድለት የጠራ",
+      "ar": "المنزه عن كل عيب ونقص"
+    },
+    "description": {
+      "en": "The Pure One who is utterly free from every flaw, defect, and error.",
+      "am": "ከማንኛውም ዓይነት ጉድለትና አምሳያ ፍጹም የጠራና የነጻ የሆነው ቅዱስ ጌታ።",
+      "ar": "المطهر المنزه عن النقائص والعيوب ومما يخطر ببال البشر."
+    },
+    "reference": {
+      "quran": "Surah Al-Jumu'ah 62:1",
+      "surah_number": 62,
+      "ayah_number": 1,
+      "ayah_ar": "الْمَلِكِ الْقُدُّوسِ الْعَزِيزِ الْحَكِيمِ",
+      "hadith": "Sahih Muslim 487"
+    }
+  },
+  {
+    "number": 5,
+    "name_ar": "السَّلَامُ",
+    "name_ar_clean": "السلام",
+    "transliteration": "As-Salam",
+    "translation": {
+      "en": "The Source of Peace",
+      "am": "የሰላም ባለቤት",
+      "ar": "السالم من كل آفة والواهب للسلام"
+    },
+    "description": {
+      "en": "The Source of peace and security who is free from all deficiencies.",
+      "am": "እርሱ ራሱ ከጉድለት የዳነ፣ ለፍጥረታቱ ሁሉ ሰላምንና ጸጥታን የሚለግስ አምላክ።",
+      "ar": "الذي سلمت ذاته وصفاته من كل نقص، والواهب للسلام والأمان."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ",
+      "hadith": "Sahih Muslim 591"
+    }
+  },
+  {
+    "number": 6,
+    "name_ar": "الْمُؤْمِنُ",
+    "name_ar_clean": "المؤمن",
+    "transliteration": "Al-Mu'min",
+    "translation": {
+      "en": "The Giver of Security",
+      "am": "ጸጥታንና እምነትን ሰጪ",
+      "ar": "المصدق لرسله الواهب للأمن"
+    },
+    "description": {
+      "en": "The Granter of security to His servants who fulfills all His promises.",
+      "am": "ለባሮቹ ፍጹም ሰላምና ጸጥታን የሚሰጥ፣ ቃሉን ጠባቂ የሆነ ጌታ።",
+      "ar": "الذي صدّق رسله بالمعجزات وأمّن عباده المؤمنين من عذابه."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 7,
+    "name_ar": "الْمُهَيْمِنُ",
+    "name_ar_clean": "المهيمن",
+    "transliteration": "Al-Muhaymin",
+    "translation": {
+      "en": "The Guardian Overseer",
+      "am": "ጠባቂ / ተቆጣጣሪ",
+      "ar": "الرقيب الحافظ الشاهد على كل شيء"
+    },
+    "description": {
+      "en": "The Supreme Guardian who watches over and preserves all creation.",
+      "am": "ሁሉንም ነገር የሚቆጣጠር፣ የሚጠብቅና የበላይ ምስክር የሆነው አምላክ።",
+      "ar": "الشهيد على خلقه بأعمالهم والرقيب الحافظ لكل ما كان ويكون."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ",
+      "hadith": "Musnad Ahmad 1878"
+    }
+  },
+  {
+    "number": 8,
+    "name_ar": "الْعَزِيزُ",
+    "name_ar_clean": "العزيز",
+    "transliteration": "Al-Aziz",
+    "translation": {
+      "en": "The All-Mighty",
+      "am": "አሸናፊ / ኃያል",
+      "ar": "القوي الغالب الذي لا يقهر"
+    },
+    "description": {
+      "en": "The Invincible Almighty whose power cannot be resisted by any.",
+      "am": "ፈጽሞ የማይሸነፍ፣ በማንም የማይበገር፣ ሁሉን ድል አድራጊ የሆነ ታላቅ አሸናፊ።",
+      "ar": "الذي لا يغلبه غالب، ولا يعجزه شيء صاحب القوة المطلقة."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:209",
+      "surah_number": 2,
+      "ayah_number": 209,
+      "ayah_ar": "فَاعْلَمُوا أَنَّ اللَّهَ عَزِيزٌ حَكِيمٌ",
+      "hadith": "Sahih Muslim 2707"
+    }
+  },
+  {
+    "number": 9,
+    "name_ar": "الْجَبَّارُ",
+    "name_ar_clean": "الجبار",
+    "transliteration": "Al-Jabbar",
+    "translation": {
+      "en": "The Compeller / Restorer",
+      "am": "አስገዳጅ / ሰባሪን ጠጋኝ",
+      "ar": "مصلح أمور خلقه والقاهر لهم"
+    },
+    "description": {
+      "en": "The One who mends the broken and whose divine decree prevails over all.",
+      "am": "የተሰበረን ልብ የሚጠግን፣ ፈቃዱ በፍጥረታት ላይ ሁሉ ተፈጻሚ የሚሆን አሸናፊ ጌታ።",
+      "ar": "الذي يجبر الكسير ويغني الفقير وتنفذ مشيئته في خلقه."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ",
+      "hadith": "Abu Dawood 874"
+    }
+  },
+  {
+    "number": 10,
+    "name_ar": "الْمُتَكَبِّرُ",
+    "name_ar_clean": "المتكبر",
+    "transliteration": "Al-Mutakabbir",
+    "translation": {
+      "en": "The Supreme / Majestic",
+      "am": "የልዕልና ባለቤት",
+      "ar": "العظيم المتعالي عن كل سوء"
+    },
+    "description": {
+      "en": "The Exalted One possessing true greatness above all defects.",
+      "am": "ኩራትና ታላቅነት ለእርሱ ብቻ የሚገባው፣ እጅግ የላቀ ጌታ።",
+      "ar": "الذي تكبر عن كل سوء ونقص، وتعالى عن صفات المخلوقين."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:23",
+      "surah_number": 59,
+      "ayah_number": 23,
+      "ayah_ar": "الْجَبَّارُ الْمُتَكَبِّرُ",
+      "hadith": "Sahih Muslim 2620"
+    }
+  },
+  {
+    "number": 11,
+    "name_ar": "الْخَالِقُ",
+    "name_ar_clean": "الخالق",
+    "transliteration": "Al-Khaliq",
+    "translation": {
+      "en": "The Creator",
+      "am": "ፈጣሪ",
+      "ar": "الموجد للأشياء ومقدّرها"
+    },
+    "description": {
+      "en": "The Creator who brings all things from non-existence into being.",
+      "am": "ሁሉን ነገር ያለ ምንም ቀዳሚ ምሳሌ ከምንም ወደ መኖር ያመጣ ፈጣሪ።",
+      "ar": "المبدع للأشياء المقدر لوجودها على مقتضى علمه وحكمته."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:24",
+      "surah_number": 59,
+      "ayah_number": 24,
+      "ayah_ar": "هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ",
+      "hadith": "Sahih al-Bukhari 3208"
+    }
+  },
+  {
+    "number": 12,
+    "name_ar": "الْبَارِئُ",
+    "name_ar_clean": "البارئ",
+    "transliteration": "Al-Bari'",
+    "translation": {
+      "en": "The Originator",
+      "am": "ከምንም አስገኚ",
+      "ar": "المبرز لما قدره إلى الوجود بريئاً من التفاوت"
+    },
+    "description": {
+      "en": "The Maker who manifests creation with perfect harmony and distinction.",
+      "am": "የቀየሰውንና የወሰነውን ፍጥረት ፍጹም በሆነ ውበት ወደ መኖር የሚያወጣ ጌታ።",
+      "ar": "الذي خلق الخلق بريئاً من التفاوت والخلل."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:24",
+      "surah_number": 59,
+      "ayah_number": 24,
+      "ayah_ar": "الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ",
+      "hadith": "Musnad Ahmad 17565"
+    }
+  },
+  {
+    "number": 13,
+    "name_ar": "الْمُصَوِّرُ",
+    "name_ar_clean": "المصور",
+    "transliteration": "Al-Musawwir",
+    "translation": {
+      "en": "The Fashioner",
+      "am": "ቅርጽ ሰጪ",
+      "ar": "المعطي لكل مخلوق صورته وهيئته"
+    },
+    "description": {
+      "en": "The Master Artist who shapes each creation in its unique form and features.",
+      "am": "ለእያንዳንዱ ፍጥረት የራሱን ልዩ ቅርጽና ውበት የሚሰጥ ድንቅ ፈጣሪ።",
+      "ar": "الذي أنشأ خلقه على صور شتى وهيئات مختلفة بحكمته."
+    },
+    "reference": {
+      "quran": "Surah Al-Hashr 59:24",
+      "surah_number": 59,
+      "ayah_number": 24,
+      "ayah_ar": "الْبَارِئُ الْمُصَوِّرُ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 14,
+    "name_ar": "الْغَفَّارُ",
+    "name_ar_clean": "الغفار",
+    "transliteration": "Al-Ghaffar",
+    "translation": {
+      "en": "The All-Forgiving",
+      "am": "መሓሪ / ደጋግሞ ይቅር ባይ",
+      "ar": "كثير المغفرة والستر لذنوب عباده"
+    },
+    "description": {
+      "en": "The One who repeatedly forgives and conceals the sins of His servants.",
+      "am": "የባሮቹን ወንጀሎች የሚሸፍን፣ ደጋግሞ ይቅር የሚል መሓሪ ጌታ።",
+      "ar": "الذي يستر الذنوب في الدنيا ويتجاوز عنها في الآخرة مرة بعد أخرى."
+    },
+    "reference": {
+      "quran": "Surah Nuh 71:10",
+      "surah_number": 71,
+      "ayah_number": 10,
+      "ayah_ar": "فَقُلْتُ اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ غَفَّارًا",
+      "hadith": "Sunan at-Tirmidhi 3540"
+    }
+  },
+  {
+    "number": 15,
+    "name_ar": "الْقَهَّارُ",
+    "name_ar_clean": "القهار",
+    "transliteration": "Al-Qahhar",
+    "translation": {
+      "en": "The All-Subduer",
+      "am": "አንበርካኪ / ሁሉን አሸናፊ",
+      "ar": "الغالب الذي خضعت له الرقاب"
+    },
+    "description": {
+      "en": "The Absolute Subduer before whom everything submits in utter humility.",
+      "am": "ፍጥረታት ሁሉ በግርማው ፊት የተዋረዱለት፣ ሁሉንም ነገር አንበርካኪ የሆነ ጌታ።",
+      "ar": "الذي ذلت له الرقاب، وقهر جميع الخلائق بقدرته وسلطانه."
+    },
+    "reference": {
+      "quran": "Surah Az-Zumar 39:4",
+      "surah_number": 39,
+      "ayah_number": 4,
+      "ayah_ar": "هُوَ اللَّهُ الْوَاحِدُ الْقَهَّارُ",
+      "hadith": "Sahih al-Bukhari 4812"
+    }
+  },
+  {
+    "number": 16,
+    "name_ar": "الْوَهَّابُ",
+    "name_ar_clean": "الوهاب",
+    "transliteration": "Al-Wahhab",
+    "translation": {
+      "en": "The Supreme Bestower",
+      "am": "ለጋስ ሰጪ",
+      "ar": "الكثير العطاء والمنّ بغير عوض"
+    },
+    "description": {
+      "en": "The Munificent Giver who bestows gifts and favors without asking for return.",
+      "am": "ምንም ዓይነት አጸፋ ሳይፈልግ ስጦታዎችንና ጸጋን ያለ ገደብ የሚለግስ ለጋስ ጌታ።",
+      "ar": "الذي يجود بالنعم الجزيلة تكرماً وفضلاً بغير سؤال ولا مقابل."
+    },
+    "reference": {
+      "quran": "Surah Sad 38:9",
+      "surah_number": 38,
+      "ayah_number": 9,
+      "ayah_ar": "خَزَائِنُ رَحْمَةِ رَبِّكَ الْعَزِيزِ الْوَهَّابِ",
+      "hadith": "Sahih al-Bukhari 6307"
+    }
+  },
+  {
+    "number": 17,
+    "name_ar": "الرَّزَّاقُ",
+    "name_ar_clean": "الرزاق",
+    "transliteration": "Ar-Razzaq",
+    "translation": {
+      "en": "The Total Provider",
+      "am": "ሲሳይን ሰጪ / መጋቢ",
+      "ar": "خالق الأرزاق والمتكفل بإيصالها"
+    },
+    "description": {
+      "en": "The Supreme Sustainer who provides sustenance to every living creature.",
+      "am": "ለፍጥረታት ሁሉ ምግብንና መንፈሳዊ ጥንካሬን የሚመግብ ሲሳይ ሰጪ አምላክ።",
+      "ar": "الذي تكفل بأرزاق العباد حسيّها ومعنويّها ولم ينس أحداً."
+    },
+    "reference": {
+      "quran": "Surah Adh-Dhariyat 51:58",
+      "surah_number": 51,
+      "ayah_number": 58,
+      "ayah_ar": "إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ",
+      "hadith": "Abu Dawood 3451"
+    }
+  },
+  {
+    "number": 18,
+    "name_ar": "الْفَتَّاحُ",
+    "name_ar_clean": "الفتاح",
+    "transliteration": "Al-Fattah",
+    "translation": {
+      "en": "The Supreme Opener",
+      "am": "ከፋች / ፍትሐዊ ፈራጅ",
+      "ar": "الحاكم بين خلقه وفاتح أبواب الرحمة"
+    },
+    "description": {
+      "en": "The Opener of the gates of mercy and knowledge, who judges with absolute truth.",
+      "am": "የዝግ በሮችን ሁሉ ከፋች፣ በባሮቹ መካከል በእውነትና በፍትሕ ፈራጅ የሆነ ጌታ።",
+      "ar": "الذي يفتح أبواب الخير والرحمة ويحكم بين عباده بالعدል."
+    },
+    "reference": {
+      "quran": "Surah Saba 34:26",
+      "surah_number": 34,
+      "ayah_number": 26,
+      "ayah_ar": "وَهُوَ الْفَتَّاحُ الْعَلِيمُ",
+      "hadith": "Sahih Muslim 713"
+    }
+  },
+  {
+    "number": 19,
+    "name_ar": "الْعَلِيمُ",
+    "name_ar_clean": "العليم",
+    "transliteration": "Al-'Alim",
+    "translation": {
+      "en": "The All-Knowing",
+      "am": "ሁሉን አዋቂ",
+      "ar": "المحيط علمه بكل شيء"
+    },
+    "description": {
+      "en": "The All-Knowing whose boundless knowledge encompasses the seen and unseen.",
+      "am": "ያለፈውን፣ የአሁኑንና የሚመጣውን ፍጹም በሆነ እውቀቱ ያካበበ ሁሉን አዋቂ ጌታ።",
+      "ar": "الذي أحاط علمه بالظواهر والبواطن، وما كان وما سيكون."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:115",
+      "surah_number": 2,
+      "ayah_number": 115,
+      "ayah_ar": "إِنَّ اللَّهَ وَاسِعٌ عَلِيمٌ",
+      "hadith": "Sahih al-Bukhari 7379"
+    }
+  },
+  {
+    "number": 20,
+    "name_ar": "الْقَابِضُ",
+    "name_ar_clean": "القابض",
+    "transliteration": "Al-Qabid",
+    "translation": {
+      "en": "The Withholder",
+      "am": "ቸብ አድራጊ / ያዥ",
+      "ar": "المضيّق للرزق بحكمته"
+    },
+    "description": {
+      "en": "The One who withholds and restricts provision and souls with divine wisdom.",
+      "am": "በጥበቡ ሲሳይን የሚያጠብና ነፍሳትን የሚይዝ ጌታ።",
+      "ar": "الذي يقبض الرزق والأرواح بمشيئته وحكمته البالغة."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:245",
+      "surah_number": 2,
+      "ayah_number": 245,
+      "ayah_ar": "وَاللَّهُ يَقْبِضُ وَيَبْسُطُ",
+      "hadith": "Sunan at-Tirmidhi 1314"
+    }
+  },
+  {
+    "number": 21,
+    "name_ar": "الْبَاسِطُ",
+    "name_ar_clean": "الباسط",
+    "transliteration": "Al-Basit",
+    "translation": {
+      "en": "The Expander",
+      "am": "ዘርጊ / ሰፊ አድራጊ",
+      "ar": "الموسّع للرزق والرحمة"
+    },
+    "description": {
+      "en": "The One who broadens and generously expands provision, knowledge, and joy.",
+      "am": "ሲሳይንና እዝነትን ለሚሻው ባሪያው የሚያሰፋና የሚዘረጋ ቸር ጌታ።",
+      "ar": "الذي يبسط الرزق لمن يشاء بجوده وفضله، وينشر رحمته."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:245",
+      "surah_number": 2,
+      "ayah_number": 245,
+      "ayah_ar": "وَاللَّهُ يَقْبِضُ وَيَبْسُطُ وَإِلَيْهِ تُرْجَعُونَ",
+      "hadith": "Sunan at-Tirmidhi 1314"
+    }
+  },
+  {
+    "number": 22,
+    "name_ar": "الْخَافِضُ",
+    "name_ar_clean": "الخافض",
+    "transliteration": "Al-Khafid",
+    "translation": {
+      "en": "The Abaser",
+      "am": "ዝቅ አድራጊ",
+      "ar": "المذل لأهل الكفر والطغيان"
+    },
+    "description": {
+      "en": "The One who lowers the arrogant and humbles transgressors.",
+      "am": "ትዕቢተኞችንና ከሀዲዎችን ዝቅ የሚያደርግና የሚያዋርድ ፍትሐዊ ጌታ።",
+      "ar": "الذي يخفض الجبابرة والمتكبرين، ويحط من قدر أعدائه."
+    },
+    "reference": {
+      "quran": "Surah Al-Waqi'ah 56:3",
+      "surah_number": 56,
+      "ayah_number": 3,
+      "ayah_ar": "خَافِضَةٌ رَّافِعَةٌ",
+      "hadith": "Sunan Ibn Majah 3861"
+    }
+  },
+  {
+    "number": 23,
+    "name_ar": "الرَّافِعُ",
+    "name_ar_clean": "الرافع",
+    "transliteration": "Ar-Rafi'",
+    "translation": {
+      "en": "The Exalter",
+      "am": "ከፍ አድራጊ",
+      "ar": "المعلي لأهل الإيمان والتقوى"
+    },
+    "description": {
+      "en": "The One who elevates the righteous in status, knowledge, and honor.",
+      "am": "አማኞችንና ምሁራንን በደረጃ፣ በክብርና በጀነት ከፍ የሚያደርግ ጌታ።",
+      "ar": "الذي يرفع أولياءه بالتقوى والإيمان في الدنيا والآخرة."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:165",
+      "surah_number": 6,
+      "ayah_number": 165,
+      "ayah_ar": "وَرَفَعَ بَعْضَكُمْ فَوْقَ بَعْضٍ دَرَجَاتٍ",
+      "hadith": "Sahih Muslim 817"
+    }
+  },
+  {
+    "number": 24,
+    "name_ar": "الْمُعِزُّ",
+    "name_ar_clean": "المعز",
+    "transliteration": "Al-Mu'izz",
+    "translation": {
+      "en": "The Bestower of Honor",
+      "am": "አክባሪ / የበላይ አድራጊ",
+      "ar": "الواهب للعزة والتمكين لمن يشاء"
+    },
+    "description": {
+      "en": "The One who grants real honor, dignity, and sovereignty to whom He wills.",
+      "am": "ለሚሻው ሰው ክብርን፣ ልዕልናንና ጥንካሬን የሚሰጥ ጌታ።",
+      "ar": "الذي يعز من يشاء بطاعته، ويمنحه العزة الحقيقية والتمكين."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:26",
+      "surah_number": 3,
+      "ayah_number": 26,
+      "ayah_ar": "تُعِزُّ مَن تَشَاءُ وَتُذِلُّ مَن تَشَاءُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 25,
+    "name_ar": "الْمُذِلُّ",
+    "name_ar_clean": "المذل",
+    "transliteration": "Al-Mudhill",
+    "translation": {
+      "en": "The Humiliator",
+      "am": "አዋራጅ",
+      "ar": "الذي يسلب العزة عمن عصاه"
+    },
+    "description": {
+      "en": "The One who strips power and casts disgrace upon those who rebel against truth.",
+      "am": "በእውነት ላይ ያመጹትንና ክህደትን የመረጡትን የሚያዋርድና ውርደት የሚያከናንብ ጌታ።",
+      "ar": "الذي يذل أعداءه بمعصيتهم ويسلبهم الكرامة في الدارين."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:26",
+      "surah_number": 3,
+      "ayah_number": 26,
+      "ayah_ar": "وَتُذِلُّ مَن تَشَاءُ بِيَدِكَ الْخَيْرُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 26,
+    "name_ar": "السَّمِيعُ",
+    "name_ar_clean": "السميع",
+    "transliteration": "As-Sami'",
+    "translation": {
+      "en": "The All-Hearing",
+      "am": "ሰሚ / ሁሉን ሰሚ",
+      "ar": "الذي وسع سمعه جميع الأصوات"
+    },
+    "description": {
+      "en": "The All-Hearing whose ear hears every whisper, prayer, and silent thought.",
+      "am": "ምስጢርንም ይሁን ጩኸትን የሚሰማ፣ የባሮቹን ዱዓ ተቀባይ የሆነ ሁሉን ሰሚ ጌታ።",
+      "ar": "الذي لا يخفى عليه صوت في الأرض ولا في السماء جلياً كان أو خفياً."
+    },
+    "reference": {
+      "quran": "Surah Ash-Shura 42:11",
+      "surah_number": 42,
+      "ayah_number": 11,
+      "ayah_ar": "وَهُوَ السَّمِيعُ الْبَصِيرُ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 27,
+    "name_ar": "الْبَصِيرُ",
+    "name_ar_clean": "البصير",
+    "transliteration": "Al-Basir",
+    "translation": {
+      "en": "The All-Seeing",
+      "am": "ሁሉን አዪ / ተመልካች",
+      "ar": "الذي يرى كل موجود دقيقاً أو جليلاً"
+    },
+    "description": {
+      "en": "The All-Seeing who observes every microscopic entity in darkness and light.",
+      "am": "ሁሉንም ነገር በጨለማም ይሁን በብርሃን ፍጹም በሆነ እይታው የሚመለከት አምላክ።",
+      "ar": "الذي يرى دبيب النملة السوداء على الصخرة الصماء في الليلة الظلماء."
+    },
+    "reference": {
+      "quran": "Surah Al-Mulk 67:19",
+      "surah_number": 67,
+      "ayah_number": 19,
+      "ayah_ar": "إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ",
+      "hadith": "Sahih Muslim 2675"
+    }
+  },
+  {
+    "number": 28,
+    "name_ar": "الْحَكَمُ",
+    "name_ar_clean": "الحكم",
+    "transliteration": "Al-Hakam",
+    "translation": {
+      "en": "The Impartial Judge",
+      "am": "ወሳኝ ፈራጅ",
+      "ar": "الحاكم العادل الذي لا مرد لقضائه"
+    },
+    "description": {
+      "en": "The Supreme Judge whose judgment is infallible and whose ruling none can overturn.",
+      "am": "ፍርዱ የማይሻርና በፈጠራቸው ባሮች መካከል በፍጹም ፍትሕ የሚፈርድ ጌታ።",
+      "ar": "الذي يحكم بين العباد بالحق ويفصل في قضاياهم ولا يُرد حكمه."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:114",
+      "surah_number": 6,
+      "ayah_number": 114,
+      "ayah_ar": "أَفَغَيْرَ اللَّهِ أَبْتَغِي حَكَمًا",
+      "hadith": "Abu Dawood 4955"
+    }
+  },
+  {
+    "number": 29,
+    "name_ar": "الْعَدْلُ",
+    "name_ar_clean": "العدل",
+    "transliteration": "Al-'Adl",
+    "translation": {
+      "en": "The Utterly Just",
+      "am": "ፍትሐዊ",
+      "ar": "المنزه عن الظلم والجور"
+    },
+    "description": {
+      "en": "The Utterly Just who never commits even an atom's weight of unfairness.",
+      "am": "አንዲትም የብናኝ ያህል የማይበድል፣ ፍጹም ፍትሐዊ የሆነ ጌታ።",
+      "ar": "الذي لا يظلم أحداً، وأفعاله كلها جارية على سنن السداد والعدالة."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:115",
+      "surah_number": 6,
+      "ayah_number": 115,
+      "ayah_ar": "وَتَمَّتْ كَلِمَتُ رَبِّكَ صِدْقًا وَعَدْلًا",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 30,
+    "name_ar": "اللَّطِيفُ",
+    "name_ar_clean": "اللطيف",
+    "transliteration": "Al-Latif",
+    "translation": {
+      "en": "The Subtle / Gracious",
+      "am": "ረቂቅ / ቸር",
+      "ar": "العالم بدقائق الأمور والمحسن برفق"
+    },
+    "description": {
+      "en": "The Subtle and Kind who delivers blessings through unseen and delicate ways.",
+      "am": "ጥቃቅን ነገሮችን ሁሉ ጠንቅቆ የሚያውቅ፣ በረቂቅ መንገድ ቸርነቱን ለባሮቹ የሚያደርስ ጌታ።",
+      "ar": "الذي يدرك دقائق الأمور ويوصل الإحسان إلى عباده برفق ولطف خفي."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:103",
+      "surah_number": 6,
+      "ayah_number": 103,
+      "ayah_ar": "وَهُوَ اللَّطِيفُ الْخَبِيرُ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 31,
+    "name_ar": "الْخَبِيرُ",
+    "name_ar_clean": "الخبير",
+    "transliteration": "Al-Khabir",
+    "translation": {
+      "en": "The All-Aware",
+      "am": "ውስጠ-ዐዋቂ",
+      "ar": "العالم ببواطن الأشياء وخفاياها"
+    },
+    "description": {
+      "en": "The All-Aware who knows the inner realities, motives, and secrets of all things.",
+      "am": "የልቦችን ምስጢር፣ የተደበቁ ሀሳቦችንና ውስጣዊ ሁኔታዎችን ሁሉ ጠንቅቆ ዐዋቂ የሆነ ጌታ።",
+      "ar": "الذي لا يعزب عنه ما في الضمائر وما تنطوي عليه السرائر."
+    },
+    "reference": {
+      "quran": "Surah Al-Mulk 67:14",
+      "surah_number": 67,
+      "ayah_number": 14,
+      "ayah_ar": "أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ",
+      "hadith": "Sahih al-Bukhari 4812"
+    }
+  },
+  {
+    "number": 32,
+    "name_ar": "الْحَلِيمُ",
+    "name_ar_clean": "الحليم",
+    "transliteration": "Al-Halim",
+    "translation": {
+      "en": "The Most Forbearing",
+      "am": "ታጋሽ / የማይጣደፍ",
+      "ar": "الذي لا يعاجل بالعقوبة مع قدرته عليها"
+    },
+    "description": {
+      "en": "The Most Forbearing who does not hasten to punish, giving sinners time to repent.",
+      "am": "መቅጣት እየቻለ ወዲያው በማጥፋት የማይጣደፍ፣ ባሮቹ እንዲመለሱ ጊዜ የሚሰጥ ታጋሽ ጌታ።",
+      "ar": "الذي يرى معصية العصاة ويحلم عليهم فيؤخر العقوبة لعلهم يتوبون."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:225",
+      "surah_number": 2,
+      "ayah_number": 225,
+      "ayah_ar": "وَاللَّهُ غَفُورٌ حَلِيمٌ",
+      "hadith": "Sahih al-Bukhari 6345"
+    }
+  },
+  {
+    "number": 33,
+    "name_ar": "الْعَظِيمُ",
+    "name_ar_clean": "العظيم",
+    "transliteration": "Al-'Azim",
+    "translation": {
+      "en": "The Magnificent",
+      "am": "ታላቅ / ግዙፍ",
+      "ar": "ذو العظمة والكبرياء المطلق"
+    },
+    "description": {
+      "en": "The Magnificent whose grandeur surpasses all human comprehension and perception.",
+      "am": "ግርማውና ታላቅነቱ በአእምሮ የማይገመት፣ የፍጹም ታላቅነት ባለቤት የሆነ ጌታ።",
+      "ar": "الذي جاوزت عظمته حدود العقول، فلا تدرك الأبصار كنه عظمته."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:255",
+      "surah_number": 2,
+      "ayah_number": 255,
+      "ayah_ar": "وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 34,
+    "name_ar": "الْغَفُورُ",
+    "name_ar_clean": "الغفور",
+    "transliteration": "Al-Ghafur",
+    "translation": {
+      "en": "The Great Forgiver",
+      "am": "ይቅር ባይ / ሸፋኝ",
+      "ar": "الساتر لذنوب عباده والماحي لها"
+    },
+    "description": {
+      "en": "The Supreme Forgiver who wipes out grave sins and covers their traces.",
+      "am": "የባሮቹን ከባድ ወንጀሎች የሚምርና የሚያብስ፣ በራዕሪው የሚሸፍን ይቅር ባይ ጌታ።",
+      "ar": "الذي يستر الذنوب العظيمة ويتجاوز عنها فضلاً وكرماً."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:173",
+      "surah_number": 2,
+      "ayah_number": 173,
+      "ayah_ar": "إِنَّ اللَّهَ غَفُورٌ رَّحِيمٌ",
+      "hadith": "Sahih Muslim 2749"
+    }
+  },
+  {
+    "number": 35,
+    "name_ar": "الشَّكُورُ",
+    "name_ar_clean": "الشكور",
+    "transliteration": "Ash-Shakur",
+    "translation": {
+      "en": "The Most Appreciative",
+      "am": "አመስጋኝ / መልካም መላሽ",
+      "ar": "المثيب على القليل بالثواب الجزيل"
+    },
+    "description": {
+      "en": "The Appreciative who rewards the smallest sincere deed with boundless bounties.",
+      "am": "በትንሽ መልካም ሥራ ትልቅ ደረጃንና ብዙ ምንዳን የሚመነዳ ቸር ጌታ።",
+      "ar": "الذي يقبل اليسير من العمل ويجازي عليه بالكثير من الأجر."
+    },
+    "reference": {
+      "quran": "Surah Fatir 35:30",
+      "surah_number": 35,
+      "ayah_number": 30,
+      "ayah_ar": "إِنَّهُ غَفُورٌ شَكُورٌ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 36,
+    "name_ar": "الْعَلِيُّ",
+    "name_ar_clean": "العلي",
+    "transliteration": "Al-'Aliyy",
+    "translation": {
+      "en": "The Most High",
+      "am": "ልዑቅ / የበላይ",
+      "ar": "المتعالي في ذاته وصفاته وقدره"
+    },
+    "description": {
+      "en": "The Most High in essence, attributes, status, and power above all else.",
+      "am": "በማንነቱ፣ በባህሪያቱና በስልጣኑ ከሁሉ ነገር በላይ እጅግ የላቀ ጌታ።",
+      "ar": "الذي له العلو المطلق علو الذات وعلو القهر وعلو القدر."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:255",
+      "surah_number": 2,
+      "ayah_number": 255,
+      "ayah_ar": "وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 37,
+    "name_ar": "الْكَبِيرُ",
+    "name_ar_clean": "الكبير",
+    "transliteration": "Al-Kabir",
+    "translation": {
+      "en": "The Most Great",
+      "am": "ከሁሉም በላይ ታላቅ",
+      "ar": "الذي كل شيء دونه صغير"
+    },
+    "description": {
+      "en": "The Most Great before whose grandeur the entire cosmos is exceedingly small.",
+      "am": "በግርማው ፊት ፍጥረተ-ዓለሙ ሁሉ እጅግ አነስተኛ የሆነው ታላቅ አምላክ።",
+      "ar": "العظيم الذي تصغر دون كبريائه السماوات والأرض وما فيهما."
+    },
+    "reference": {
+      "quran": "Surah Al-Hajj 22:62",
+      "surah_number": 22,
+      "ayah_number": 62,
+      "ayah_ar": "وَأَنَّ اللَّهَ هُوَ الْعَلِيُّ الْكَبِيرُ",
+      "hadith": "Sahih Muslim 601"
+    }
+  },
+  {
+    "number": 38,
+    "name_ar": "الْحَفِيظُ",
+    "name_ar_clean": "الحفيظ",
+    "transliteration": "Al-Hafiz",
+    "translation": {
+      "en": "The Preserver",
+      "am": "ጠባቂ / አስቀሪ",
+      "ar": "الحافظ لكل شيء من الزوال والنقص"
+    },
+    "description": {
+      "en": "The Preserver who protects the heavens, the earth, and the deeds of His servants.",
+      "am": "ሰማይና ምድርን፣ እንዲሁም የባሮቹን ስራዎች ሳይዘነጋ ጠብቆ የሚያቆይ ጌታ።",
+      "ar": "الذي يحفظ السماوات والأرض أن تزولا، ويحفظ أعمال العباد لإحصائها."
+    },
+    "reference": {
+      "quran": "Surah Hud 11:57",
+      "surah_number": 11,
+      "ayah_number": 57,
+      "ayah_ar": "إِنَّ رَبِّي عَلَىٰ كُلِّ شَيْءٍ حَفِيظٌ",
+      "hadith": "Sunan at-Tirmidhi 2516"
+    }
+  },
+  {
+    "number": 39,
+    "name_ar": "الْمُقِيتُ",
+    "name_ar_clean": "المقيت",
+    "transliteration": "Al-Muqit",
+    "translation": {
+      "en": "The Nourisher",
+      "am": "መጋቢ / ብርታት ሰጪ",
+      "ar": "الخالق للأقوات والمقدر لها والمقتدر"
+    },
+    "description": {
+      "en": "The Sustainer who creates physical and spiritual nourishment and maintains life.",
+      "am": "ለፍጥረታት ሁሉ አስፈላጊውን ቀለብ የሚፈጥርና ሕይወታቸውን የሚያቆይ መጋቢ ጌታ።",
+      "ar": "الذي يوصل القوت إلى الأبدان والقلوب وهو الحفيظ المقتدر."
+    },
+    "reference": {
+      "quran": "Surah An-Nisa 4:85",
+      "surah_number": 4,
+      "ayah_number": 85,
+      "ayah_ar": "وَكَانَ اللَّهُ عَلَىٰ كُلِّ شَيْءٍ مُّقِيتًا",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 40,
+    "name_ar": "الْحَسِيبُ",
+    "name_ar_clean": "الحسيب",
+    "transliteration": "Al-Hasib",
+    "translation": {
+      "en": "The Reckoner / Sufficient",
+      "am": "ተሳሳቢ / በቂ መጠጊያ",
+      "ar": "الكافي لعباده والمحاسب لهم"
+    },
+    "description": {
+      "en": "The Sufficient Protector who suffices those who rely on Him, and tallies every deed.",
+      "am": "ለሚመኩበት በቂ ረዳት የሆነ፣ በቂያማ ቀን የባሮቹን ስራ በትክክል ተሳሳቢ ጌታ።",
+      "ar": "الكافي لمن توكل عليه، والمحاسب لخلقه على أعمالهم يوم القيامة."
+    },
+    "reference": {
+      "quran": "Surah An-Nisa 4:6",
+      "surah_number": 4,
+      "ayah_number": 6,
+      "ayah_ar": "وَكَفَىٰ بِاللَّهِ حَسِيبًا",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 41,
+    "name_ar": "الْجَلِيلُ",
+    "name_ar_clean": "الجليل",
+    "transliteration": "Al-Jalil",
+    "translation": {
+      "en": "The Majestic",
+      "am": "የክብርና ግርማ ባለቤት",
+      "ar": "المتصف بصفات الجلال والعظمة"
+    },
+    "description": {
+      "en": "The Majestic One adorned with absolute attributes of awe, honor, and glory.",
+      "am": "የፍጹም ግርማ፣ ክብርና የበላይነት ባህሪያት ባለቤት የሆነ ጌታ።",
+      "ar": "الموصوف بنعوت الجلال والكمال المستحق للتعظيم والإجلال."
+    },
+    "reference": {
+      "quran": "Surah Ar-Rahman 55:27",
+      "surah_number": 55,
+      "ayah_number": 27,
+      "ayah_ar": "وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 42,
+    "name_ar": "الْكَرِيمُ",
+    "name_ar_clean": "الكريم",
+    "transliteration": "Al-Karim",
+    "translation": {
+      "en": "The Most Generous",
+      "am": "ቸር / ለጋስ",
+      "ar": "الكثير الخير الدائم العطاء بغير سؤال"
+    },
+    "description": {
+      "en": "The Generous One who gives profusely before being asked and pardons with ease.",
+      "am": "ሳይጠይቁትም የሚሰጥ፣ ሲጠይቁት ደግሞ ያለ ስስት የሚለግስና ይቅር ባይ ቸር ጌታ።",
+      "ar": "الذي لا ينفد عطاؤه، يعطي من غير سؤال ويتجاوز عن الذنوب كرماً."
+    },
+    "reference": {
+      "quran": "Surah Al-Infitar 82:6",
+      "surah_number": 82,
+      "ayah_number": 6,
+      "ayah_ar": "مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ",
+      "hadith": "Sahih Muslim 2675"
+    }
+  },
+  {
+    "number": 43,
+    "name_ar": "الرَّقِيبُ",
+    "name_ar_clean": "الرقيب",
+    "transliteration": "Ar-Raqib",
+    "translation": {
+      "en": "The Ever-Watchful",
+      "am": "ተጠባባቂ / ተቆጣጣሪ",
+      "ar": "المطلع على ما في الصدور والرقيب على كل عمل"
+    },
+    "description": {
+      "en": "The Ever-Watchful from whom not even a blink or fleeting thought is concealed.",
+      "am": "በልቦች ውስጥ ያለውን ሳይቀር የሚከታተልና ፍጥረታትን የማይዘነጋ ተቆጣጣሪ ጌታ።",
+      "ar": "الذي لا يغفل عن مراقبة شيء ولا يغيب عن نظره مثقال ذرة."
+    },
+    "reference": {
+      "quran": "Surah Al-Ahzab 33:52",
+      "surah_number": 33,
+      "ayah_number": 52,
+      "ayah_ar": "وَكَانَ اللَّهُ عَلَىٰ كُلِّ شَيْءٍ رَّقِيبًا",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 44,
+    "name_ar": "الْمُجِيبُ",
+    "name_ar_clean": "المجيب",
+    "transliteration": "Al-Mujib",
+    "translation": {
+      "en": "The Responsive",
+      "am": "ዱዓ ተቀባይ / ምላሽ ሰጪ",
+      "ar": "السامع لدعاء السائلين والمستجيب لهم"
+    },
+    "description": {
+      "en": "The One who answers the supplications of those who call upon Him in distress.",
+      "am": "የተጨነቁትን ጸሎት የሚሰማና የጠያቂዎችን ዱዓ ምላሽ የሚሰጥ ጌታ።",
+      "ar": "الذي يجيب دعوة الداع إذا دعاه ويكشف السوء عن المضطرين."
+    },
+    "reference": {
+      "quran": "Surah Hud 11:61",
+      "surah_number": 11,
+      "ayah_number": 61,
+      "ayah_ar": "إِنَّ رَبِّي قَرِيبٌ مُّجِيبٌ",
+      "hadith": "Sunan at-Tirmidhi 3540"
+    }
+  },
+  {
+    "number": 45,
+    "name_ar": "الْوَاسِعُ",
+    "name_ar_clean": "الواسع",
+    "transliteration": "Al-Wasi'",
+    "translation": {
+      "en": "The All-Encompassing",
+      "am": "ሰፊ / ሁሉን ያካተተ",
+      "ar": "الذي وسعت رحمته وعلمه كل شيء"
+    },
+    "description": {
+      "en": "The Infinite whose knowledge, mercy, provision, and domain encompass all existence.",
+      "am": "እውቀቱ፣ እዝነቱ፣ ሲሳዩና ስልጣኑ ፍጥረተ-ዓለሙን ያካተተ እጅግ ሰፊ ጌታ።",
+      "ar": "الذي لا نهاية لجوده وسلطانه، ووسعت رحمته وعلمه الخلائق."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:268",
+      "surah_number": 2,
+      "ayah_number": 268,
+      "ayah_ar": "وَاللَّهُ وَاسِعٌ عَلِيمٌ",
+      "hadith": "Sahih al-Bukhari 7379"
+    }
+  },
+  {
+    "number": 46,
+    "name_ar": "الْحَكِيمُ",
+    "name_ar_clean": "الحكيم",
+    "transliteration": "Al-Hakim",
+    "translation": {
+      "en": "The All-Wise",
+      "am": "ጥበበኛ",
+      "ar": "المحكم للأمور الواضع لكل شيء في موضعه"
+    },
+    "description": {
+      "en": "The All-Wise who places everything in its rightful place with ultimate purpose.",
+      "am": "ሁሉንም ነገር በተገቢው ቦታ በጥበብ የሚያስቀምጥና ሥራው ሁሉ የጠራ ጥበበኛ ጌታ።",
+      "ar": "الذي أحكم تدبير المخلوقات وأتقن صنعها برأفته وحكمته البالغة."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:129",
+      "surah_number": 2,
+      "ayah_number": 129,
+      "ayah_ar": "إِنَّكَ أَنتَ الْعَزِيزُ الْحَكِيمُ",
+      "hadith": "Sahih Muslim 2707"
+    }
+  },
+  {
+    "number": 47,
+    "name_ar": "الْوَدُودُ",
+    "name_ar_clean": "الودود",
+    "transliteration": "Al-Wadud",
+    "translation": {
+      "en": "The Most Loving",
+      "am": "አፍቃሪ / ወዳድ",
+      "ar": "المحب لأوليائه والمتودد إليهم بنعمه"
+    },
+    "description": {
+      "en": "The Loving One who cherishes His righteous servants and manifests love through bounties.",
+      "am": "ቅን አማኞችን የሚወድ፣ በፍቅርና በበረከት ለባሮቹ የሚቀርብ አፍቃሪ ጌታ።",
+      "ar": "الذي يحب أولياءه الصالحين، ويحببهم إلى خلقه ويغمرهم بفضله."
+    },
+    "reference": {
+      "quran": "Surah Al-Buruj 85:14",
+      "surah_number": 85,
+      "ayah_number": 14,
+      "ayah_ar": "وَهُوَ الْغَفُورُ الْوَدُودُ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 48,
+    "name_ar": "الْمَجِيدُ",
+    "name_ar_clean": "المجيد",
+    "transliteration": "Al-Majid",
+    "translation": {
+      "en": "The All-Glorious",
+      "am": "የላቀ ክብር ባለቤት",
+      "ar": "الوافر المجد والشرف والكمال"
+    },
+    "description": {
+      "en": "The All-Glorious whose greatness, majesty, and noble kindness are supreme.",
+      "am": "የላቀ ክብር፣ ልዕልናና ፍጹም ውበት ያለው የተከበረ ጌታ።",
+      "ar": "الذي له الشرف التام والمجد الكامل والعطاء الواسع والفضل العظيم."
+    },
+    "reference": {
+      "quran": "Surah Hud 11:73",
+      "surah_number": 11,
+      "ayah_number": 73,
+      "ayah_ar": "إِنَّهُ حَمِيدٌ مَّجِيدٌ",
+      "hadith": "Sahih al-Bukhari 3370"
+    }
+  },
+  {
+    "number": 49,
+    "name_ar": "الْبَاعِثُ",
+    "name_ar_clean": "الباعث",
+    "transliteration": "Al-Ba'ith",
+    "translation": {
+      "en": "The Resurrector",
+      "am": "ቀስቃሽ / ህያው አድራጊ",
+      "ar": "المحيي للموتى بعد فنائهم للجزاء"
+    },
+    "description": {
+      "en": "The One who resurrects all humans from death on the Day of Judgment.",
+      "am": "በቂያማ ቀን ሙታንን ከመቃብር ቀስቅሶ ለምርመራ የሚያቆም ጌታ።",
+      "ar": "الذي يبعث الخلائق من القبور يوم القيامة للحساب والجزاء."
+    },
+    "reference": {
+      "quran": "Surah Al-Hajj 22:7",
+      "surah_number": 22,
+      "ayah_number": 7,
+      "ayah_ar": "وَأَنَّ اللَّهَ يَبْعَثُ مَن فِي الْقُبُورِ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 50,
+    "name_ar": "الشَّهِيدُ",
+    "name_ar_clean": "الشهيد",
+    "transliteration": "Ash-Shahid",
+    "translation": {
+      "en": "The All-Witnessing",
+      "am": "ምስክር / ሁሉን አዋቂ",
+      "ar": "الشاهد الحاضر الذي لا يغيب عنه شيء"
+    },
+    "description": {
+      "en": "The Supreme Witness who is present everywhere and sees every event as it occurs.",
+      "am": "በሁሉም ቦታ የሚገኝ፣ ሁሉንም ድርጊት በአካል የሚመለከት ታላቅ ምስክር።",
+      "ar": "الذي لا يغيب عنه شيء، الحاضر مع خلقه بعلمه ورؤيته وإحاطته."
+    },
+    "reference": {
+      "quran": "Surah Al-Ma'idah 5:117",
+      "surah_number": 5,
+      "ayah_number": 117,
+      "ayah_ar": "وَأَنتَ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 51,
+    "name_ar": "الْحَقُّ",
+    "name_ar_clean": "الحق",
+    "transliteration": "Al-Haqq",
+    "translation": {
+      "en": "The Absolute Truth",
+      "am": "ፍጹም እውነት",
+      "ar": "الموجود الثابت الدائم الذي لا يتغير"
+    },
+    "description": {
+      "en": "The Absolute Reality and Truth whose existence and promises are unshakable.",
+      "am": "መኖሩና ቃሉ ዘላለማዊ እውነት የሆነ፣ ምንም ዓይነት ጥርጣሬ የሌለበት ጌታ።",
+      "ar": "الواجب الوجود الذي لا شك فيه ولا زوال، وأمره ووعده وقوله الحق."
+    },
+    "reference": {
+      "quran": "Surah Al-Hajj 22:6",
+      "surah_number": 22,
+      "ayah_number": 6,
+      "ayah_ar": "ذَٰلِكَ بِأَنَّ اللَّهَ هُوَ الْحَقُّ",
+      "hadith": "Sahih al-Bukhari 1120"
+    }
+  },
+  {
+    "number": 52,
+    "name_ar": "الْوَكِيلُ",
+    "name_ar_clean": "الوكيل",
+    "transliteration": "Al-Wakil",
+    "translation": {
+      "en": "The Trustee / Disposer",
+      "am": "መመኪያ / ታማኝ ጠባቂ",
+      "ar": "الكفيل بأمور خلقه القائم بمصالحهم"
+    },
+    "description": {
+      "en": "The Dependable Guardian upon whom all creation can safely cast their trust.",
+      "am": "ነገሮችን ሁሉ በእርሱ ላይ ለሚጥሉ ሰዎች ታማኝና በቂ ጠባቂ የሆነ ጌታ።",
+      "ar": "الذي يتولى أمور عباده بالرعاية والكفاية، ونعم المولى ونعم الوكيل."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:173",
+      "surah_number": 3,
+      "ayah_number": 173,
+      "ayah_ar": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+      "hadith": "Sahih al-Bukhari 4563"
+    }
+  },
+  {
+    "number": 53,
+    "name_ar": "الْقَوِيُّ",
+    "name_ar_clean": "القوي",
+    "transliteration": "Al-Qawiyy",
+    "translation": {
+      "en": "The All-Strong",
+      "am": "ብርቱ ኃያል",
+      "ar": "صاحب القدرة التامة التي لا يلحقها عجز"
+    },
+    "description": {
+      "en": "The Possessor of complete and inexhaustible strength that never tires.",
+      "am": "ድካም ወይም ስንፍና የማይነካው ፍጹም የብርታትና የኃይል ባለቤት የሆነ ጌታ።",
+      "ar": "الذي له كمال القوة والقدرة، فلا يعجزه شيء في الأرض ولا في السماء."
+    },
+    "reference": {
+      "quran": "Surah Al-Hajj 22:40",
+      "surah_number": 22,
+      "ayah_number": 40,
+      "ayah_ar": "إِنَّ اللَّهَ لَقَوِيٌّ عَزِيزٌ",
+      "hadith": "Sahih Muslim 2675"
+    }
+  },
+  {
+    "number": 54,
+    "name_ar": "الْمَتِينُ",
+    "name_ar_clean": "المتين",
+    "transliteration": "Al-Matin",
+    "translation": {
+      "en": "The Firm / Steadfast",
+      "am": "ጽኑ / ጽኑዕ",
+      "ar": "الشديد القوة الذي لا ينقطع اقتداره"
+    },
+    "description": {
+      "en": "The Steadfast whose almighty strength remains unshaken forever.",
+      "am": "ጽኑነቱ የማይናወጥና ኃይሉ የማይቋረጥ ጽኑ አምላክ።",
+      "ar": "الشديد في قدرته وسلطانه، الذي لا تلحقه مشقة ولا يمسه لغوب."
+    },
+    "reference": {
+      "quran": "Surah Adh-Dhariyat 51:58",
+      "surah_number": 51,
+      "ayah_number": 58,
+      "ayah_ar": "إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ",
+      "hadith": "Musnad Ahmad 1878"
+    }
+  },
+  {
+    "number": 55,
+    "name_ar": "الْوَلِيُّ",
+    "name_ar_clean": "الولي",
+    "transliteration": "Al-Waliyy",
+    "translation": {
+      "en": "The Protecting Friend",
+      "am": "ረዳት ወዳጅ",
+      "ar": "الناصر المحب لأوليائه المتولي لأمورهم"
+    },
+    "description": {
+      "en": "The Loving Patron who supports, guides, and protects His righteous servants.",
+      "am": "ቅን ባሮቹን የሚወድ፣ የሚረዳና ጉዳዮቻቸውን የሚያከናውን ታማኝ ወዳጅ።",
+      "ar": "الذي يتولى عباده الصالحين بالنصر والتأييد والهداية."
+    },
+    "reference": {
+      "quran": "Surah Ash-Shura 42:28",
+      "surah_number": 42,
+      "ayah_number": 28,
+      "ayah_ar": "وَهُوَ الْوَلِيُّ الْحَمِيدُ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 56,
+    "name_ar": "الْحَمِيدُ",
+    "name_ar_clean": "الحميد",
+    "transliteration": "Al-Hamid",
+    "translation": {
+      "en": "The Praiseworthy",
+      "am": "ምስጉን",
+      "ar": "المستحق للحمد كله في ذاته وأفعاله"
+    },
+    "description": {
+      "en": "The Praiseworthy who is eternally praised for His majestic grace and wisdom.",
+      "am": "በማንነቱ፣ በጸጋውና በሥራው ሁሉ ፍጹም ምስጋና የሚገባው ምስጉን ጌታ።",
+      "ar": "المحمود على كل حال، صاحب المحامد والصفات الكاملة."
+    },
+    "reference": {
+      "quran": "Surah Ibrahim 14:1",
+      "surah_number": 14,
+      "ayah_number": 1,
+      "ayah_ar": "إِلَىٰ صِرَاطِ الْعَزِيزِ الْحَمِيدِ",
+      "hadith": "Sahih al-Bukhari 3370"
+    }
+  },
+  {
+    "number": 57,
+    "name_ar": "الْمُحْصِي",
+    "name_ar_clean": "المحصي",
+    "transliteration": "Al-Muhsi",
+    "translation": {
+      "en": "The Accounter",
+      "am": "ቆጣሪ / ሁሉን አጠቃላይ",
+      "ar": "العالم بمقادير الأشياء ومحصيها بدقة"
+    },
+    "description": {
+      "en": "The One who knows and records the exact count and measure of all things.",
+      "am": "ሁሉንም ነገር በቁጥርና በልክ ጠንቅቆ የሚያውቅና መዝግቦ የሚያስቀር ጌታ።",
+      "ar": "الذي أحاط بكل شيء علماً وأحصى كل شيء عدداً لا يفوته شيء."
+    },
+    "reference": {
+      "quran": "Surah Maryam 19:94",
+      "surah_number": 19,
+      "ayah_number": 94,
+      "ayah_ar": "لَّقَدْ أَحْصَاهُمْ وَعَدَّهُمْ عَدًّا",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 58,
+    "name_ar": "الْمُبْدِئُ",
+    "name_ar_clean": "المبدئ",
+    "transliteration": "Al-Mubdi'",
+    "translation": {
+      "en": "The Originator",
+      "am": "ጀማሪ / አስገኚ",
+      "ar": "المبتدئ لخلق الكائنات أولاً من العدم"
+    },
+    "description": {
+      "en": "The One who initiates creation from absolute non-existence.",
+      "am": "ፍጥረታትን ሁሉ ያለ ቀዳሚ ምሳሌ ለመጀመሪያ ጊዜ ከምንም ያስገኘ ጌታ።",
+      "ar": "الذي بدأ الخلق وأنشأه من العدم باقتداره ومشيئته."
+    },
+    "reference": {
+      "quran": "Surah Al-Buruj 85:13",
+      "surah_number": 85,
+      "ayah_number": 13,
+      "ayah_ar": "إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ",
+      "hadith": "Sahih al-Bukhari 3208"
+    }
+  },
+  {
+    "number": 59,
+    "name_ar": "الْمُعِيدُ",
+    "name_ar_clean": "المعيد",
+    "transliteration": "Al-Mu'id",
+    "translation": {
+      "en": "The Restorer",
+      "am": "መላሽ / ደጋሚ",
+      "ar": "الذي يعيد الخلق بعد الموت للحساب"
+    },
+    "description": {
+      "en": "The One who restores creation back to life after its death.",
+      "am": "ፍጥረታት ከሞቱና ከፈረሱ በኋላ በቂያማ ቀን መልሶ ህያው የሚያደርግ ጌታ።",
+      "ar": "الذي يرجع الخلائق بعد فنائهم إلى هيئتهم الأولى للجزاء."
+    },
+    "reference": {
+      "quran": "Surah Al-Buruj 85:13",
+      "surah_number": 85,
+      "ayah_number": 13,
+      "ayah_ar": "إِنَّهُ هُوَ يُبْدِئُ وَيُعِيدُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 60,
+    "name_ar": "الْمُحْيِي",
+    "name_ar_clean": "المحيي",
+    "transliteration": "Al-Muhyi",
+    "translation": {
+      "en": "The Giver of Life",
+      "am": "ሕያው አድራጊ",
+      "ar": "الواهب للحياة والقادر على بعث العظام"
+    },
+    "description": {
+      "en": "The One who breathes life into dust and enlivens hearts with faith.",
+      "am": "ሕይወት ለሌለው አካል ሕይወትን የሚሰጥና ልቦችን በእምነት የሚያበራ ጌታ።",
+      "ar": "الذي يحيي النطفة ويبعث الروح في الأجساد، ويحيي القلوب بنور الهدى."
+    },
+    "reference": {
+      "quran": "Surah Ar-Rum 30:50",
+      "surah_number": 30,
+      "ayah_number": 50,
+      "ayah_ar": "إِنَّ ذَٰلِكَ لَمُحْيِي الْمَوْتَىٰ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 61,
+    "name_ar": "الْمُمِيتُ",
+    "name_ar_clean": "المميت",
+    "transliteration": "Al-Mumit",
+    "translation": {
+      "en": "The Creator of Death",
+      "am": "አሞቺ / ገዳይ",
+      "ar": "المقدّر للموت على خلقه بمشيئته"
+    },
+    "description": {
+      "en": "The One who decrees death upon all living entities at their appointed time.",
+      "am": "ለፍጥረታት ሁሉ ሞትን የወሰነና በተገቢው ሰዓት ነፍስን የሚወስድ ጌታ።",
+      "ar": "الذي يسلب الحياة عن الأحياء بمشيئته حين ينقضي أجلهم."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:258",
+      "surah_number": 2,
+      "ayah_number": 258,
+      "ayah_ar": "رَبِّيَ الَّذِي يُحْيِي وَيُمِيتُ",
+      "hadith": "Sahih Muslim 2707"
+    }
+  },
+  {
+    "number": 62,
+    "name_ar": "الْحَيُّ",
+    "name_ar_clean": "الحي",
+    "transliteration": "Al-Hayy",
+    "translation": {
+      "en": "The Ever-Living",
+      "am": "ሁሌም ሕያው",
+      "ar": "الدائم الباقي الذي لا يموت ولا يزول"
+    },
+    "description": {
+      "en": "The Ever-Living who possesses perfect, eternal life without beginning or end.",
+      "am": "ሞትና እንቅልፍ የማይነካው፣ ዘላለማዊ ፍጹም ሕይወት ያለው ጌታ።",
+      "ar": "الذي له الحياة الكاملة الأزلية الأبدية التي لا يلحقها فناء ولا موت."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:255",
+      "surah_number": 2,
+      "ayah_number": 255,
+      "ayah_ar": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 63,
+    "name_ar": "الْقَيُّومُ",
+    "name_ar_clean": "القيوم",
+    "transliteration": "Al-Qayyum",
+    "translation": {
+      "en": "The Self-Subsisting",
+      "am": "ራሱን ቻይ / አስተዳዳሪ",
+      "ar": "القائم بنفسه المقيم لكل ما سواه"
+    },
+    "description": {
+      "en": "The Self-Sustaining upon whom everything in the universe depends entirely.",
+      "am": "ራሱን የቻለ፣ የፍጥረተ-ዓለሙን ጉዳይ ሁሉ በብቃት የሚያስተዳድር ጌታ።",
+      "ar": "القائم بأمور خلقه، المدبر لشؤون ملكه، الغني عن جميع الكائنات."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:255",
+      "surah_number": 2,
+      "ayah_number": 255,
+      "ayah_ar": "الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 64,
+    "name_ar": "الْوَاجِدُ",
+    "name_ar_clean": "الواجد",
+    "transliteration": "Al-Wajid",
+    "translation": {
+      "en": "The Perceiver / Finder",
+      "am": "አግኚ / ባለጸጋ",
+      "ar": "الغني الذي لا يعوزه شيء"
+    },
+    "description": {
+      "en": "The Resourceful Finder who lacks nothing and attains whatever He wills.",
+      "am": "ምንም የማይሳነው፣ የፈለገውን ወዲያው የሚያገኝ ፍጹም ባለጸጋ።",
+      "ar": "الذي يجد كل ما يريده ولا يفوته مطلوب ولا يعتريه فقر."
+    },
+    "reference": {
+      "quran": "Surah Ad-Duha 93:6",
+      "surah_number": 93,
+      "ayah_number": 6,
+      "ayah_ar": "أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 65,
+    "name_ar": "الْمَاجِدُ",
+    "name_ar_clean": "الماجد",
+    "transliteration": "Al-Majid",
+    "translation": {
+      "en": "The Noble",
+      "am": "የከበረ",
+      "ar": "الكثير الجود والمجد الواسع"
+    },
+    "description": {
+      "en": "The Noble One full of glory, boundless generosity, and majestic grace.",
+      "am": "ክብሩና ልግስናው እጅግ የሰፋ፣ የከበረ ጌታ።",
+      "ar": "صاحب الشرف والرفعة والفضل الواسع والجود الدائم."
+    },
+    "reference": {
+      "quran": "Surah Al-Buruj 85:15",
+      "surah_number": 85,
+      "ayah_number": 15,
+      "ayah_ar": "ذُو الْعَرْشِ الْمَجِيدُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 66,
+    "name_ar": "الْوَاحِدُ",
+    "name_ar_clean": "الواحد",
+    "transliteration": "Al-Wahid",
+    "translation": {
+      "en": "The Unique One",
+      "am": "አንድ / አቻ የሌለው",
+      "ar": "المتفرد الذي لا شريك له في ذاته"
+    },
+    "description": {
+      "en": "The Unique One who has no peer, associate, or counterpart in His essence.",
+      "am": "በማንነቱ፣ በባህሪውና በስራው አቻና ተጋሪ የሌለው ብቸኛ ጌታ።",
+      "ar": "الذي لا ثاني له، المنفرد بالألوهية والربوبية والأسماء والصفات."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:163",
+      "surah_number": 2,
+      "ayah_number": 163,
+      "ayah_ar": "وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ",
+      "hadith": "Sahih al-Bukhari 7372"
+    }
+  },
+  {
+    "number": 67,
+    "name_ar": "الْأَحَدُ",
+    "name_ar_clean": "الأحد",
+    "transliteration": "Al-Ahad",
+    "translation": {
+      "en": "The Indivisible One",
+      "am": "ብቸኛ አንድ",
+      "ar": "المتفرد بالكمال المطلق الذي لا يتجزأ"
+    },
+    "description": {
+      "en": "The Indivisible Single Lord who is uniquely one in every aspect.",
+      "am": "አምሳያ የሌለው፣ የማይከፋፈል፣ ፍጹም ብቸኛ የሆነ አምላክ።",
+      "ar": "الواحد الأحد الفرد الصمد الذي لم يلد ولم يولد ولم يكن له كفواً أحد."
+    },
+    "reference": {
+      "quran": "Surah Al-Ikhlas 112:1",
+      "surah_number": 112,
+      "ayah_number": 1,
+      "ayah_ar": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+      "hadith": "Sahih al-Bukhari 5013"
+    }
+  },
+  {
+    "number": 68,
+    "name_ar": "الصَّمَدُ",
+    "name_ar_clean": "الصمد",
+    "transliteration": "As-Samad",
+    "translation": {
+      "en": "The Eternal Refuge",
+      "am": "የሁሉ መጠጊያ",
+      "ar": "السيد المقصود في الحوائج كلها"
+    },
+    "description": {
+      "en": "The Eternal Refuge to whom all creatures turn for their needs.",
+      "am": "ፍጥረታት ሁሉ ለፍላጎታቸው የሚመኩበትና የሚጠጉበት፣ እርሱ ግን የማንም ጥገኛ ያልሆነ ጌታ።",
+      "ar": "الذي تصمد إليه الخلائق في حوائجها، السيد الكامل في سيادته وعظمته."
+    },
+    "reference": {
+      "quran": "Surah Al-Ikhlas 112:2",
+      "surah_number": 112,
+      "ayah_number": 2,
+      "ayah_ar": "اللَّهُ الصَّمَدُ",
+      "hadith": "Sahih al-Bukhari 4974"
+    }
+  },
+  {
+    "number": 69,
+    "name_ar": "الْقَادِرُ",
+    "name_ar_clean": "القادر",
+    "transliteration": "Al-Qadir",
+    "translation": {
+      "en": "The Omnipotent",
+      "am": "ቻይ / ሁሉን ማድረግ የሚችል",
+      "ar": "صاحب القدرة على إيجاد ما يشاء وإعدامه"
+    },
+    "description": {
+      "en": "The All-Capable who has absolute power to execute whatever He wills.",
+      "am": "ሁሉን ነገር ለማድረግ ሙሉ ችሎታ ያለውና አንዳች የማይሳነው ጌታ።",
+      "ar": "الذي إن شاء فعل وإن شاء لم يفعل، ولا يعجزه شيء أراده."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:65",
+      "surah_number": 6,
+      "ayah_number": 65,
+      "ayah_ar": "قُلْ هُوَ الْقَادِرُ عَلَىٰ أَن يَبْعَثَ عَلَيْكُمْ عَذَابًا",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 70,
+    "name_ar": "الْمُقْتَدِرُ",
+    "name_ar_clean": "المقتدر",
+    "transliteration": "Al-Muqtadir",
+    "translation": {
+      "en": "The All-Determining",
+      "am": "ፍጹም ኃያል",
+      "ar": "المظهر لقدرته التامة في خلقه"
+    },
+    "description": {
+      "en": "The Omnipotent Determiner whose decisive power unfolds throughout existence.",
+      "am": "ኃይሉን በፍጥረተ-ዓለሙ ውስጥ በተጨባጭ የሚያሳይ ፍጹም ኃያል ጌታ።",
+      "ar": "الذي تتجلى قدرته في تصريف الكائنات، فلا راد لقضائه."
+    },
+    "reference": {
+      "quran": "Surah Al-Qamar 54:42",
+      "surah_number": 54,
+      "ayah_number": 42,
+      "ayah_ar": "فَأَخَذْنَاهُمْ أَخْذَ عَزِيزٍ مُّقْتَدِرٍ",
+      "hadith": "Sahih al-Bukhari 4875"
+    }
+  },
+  {
+    "number": 71,
+    "name_ar": "الْمُقَدِّمُ",
+    "name_ar_clean": "المقدم",
+    "transliteration": "Al-Muqaddim",
+    "translation": {
+      "en": "The Expediter",
+      "am": "አስቀዳሚ",
+      "ar": "المقدّم للأشياء في مواضعها وفق حكمته"
+    },
+    "description": {
+      "en": "The One who brings forward what He wills in status, knowledge, and time.",
+      "am": "በጥበቡ ነገሮችን፣ ሰዎችንና ሁኔታዎችን ወደ ፊት የሚያስቀድም ጌታ።",
+      "ar": "الذي يقدم من يشاء من خلقه في المنازل والدرجات بمقتضى حكمته."
+    },
+    "reference": {
+      "quran": "Surah Qaf 50:28",
+      "surah_number": 50,
+      "ayah_number": 28,
+      "ayah_ar": "وَقَدْ قَدَّمْتُ إِلَيْكُم بِالْوَعِيدِ",
+      "hadith": "Sahih al-Bukhari 1120"
+    }
+  },
+  {
+    "number": 72,
+    "name_ar": "الْمُؤَخِّرُ",
+    "name_ar_clean": "المؤخر",
+    "transliteration": "Al-Mu'akhkhir",
+    "translation": {
+      "en": "The Delayer",
+      "am": "አቆያይ / አዘግዪ",
+      "ar": "المؤخر لما يشاء بمقتضى عدله وحكمته"
+    },
+    "description": {
+      "en": "The One who postpones events, punishments, or ranks according to divine wisdom.",
+      "am": "ቅጣትንም ይሁን ክስተቶችን በጥበቡ ወደ ኋላ የሚያቆይና የሚያዘገይ ጌታ።",
+      "ar": "الذي يؤخر ما يشاء من الأشياء بحكمته، ويؤخر عقوبة الظالمين لعلهم يتوبون."
+    },
+    "reference": {
+      "quran": "Surah Ibrahim 14:42",
+      "surah_number": 14,
+      "ayah_number": 42,
+      "ayah_ar": "إِنَّمَا يُؤَخِّرُهُمْ لِيَوْمٍ تَشْخَصُ فِيهِ الْأَبْصَارُ",
+      "hadith": "Sahih al-Bukhari 1120"
+    }
+  },
+  {
+    "number": 73,
+    "name_ar": "الْأَوَّلُ",
+    "name_ar_clean": "الأول",
+    "transliteration": "Al-Awwal",
+    "translation": {
+      "en": "The First",
+      "am": "መጀመሪያ የሌለው መጀመሪያ",
+      "ar": "السابق لجميع الكائنات بلا بداية"
+    },
+    "description": {
+      "en": "The First before whom there was nothing in existence.",
+      "am": "ከእርሱ በፊት ምንም ያልነበረ፣ መጀመሪያ የሌለው ዘላለማዊ የመጀመሪያ።",
+      "ar": "الذي ليس قبله شيء، الأزلي القديم الذي لا ابتداء لوجوده."
+    },
+    "reference": {
+      "quran": "Surah Al-Hadid 57:3",
+      "surah_number": 57,
+      "ayah_number": 3,
+      "ayah_ar": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 74,
+    "name_ar": "الْآخِرُ",
+    "name_ar_clean": "الآخر",
+    "transliteration": "Al-Akhir",
+    "translation": {
+      "en": "The Last",
+      "am": "መጨረሻ የሌለው መጨረሻ",
+      "ar": "الباقي بعد فناء خلقه بلا نهاية"
+    },
+    "description": {
+      "en": "The Last who remains after the entire cosmos has perished.",
+      "am": "ፍጥረታት ሁሉ ከጠፉ በኋላ የሚቀር፣ መጨረሻ የሌለው ዘላለማዊ የመጨረሻ።",
+      "ar": "الذي ليس بعده شيء، الأبدي الدائم الباقي بعد فناء الخلائق."
+    },
+    "reference": {
+      "quran": "Surah Al-Hadid 57:3",
+      "surah_number": 57,
+      "ayah_number": 3,
+      "ayah_ar": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 75,
+    "name_ar": "الظَّاهِرُ",
+    "name_ar_clean": "الظاهر",
+    "transliteration": "Az-Zahir",
+    "translation": {
+      "en": "The Manifest",
+      "am": "ግልጽ / በስራው የታወቀ",
+      "ar": "العالي فوق كل شيء والظاهر بآياته"
+    },
+    "description": {
+      "en": "The Manifest who is elevated above all and evident through His wondrous signs.",
+      "am": "በድንቅ ምልክቶቹና በሥራው በግልጽ የታወቀ፣ ከሁሉ በላይ የሆነ ጌታ።",
+      "ar": "الذي ظهرت دلائل ربوبيته وقدرته في كل شيء، والعالي فوق خلقه."
+    },
+    "reference": {
+      "quran": "Surah Al-Hadid 57:3",
+      "surah_number": 57,
+      "ayah_number": 3,
+      "ayah_ar": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 76,
+    "name_ar": "الْبَاطِنُ",
+    "name_ar_clean": "الباطن",
+    "transliteration": "Al-Batin",
+    "translation": {
+      "en": "The Hidden",
+      "am": "ስውር / ረቂቅ",
+      "ar": "الذي لا تدركه الحواس والمحيط بالأسرار"
+    },
+    "description": {
+      "en": "The Hidden whose true essence human eyes cannot gaze upon, yet who is closer than life.",
+      "am": "በዓይን የማይታይ፣ በምስጢር ረቂቅ የሆነና የልብን የሚያውቅ ጌታ።",
+      "ar": "الذي بطن فلا يُرى بالأبصار في الدنيا، واحتجب بعظمته عن الأوهام."
+    },
+    "reference": {
+      "quran": "Surah Al-Hadid 57:3",
+      "surah_number": 57,
+      "ayah_number": 3,
+      "ayah_ar": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 77,
+    "name_ar": "الْوَالِي",
+    "name_ar_clean": "الوالي",
+    "transliteration": "Al-Wali",
+    "translation": {
+      "en": "The Sole Governor",
+      "am": "ገዥ / አስተዳዳሪ",
+      "ar": "المالك للأشياء المتصرف فيها بمشيئته"
+    },
+    "description": {
+      "en": "The Supreme Governor who manages and disposes all affairs of the universe.",
+      "am": "የፍጥረታትን ጉዳይ ሁሉ በበላይነት የሚመራና የሚያስተዳድር ንጉሥ።",
+      "ar": "المتصرف في شؤون الخلائق بمشيئته وحكمته ولا وليّ سواه."
+    },
+    "reference": {
+      "quran": "Surah Ar-Ra'd 13:11",
+      "surah_number": 13,
+      "ayah_number": 11,
+      "ayah_ar": "وَمَا لَهُم مِّن دُونِهِ مِن وَالٍ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 78,
+    "name_ar": "الْمُتَعَالِي",
+    "name_ar_clean": "المتعالي",
+    "transliteration": "Al-Muta'ali",
+    "translation": {
+      "en": "The Self-Exalted",
+      "am": "እጅግ የላቀ",
+      "ar": "المنزه عن صفات المخلوقين الشديد العلو"
+    },
+    "description": {
+      "en": "The Exalted One towering infinitely above any likeness or imperfection.",
+      "am": "ከማንኛውም ፍጡር ባህሪና አስተሳሰብ እጅግ የላቀና የከበረ ጌታ።",
+      "ar": "الذي تعالى عن أوهام الخلائق، وله العلو المطلق في كل وصف."
+    },
+    "reference": {
+      "quran": "Surah Ar-Ra'd 13:9",
+      "surah_number": 13,
+      "ayah_number": 9,
+      "ayah_ar": "عَالِمُ الْغَيْبِ وَالشَّهَادَةِ الْكَبِيرُ الْمُتَعَالِ",
+      "hadith": "Sahih al-Bukhari 7405"
+    }
+  },
+  {
+    "number": 79,
+    "name_ar": "الْبَرُّ",
+    "name_ar_clean": "البر",
+    "transliteration": "Al-Barr",
+    "translation": {
+      "en": "The Source of Goodness",
+      "am": "ቸር / በጎ አድራጊ",
+      "ar": "العطوف على عباده المحسن إليهم"
+    },
+    "description": {
+      "en": "The Source of All Goodness who is exceedingly gentle and benevolent.",
+      "am": "ለባሮቹ እጅግ ቸር፣ በጎ አድራጊና ጸጋን አብዝቶ ሰጪ የሆነ ጌታ።",
+      "ar": "الواسع الإحسان والبر، الصادق في وعده المتفضل على خلقه."
+    },
+    "reference": {
+      "quran": "Surah At-Tur 52:28",
+      "surah_number": 52,
+      "ayah_number": 28,
+      "ayah_ar": "إِنَّا كُنَّا مِن قَبْلُ نَدْعُوهُ ۖ إِنَّهُ هُوَ الْبَرُّ الرَّحِيمُ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 80,
+    "name_ar": "التَّوَّابُ",
+    "name_ar_clean": "التواب",
+    "transliteration": "At-Tawwab",
+    "translation": {
+      "en": "The Ever-Pardoning",
+      "am": "ተውባን ተቀባይ",
+      "ar": "الذي يوفق عباده للتوبة ويقبلها منهم"
+    },
+    "description": {
+      "en": "The One who continuously invites sinners to repent and graciously accepts their return.",
+      "am": "ባሮቹን ወደ ንስሐ የሚመራና ተጸጽተው ሲመለሱ ይቅርታን የሚሰጥ ጌታ።",
+      "ar": "الذي ييسر أسباب التوبة لعباده ثم يقبلها ويتجاوز عن سيئاتهم."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:37",
+      "surah_number": 2,
+      "ayah_number": 37,
+      "ayah_ar": "إِنَّهُ هُوَ التَّوَّابُ الرَّحِيمُ",
+      "hadith": "Sahih Muslim 2759"
+    }
+  },
+  {
+    "number": 81,
+    "name_ar": "الْمُنْتَقِمُ",
+    "name_ar_clean": "المنتقم",
+    "transliteration": "Al-Muntaqim",
+    "translation": {
+      "en": "The Retributor",
+      "am": "ተበቃይ / ፍትሐዊ ቅጣት ሰጪ",
+      "ar": "المجازي للظالمين بالعدل بعد الإنذار"
+    },
+    "description": {
+      "en": "The One who justly punishes tyrants and unrepentant oppressors.",
+      "am": "በደለኞችንና ጨቋኞችን በሚገባቸው መልኩ በፍትሕ የሚቀጣ ጌታ።",
+      "ar": "الذي يقصم الجبابرة وينزل نقمته بالمجرمين بعد التمحيص والإعذار."
+    },
+    "reference": {
+      "quran": "Surah As-Sajdah 32:22",
+      "surah_number": 32,
+      "ayah_number": 22,
+      "ayah_ar": "إِنَّا مِنَ الْمُجْرِمِينَ مُنتَقِمُونَ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 82,
+    "name_ar": "الْعَفُوُّ",
+    "name_ar_clean": "العفو",
+    "transliteration": "Al-'Afuww",
+    "translation": {
+      "en": "The Effacer of Sins",
+      "am": "ይቅርታ አድራጊ / ኃጢአትን አጥፊ",
+      "ar": "الماحي للذنوب المتجاوز عن العقوبة"
+    },
+    "description": {
+      "en": "The One who completely erases sins as though they had never occurred.",
+      "am": "ወንጀልን ፈጽሞ የሚያብስና ቅጣቱን የሚያነሳ ይቅርታ አድራጊ ጌታ።",
+      "ar": "الذي يمحو آثار الذنوب من صحائف الأعمال ويسقط العقاب كرماً."
+    },
+    "reference": {
+      "quran": "Surah An-Nisa 4:99",
+      "surah_number": 4,
+      "ayah_number": 99,
+      "ayah_ar": "وَكَانَ اللَّهُ عَفُوًّا غَفُورًا",
+      "hadith": "Sunan at-Tirmidhi 3513"
+    }
+  },
+  {
+    "number": 83,
+    "name_ar": "الرَّءُوفُ",
+    "name_ar_clean": "الرءوف",
+    "transliteration": "Ar-Ra'uf",
+    "translation": {
+      "en": "The Most Kind / Tender",
+      "am": "እጅግ ሩኅሩህ",
+      "ar": "ذو الرأفة والرحمة الشديدة الرقيقة"
+    },
+    "description": {
+      "en": "The Most Compassionate whose gentle pity and tenderness care for all beings.",
+      "am": "እጅግ ሩኅሩህና አዛኝ የሆነ፣ ለባሮቹ የሚሳሳ ጌታ።",
+      "ar": "الذي يبلغ أقصى درجات الرحمة واللطፍ بعباده فلا يحملهم ما لا يطيقون."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:207",
+      "surah_number": 2,
+      "ayah_number": 207,
+      "ayah_ar": "وَاللَّهُ رَءُوفٌ بِالْعِبَادِ",
+      "hadith": "Sahih Muslim 2754"
+    }
+  },
+  {
+    "number": 84,
+    "name_ar": "مَالِكُ الْمُلْكِ",
+    "name_ar_clean": "مالك الملك",
+    "transliteration": "Malik-ul-Mulk",
+    "translation": {
+      "en": "Owner of All Sovereignty",
+      "am": "የንግስና ሁሉ ባለቤት",
+      "ar": "المتصرف في مملكته كيف يشاء بلا منازع"
+    },
+    "description": {
+      "en": "The Absolute Owner of all dominions, kingdoms, and authorities.",
+      "am": "የንግስና ሁሉ ፍጹም ባለቤት፣ የፈለገውን የሚሾምና የሚሽር ንጉሥ።",
+      "ar": "الذي يؤتي الملك من يشاء وينزع الملك ممن يشاء ولا معقب لحكمه."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:26",
+      "surah_number": 3,
+      "ayah_number": 26,
+      "ayah_ar": "قُلِ اللَّهُمَّ مَالِكَ الْمُلْكِ تُؤْتِي الْمُلْكَ مَن تَشَاءُ",
+      "hadith": "Sahih al-Bukhari 7382"
+    }
+  },
+  {
+    "number": 85,
+    "name_ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+    "name_ar_clean": "ذو الجلال والإكرام",
+    "transliteration": "Dhul-Jalali wal-Ikram",
+    "translation": {
+      "en": "Lord of Majesty and Generosity",
+      "am": "የግርማና የልግስና ባለቤት",
+      "ar": "صاحب العظمة والكبرياء والجود الواسع"
+    },
+    "description": {
+      "en": "The Lord possessing absolute glory, honor, majesty, and limitless benevolence.",
+      "am": "የፍጹም ግርማ፣ ክብርና የተትረፈረፈ ልግስና ባለቤት የሆነ ጌታ።",
+      "ar": "الذي يستحق أن يُجلّ ويُعظم فلا يُعصى، ويُشكر فلا يُكفر."
+    },
+    "reference": {
+      "quran": "Surah Ar-Rahman 55:78",
+      "surah_number": 55,
+      "ayah_number": 78,
+      "ayah_ar": "تَبَارَكَ اسْمُ رَبِّكَ ذِي الْجَلَالِ وَالْإِكْرَامِ",
+      "hadith": "Sahih Muslim 591"
+    }
+  },
+  {
+    "number": 86,
+    "name_ar": "الْمُقْسِطُ",
+    "name_ar_clean": "المقسط",
+    "transliteration": "Al-Muqsit",
+    "translation": {
+      "en": "The Equitable",
+      "am": "ፍትሐዊ / ቀጥተኛ",
+      "ar": "العادل في حكمه الذي ينتصف للمظلوم"
+    },
+    "description": {
+      "en": "The Equitable Judge who delivers flawless fairness and aids the oppressed.",
+      "am": "በፍርዱ ቀጥተኛ የሆነ፣ የተበደለውን ከበዳዩ የሚያስጥል ፍትሐዊ ጌታ።",
+      "ar": "الذي يفيض العدل على خلقه وينتصف للمظلوم من الظالم بلا جور."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:18",
+      "surah_number": 3,
+      "ayah_number": 18,
+      "ayah_ar": "شَهِدَ اللَّهُ أَنَّهُ لَا إِلَٰهَ إِلَّا هُوَ ... قَائِمًا بِالْقِسْطِ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 87,
+    "name_ar": "الْجَامِعُ",
+    "name_ar_clean": "الجامع",
+    "transliteration": "Al-Jami'",
+    "translation": {
+      "en": "The Gatherer",
+      "am": "ሰብሳቢ",
+      "ar": "الجامع لخلقه يوم القيامة والجامع للفضائل"
+    },
+    "description": {
+      "en": "The One who gathers all humans together on the Day of Judgment.",
+      "am": "በቂያማ ቀን ሰዎችን ሁሉ ለፍርድ የሚሰበስብ፣ መልካም ባህሪያትን ያሟላ ጌታ።",
+      "ar": "الذي يجمع الخلائق ليوم لا ريب فيه، ويجمع المتفرقات بحكمته."
+    },
+    "reference": {
+      "quran": "Surah Ali 'Imran 3:9",
+      "surah_number": 3,
+      "ayah_number": 9,
+      "ayah_ar": "رَبَّنَا إِنَّكَ جَامِعُ النَّاسِ لِيَوْمٍ لَّا رَيْبَ فِيهِ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 88,
+    "name_ar": "الْغَنِيُّ",
+    "name_ar_clean": "الغني",
+    "transliteration": "Al-Ghaniyy",
+    "translation": {
+      "en": "The Self-Sufficient",
+      "am": "ተብቃቂ / ከምንም ከዳተኛ",
+      "ar": "المستغني عن خلقه المحتاج إليه كل ما سواه"
+    },
+    "description": {
+      "en": "The Self-Sufficient who has no need of anything, while all existence needs Him.",
+      "am": "ከማንም ምንም የማይሻ፣ ፍጥረታት ሁሉ ግን በእርሱ የሚብቃቁለት ጌታ።",
+      "ar": "الذي لا يحتاج إلى أحد في شيء وكل مخلوق فقير إليه على الدوام."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:267",
+      "surah_number": 2,
+      "ayah_number": 267,
+      "ayah_ar": "وَاعْلَمُوا أَنَّ اللَّهَ غَنِيٌّ حَمِيدٌ",
+      "hadith": "Sahih Muslim 2577"
+    }
+  },
+  {
+    "number": 89,
+    "name_ar": "الْمُغْنِي",
+    "name_ar_clean": "المغني",
+    "transliteration": "Al-Mughni",
+    "translation": {
+      "en": "The Enricher",
+      "am": "አበልጻጊ / አብቃቂ",
+      "ar": "المعطي للكفاية والفضل لمن يشاء"
+    },
+    "description": {
+      "en": "The Enricher who bestows wealth, faith, contentment, and satisfaction.",
+      "am": "ለሚሻው ባሪያው ሀብትንና የልብ እርካታን የሚለግስ አበልጻጊ ጌታ።",
+      "ar": "الذي يسد حاجات عباده ويغنيهم بفضله عمن سواه."
+    },
+    "reference": {
+      "quran": "Surah An-Najm 53:48",
+      "surah_number": 53,
+      "ayah_number": 48,
+      "ayah_ar": "وَأَنَّهُ هُوَ أَغْنَىٰ وَأَقْنَىٰ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 90,
+    "name_ar": "الْمَانِعُ",
+    "name_ar_clean": "المانع",
+    "transliteration": "Al-Mani'",
+    "translation": {
+      "en": "The Preventer / Defender",
+      "am": "ከልካይ / ጠባቂ",
+      "ar": "الدافع للسوء والحامي لأوليائه بحكمته"
+    },
+    "description": {
+      "en": "The One who shields His servants from harm and withholds for wise reasons.",
+      "am": "ጉዳትን ከባሮቹ የሚከላከል፣ በጥበቡ ከልክሎ የሚጠብቅ ጌታ።",
+      "ar": "الذي يمنع البلاء عن أوليائه، ويحرم من يشاء بحكمته وعدله."
+    },
+    "reference": {
+      "quran": "Surah Al-Mulk 67:21",
+      "surah_number": 67,
+      "ayah_number": 21,
+      "ayah_ar": "أَمَّنْ هَٰذَا الَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُ",
+      "hadith": "Sahih al-Bukhari 844"
+    }
+  },
+  {
+    "number": 91,
+    "name_ar": "الضَّارُّ",
+    "name_ar_clean": "الضار",
+    "transliteration": "Ad-Darr",
+    "translation": {
+      "en": "The Creator of Harm (for wisdom)",
+      "am": "ጎጂ (ለጥበብ)",
+      "ar": "المقدر للشدائد بحكمته ابتلاءً وتمحيصاً"
+    },
+    "description": {
+      "en": "The One who decrees hardships and trials according to supreme wisdom.",
+      "am": "ለፈተናና ለጥበብ መከራን የሚያመጣና ሁሉ በእጁ የሆነ ጌታ።",
+      "ar": "الذي يقدر الضر والابتلاء على من يشاء بحكمته لتمحيصهم وتأديبهم."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:17",
+      "surah_number": 6,
+      "ayah_number": 17,
+      "ayah_ar": "وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُوَ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 92,
+    "name_ar": "النَّافِعُ",
+    "name_ar_clean": "النافع",
+    "transliteration": "An-Nafi'",
+    "translation": {
+      "en": "The Creator of Good",
+      "am": "ጠቃሚ / በጎ ፈጣሪ",
+      "ar": "الموصل للخير والمنفعة لمن يشاء"
+    },
+    "description": {
+      "en": "The One who delivers all benefits, healing, and goodness to creation.",
+      "am": "ጥቅምን፣ ጤናንና በረከትን ለፍጥረታቱ ሁሉ የሚያደርስ ጠቃሚ ጌታ።",
+      "ar": "الذي يعم نفعه جميع الخلائق ويوصل الخير والصلاح لمن يشاء."
+    },
+    "reference": {
+      "quran": "Surah Al-An'am 6:17",
+      "surah_number": 6,
+      "ayah_number": 17,
+      "ayah_ar": "وَإِن يَمْسَسْكَ بِخَيْرٍ فَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 93,
+    "name_ar": "النُّورُ",
+    "name_ar_clean": "النور",
+    "transliteration": "An-Nur",
+    "translation": {
+      "en": "The Illuminating Light",
+      "am": "ብርሃን / አብሪ",
+      "ar": "الهادي المرشد المنير للسموات والأرض"
+    },
+    "description": {
+      "en": "The Supreme Light who illuminates the cosmos and guides hearts with truth.",
+      "am": "ሰማይና ምድርን፣ እንዲሁም ልቦችን በእውነትና በእምነት የሚያበራ ብርሃን።",
+      "ar": "الذي أشرقت لنوره الظلمات وهدى بهديه أهل السماوات والأرض."
+    },
+    "reference": {
+      "quran": "Surah An-Nur 24:35",
+      "surah_number": 24,
+      "ayah_number": 35,
+      "ayah_ar": "اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ",
+      "hadith": "Sahih al-Bukhari 1120"
+    }
+  },
+  {
+    "number": 94,
+    "name_ar": "الْهَادِي",
+    "name_ar_clean": "الهادي",
+    "transliteration": "Al-Hadi",
+    "translation": {
+      "en": "The Infallible Guide",
+      "am": "መሪ / ቅን መንገድ አሳዪ",
+      "ar": "المرشد للحق والموفق للرشاد"
+    },
+    "description": {
+      "en": "The Guide who leads creation to their benefits and directs hearts to faith.",
+      "am": "ፍጥረታትን ወደ ቀናው ጎዳና የሚመራና ልቦችን ወደ እውነት የሚያቀና መሪ ጌታ።",
+      "ar": "الذي يهدي خلقه إلى مصالحهم ويهدي المؤمنين إلى صراط مستقيم."
+    },
+    "reference": {
+      "quran": "Surah Al-Hajj 22:54",
+      "surah_number": 22,
+      "ayah_number": 54,
+      "ayah_ar": "وَإِنَّ اللَّهَ لَهَادِ الَّذِينَ آمَنُوا إِلَىٰ صِرَاطٍ مُّسْتَقِيمٍ",
+      "hadith": "Sahih Muslim 771"
+    }
+  },
+  {
+    "number": 95,
+    "name_ar": "الْبَدِيعُ",
+    "name_ar_clean": "البديع",
+    "transliteration": "Al-Badi'",
+    "translation": {
+      "en": "The Incomparable Originator",
+      "am": "ድንቅ ፈጣሪ",
+      "ar": "المنشئ للأشياء على غير مثال سابق بكمال الإتقان"
+    },
+    "description": {
+      "en": "The Matchless Creator who brings marvelous wonders into existence with supreme beauty.",
+      "am": "አስደናቂ ፍጥረታትን ያለ ቀዳሚ አብነት በጥበብና በውበት የፈጠረ ድንቅ ፈጣሪ።",
+      "ar": "الذي خلق الكون بلا نظير سابق وأبدع صنعه بأبهى حلة."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:117",
+      "surah_number": 2,
+      "ayah_number": 117,
+      "ayah_ar": "بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ",
+      "hadith": "Sahih al-Bukhari 3208"
+    }
+  },
+  {
+    "number": 96,
+    "name_ar": "الْبَاقِي",
+    "name_ar_clean": "الباقي",
+    "transliteration": "Al-Baqi",
+    "translation": {
+      "en": "The Everlasting",
+      "am": "ዘላለማዊ / የማይጠፋ",
+      "ar": "الدائم الوجود الذي لا يطرأ عليه فناء"
+    },
+    "description": {
+      "en": "The Everlasting whose existence never ends, persisting after all things vanish.",
+      "am": "ፍጥረታት ሁሉ ሟች ሲሆኑ እርሱ ግን ዘላለም የማይጠፋ ጌታ።",
+      "ar": "الذي يدوم وجوده أبداً ولا يلحقه زوال ويفنى كل شيء ويبقى وجهه."
+    },
+    "reference": {
+      "quran": "Surah Ar-Rahman 55:27",
+      "surah_number": 55,
+      "ayah_number": 27,
+      "ayah_ar": "وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "hadith": "Sahih Muslim 2713"
+    }
+  },
+  {
+    "number": 97,
+    "name_ar": "الْوَارِثُ",
+    "name_ar_clean": "الوارث",
+    "transliteration": "Al-Warith",
+    "translation": {
+      "en": "The Supreme Inheritor",
+      "am": "ወራሽ",
+      "ar": "الباقي بعد فناء الخلائق ومالك كل شيء"
+    },
+    "description": {
+      "en": "The Ultimate Heir to whom all kingdoms and possessions return after all pass away.",
+      "am": "ፍጥረታት ሁሉ ካለቁ በኋላ የሁሉ ነገር ወራሽና ባለቤት ሆኖ የሚቀረው ጌታ።",
+      "ar": "الذي ترجع إليه الأملاك كلها بعد هلاك ملاكها ولا يبقى سواه."
+    },
+    "reference": {
+      "quran": "Surah Al-Hijr 15:23",
+      "surah_number": 15,
+      "ayah_number": 23,
+      "ayah_ar": "وَإِنَّا لَنَحْنُ نُحْيِي وَنُمِيتُ وَنَحْنُ الْوَارِثُونَ",
+      "hadith": "Sahih al-Bukhari 4812"
+    }
+  },
+  {
+    "number": 98,
+    "name_ar": "الرَّشِيدُ",
+    "name_ar_clean": "الرشيد",
+    "transliteration": "Ar-Rashid",
+    "translation": {
+      "en": "The Guide to the Right Path",
+      "am": "ቅኑ መሪ",
+      "ar": "المرشد لخلقه الحكيم في تدبيره"
+    },
+    "description": {
+      "en": "The Infallible Guide whose conduct and directives are always upright and wise.",
+      "am": "ሥራውና ውሳኔው ሁሉ ትክክል የሆነ፣ ፍጥረታትን ወደ በጎ የሚመራ ቅኑ መሪ።",
+      "ar": "الذي رشدت أفعاله وأقواله، ويدبر الأمور بحكمة وسداد بلا إرشاد مرشد."
+    },
+    "reference": {
+      "quran": "Surah Al-Kahf 18:10",
+      "surah_number": 18,
+      "ayah_number": 10,
+      "ayah_ar": "وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",
+      "hadith": "Sunan at-Tirmidhi 3507"
+    }
+  },
+  {
+    "number": 99,
+    "name_ar": "الصَّبُورُ",
+    "name_ar_clean": "الصبور",
+    "transliteration": "As-Sabur",
+    "translation": {
+      "en": "The Most Patient",
+      "am": "እጅግ ታጋሽ",
+      "ar": "الذي لا يعاجل العصاة بالعقوبة وصبور على الأذى"
+    },
+    "description": {
+      "en": "The Most Patient who endures the ingratitude of creatures and does not rush punishment.",
+      "am": "ከባሮቹ የሚደርሰውን ክህደትና ስድብ እየሰማ ቅጣቱን የማያጣድፍ እጅግ ታጋሽ ጌታ።",
+      "ar": "الذي لا تحمله العجلة على الإيقاع بالعصاة، بل يمهلهم لعلهم يتوبون."
+    },
+    "reference": {
+      "quran": "Surah Al-Baqarah 2:153",
+      "surah_number": 2,
+      "ayah_number": 153,
+      "ayah_ar": "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+      "hadith": "Sahih al-Bukhari 6099"
+    }
+  }
+]

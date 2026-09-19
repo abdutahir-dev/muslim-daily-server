@@ -97,6 +97,18 @@
       "description": "Fusha 2,092-entry Quranic Arabic morphology (Sarf), syntax (Nahw), i'rab transclusions, root lexicon, and grammatical color classes"
     },
     {
+      "name": "Asmaul Husna",
+      "description": "The 99 Most Beautiful Names of Allah (أسماء الله الحسنى) with trilingual translations (Arabic, Amharic, English), theological descriptions, and Quranic/Hadith references"
+    },
+    {
+      "name": "Dictionary",
+      "description": "Comprehensive trilingual dictionary (Arabic, Amharic, English) with roots, definitions, part-of-speech tags, synonyms, antonyms, and usage examples"
+    },
+    {
+      "name": "Translation",
+      "description": "Trilingual translation and language detection engine supporting Arabic (العربية), Amharic (አማርኛ), and English"
+    },
+    {
       "name": "Admin",
       "description": "Database administration, content management, and data seeding"
     }
@@ -111,6 +123,312 @@
       }
     },
     "schemas": {
+      "DictionaryEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "dict_001"
+          },
+          "word_ar": {
+            "type": "string",
+            "example": "سَلَام"
+          },
+          "word_ar_clean": {
+            "type": "string",
+            "example": "سلام"
+          },
+          "word_am": {
+            "type": "string",
+            "example": "ሰላም"
+          },
+          "word_en": {
+            "type": "string",
+            "example": "Peace / Greeting"
+          },
+          "transliteration_ar": {
+            "type": "string",
+            "example": "Salam"
+          },
+          "transliteration_am": {
+            "type": "string",
+            "example": "Selam"
+          },
+          "part_of_speech": {
+            "type": "string",
+            "example": "noun"
+          },
+          "category": {
+            "type": "string",
+            "example": "Faith & Spirituality"
+          },
+          "root_ar": {
+            "type": "string",
+            "example": "س ل م"
+          },
+          "definition_ar": {
+            "type": "string",
+            "example": "الأمان والطمأنينة والسكينة وخلو النفس والمجتمع من النزاع."
+          },
+          "definition_am": {
+            "type": "string",
+            "example": "መረጋጋት፣ ጸጥታና ፀብ አልባነት፤ እንዲሁም የደህንነት ሰላምታ።"
+          },
+          "definition_en": {
+            "type": "string",
+            "example": "A state of harmony, safety, tranquility, and freedom from strife."
+          },
+          "synonyms": {
+            "type": "object",
+            "properties": {
+              "ar": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "am": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "en": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "antonyms": {
+            "type": "object",
+            "properties": {
+              "ar": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "am": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "en": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ar": {
+                  "type": "string"
+                },
+                "am": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "TranslationRequest": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "السلام عليكم ورحمة الله"
+          },
+          "sourceLang": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "ar",
+              "am",
+              "en"
+            ],
+            "example": "ar"
+          },
+          "targetLang": {
+            "type": "string",
+            "enum": [
+              "ar",
+              "am",
+              "en"
+            ],
+            "example": "en"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "lexicon",
+              "ai"
+            ],
+            "example": "auto"
+          }
+        }
+      },
+      "TranslationResponse": {
+        "type": "object",
+        "properties": {
+          "originalText": {
+            "type": "string",
+            "example": "السلام عليكم ورحمة الله"
+          },
+          "translatedText": {
+            "type": "string",
+            "example": "May the peace and mercy of God be upon you"
+          },
+          "sourceLanguage": {
+            "type": "string",
+            "example": "ar"
+          },
+          "targetLanguage": {
+            "type": "string",
+            "example": "en"
+          },
+          "engine": {
+            "type": "string",
+            "example": "trilingual-lexicon"
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2026-09-18T17:40:00.000Z"
+          }
+        }
+      },
+      "DetectionResponse": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "example": "ar"
+          },
+          "languageName": {
+            "type": "string",
+            "example": "Arabic (العربية)"
+          },
+          "script": {
+            "type": "string",
+            "example": "Arabic"
+          },
+          "confidence": {
+            "type": "number",
+            "example": 1
+          }
+        }
+      },
+      "AsmaulHusnaItem": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "example": 1
+          },
+          "name_ar": {
+            "type": "string",
+            "example": "الرَّحْمَٰنُ"
+          },
+          "name_ar_clean": {
+            "type": "string",
+            "example": "الرحمن"
+          },
+          "transliteration": {
+            "type": "string",
+            "example": "Ar-Rahman"
+          },
+          "translation": {
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "The Entirely Merciful"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "en": {
+                    "type": "string",
+                    "example": "The Entirely Merciful"
+                  },
+                  "am": {
+                    "type": "string",
+                    "example": "እጅግ በጣም ሩኅሩህ"
+                  },
+                  "ar": {
+                    "type": "string",
+                    "example": "ذو الرحمة الشاملة لجميع الخلائق"
+                  }
+                }
+              }
+            ]
+          },
+          "description": {
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "The One whose vast mercy encompasses all of creation in this world."
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "en": {
+                    "type": "string",
+                    "example": "The One whose vast mercy encompasses all of creation in this world."
+                  },
+                  "am": {
+                    "type": "string",
+                    "example": "በዚህ ዓለም ላሉ ፍጥረታት ሁሉ ምህረቱና እዝነቱ እጅግ ሰፊና ሁሉን አቀፍ የሆነው ጌታ።"
+                  },
+                  "ar": {
+                    "type": "string",
+                    "example": "الذي وسعت رحمته كل شيء في الدنيا وعمت جميع الخلائق."
+                  }
+                }
+              }
+            ]
+          },
+          "reference": {
+            "type": "object",
+            "properties": {
+              "quran": {
+                "type": "string",
+                "example": "Surah Al-Fatihah 1:3"
+              },
+              "surah_number": {
+                "type": "integer",
+                "example": 1
+              },
+              "ayah_number": {
+                "type": "integer",
+                "example": 3
+              },
+              "ayah_ar": {
+                "type": "string",
+                "example": "الرَّحْمَٰنِ الرَّحِيمِ"
+              },
+              "hadith": {
+                "type": "string",
+                "example": "Sahih al-Bukhari 2736"
+              }
+            }
+          }
+        }
+      },
       "ApiResponse": {
         "type": "object",
         "properties": {
@@ -2264,6 +2582,843 @@
         "responses": {
           "200": {
             "description": "Qamus entry manifest"
+          }
+        }
+      }
+    },
+    "/asmaul-husna": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "List the 99 Names of Allah",
+        "description": "Returns the 99 Beautiful Names of Allah with transliteration, Arabic script, English/Amharic/Arabic translations, deep theological descriptions, and Quranic/Hadith citations. Supports localization via `lang` and search/pagination.",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "en",
+                "am",
+                "ar"
+              ],
+              "default": "all"
+            },
+            "description": "Language localization: 'all' (complete multilingual bundle), 'en' (English), 'am' (Amharic / አማርኛ), or 'ar' (Arabic / العربية)"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search filter across Arabic script, clean transliteration, English, and Amharic text"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number for pagination"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Items per page (1-100). If omitted, all 99 names are returned."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Asmaul Husna items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "example": 99
+                    },
+                    "count": {
+                      "type": "integer",
+                      "example": 99
+                    },
+                    "language": {
+                      "type": "string",
+                      "example": "all"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AsmaulHusnaItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asmaul-husna/{identifier}": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Get Name of Allah by Number, Arabic Name, or Transliteration",
+        "description": "Retrieves a specific Name of Allah using its canonical number (1 to 99), Arabic script (e.g. 'الرحمن' or 'الرَّحْمَٰنُ'), or transliteration (e.g. 'Ar-Rahman', 'Al-Malik').",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Number (1-99), Arabic name (e.g. 'الرحمن'), or transliteration (e.g. 'Ar-Rahman')"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "en",
+                "am",
+                "ar"
+              ],
+              "default": "all"
+            },
+            "description": "Language localization: 'all', 'en', 'am', or 'ar'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asmaul Husna record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AsmaulHusnaItem"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Name not found"
+          }
+        }
+      }
+    },
+    "/asmaul-husna/random": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Get a Random Name of Allah",
+        "description": "Returns a randomly selected Name of Allah with complete theological explanation, reference, and multilingual translations.",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "en",
+                "am",
+                "ar"
+              ],
+              "default": "all"
+            },
+            "description": "Language localization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Random Name of Allah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AsmaulHusnaItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asmaul-husna/daily": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Get Daily Name of Allah (Name of the Day)",
+        "description": "Returns a deterministic Name of the Day based on the calendar date, perfect for daily contemplation and digital widgets.",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional ISO date (YYYY-MM-DD). Defaults to current day."
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "en",
+                "am",
+                "ar"
+              ],
+              "default": "all"
+            },
+            "description": "Language localization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Daily Name of Allah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "example": "2026-09-13"
+                    },
+                    "name": {
+                      "$ref": "#/components/schemas/AsmaulHusnaItem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asmaul-husna/search": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Multi-Field Search Across Arabic, Amharic, and English",
+        "description": "Executes an instant diacritic-tolerant search across all 99 names in Arabic script, Amharic Ge'ez script, transliterations, theological descriptions, and references.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search keyword in Arabic (e.g. 'رحيم'), Amharic (e.g. 'ሩኅሩህ' or 'ንጉሥ'), or English (e.g. 'Merciful')"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "en",
+                "am",
+                "ar"
+              ],
+              "default": "all"
+            },
+            "description": "Response language"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Maximum number of results"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching names",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string"
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "language": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AsmaulHusnaItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asmaul-husna/stats": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Dataset Statistics & Language Capabilities",
+        "description": "Returns metadata including the total name count (99), supported languages (ar, am, en), 100% reference coverage, and verified Hadith sources.",
+        "responses": {
+          "200": {
+            "description": "Dataset statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "example": 99
+                    },
+                    "supportedLanguages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "referenceCoverage": {
+                      "type": "string",
+                      "example": "100%"
+                    },
+                    "quranicVersesCited": {
+                      "type": "integer",
+                      "example": 99
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asmaul-husna/overview": {
+      "get": {
+        "tags": [
+          "Asmaul Husna"
+        ],
+        "summary": "Asmaul Husna Service Overview",
+        "description": "Returns an introduction to the Asmaul Husna service, documentation references, available endpoints, and language mappings.",
+        "responses": {
+          "200": {
+            "description": "Service overview"
+          }
+        }
+      }
+    },
+    "/dictionary": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "List or Search Trilingual Dictionary Entries",
+        "description": "Returns paginated dictionary entries with optional search query across Arabic, Amharic, and English, plus filters for category, part of speech, and target language view.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search query across Arabic (with/without tashkeel), Amharic (Ge'ez script), English, transliteration, or root"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "ar",
+                "am",
+                "en"
+              ],
+              "default": "all"
+            },
+            "description": "Focus language formatting"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter by thematic category (e.g. Faith & Spirituality, Worship & Law)"
+          },
+          {
+            "name": "pos",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter by part of speech (noun, verb, adjective)"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "Page size"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of dictionary records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DictionaryEntry"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/lookup/{word}": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Direct Trilingual Word Lookup",
+        "description": "Directly resolves a headword in Arabic, Amharic, or English, returning full morpho-syntactic details, definitions, and examples.",
+        "parameters": [
+          {
+            "name": "word",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Word to look up"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "ar",
+                "am",
+                "en"
+              ]
+            },
+            "description": "Output language focus"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matched dictionary entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryEntry"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Word not found in dictionary"
+          }
+        }
+      }
+    },
+    "/dictionary/entry/{id}": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Fetch Dictionary Entry by ID",
+        "description": "Retrieves a single entry by its unique identifier (e.g., dict_001).",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Entry ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dictionary entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryEntry"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entry not found"
+          }
+        }
+      }
+    },
+    "/dictionary/daily": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Word of the Day",
+        "description": "Returns a deterministic word of the day for spiritual vocabulary enrichment and language learning.",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Target date (YYYY-MM-DD)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Daily word",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string"
+                    },
+                    "word": {
+                      "$ref": "#/components/schemas/DictionaryEntry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/random": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Random Vocabulary Discovery",
+        "description": "Fetches a randomly chosen vocabulary record, optionally filtered by category.",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional category filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Random word",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryEntry"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/autocomplete": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Typeahead Autocomplete Suggestions",
+        "description": "Quick prefix and substring suggestions for search-as-you-type interfaces across all three scripts.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Prefix text"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 8
+            },
+            "description": "Max suggestions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of autocomplete matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "sub": {
+                        "type": "string"
+                      },
+                      "word_ar": {
+                        "type": "string"
+                      },
+                      "word_am": {
+                        "type": "string"
+                      },
+                      "word_en": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/categories": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Available Thematic Categories",
+        "description": "Returns all dictionary categories alongside their entry counts.",
+        "responses": {
+          "200": {
+            "description": "List of categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "category": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/parts-of-speech": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Parts of Speech Distribution",
+        "description": "Returns the distribution of parts of speech (nouns, verbs, adjectives, particles).",
+        "responses": {
+          "200": {
+            "description": "List of parts of speech",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "part_of_speech": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dictionary/stats": {
+      "get": {
+        "tags": [
+          "Dictionary"
+        ],
+        "summary": "Trilingual Dictionary Statistics",
+        "description": "Returns dataset size, language matrix, storage backend, and coverage metrics.",
+        "responses": {
+          "200": {
+            "description": "Dictionary statistics"
+          }
+        }
+      }
+    },
+    "/translation/translate": {
+      "post": {
+        "tags": [
+          "Translation"
+        ],
+        "summary": "Translate Text Between Arabic, Amharic, and English",
+        "description": "Translates words, phrases, and sentences between Arabic, Amharic, and English using lexical dictionary alignment with seamless Gemini AI neural translation fallback.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Translation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TranslationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid translation request"
+          }
+        }
+      }
+    },
+    "/translation/detect": {
+      "post": {
+        "tags": [
+          "Translation"
+        ],
+        "summary": "Detect Script and Language",
+        "description": "Detects whether input text is written in Arabic, Amharic (Ethiopic script), or English (Latin script) with confidence scores.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "example": "ሰላም ለሁላችሁ ይሁን"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Language detection result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetectionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/translation/pairs": {
+      "get": {
+        "tags": [
+          "Translation"
+        ],
+        "summary": "Supported Translation Language Pairs",
+        "description": "Returns the 6 bidirectional language pairs supported by the translation engine.",
+        "responses": {
+          "200": {
+            "description": "List of translation pairs"
           }
         }
       }
