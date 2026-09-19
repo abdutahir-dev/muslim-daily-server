@@ -496,6 +496,22 @@
     </div>
   </header>
 
+  <!-- API Server Host Target Banner -->
+  <div style="background: #f0fdf4; border-bottom: 1px solid #bbf7d0; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; color: #166534;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-weight: 700;">🌐 Target API Server:</span>
+      <code id="active-api-host-display" style="background: #ffffff; border: 1px solid #86efac; padding: 2px 8px; border-radius: 6px; font-family: monospace; color: #047857; font-weight: 600;">https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app</code>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <label for="api-host-select" style="font-size: 0.85rem; font-weight: 600;">Switch Host:</label>
+      <select id="api-host-select" onchange="setApiBaseUrl(this.value)" style="padding: 4px 8px; border-radius: 6px; border: 1px solid #10b981; background: #ffffff; color: #047857; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+        <option value="https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app">🚀 Cloud Run Production Server (Live)</option>
+        <option value="http://localhost:3000">💻 Localhost (Port 3000)</option>
+        <option value="window.location.origin">🌐 Same Origin</option>
+      </select>
+    </div>
+  </div>
+
   <div class="docs-container">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -1625,6 +1641,57 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
   </div>
 
   <script>
+    const DEFAULT_CLOUD_RUN_URL = 'https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app';
+
+    function getApiBaseUrl() {
+      const saved = localStorage.getItem('muslim_daily_api_base_url');
+      if (saved) {
+        if (saved === 'window.location.origin') return window.location.origin.replace(new RegExp('/+$'), '');
+        return saved.trim().replace(new RegExp('/+$'), '');
+      }
+      if (window.location.hostname.includes('github.io')) {
+        return DEFAULT_CLOUD_RUN_URL;
+      }
+      return window.location.origin.replace(new RegExp('/+$'), '');
+    }
+
+    function setApiBaseUrl(newUrl) {
+      localStorage.setItem('muslim_daily_api_base_url', newUrl);
+      updateHostDisplay();
+    }
+
+    function resolveApiUrl(path) {
+      const base = getApiBaseUrl();
+      const cleanPath = path.startsWith('/') ? path : '/' + path;
+      return base + cleanPath;
+    }
+
+    function updateHostDisplay() {
+      const current = getApiBaseUrl();
+      const el = document.getElementById('active-api-host-display');
+      if (el) {
+        el.innerText = current;
+      }
+      const select = document.getElementById('api-host-select');
+      if (select) {
+        let matched = false;
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === current || (select.options[i].value === 'window.location.origin' && current === window.location.origin.replace(new RegExp('/+$'), ''))) {
+            select.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched && select.options.length > 0) {
+          select.value = current;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateHostDisplay();
+    });
+
     // Copy code snippet helper
     function copyCode(btn) {
       const parent = btn.parentElement;
@@ -1639,14 +1706,15 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
     async function runRequest(btn, endpoint) {
       const runnerBox = btn.closest('.runner-box');
       const resPre = runnerBox.querySelector('.runner-response');
+      const targetUrl = resolveApiUrl(endpoint);
       resPre.style.display = 'block';
-      resPre.innerText = 'Sending request to ' + endpoint + '...';
+      resPre.innerText = 'Sending request to ' + targetUrl + '...';
       try {
-        const res = await fetch(endpoint);
+        const res = await fetch(targetUrl);
         const data = await res.json();
         resPre.innerText = JSON.stringify(data, null, 2);
       } catch (err) {
-        resPre.innerText = 'Request error: ' + err.message;
+        resPre.innerText = 'Request error (' + targetUrl + '): ' + err.message;
       }
     }
 
@@ -1654,10 +1722,11 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
     async function runPostConvert(btn) {
       const runnerBox = btn.closest('.runner-box');
       const resPre = runnerBox.querySelector('.runner-response');
+      const targetUrl = resolveApiUrl('/api/calendar/convert');
       resPre.style.display = 'block';
-      resPre.innerText = 'Posting calendar conversion request...';
+      resPre.innerText = 'Posting calendar conversion request to ' + targetUrl + '...';
       try {
-        const res = await fetch('/api/calendar/convert', {
+        const res = await fetch(targetUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ from: 'gregorian', to: 'hijri', date: '2026-09-12' })
@@ -1665,7 +1734,7 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
         const data = await res.json();
         resPre.innerText = JSON.stringify(data, null, 2);
       } catch (err) {
-        resPre.innerText = 'Request error: ' + err.message;
+        resPre.innerText = 'Request error (' + targetUrl + '): ' + err.message;
       }
     }
 
@@ -1673,10 +1742,11 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
     async function runPostRequest(btn, endpoint, payload) {
       const runnerBox = btn.closest('.runner-box');
       const resPre = runnerBox.querySelector('.runner-response');
+      const targetUrl = resolveApiUrl(endpoint);
       resPre.style.display = 'block';
-      resPre.innerText = 'Posting to ' + endpoint + '...';
+      resPre.innerText = 'Posting to ' + targetUrl + '...';
       try {
-        const res = await fetch(endpoint, {
+        const res = await fetch(targetUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: typeof payload === 'string' ? payload : JSON.stringify(payload)
@@ -1684,7 +1754,7 @@ console.log('Translation Engine:', data.engine);         // trilingual-lexicon
         const data = await res.json();
         resPre.innerText = JSON.stringify(data, null, 2);
       } catch (err) {
-        resPre.innerText = 'Request error: ' + err.message;
+        resPre.innerText = 'Request error (' + targetUrl + '): ' + err.message;
       }
     }
 

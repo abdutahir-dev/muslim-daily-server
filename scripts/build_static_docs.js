@@ -583,17 +583,25 @@ const rootPortalHtml = `<!DOCTYPE html>
 fs.writeFileSync(path.join(rootDir, 'index.html'), rootPortalHtml, 'utf8');
 console.log('✅ Generated root index.html portal landing');
 
-// 6. Generate 404.html with GitHub Pages SPA redirect router
+// 6. Generate 404.html with GitHub Pages SPA redirect router and API route fallback
 const notFoundHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting — Muslim Daily</title>
+  <title>API Redirect & 404 Router — Muslim Daily</title>
   <script>
     (function() {
       var path = window.location.pathname;
-      var repoBase = '';
-      var segments = path.split('/').filter(Boolean);
+      var search = window.location.search;
+      var hash = window.location.hash;
+      var cloudRunHost = 'https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app';
+      
+      // If client attempts to hit an API endpoint directly on GitHub Pages static host, redirect to Cloud Run
+      if (path.startsWith('/api/') || path.startsWith('/asmaul-husna') || path.startsWith('/qamus') || path.startsWith('/dictionary') || path.startsWith('/translation')) {
+        var cloudRunUrl = cloudRunHost + path + search + hash;
+        window.location.replace(cloudRunUrl);
+        return;
+      }
       
       if (path.endsWith('/docs') || path === '/docs') {
         window.location.replace('/docs/');
@@ -609,36 +617,41 @@ const notFoundHtml = `<!DOCTYPE html>
       }
       
       if (path !== '/' && !path.endsWith('/index.html')) {
-        if (segments.includes('docs')) {
+        if (path.includes('/docs')) {
           window.location.replace('/docs/');
           return;
         }
-        if (segments.includes('swagger')) {
+        if (path.includes('/swagger')) {
           window.location.replace('/swagger/');
           return;
         }
-        if (segments.includes('ui')) {
+        if (path.includes('/ui')) {
           window.location.replace('/ui/');
           return;
         }
       }
     })();
   </script>
-  <meta http-equiv="refresh" content="3; url=/">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; background: #f8fafc; color: #0f172a; }
-    h1 { font-size: 24px; margin-bottom: 12px; }
-    p { color: #64748b; font-size: 16px; }
-    a { color: #059669; text-decoration: none; font-weight: bold; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 60px 20px; background: #0f172a; color: #f8fafc; }
+    .card { max-width: 550px; margin: 0 auto; background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    h1 { font-size: 24px; margin-bottom: 12px; color: #38bdf8; }
+    p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
+    .btn { display: inline-block; margin-top: 16px; padding: 10px 20px; background: #059669; color: #ffffff; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    .btn:hover { background: #047857; }
+    code { background: #0f172a; padding: 3px 8px; border-radius: 6px; color: #34d399; font-size: 13px; }
   </style>
 </head>
 <body>
-  <h1>Page Not Found (404)</h1>
-  <p>The requested page was not found on this static host.</p>
-  <p><a href="/">Return to Muslim Daily API Hub &rarr;</a></p>
-  <p style="margin-top: 20px; font-size: 14px;">
-    Quick links: <a href="/ui/">Interactive UI</a> | <a href="/docs/">Developer Docs</a> | <a href="/swagger/">Swagger UI</a>
-  </p>
+  <div class="card">
+    <h1>🚀 Redirecting to Live API Server...</h1>
+    <p>GitHub Pages hosts static documentation and testing workbenches. Dynamic backend API requests are served live on our Cloud Run production instance.</p>
+    <p>Target Cloud Run Server:<br><code>https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app</code></p>
+    <p><a href="/" class="btn">&larr; Return to API Hub Portal</a></p>
+    <p style="margin-top: 20px; font-size: 13px; color: #64748b;">
+      Quick Links: <a href="/ui/" style="color: #38bdf8;">Interactive UI</a> | <a href="/docs/" style="color: #38bdf8;">Developer Docs</a> | <a href="/swagger/" style="color: #38bdf8;">Swagger UI</a>
+    </p>
+  </div>
 </body>
 </html>`;
 

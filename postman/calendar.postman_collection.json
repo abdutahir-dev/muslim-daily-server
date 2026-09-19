@@ -7,7 +7,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:3000",
+      "value": "https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app",
       "type": "string"
     },
     {

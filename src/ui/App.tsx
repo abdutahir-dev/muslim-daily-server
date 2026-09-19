@@ -12,11 +12,36 @@ const { Header, Content } = Layout;
 const { Text } = Typography;
 
 const STORAGE_AUTH_KEY = 'muslim_daily_api_auth';
+const STORAGE_BASE_URL_KEY = 'muslim_daily_api_base_url';
+const DEFAULT_CLOUD_RUN_URL = 'https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app';
 
 export const App: React.FC = () => {
   const [selectedEndpoint, setSelectedEndpoint] = useState<ApiEndpoint>(ENDPOINTS[0]);
   const [loading, setLoading] = useState(false);
   const [responseResult, setResponseResult] = useState<ResponseResult | null>(null);
+
+  const [apiBaseUrl, setApiBaseUrl] = useState<string>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_BASE_URL_KEY);
+      if (saved) return saved;
+    } catch {
+      // Ignored
+    }
+    if (typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+      return DEFAULT_CLOUD_RUN_URL;
+    }
+    return typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
+  });
+
+  const handleUpdateApiBaseUrl = (newUrl: string) => {
+    const trimmed = newUrl.trim();
+    setApiBaseUrl(trimmed);
+    try {
+      localStorage.setItem(STORAGE_BASE_URL_KEY, trimmed);
+    } catch {
+      // Ignored
+    }
+  };
 
   const [authState, setAuthState] = useState<AuthState>(() => {
     try {
@@ -50,8 +75,10 @@ export const App: React.FC = () => {
       setLoading(true);
       const startTime = performance.now();
 
-      // Build full URL
-      const url = new URL(resolvedPath, window.location.origin);
+      // Build full URL using configured API Base URL
+      const cleanBase = (apiBaseUrl || window.location.origin).trim().replace(/\/+$/, '');
+      const cleanPath = resolvedPath.startsWith('/') ? resolvedPath : '/' + resolvedPath;
+      const url = new URL(cleanPath, cleanBase);
       Object.entries(queryParams).forEach(([k, v]) => {
         if (v) url.searchParams.set(k, v);
       });
@@ -134,7 +161,7 @@ export const App: React.FC = () => {
         setLoading(false);
       }
     },
-    []
+    [apiBaseUrl]
   );
 
   const handleExecuteImmediately = (endpoint: ApiEndpoint) => {
@@ -182,7 +209,12 @@ export const App: React.FC = () => {
         {/* Navigation Bar */}
         <Header style={{ padding: 0, height: 'auto', backgroundColor: '#ffffff', lineHeight: 'normal' }}>
           <div style={{ maxWidth: 1400, margin: '0 auto', width: '100%' }}>
-            <AuthBar authState={authState} onUpdateAuth={handleUpdateAuth} />
+            <AuthBar
+              authState={authState}
+              onUpdateAuth={handleUpdateAuth}
+              apiBaseUrl={apiBaseUrl}
+              onUpdateApiBaseUrl={handleUpdateApiBaseUrl}
+            />
           </div>
         </Header>
 

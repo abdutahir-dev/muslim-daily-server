@@ -8,12 +8,23 @@ const { Text } = Typography;
 interface AuthBarProps {
   authState: AuthState;
   onUpdateAuth: (newAuth: AuthState) => void;
+  apiBaseUrl?: string;
+  onUpdateApiBaseUrl?: (newUrl: string) => void;
 }
 
-export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => {
+const DEFAULT_CLOUD_RUN_URL = 'https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app';
+
+export const AuthBar: React.FC<AuthBarProps> = ({
+  authState,
+  onUpdateAuth,
+  apiBaseUrl = DEFAULT_CLOUD_RUN_URL,
+  onUpdateApiBaseUrl,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [tempToken, setTempToken] = useState(authState.token);
   const [tokenType, setTokenType] = useState<'bearer' | 'firebase'>(authState.tokenType);
+  const [tempServerUrl, setTempServerUrl] = useState(apiBaseUrl);
 
   const handleSave = () => {
     onUpdateAuth({
@@ -23,6 +34,14 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
     });
     setIsModalOpen(false);
     message.success('Authentication credentials saved');
+  };
+
+  const handleSaveServer = () => {
+    if (onUpdateApiBaseUrl) {
+      onUpdateApiBaseUrl(tempServerUrl.trim());
+    }
+    setIsServerModalOpen(false);
+    message.success(`API Base URL updated: ${tempServerUrl}`);
   };
 
   const handleClear = () => {
@@ -36,6 +55,8 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
     message.info('Authentication cleared');
   };
 
+  const isCloudRun = apiBaseUrl.includes('run.app');
+  const isLocalhost = apiBaseUrl.includes('localhost');
   const hasToken = Boolean(authState.token);
 
   return (
@@ -80,9 +101,27 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-          <Tag icon={<CloudServerOutlined />} color="cyan" style={{ margin: 0, borderRadius: 10, fontSize: 11 }}>
-            Port 3000
-          </Tag>
+          <Tooltip title={`API Target: ${apiBaseUrl} (Click to change)`}>
+            <Button
+              type="dashed"
+              size="small"
+              icon={<CloudServerOutlined style={{ color: isCloudRun ? '#059669' : '#0284c7' }} />}
+              onClick={() => {
+                setTempServerUrl(apiBaseUrl);
+                setIsServerModalOpen(true);
+              }}
+              style={{
+                borderRadius: 12,
+                fontSize: 12,
+                fontWeight: 600,
+                borderColor: isCloudRun ? '#10b981' : '#38bdf8',
+                backgroundColor: isCloudRun ? '#f0fdf4' : '#f0f9ff',
+                color: isCloudRun ? '#047857' : '#0369a1',
+              }}
+            >
+              {isCloudRun ? 'Target: Cloud Run' : isLocalhost ? 'Target: Localhost:3000' : 'Target: API Server'}
+            </Button>
+          </Tooltip>
           <Tag icon={<SafetyCertificateOutlined />} color="purple" style={{ margin: 0, borderRadius: 10, fontSize: 11 }}>
             Firestore Connected
           </Tag>
@@ -228,6 +267,79 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
               </Text>
             </div>
           )}
+        </Space>
+      </Modal>
+
+      {/* API Server Configuration Modal */}
+      <Modal
+        title={
+          <Space>
+            <CloudServerOutlined style={{ color: '#059669' }} />
+            <span>Target API Server Configuration</span>
+          </Space>
+        }
+        open={isServerModalOpen}
+        onOk={handleSaveServer}
+        onCancel={() => setIsServerModalOpen(false)}
+        footer={[
+          <Button key="cancel" onClick={() => setIsServerModalOpen(false)}>
+            Cancel
+          </Button>,
+          <Button
+            key="save"
+            type="primary"
+            onClick={handleSaveServer}
+            style={{ backgroundColor: '#059669', borderColor: '#059669' }}
+          >
+            Save Target Host
+          </Button>,
+        ]}
+      >
+        <Space direction="vertical" style={{ width: '100%', marginTop: 12 }} size="middle">
+          <Text type="secondary" style={{ fontSize: 13 }}>
+            GitHub Pages is a static host. To test dynamic API endpoints, point the workbench to your active backend API server instance.
+          </Text>
+
+          <div>
+            <Text strong style={{ display: 'block', marginBottom: 8 }}>
+              Quick Presets
+            </Text>
+            <Space wrap>
+              <Button
+                size="small"
+                onClick={() => setTempServerUrl(DEFAULT_CLOUD_RUN_URL)}
+                type={tempServerUrl === DEFAULT_CLOUD_RUN_URL ? 'primary' : 'default'}
+              >
+                🚀 Cloud Run Live Server
+              </Button>
+              <Button
+                size="small"
+                onClick={() => setTempServerUrl(window.location.origin)}
+                type={tempServerUrl === window.location.origin ? 'primary' : 'default'}
+              >
+                🌐 Current Origin
+              </Button>
+              <Button
+                size="small"
+                onClick={() => setTempServerUrl('http://localhost:3000')}
+                type={tempServerUrl === 'http://localhost:3000' ? 'primary' : 'default'}
+              >
+                💻 Localhost (Port 3000)
+              </Button>
+            </Space>
+          </div>
+
+          <div>
+            <Text strong style={{ display: 'block', marginBottom: 6 }}>
+              API Base URL Host
+            </Text>
+            <Input
+              value={tempServerUrl}
+              onChange={(e) => setTempServerUrl(e.target.value)}
+              placeholder="e.g. https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app"
+              style={{ fontFamily: 'monospace', fontSize: 13, borderRadius: 8 }}
+            />
+          </div>
         </Space>
       </Modal>
     </div>

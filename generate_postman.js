@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const commonVariables = [
-    { key: "baseUrl", value: "http://localhost:3000", type: "string" },
+    { key: "baseUrl", value: "https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app", type: "string" },
     { key: "token", value: "YOUR_JWT_TOKEN_HERE", type: "string" },
     { key: "username", value: "testuser", type: "string" }
 ];

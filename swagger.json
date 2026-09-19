@@ -15,8 +15,12 @@
   },
   "servers": [
     {
+      "url": "https://ais-dev-25nufs2dp3vj2xehirwibv-201444007982.europe-west2.run.app",
+      "description": "Cloud Run Production API Server (Live)"
+    },
+    {
       "url": "/",
-      "description": "Current Server Instance"
+      "description": "Current Server Instance (Same-Origin)"
     },
     {
       "url": "http://localhost:3000",
