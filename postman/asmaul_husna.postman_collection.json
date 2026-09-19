@@ -1,0 +1,83 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Asmaul Husna (99 Names of Allah) Service",
+    "description": "Postman collection for The 99 Beautiful Names of Allah with Trilingual Translations, Theological Descriptions, and Quranic Citations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Names of Allah",
+      "item": [
+        {
+          "name": "Get All 99 Names",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/asmaul-husna",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asmaul-husna"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Name by ID (e.g. Ar-Rahman)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/asmaul-husna/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asmaul-husna",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Names by Keyword",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/asmaul-husna?q=Merciful",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "asmaul-husna"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Merciful"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

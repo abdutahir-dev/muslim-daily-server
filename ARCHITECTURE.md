@@ -248,13 +248,15 @@ Each of the 99 Names features:
 
 ## 6. Developer Portals & Documentation Strategy
 
-Every API capability is mirrored across three synchronized documentation and testing interfaces:
+Every API capability is mirrored across four synchronized documentation and testing interfaces:
 1. **Interactive UI Workbench (`/ui` & `ui/index.html`)**: Built with React and Ant Design, providing 1-click test benches, live parameter inputs, JSON inspection, and Firebase Auth simulation.
 2. **Interactive Developer Docs (`/docs` & `docs/index.html`)**: Rich HTML documentation featuring code snippets (cURL, JavaScript, Python), endpoint breakdown, parameter tables, and embedded live test runners.
 3. **Swagger UI Console (`/swagger` & `swagger/index.html`)**: OpenAPI 3.0.3 compliant interactive documentation playground backed by `src/docs/openapiSpec.js`.
+4. **Downloadable Postman Collections (`/postman/*`)**: Automated Postman collections generated via `generate_postman.js`. Available as both a Full Master Collection (`MuslimDaily_API_v2.postman_collection.json`) and 10 individual per-service collections (`auth.postman_collection.json`, `quran.postman_collection.json`, `prayers.postman_collection.json`, `asmaul_husna.postman_collection.json`, `qamus.postman_collection.json`, `hadith.postman_collection.json`, `duas.postman_collection.json`, `calendar.postman_collection.json`, `reflections.postman_collection.json`, `resources.postman_collection.json`).
 
 ### Static Asset Generation Pipeline
 Running `npm run build` triggers `scripts/build_static_docs.js`, synchronizing:
+- `generate_postman.js` execution and Postman JSON output to `postman/`, `public/postman/`, and `api/postman/`
 - `api/openapi.json` & `swagger.json`
 - `swagger/index.html` & `swagger.html`
 - `docs/index.html` & `docs.html`

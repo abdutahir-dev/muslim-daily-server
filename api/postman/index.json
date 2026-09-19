@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-09-19T04:08:41.236Z",
+  "masterCollectionUrl": "postman/MuslimDaily_API_v2.postman_collection.json",
+  "services": [
+    {
+      "id": "auth",
+      "name": "Auth & User Management Service",
+      "fileName": "auth.postman_collection.json",
+      "description": "Postman collection for Authentication, User Profiles, Settings, Bookmarks, and Favorites.",
+      "endpointCount": 9
+    },
+    {
+      "id": "quran",
+      "name": "Quran, Tafsir & Audio Service",
+      "fileName": "quran.postman_collection.json",
+      "description": "Postman collection for Holy Quran, Amharic & English Translations, Classical Tafsirs, and Verse Recitation Audio.",
+      "endpointCount": 9
+    },
+    {
+      "id": "prayers",
+      "name": "Prayer Times & Tracking Service",
+      "fileName": "prayers.postman_collection.json",
+      "description": "Postman collection for Astronomical Prayer Calculations, Habit Tracking, Fasting Logs, and Analytics.",
+      "endpointCount": 7
+    },
+    {
+      "id": "asmaul_husna",
+      "name": "Asmaul Husna (99 Names of Allah) Service",
+      "fileName": "asmaul_husna.postman_collection.json",
+      "description": "Postman collection for The 99 Beautiful Names of Allah with Trilingual Translations, Theological Descriptions, and Quranic Citations.",
+      "endpointCount": 3
+    },
+    {
+      "id": "qamus",
+      "name": "Fusha Qamus Lexicon & Translation Service",
+      "fileName": "qamus.postman_collection.json",
+      "description": "Postman collection for Certified Fusha Quranic Dictionary (Qamus), Roots Analysis, Trilingual Dictionary, and Real-time Script Detection.",
+      "endpointCount": 5
+    },
+    {
+      "id": "hadith",
+      "name": "Hadith Collections Service",
+      "fileName": "hadith.postman_collection.json",
+      "description": "Postman collection for Authenticated Hadith Books, Sections, Narrations, and Daily Hadith Schedule.",
+      "endpointCount": 4
+    },
+    {
+      "id": "duas",
+      "name": "Authentic Duas & Azkar Service",
+      "fileName": "duas.postman_collection.json",
+      "description": "Postman collection for Supplications, Morning/Evening Azkar, Categories, Transliterations, and Daily Dua.",
+      "endpointCount": 4
+    },
+    {
+      "id": "calendar",
+      "name": "Multi-Calendar Conversion Service",
+      "fileName": "calendar.postman_collection.json",
+      "description": "Postman collection for High-precision Gregorian, Islamic Hijri, and Ethiopian Calendar Conversions, Holidays, and Events.",
+      "endpointCount": 2
+    },
+    {
+      "id": "reflections",
+      "name": "Spiritual Journal & Social Service",
+      "fileName": "reflections.postman_collection.json",
+      "description": "Postman collection for Spiritual Reflection Journaling, Community Challenges, Social Groups, and DeenBot AI.",
+      "endpointCount": 4
+    },
+    {
+      "id": "resources",
+      "name": "Quotes, Search & System Admin Service",
+      "fileName": "resources.postman_collection.json",
+      "description": "Postman collection for Wisdom Quotes, Global Multi-Entity Search, System Diagnostics, and Administrative Data Seeding.",
+      "endpointCount": 4
+    }
+  ]
+}

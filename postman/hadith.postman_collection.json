@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Hadith Collections Service",
+    "description": "Postman collection for Authenticated Hadith Books, Sections, Narrations, and Daily Hadith Schedule.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Hadith Books & Narrations",
+      "item": [
+        {
+          "name": "Get Available Editions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/hadith/editions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "hadith",
+                "editions"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Book Sections",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/hadith/editions/1/sections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "hadith",
+                "editions",
+                "1",
+                "sections"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Hadiths by Section",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/hadith/sections/1/hadiths",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "hadith",
+                "sections",
+                "1",
+                "hadiths"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Daily Hadith",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/hadith/daily",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "hadith",
+                "daily"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

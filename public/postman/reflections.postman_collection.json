@@ -1,0 +1,137 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Spiritual Journal & Social Service",
+    "description": "Postman collection for Spiritual Reflection Journaling, Community Challenges, Social Groups, and DeenBot AI.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Spiritual Journaling",
+      "item": [
+        {
+          "name": "Get Journal Entries",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/journal/entries/{{username}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "journal",
+                "entries",
+                "{{username}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Journal Entry",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"title\": \"Friday Reflection\",\n  \"content\": \"Alhamdulillah for Friday blessings.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/journal/entries",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "journal",
+                "entries"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Social & Community",
+      "item": [
+        {
+          "name": "List Community Groups",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/social/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "social",
+                "groups"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Active Challenges",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/social/challenges",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "social",
+                "challenges"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

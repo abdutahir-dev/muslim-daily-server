@@ -19,6 +19,7 @@
 - **Interactive Developer UI Workbench**: [https://abdutahir-dev.github.io/ui](https://abdutahir-dev.github.io/ui) *(or `/ui` on running server)*
 - **Interactive Developer Documentation**: [https://abdutahir-dev.github.io/docs](https://abdutahir-dev.github.io/docs) *(or `/docs` on running server)*
 - **Swagger UI Playground**: [https://abdutahir-dev.github.io/swagger](https://abdutahir-dev.github.io/swagger) *(or `/swagger` on running server)*
+- **Downloadable Postman Collections**: Available on the [Portal Landing Page](https://abdutahir-dev.github.io/#postman-collections) *(or `/postman/*` on running server - includes Full Master Collection and 10 individual service collections)*
 - **OpenAPI 3.0.3 Specification**: [https://abdutahir-dev.github.io/api/openapi.json](https://abdutahir-dev.github.io/api/openapi.json) *(or `/api/openapi.json` on running server)*
 
 ---

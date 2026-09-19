@@ -1,0 +1,231 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Prayer Times & Tracking Service",
+    "description": "Postman collection for Astronomical Prayer Calculations, Habit Tracking, Fasting Logs, and Analytics.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Prayer Calculations",
+      "item": [
+        {
+          "name": "Get Astronomical Prayer Times",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/prayers/times?city=Addis Ababa&country=Ethiopia&method=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "prayers",
+                "times"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "Addis Ababa"
+                },
+                {
+                  "key": "country",
+                  "value": "Ethiopia"
+                },
+                {
+                  "key": "method",
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Prayer Habit Tracking",
+      "item": [
+        {
+          "name": "Get Prayer Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/prayers/status/{{username}}/2026-09-18",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "prayers",
+                "status",
+                "{{username}}",
+                "2026-09-18"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Log Prayer Activity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"date\": \"2026-09-18\",\n  \"prayer_name\": \"Fajr\",\n  \"status\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/prayers/log-activity",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "prayers",
+                "log-activity"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Weekly Prayer Stats",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/prayers/weekly/{{username}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "prayers",
+                "weekly",
+                "{{username}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Prayer Streak & Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/prayers/analysis/{{username}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "prayers",
+                "analysis",
+                "{{username}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fasting Tracker",
+      "item": [
+        {
+          "name": "Get Fasting Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/fasting/logs/{{username}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "fasting",
+                "logs",
+                "{{username}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Log Fasting Day",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"date\": \"2026-09-18\",\n  \"type\": \"voluntary\",\n  \"status\": \"completed\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/fasting/log",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "fasting",
+                "log"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

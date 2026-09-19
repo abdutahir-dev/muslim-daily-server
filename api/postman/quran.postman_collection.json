@@ -1,0 +1,245 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Quran, Tafsir & Audio Service",
+    "description": "Postman collection for Holy Quran, Amharic & English Translations, Classical Tafsirs, and Verse Recitation Audio.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Surahs & Ayahs",
+      "item": [
+        {
+          "name": "Get All 114 Surahs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/surahs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "surahs"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Surah Detail",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/surahs/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "surahs",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Surah Ayahs with Translations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/surahs/1/ayahs?translationId=131&tafsirId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "surahs",
+                "1",
+                "ayahs"
+              ],
+              "query": [
+                {
+                  "key": "translationId",
+                  "value": "131"
+                },
+                {
+                  "key": "tafsirId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Random Ayahs (7 Default with Context)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/ayahs/random?count=7",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "ayahs",
+                "random"
+              ],
+              "query": [
+                {
+                  "key": "count",
+                  "value": "7"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Random Ayah",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/ayahs/single?translationId=131",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "ayahs",
+                "single"
+              ],
+              "query": [
+                {
+                  "key": "translationId",
+                  "value": "131"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Specific Ayah Tafsir",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/ayahs/tafsir?surah=1&ayah=1&tafsirId=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "ayahs",
+                "tafsir"
+              ],
+              "query": [
+                {
+                  "key": "surah",
+                  "value": "1"
+                },
+                {
+                  "key": "ayah",
+                  "value": "1"
+                },
+                {
+                  "key": "tafsirId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audio Recitations",
+      "item": [
+        {
+          "name": "Stream Ayah Audio MP3",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/audio/1/1?reciter=Mishari_Rashid_Alafasy_24kbps",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "audio",
+                "1",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "reciter",
+                  "value": "Mishari_Rashid_Alafasy_24kbps"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Resources Metadata",
+      "item": [
+        {
+          "name": "List Available Translations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/resources/translations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "resources",
+                "translations"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Available Tafsirs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/quran/resources/tafsirs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "quran",
+                "resources",
+                "tafsirs"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

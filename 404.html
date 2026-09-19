@@ -4,38 +4,30 @@
   <meta charset="UTF-8">
   <title>Redirecting — Muslim Daily</title>
   <script>
-    // GitHub Pages SPA Routing / Subpath Handler
     (function() {
       var path = window.location.pathname;
       var repoBase = '';
-      
-      // Handle project repos like /repo-name/docs
       var segments = path.split('/').filter(Boolean);
-      var first = segments[0] || '';
-      var target = path;
-
-      // Clean normal routes: /docs, /swagger, /ui, /api/openapi.json
+      
       if (path.endsWith('/docs') || path === '/docs') {
-        window.location.replace((repoBase || '') + '/docs/');
+        window.location.replace('/docs/');
         return;
       }
-      if (path.endsWith('/swagger') || path === '/swagger' || path.endsWith('/swager')) {
-        window.location.replace((repoBase || '') + '/swagger/');
+      if (path.endsWith('/swagger') || path === '/swagger') {
+        window.location.replace('/swagger/');
         return;
       }
       if (path.endsWith('/ui') || path === '/ui') {
-        window.location.replace((repoBase || '') + '/ui/');
+        window.location.replace('/ui/');
         return;
       }
       
-      // Fallback redirect to home if route not found
       if (path !== '/' && !path.endsWith('/index.html')) {
-        // Attempt redirecting to the nearest directory or root
         if (segments.includes('docs')) {
           window.location.replace('/docs/');
           return;
         }
-        if (segments.includes('swagger') || segments.includes('swager')) {
+        if (segments.includes('swagger')) {
           window.location.replace('/swagger/');
           return;
         }

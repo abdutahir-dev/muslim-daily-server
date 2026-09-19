@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { openApiSpec } from '../src/docs/openapiSpec.js';
 import { getSwaggerHtml, getDocsHtml } from '../src/docs/docsRouter.js';
@@ -14,7 +15,37 @@ function ensureDir(dirPath) {
   }
 }
 
+function copyRecursive(srcDir, destDir) {
+  ensureDir(destDir);
+  const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const srcPath = path.join(srcDir, entry.name);
+    const destPath = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      copyRecursive(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+
 console.log('🚀 Starting static docs & GitHub Pages asset build...');
+
+// 0. Execute generate_postman.js to generate all service postman collections
+try {
+  console.log('📦 Generating per-service Postman collections...');
+  execSync(`node "${path.join(rootDir, 'generate_postman.js')}"`, { stdio: 'inherit' });
+} catch (err) {
+  console.error('⚠️ Warning: Failed to execute generate_postman.js:', err.message);
+}
+
+// Ensure postman dirs are copied across static output trees
+const postmanSrc = path.join(rootDir, 'postman');
+if (fs.existsSync(postmanSrc)) {
+  copyRecursive(postmanSrc, path.join(rootDir, 'public', 'postman'));
+  copyRecursive(postmanSrc, path.join(rootDir, 'api', 'postman'));
+  console.log('✅ Synchronized Postman collection JSON files to public/postman and api/postman');
+}
 
 // 1. Generate OpenAPI spec JSON files (/api/openapi.json and /swagger.json)
 ensureDir(path.join(rootDir, 'api'));
@@ -56,230 +87,356 @@ if (fs.existsSync(publicUiDir)) {
   console.log('✅ Synchronized public/ui to ui/ and ui.html');
 }
 
+// Load Postman Index Manifest for dynamic rendering
+let postmanServices = [
+  { id: 'auth', name: 'Auth & User Management', fileName: 'auth.postman_collection.json', description: 'Authentication, User Profiles, Settings, Bookmarks, and Favorites.' },
+  { id: 'quran', name: 'Quran, Tafsir & Audio', fileName: 'quran.postman_collection.json', description: 'Holy Quran, Amharic & English Translations, Classical Tafsirs, and Verse Recitation Audio.' },
+  { id: 'prayers', name: 'Prayer Times & Tracking', fileName: 'prayers.postman_collection.json', description: 'Astronomical Prayer Calculations, Habit Tracking, Fasting Logs, and Analytics.' },
+  { id: 'asmaul_husna', name: 'Asmaul Husna (99 Names)', fileName: 'asmaul_husna.postman_collection.json', description: 'The 99 Beautiful Names of Allah with Trilingual Translations & Quranic Citations.' },
+  { id: 'qamus', name: 'Fusha Qamus & Translation', fileName: 'qamus.postman_collection.json', description: 'Certified Fusha Quranic Dictionary, Root Morphologies, and Language Detection.' },
+  { id: 'hadith', name: 'Hadith Collections', fileName: 'hadith.postman_collection.json', description: 'Canonical Hadith Books, Narrations, Sections, and Daily Hadith Schedule.' },
+  { id: 'duas', name: 'Authentic Duas & Azkar', fileName: 'duas.postman_collection.json', description: 'Supplications, Morning/Evening Azkar, Categories, and Daily Dua.' },
+  { id: 'calendar', name: 'Multi-Calendar System', fileName: 'calendar.postman_collection.json', description: 'Gregorian, Islamic Hijri, and Ethiopian Calendar Conversions & Holidays.' },
+  { id: 'reflections', name: 'Spiritual Journal & Social', fileName: 'reflections.postman_collection.json', description: 'Spiritual Reflections Journaling, Community Challenges, and Social Groups.' },
+  { id: 'resources', name: 'Quotes, Search & Admin', fileName: 'resources.postman_collection.json', description: 'Wisdom Quotes, Global Multi-Entity Search, System Diagnostics, and Admin Tools.' }
+];
+
+try {
+  const indexJsonPath = path.join(rootDir, 'postman', 'index.json');
+  if (fs.existsSync(indexJsonPath)) {
+    const manifest = JSON.parse(fs.readFileSync(indexJsonPath, 'utf8'));
+    if (manifest && manifest.services) {
+      postmanServices = manifest.services;
+    }
+  }
+} catch (e) {
+  console.log('Using fallback Postman service definitions');
+}
+
 // 5. Generate Root Portal Landing index.html
 const rootPortalHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muslim Daily API — Developer Portal & Explorer</title>
-  <meta name="description" content="Production-grade RESTful API server for Muslim Daily providing prayer times, Quran, Hadith, Duas, and multi-system calendar conversions.">
-  <meta name="theme-color" content="#059669">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Muslim Daily API — Developer Portal & Service Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
       --primary: #059669;
-      --primary-hover: #047857;
+      --primary-dark: #047857;
       --primary-light: #ecfdf5;
+      --accent: #2563eb;
       --text: #0f172a;
       --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
       --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
     }
     header {
-      background: #0f172a;
-      color: #fff;
-      padding: 12px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
       text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-      white-space: nowrap;
     }
-    .badge {
-      background: #10b981;
-      color: #064e3b;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 8px;
+    .brand .badge {
+      font-size: 0.75rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.2rem 0.6rem;
       border-radius: 9999px;
-      text-transform: uppercase;
+      border: 1px solid rgba(5, 150, 105, 0.2);
     }
     .header-nav {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
     }
     .header-nav a {
-      color: #cbd5e1;
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
       font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 6px;
-      transition: all 0.2s;
-      white-space: nowrap;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .header-nav a:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.1);
-    }
-    @media (max-width: 600px) {
-      header {
-        padding: 10px 12px;
-      }
-      .brand {
-        font-size: 0.95rem;
-      }
-      .header-nav a {
-        font-size: 0.78rem;
-        padding: 4px 8px;
-      }
+      color: var(--primary);
     }
     main {
-      flex: 1;
       max-width: 1200px;
-      width: 100%;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 3rem 1.5rem;
     }
     .hero {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 3rem;
     }
     .hero h1 {
-      font-size: 2.25rem;
+      font-size: 2.5rem;
       font-weight: 800;
       color: var(--text);
-      margin-bottom: 12px;
       letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
     }
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
     }
     .portal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
     }
     .portal-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-      transition: all 0.2s ease;
+      border-radius: 1rem;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      color: inherit;
     }
     .portal-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
-      border-color: #cbd5e1;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08);
+      border-color: rgba(5, 150, 105, 0.4);
     }
     .card-icon {
       width: 48px;
       height: 48px;
-      border-radius: 12px;
+      border-radius: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      margin-bottom: 16px;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
     }
     .card-title {
       font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .card-desc {
-      font-size: 0.92rem;
       color: var(--text-muted);
+      font-size: 0.92rem;
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
     }
     .card-btn {
-      font-size: 0.88rem;
+      margin-top: auto;
       font-weight: 600;
+      font-size: 0.9rem;
       color: var(--primary);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0.4rem;
     }
-    .portal-card:hover .card-btn {
-      color: var(--primary-hover);
+
+    /* Postman Section Styles */
+    .section-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
-    .info-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-    }
-    .info-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
+    .section-title-group h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.6rem;
+    }
+    .section-title-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    .master-postman-banner {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      border-radius: 1rem;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.25);
+    }
+    .master-banner-text h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .master-banner-text p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+    .btn-download-master {
+      background: #ffffff;
+      color: #047857;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+    }
+    .btn-download-master:hover {
+      background: #f0fdf4;
+      transform: translateY(-2px);
+    }
+
+    .postman-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .postman-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.15s ease;
+    }
+    .postman-card:hover {
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: var(--shadow);
+    }
+    .postman-card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .postman-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.45;
+    }
+    .btn-download-service {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border: 1px solid #cbd5e1;
+      transition: all 0.15s;
+    }
+    .btn-download-service:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+
+    .info-section {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .info-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .features-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
       list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
     }
     .features-list li {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      font-size: 0.92rem;
+      gap: 0.75rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      line-height: 1.4;
     }
-    .features-list li i {
+    .features-list i {
       color: var(--primary);
-      margin-top: 3px;
+      margin-top: 0.2rem;
     }
     footer {
       text-align: center;
-      padding: 24px;
-      border-top: 1px solid var(--border);
+      padding: 2rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      background: #fff;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      background: #ffffff;
+      margin-top: 4rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="/" class="brand">
+    <a href="./" class="brand">
       <span>🌙 Muslim Daily API</span>
       <span class="badge">v2.0.0</span>
     </a>
@@ -287,7 +444,8 @@ const rootPortalHtml = `<!DOCTYPE html>
       <a href="ui/">📱 UI Tester</a>
       <a href="docs/">📖 Developer Docs</a>
       <a href="swagger/">⚡ Swagger UI</a>
-      <a href="api/openapi.json" target="_blank">📄 OpenAPI JSON</a>
+      <a href="#postman-collections">📦 Postman</a>
+      <a href="api/openapi.json" target="_blank">📄 OpenAPI Spec</a>
     </nav>
   </header>
 
@@ -359,6 +517,45 @@ const rootPortalHtml = `<!DOCTYPE html>
       </a>
     </div>
 
+    <!-- Postman Collections Section -->
+    <div id="postman-collections" style="scroll-margin-top: 100px;">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2><i class="fa-solid fa-box-archive" style="color: #059669;"></i> Downloadable Postman Collections</h2>
+          <p>Import ready-to-test API collections directly into Postman, Insomnia, or Bruno for instant execution.</p>
+        </div>
+      </div>
+
+      <!-- Master Collection Download Banner -->
+      <div class="master-postman-banner">
+        <div class="master-banner-text">
+          <h3><i class="fa-solid fa-layer-group"></i> Full Master Postman Collection (v2.0)</h3>
+          <p>Contains complete test suites and request bodies for all 10 digital Islamic service modules in a single file.</p>
+        </div>
+        <a href="postman/MuslimDaily_API_v2.postman_collection.json" download="MuslimDaily_API_v2.postman_collection.json" class="btn-download-master">
+          <i class="fa-solid fa-download"></i> Download Master Collection (.json)
+        </a>
+      </div>
+
+      <!-- Individual Service Postman Collections Grid -->
+      <div class="postman-grid">
+        ${postmanServices.map(s => `
+        <div class="postman-card">
+          <div>
+            <div class="postman-card-title">
+              <i class="fa-solid fa-folder-open" style="color: #2563eb;"></i>
+              ${s.name}
+            </div>
+            <div class="postman-card-desc">${s.description}</div>
+          </div>
+          <a href="postman/${s.fileName}" download="${s.fileName}" class="btn-download-service">
+            <i class="fa-solid fa-file-arrow-down"></i> Download ${s.fileName}
+          </a>
+        </div>
+        `).join('')}
+      </div>
+    </div>
+
     <div class="info-section">
       <div class="info-title">
         <i class="fa-solid fa-cubes" style="color: var(--primary);"></i>
@@ -366,7 +563,7 @@ const rootPortalHtml = `<!DOCTYPE html>
       </div>
       <ul class="features-list">
         <li><i class="fa-solid fa-check"></i> <div><strong>Asmaul Husna (99 Names):</strong> Complete 99 Names of Allah with Arabic, Amharic, English, theological descriptions & references</div></li>
-        <li><i class="fa-solid fa-check"></i> <div><strong>Quran & Tafsir:</strong> 114 Surahs, Ayah search, Uthmani scripts & English translations</div></li>
+        <li><i class="fa-solid fa-check"></i> <div><strong>Quran & Tafsir:</strong> 114 Surahs, Random Ayahs (7 default), Uthmani scripts, Tafsirs & English/Amharic translations</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Quranic Lexicon (Qamus):</strong> 2,092 certified entries, 1,091 roots, morphology & Ayah transclusion</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Prayer Calculations:</strong> Astronomical timings with 7 international methods (MWL, ISNA, etc.)</div></li>
         <li><i class="fa-solid fa-check"></i> <div><strong>Hadith Collections:</strong> Canonical books (Bukhari, Muslim, Abu Dawood) & daily wisdom</div></li>
@@ -393,38 +590,30 @@ const notFoundHtml = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <title>Redirecting — Muslim Daily</title>
   <script>
-    // GitHub Pages SPA Routing / Subpath Handler
     (function() {
       var path = window.location.pathname;
       var repoBase = '';
-      
-      // Handle project repos like /repo-name/docs
       var segments = path.split('/').filter(Boolean);
-      var first = segments[0] || '';
-      var target = path;
-
-      // Clean normal routes: /docs, /swagger, /ui, /api/openapi.json
+      
       if (path.endsWith('/docs') || path === '/docs') {
-        window.location.replace((repoBase || '') + '/docs/');
+        window.location.replace('/docs/');
         return;
       }
-      if (path.endsWith('/swagger') || path === '/swagger' || path.endsWith('/swager')) {
-        window.location.replace((repoBase || '') + '/swagger/');
+      if (path.endsWith('/swagger') || path === '/swagger') {
+        window.location.replace('/swagger/');
         return;
       }
       if (path.endsWith('/ui') || path === '/ui') {
-        window.location.replace((repoBase || '') + '/ui/');
+        window.location.replace('/ui/');
         return;
       }
       
-      // Fallback redirect to home if route not found
       if (path !== '/' && !path.endsWith('/index.html')) {
-        // Attempt redirecting to the nearest directory or root
         if (segments.includes('docs')) {
           window.location.replace('/docs/');
           return;
         }
-        if (segments.includes('swagger') || segments.includes('swager')) {
+        if (segments.includes('swagger')) {
           window.location.replace('/swagger/');
           return;
         }

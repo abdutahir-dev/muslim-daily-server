@@ -1,0 +1,15 @@
+{
+  "workspace": {
+    "id": "f81110b3-3211-404e-a622-1e7d3f42ecda"
+  },
+  "entities": {
+    "environments": [],
+    "flows": [],
+    "globals": [],
+    "mocks": [],
+    "specs": [],
+    "collections": [
+      "..\\MuslimDaily_API_v2.postman_collection.json"
+    ]
+  }
+}

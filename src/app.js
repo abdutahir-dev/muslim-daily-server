@@ -88,6 +88,12 @@ app.get(/^\/ui(\/.*)?$/, (req, res) => {
     res.sendFile(path.join(publicUiDir, 'index.html'));
 });
 
+// Postman Collections download directory at /postman
+const postmanDir = path.join(process.cwd(), 'postman');
+app.use('/postman', express.static(postmanDir));
+app.use('/public/postman', express.static(postmanDir));
+app.use('/api/postman', express.static(postmanDir));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/quran', quranRoutes);

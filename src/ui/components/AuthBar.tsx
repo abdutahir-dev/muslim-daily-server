@@ -98,6 +98,19 @@ export const AuthBar: React.FC<AuthBarProps> = ({ authState, onUpdateAuth }) => 
           justifyContent: 'flex-start',
         }}
       >
+        <Tooltip title="Download Postman Collections">
+          <Button
+            type="text"
+            icon={<BookOutlined />}
+            href="/#postman-collections"
+            target="_blank"
+            size="middle"
+            style={{ borderRadius: 8, padding: '4px 10px', fontSize: 13 }}
+          >
+            Postman Collections
+          </Button>
+        </Tooltip>
+
         <Tooltip title="View Interactive Swagger UI">
           <Button
             type="text"

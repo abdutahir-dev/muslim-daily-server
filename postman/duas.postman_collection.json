@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Authentic Duas & Azkar Service",
+    "description": "Postman collection for Supplications, Morning/Evening Azkar, Categories, Transliterations, and Daily Dua.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Duas & Azkar",
+      "item": [
+        {
+          "name": "List All Duas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/duas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Dua Categories",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/duas/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duas",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Daily Dua",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/duas/daily",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duas",
+                "daily"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Random Dua",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/duas/random",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duas",
+                "random"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

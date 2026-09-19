@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Multi-Calendar Conversion Service",
+    "description": "Postman collection for High-precision Gregorian, Islamic Hijri, and Ethiopian Calendar Conversions, Holidays, and Events.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Date Conversion & Holidays",
+      "item": [
+        {
+          "name": "Convert Gregorian to Hijri & Ethiopian",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"gregorian\",\n  \"to\": \"hijri\",\n  \"date\": \"2026-09-18\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/calendar/convert",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "calendar",
+                "convert"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Islamic & National Holidays",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/calendar/holidays",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "calendar",
+                "holidays"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

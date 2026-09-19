@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Muslim Daily API - Fusha Qamus Lexicon & Translation Service",
+    "description": "Postman collection for Certified Fusha Quranic Dictionary (Qamus), Roots Analysis, Trilingual Dictionary, and Real-time Script Detection.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "YOUR_JWT_TOKEN_HERE",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "testuser",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Quranic Lexicon (Qamus)",
+      "item": [
+        {
+          "name": "List Lexicon Words",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qamus/words",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "qamus",
+                "words"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Lexicon by Root",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qamus/words?root=كتب",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "qamus",
+                "words"
+              ],
+              "query": [
+                {
+                  "key": "root",
+                  "value": "كتب"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Lexicon Word Details",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qamus/words/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "qamus",
+                "words",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trilingual Dictionary & Detection",
+      "item": [
+        {
+          "name": "Lookup Dictionary Term",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/dictionary/lookup?q=peace",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dictionary",
+                "lookup"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "peace"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Detect Language / Script",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"አልሐምዱ ሊልላህ\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/translation/detect",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "translation",
+                "detect"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
