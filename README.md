@@ -5,36 +5,63 @@
 [![Production Deployment](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdutahir-dev/muslim-daily-server/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-blue.svg)](package.json)
+[![React](https://img.shields.io/badge/React-18.x-61dafb.svg)](package.json)
+[![Ant Design](https://img.shields.io/badge/Ant%20Design-5.x-1677ff.svg)](package.json)
+[![Express](https://img.shields.io/badge/Express-4.x-000000.svg)](package.json)
 [![OpenAPI 3.0](https://img.shields.io/badge/OpenAPI-3.0.3-green.svg)](api/openapi.json)
 
-Production-grade RESTful API server providing comprehensive Islamic digital services: Holy Quran with audio recitations & translations, accurate astronomical prayer timings & habit tracking, authenticated Hadith collections, authentic Duas & Azkar, multi-system calendar conversions (Gregorian, Hijri, Ethiopian), fasting logs, spiritual journaling, community challenges, and interactive developer documentation.
-
-### 🌐 Live Portals & Deployments
-
-- **Interactive UI Playground**: [https://abdutahir-dev.github.io/ui](https://abdutahir-dev.github.io/ui) (or `/ui` on running server)
-- **Developer Documentation**: [https://abdutahir-dev.github.io/docs](https://abdutahir-dev.github.io/docs) (or `/docs` on running server)
-- **Swagger UI Playground**: [https://abdutahir-dev.github.io/swagger](https://abdutahir-dev.github.io/swagger) (or `/swagger` on running server)
-- **OpenAPI 3.0 Spec**: [https://abdutahir-dev.github.io/api/openapi.json](https://abdutahir-dev.github.io/api/openapi.json)
-
+**Muslim Daily Server** is a production-grade, multi-database RESTful API engine and developer workbench providing comprehensive digital Islamic services: Holy Quran with audio recitations & trilingual translations (Amharic & English), classical Tafsir exegesis, Asbab al-Nuzul (revelation context), Fusha Quranic Arabic Lexicon (Qamus), Asmaul Husna (The 99 Names of Allah), authentic Hadith collections, Duas & Azkar, astronomical prayer timings with habit tracking, multi-calendar conversions (Gregorian, Hijri, Ethiopian), and interactive developer documentations.
 
 ---
 
-## 🌟 Key Features
+## 🌐 Live Portals & Deployments
 
-- **✨ Asmaul Husna (The 99 Names of Allah)**: Full trilingual support for **Arabic (العربية)**, **Amharic (አማርኛ)**, and **English**, featuring translations, theological descriptions, 100% Quranic verse citations with Arabic Ayah texts, authenticated Hadith references, and contemplation features (Name of the Day, diacritic-tolerant search).
-- **📖 Holy Quran Engine**: Full 114 Surahs, 6,236 Ayahs, Uthmani script, translations (Sahih International), classical Tafsir exegesis, and Ayah-by-Ayah audio streaming.
-- **🔍 Fusha Qamus Quranic Lexicon**: 2,092 certified entries, 1,091 distinct roots, morphology, 7,700 Ayah occurrence transclusions, and 39+ syntactic part-of-speech color classes.
-- **🕌 Prayer Times & Tracker**: High-precision astronomical calculation methods (MWL, ISNA, Umm Al-Qura, Egypt) with user habit tracking, streaks, and analytics.
-- **📜 Hadith Collections**: Canonical collections (Sahih al-Bukhari, Sahih Muslim, Sunan an-Nasa'i) with Arabic text, English translations, and daily Hadith scheduling.
-- **🤲 Duas & Azkar**: Morning/evening dhikr, prayer supplications, transliterations, and references.
-- **📅 Multi-Calendar Transformation**: Mathematical Julian Day Number (JDN) conversions between Gregorian, Islamic Hijri, and Ethiopian calendar systems.
-- **🔐 Security & Middleware**: Helmet security headers, CORS origin whitelisting via `CORS_ORIGINS`, Morgan HTTP logging, and JWT authentication.
-- **🔥 Firebase & Cloud Firestore**: Firebase Authentication token verification and Cloud Firestore cloud persistence for user profiles, prayer tracking logs, fasting logs, and spiritual journaling.
-- **⚡ Developer Experience**: Built-in interactive documentation at `/docs`, UI playground at `/ui`, and full Swagger UI at `/swagger`.
+- **Interactive Developer UI Workbench**: [https://abdutahir-dev.github.io/ui](https://abdutahir-dev.github.io/ui) *(or `/ui` on running server)*
+- **Interactive Developer Documentation**: [https://abdutahir-dev.github.io/docs](https://abdutahir-dev.github.io/docs) *(or `/docs` on running server)*
+- **Swagger UI Playground**: [https://abdutahir-dev.github.io/swagger](https://abdutahir-dev.github.io/swagger) *(or `/swagger` on running server)*
+- **OpenAPI 3.0.3 Specification**: [https://abdutahir-dev.github.io/api/openapi.json](https://abdutahir-dev.github.io/api/openapi.json) *(or `/api/openapi.json` on running server)*
 
 ---
 
-## 📁 Architecture & Folder Structure
+## 🌟 Core Features & Subsystems
+
+### 📖 1. Holy Quran, Tafsir & Revelation Context Engine
+- **Full Surah Metadata**: All 114 Surahs with trilingual names (Arabic, Amharic `አማርኛ`, English), verse counts, ruku counts, revelation place, time of revelation, themes, and spiritual virtues.
+- **Cause of Revelation (*Asbab al-Nuzul*)**: In-depth historical causes and contexts behind Surahs and Ayahs in Arabic, Amharic, and English.
+- **Trilingual Translations & Tafsirs**: Uthmani Arabic script paired with Sahih International (English) and Muhammed Sadiq & Muhammed Sani Habib (Amharic) translations, alongside classical Tafsir exegesis (*Al-Muyassar*, *Ibn Kathir*, and Scholarly Committee Amharic Tafsir).
+- **Random Ayahs Endpoint (`/api/quran/ayahs/random`)**: Delivers 7 random Ayahs by default (configurable up to 50) enriched with translations, Tafsir exegesis, and full Surah revelation context.
+- **Audio Streaming**: Verse-by-verse audio recitation streaming support.
+
+### ✨ 2. Asmaul Husna (The 99 Names of Allah)
+- Trilingual presentation in **Arabic (العربية)**, **Amharic (አማርኛ)**, and **English**.
+- Detailed theological descriptions, 100% Quranic verse citations with Arabic Ayah texts, authenticated Hadith references, and diacritic-tolerant search.
+
+### 🔍 3. Fusha Qamus Quranic Lexicon
+- **2,092 Certified Lexicon Entries** across **1,091 distinct roots**.
+- Structural morphological analysis, root breakdowns, **7,700 Ayah occurrence transclusions**, and 39+ syntactic part-of-speech color highlighting.
+
+### 🕌 4. Prayer Times & Habit Tracking
+- High-precision astronomical calculation methods (*Muslim World League, ISNA, Umm Al-Qura, Egypt, Karachi*).
+- User habit tracking, prayer streak counters, fasting logs, and historical analytics.
+
+### 📜 5. Canonical Hadith Collections
+- Authenticated Hadith texts from *Sahih al-Bukhari*, *Sahih Muslim*, and *Sunan an-Nasa'i*.
+- Search by book, chapter, or keywords in Arabic and English, plus daily Hadith notification schedules.
+
+### 🤲 6. Authentic Duas, Azkar & Wisdom Quotes
+- Categorized supplications for morning, evening, after prayer, travel, and distress.
+- Transliterations, audio guides, source references, and curated Islamic quotes.
+
+### 📅 7. Multi-Calendar Transformation
+- High-precision mathematical Julian Day Number (JDN) conversions between **Gregorian**, **Islamic Hijri**, and **Ethiopian** calendar systems.
+
+### 🔐 8. Authentication & Persistent Cloud Storage
+- **JWT & Firebase Authentication**: Token validation for secured user routes.
+- **Firebase Firestore Integration**: Persistent user profiles, prayer tracking logs, fasting entries, and spiritual journal entries.
+
+---
+
+## 📁 Architecture & Directory Structure
 
 > 💡 **For detailed architectural diagrams, subsystem deep-dives, and database schemas, see [ARCHITECTURE.md](ARCHITECTURE.md).**
 
@@ -44,45 +71,59 @@ Production-grade RESTful API server providing comprehensive Islamic digital serv
 │       ├── ci.yml                 # PR & push automated lint, typecheck, tests
 │       └── deploy.yml             # Production deployment pipeline & health verification
 ├── data/
-│   └── qamus/                     # Certified lexicon entries, manifest, spine & ontology
+│   ├── qamus/                     # Certified lexicon entries, manifest, spine & ontology
+│   ├── quran_surahs.json          # Curated Surah revelation metadata (causes, time, place)
+│   └── quran_ayahs.json           # Selected Ayahs with Amharic translations & Tafsirs
 ├── server/
-│   └── app.ts                     # TypeScript entry point (morgan, helmet, cors)
+│   └── app.ts                     # Express server startup wrapper
 ├── src/
-│   ├── app.js                     # Express application & route configuration
+│   ├── app.js                     # Primary Express router and middleware configuration
+│   ├── controllers/               # Request handlers (quran, qamus, hadith, prayers, etc.)
 │   ├── db/
-│   │   └── connection.js          # Multi-database manager using WASM sql.js (7 databases)
+│   │   └── connection.js          # Multi-database manager using WASM sql.js (9 databases)
 │   ├── docs/
-│   │   ├── docsRouter.js          # Interactive /docs and /swagger UI router
-│   │   └── openapiSpec.js         # OpenAPI 3.0.3 specification
-│   ├── controllers/               # Express request controllers (qamus, hadith, prayers, etc.)
-│   ├── middleware/                # JWT auth, Firebase auth, validation, rate limiting
-│   ├── routes/                    # RESTful route definitions (/qamus, /api/quran, etc.)
-│   ├── services/                  # Business logic (qamusService, hadithService, etc.)
-│   ├── ui/                        # React + Ant Design interactive workbench
-│   └── utils/                     # Calendar conversions, astronomical math
-├── __tests__/                     # Jest unit and integration test suites
-├── db/                            # Domain SQLite database storage files
-└── index.js                       # Server startup & port binding (3000)
+│   │   ├── docsRouter.js          # Static & interactive documentation router (/docs, /swagger)
+│   │   └── openapiSpec.js         # OpenAPI 3.0.3 specification object
+│   ├── middleware/                # JWT auth, Firebase auth, CORS, security headers, rate limiters
+│   ├── routes/                    # Express REST route definitions (/api/quran, /qamus, etc.)
+│   ├── services/                  # Business logic & data calculation services
+│   ├── ui/                        # React + Ant Design + TypeScript interactive workbench
+│   └── utils/                     # Calendar transformation & astronomical prayer math
+├── __tests__/                     # Jest integration and unit test suites
+├── db/                            # Persistent SQLite database storage files
+├── scripts/
+│   └── build_static_docs.js       # Bundles OpenAPI, Swagger, and UI assets for static hosting
+├── ARCHITECTURE.md                # Comprehensive architectural specification document
+├── metadata.json                  # Application metadata & frame permissions configuration
+├── package.json                   # Project dependencies and script declarations
+└── index.js                       # Entry point binding HTTP listener to port 3000
 ```
 
-### Database Architecture
-Muslim Daily utilizes 8 domain-partitioned databases powered by a persistent WebAssembly SQLite layer (`sql.js`), eliminating native compilation dependencies (`glibc` issues) while ensuring fast ACID storage:
-- `asmaul_husna.sqlite`: 99 Beautiful Names of Allah (Arabic, Amharic, English translations, theological commentary & citations)
-- `quran.sqlite`: Surahs, Ayahs, Uthmani calligraphy, and audio metadata
-- `qamus.sqlite`: Fusha Quranic Arabic Lexicon (2,092 entries, 1,091 roots, Ayah transclusions)
-- `prayers.sqlite`: Prayer calculation caches and geographical coordinates
-- `hadith.sqlite`: Hadith books, sections, narrations, and daily schedules
-- `dua.sqlite`: Classified supplications, Arabic text, and transliterations
-- `quotes.sqlite`: Islamic wisdom sayings categorized by spiritual topics
-- `deenbot.sqlite`: Users, authentication, prayer logs, streaks, and groups
+---
+
+## 🗄️ Multi-Database Architecture
+
+Muslim Daily uses 9 domain-partitioned databases powered by a persistent WebAssembly SQLite engine (`sql.js`), eliminating native C++ build dependencies while delivering fast ACID storage:
+
+| Database File | Storage Domain & Description |
+| :--- | :--- |
+| `quran.sqlite` | 114 Surahs with revelation causes, times, and places; 6,236 Ayahs, Uthmani script, Amharic/English translations, and Tafsirs |
+| `asmaul_husna.sqlite` | 99 Names of Allah with trilingual translations, descriptions, and Quranic/Hadith citations |
+| `qamus.sqlite` | Quranic Lexicon containing 2,092 entries, 1,091 roots, and 7,700 Ayah occurrence links |
+| `hadith.sqlite` | Canonical Hadith books, chapters, narrations, search indices, and daily schedules |
+| `prayers.sqlite` | Astronomical prayer timing calculation caches and location coordinates |
+| `dua.sqlite` | Classified supplications, Azkar, Arabic text, transliterations, and references |
+| `quotes.sqlite` | Islamic wisdom sayings and spiritual quotes categorized by topics |
+| `deenbot.sqlite` | User accounts, local session tokens, prayer streak counters, and habit logs |
+| `reflections.sqlite` | Spiritual journaling entries, reflections, and community challenge logs |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js `>= 20.0.0` (LTS recommended)
-- npm `>= 10.0.0`
+- **Node.js**: `>= 20.0.0` (LTS recommended)
+- **npm**: `>= 10.0.0`
 
 ### Installation
 ```bash
@@ -91,58 +132,105 @@ cd muslim-daily-server
 npm install
 ```
 
-### Environment Configuration
-Copy `.env.example` to `.env` and configure your settings:
+### Environment Setup
+Create a `.env` file in the project root (refer to `.env.example`):
 ```bash
 cp .env.example .env
 ```
 
-| Variable | Description | Default |
+| Environment Variable | Description | Default Value |
 | :--- | :--- | :--- |
-| `PORT` | HTTP server listening port | `3000` |
-| `NODE_ENV` | Environment mode (`development` / `production`) | `development` |
-| `JWT_SECRET` | Secret key for signing authentication JWT tokens | *Required in production* |
-| `CORS_ORIGINS` | Comma-separated list of allowed CORS origins | `*` |
+| `PORT` | Listening HTTP port for the Express application | `3000` |
+| `NODE_ENV` | Environment stage (`development` / `production`) | `development` |
+| `JWT_SECRET` | Secret key used for signing JWT authentication tokens | *Configured per environment* |
+| `CORS_ORIGINS` | Allowed origins header for cross-domain requests | `*` |
 
-### Running the Application
+---
+
+## 🛠️ CLI Commands & Development
+
 ```bash
-# Development server with auto-reload
+# Start development server with hot re-compilation
 npm run dev
 
-# Run test suite
-npm test
+# Execute Jest test suites
+npm run test
 
-# Run linter & TypeScript type check
+# Run linter and typecheck verification
 npm run lint
 
-# Production start
+# Build static documentation and UI web assets
+node scripts/build_static_docs.js
+
+# Start production server
 npm start
 ```
 
 ---
 
-## 📖 API Documentation & Playground
+## 📑 API Endpoint Summary
 
-The server provides built-in interactive developer tools:
-
-- **Developer Documentation**: Navigate to [`/docs`](http://localhost:3000/docs) for the full API guide, architecture overview, cURL/Fetch/Python examples, and live in-browser request runners.
-- **Interactive Swagger UI**: Navigate to [`/swagger`](http://localhost:3000/swagger) or [`/swager`](http://localhost:3000/swager) for OpenAPI 3.0 exploration with interactive "Try it out" requests.
-- **OpenAPI JSON Spec**: Available at [`/api/openapi.json`](http://localhost:3000/api/openapi.json) and [`/swagger.json`](http://localhost:3000/swagger.json).
-- **Health Check**: Available at [`/health`](http://localhost:3000/health) and [`/api/health`](http://localhost:3000/api/health).
+| Category | Method | Route | Description |
+| :--- | :--- | :--- | :--- |
+| **System** | `GET` | `/health` | Server health status and database connectivity check |
+| **Quran** | `GET` | `/api/quran/surahs` | List all 114 Surahs with trilingual names, causes, and times of revelation |
+| **Quran** | `GET` | `/api/quran/surahs/:id` | Get Surah detail with Ayahs, translations, and Tafsirs |
+| **Quran** | `GET` | `/api/quran/ayahs/random` | Get 7 random Ayahs enriched with Amharic/English translations, Tafsirs, and revelation context |
+| **Quran** | `GET` | `/api/quran/ayahs/single` | Get a single random Ayah with translations and Tafsir exegesis |
+| **Asmaul Husna** | `GET` | `/api/asmaul-husna` | Get all 99 Names of Allah in Arabic, Amharic, and English with citations |
+| **Qamus Lexicon** | `GET` | `/qamus/words` | Search and filter 2,092 Quranic dictionary entries by root or category |
+| **Prayers** | `GET` | `/api/prayers/times` | Calculate astronomical prayer timings for coordinates or city |
+| **Hadith** | `GET` | `/api/hadiths/random` | Fetch a random authenticated Hadith narration |
+| **Calendar** | `GET` | `/api/calendar/convert` | Convert date between Gregorian, Hijri, and Ethiopian calendar systems |
 
 ---
 
-## 🔄 CI/CD Pipelines
+## 💻 Integration Code Examples
 
-Automated pipelines are implemented via GitHub Actions:
+### cURL
+```bash
+curl -X GET "http://localhost:3000/api/quran/ayahs/random?count=7" \
+     -H "Accept: application/json"
+```
 
-1. **Continuous Integration (`.github/workflows/ci.yml`)**:
-   - Triggers on pull requests and pushes to `main` and `master`.
-   - Runs syntax linting, TypeScript type-checking (`tsc --noEmit`), and Jest unit test suites across Node.js `20.x` and `22.x`.
-   - Validates production compilation readiness.
+### JavaScript / Fetch
+```javascript
+const response = await fetch('http://localhost:3000/api/quran/ayahs/random?count=7');
+const ayahs = await response.json();
 
-2. **Continuous Deployment (`.github/workflows/deploy.yml`)**:
-   - Triggers on merges to `main` branch or manual `workflow_dispatch`.
-   - Executes pre-deployment validation gate.
-   - Deploys containerized application to Google Cloud Run / Docker environments.
-   - Executes automated post-deployment health check pinging `/health` to guarantee zero-downtime rollouts.
+console.log(`Retrieved ${ayahs.length} random ayahs:`);
+ayahs.forEach(a => {
+  console.log(`[Surah ${a.surah.name_simple} ${a.verse_key}]`);
+  console.log(`Arabic: ${a.text_uthmani}`);
+  console.log(`Amharic: ${a.translation_am}`);
+  console.log(`English: ${a.translation_en}`);
+  console.log(`Cause of Revelation: ${a.surah.cause_of_revelation}`);
+});
+```
+
+### Python
+```python
+import requests
+
+url = "http://localhost:3000/api/quran/ayahs/random"
+params = {"count": 7}
+
+response = requests.get(url, params=params)
+if response.status_code == 200:
+    data = response.json()
+    for item in data:
+        print(f"Surah {item['surah']['name_simple']} ({item['verse_key']}): {item['translation_am']}")
+```
+
+---
+
+## 🔄 CI/CD & Deployment
+
+- **Continuous Integration (`.github/workflows/ci.yml`)**: Automated pipeline verifying syntax linting, TypeScript compilation (`tsc --noEmit`), and Jest integration test suites on every pull request and push.
+- **Continuous Deployment (`.github/workflows/deploy.yml`)**: Automated release gate deploying containerized application builds to Cloud Run with zero-downtime health verification.
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
