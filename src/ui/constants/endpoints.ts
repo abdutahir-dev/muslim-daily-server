@@ -315,7 +315,27 @@ export const ENDPOINTS: ApiEndpoint[] = [
     name: 'List All 114 Surahs',
     method: 'GET',
     path: '/api/quran/surahs',
-    description: 'Fetches metadata for all 114 Surahs including English/Arabic names, revelation place, and ayah counts.'
+    description: 'Fetches metadata for all 114 Surahs including English/Arabic/Amharic names, revelation place, cause of revelation, time of revelation, themes, and virtues.'
+  },
+  {
+    id: 'quran-random-ayahs',
+    category: 'Quran & Tafsir',
+    name: 'Get Random Ayahs (7 by Default)',
+    method: 'GET',
+    path: '/api/quran/ayahs/random',
+    description: 'Fetches random ayahs (7 by default) enriched with Amharic & English translations, Tafsir exegesis, and full Surah revelation metadata (cause of revelation, time, place, themes, virtues).',
+    params: [
+      { name: 'count', type: 'query', defaultValue: '7', description: 'Number of random ayahs to return (1-50, default: 7)' },
+      { name: 'surah', type: 'query', defaultValue: '', description: 'Optional Surah number filter (1-114)' }
+    ]
+  },
+  {
+    id: 'quran-random-single',
+    category: 'Quran & Tafsir',
+    name: 'Get Single Random Ayah',
+    method: 'GET',
+    path: '/api/quran/ayahs/single',
+    description: 'Fetches a single random Ayah enriched with Amharic & English translations, Tafsir exegesis, and complete Surah revelation context.'
   },
   {
     id: 'quran-surah-detail',

@@ -386,8 +386,23 @@ export async function initDatabases() {
       id INTEGER PRIMARY KEY,
       name_simple TEXT,
       name_arabic TEXT,
+      name_amharic TEXT,
+      meaning_english TEXT,
+      meaning_amharic TEXT,
       verses_count INTEGER,
-      revelation_place TEXT
+      rukus_count INTEGER,
+      revelation_place TEXT,
+      revelation_place_arabic TEXT,
+      revelation_place_amharic TEXT,
+      revelation_order INTEGER,
+      time_of_revelation TEXT,
+      time_of_revelation_arabic TEXT,
+      time_of_revelation_amharic TEXT,
+      cause_of_revelation TEXT,
+      cause_of_revelation_arabic TEXT,
+      cause_of_revelation_amharic TEXT,
+      themes_json TEXT,
+      virtues TEXT
     );
 
     CREATE TABLE IF NOT EXISTS ayahs (
@@ -434,6 +449,166 @@ export async function initDatabases() {
       PRIMARY KEY(surah_number, verse_number, reciter)
     );
   `);
+
+  // Migrate existing surahs table if columns are missing
+  try {
+    const surahColumns = await quranDb.all("PRAGMA table_info(surahs)");
+    const existingColNames = surahColumns.map(c => c.name);
+    const newColumns = [
+      ['name_amharic', 'TEXT'],
+      ['meaning_english', 'TEXT'],
+      ['meaning_amharic', 'TEXT'],
+      ['rukus_count', 'INTEGER'],
+      ['revelation_place_arabic', 'TEXT'],
+      ['revelation_place_amharic', 'TEXT'],
+      ['revelation_order', 'INTEGER'],
+      ['time_of_revelation', 'TEXT'],
+      ['time_of_revelation_arabic', 'TEXT'],
+      ['time_of_revelation_amharic', 'TEXT'],
+      ['cause_of_revelation', 'TEXT'],
+      ['cause_of_revelation_arabic', 'TEXT'],
+      ['cause_of_revelation_amharic', 'TEXT'],
+      ['themes_json', 'TEXT'],
+      ['virtues', 'TEXT']
+    ];
+
+    for (const [colName, colType] of newColumns) {
+      if (!existingColNames.includes(colName)) {
+        await quranDb.exec(`ALTER TABLE surahs ADD COLUMN ${colName} ${colType}`);
+      }
+    }
+  } catch (migErr) {
+    console.warn('[db] Surahs table migration notice:', migErr.message);
+  }
+
+  // Seed translations metadata if empty
+  await quranDb.exec(`
+    INSERT OR IGNORE INTO translations (id, name, language_name, author_name) VALUES
+      (1, 'Sahih International', 'English', 'Saheeh International'),
+      (2, 'Muhammed Sadiq and Muhammed Sani Habib', 'Amharic', 'Muhammed Sadiq & Muhammed Sani Habib'),
+      (3, 'Al-Mukhtasar fi Tafsir al-Quran', 'Arabic', 'Tafsir Center');
+
+    INSERT OR IGNORE INTO tafsirs (id, name, language_name, author_name) VALUES
+      (1, 'Tafsir Al-Muyassar', 'Arabic', 'King Fahd Quran Printing Complex'),
+      (2, 'Ibn Kathir Abridged', 'English', 'Ibn Kathir'),
+      (3, 'የቁርአን የተመረጡ ማብራሪያዎች', 'Amharic', 'Scholarly Committee');
+  `);
+
+  // Seed / update all 114 Surahs with comprehensive metadata (cause, time, place of revelation)
+  const surahsJsonPath = path.join(rootDir, 'data', 'quran_surahs.json');
+  if (fs.existsSync(surahsJsonPath)) {
+    try {
+      const surahsData = JSON.parse(fs.readFileSync(surahsJsonPath, 'utf8'));
+      const surahCountRow = await quranDb.get('SELECT COUNT(*) as c FROM surahs WHERE cause_of_revelation IS NOT NULL');
+      if (!surahCountRow || surahCountRow.c < 114) {
+        const upsertSurah = quranDb.prepare(`
+          INSERT INTO surahs (
+            id, name_simple, name_arabic, name_amharic, meaning_english, meaning_amharic,
+            verses_count, rukus_count, revelation_place, revelation_place_arabic, revelation_place_amharic,
+            revelation_order, time_of_revelation, time_of_revelation_arabic, time_of_revelation_amharic,
+            cause_of_revelation, cause_of_revelation_arabic, cause_of_revelation_amharic,
+            themes_json, virtues
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            name_simple = excluded.name_simple,
+            name_arabic = excluded.name_arabic,
+            name_amharic = excluded.name_amharic,
+            meaning_english = excluded.meaning_english,
+            meaning_amharic = excluded.meaning_amharic,
+            verses_count = excluded.verses_count,
+            rukus_count = excluded.rukus_count,
+            revelation_place = excluded.revelation_place,
+            revelation_place_arabic = excluded.revelation_place_arabic,
+            revelation_place_amharic = excluded.revelation_place_amharic,
+            revelation_order = excluded.revelation_order,
+            time_of_revelation = excluded.time_of_revelation,
+            time_of_revelation_arabic = excluded.time_of_revelation_arabic,
+            time_of_revelation_amharic = excluded.time_of_revelation_amharic,
+            cause_of_revelation = excluded.cause_of_revelation,
+            cause_of_revelation_arabic = excluded.cause_of_revelation_arabic,
+            cause_of_revelation_amharic = excluded.cause_of_revelation_amharic,
+            themes_json = excluded.themes_json,
+            virtues = excluded.virtues
+        `);
+
+        for (const s of surahsData) {
+          await upsertSurah.run([
+            s.id,
+            s.name_simple,
+            s.name_arabic,
+            s.name_amharic || '',
+            s.meaning_english || '',
+            s.meaning_amharic || '',
+            s.verses_count,
+            s.rukus_count || 1,
+            s.revelation_place,
+            s.revelation_place_arabic || '',
+            s.revelation_place_amharic || '',
+            s.revelation_order || s.id,
+            s.time_of_revelation || '',
+            s.time_of_revelation_arabic || '',
+            s.time_of_revelation_amharic || '',
+            s.cause_of_revelation || '',
+            s.cause_of_revelation_arabic || '',
+            s.cause_of_revelation_amharic || '',
+            JSON.stringify(s.themes || []),
+            s.virtues || ''
+          ]);
+        }
+        quranDb.save();
+        console.log(`[db] Seeded all 114 Surahs with revelation metadata into quran.sqlite.`);
+      }
+    } catch (surahErr) {
+      console.warn('[db] Failed to seed surahs with revelation metadata:', surahErr.message);
+    }
+  }
+
+  // Seed / update Ayahs, Translations, and Tafsirs from curated data
+  const ayahsJsonPath = path.join(rootDir, 'data', 'quran_ayahs.json');
+  if (fs.existsSync(ayahsJsonPath)) {
+    try {
+      const ayahsData = JSON.parse(fs.readFileSync(ayahsJsonPath, 'utf8'));
+      const upsertAyah = quranDb.prepare(`
+        INSERT INTO ayahs (surah_number, verse_number, text_uthmani, verse_key)
+        VALUES (?, ?, ?, ?)
+        ON CONFLICT(verse_key) DO UPDATE SET
+          surah_number = excluded.surah_number,
+          verse_number = excluded.verse_number,
+          text_uthmani = excluded.text_uthmani
+      `);
+      const upsertTranslation = quranDb.prepare(`
+        INSERT OR REPLACE INTO ayah_translations (verse_key, translation_id, text)
+        VALUES (?, ?, ?)
+      `);
+      const upsertTafsir = quranDb.prepare(`
+        INSERT OR REPLACE INTO ayah_tafsirs (verse_key, tafsir_id, text)
+        VALUES (?, ?, ?)
+      `);
+
+      for (const a of ayahsData) {
+        await upsertAyah.run([a.surah_number, a.verse_number, a.text_uthmani, a.verse_key]);
+        if (a.translation_en) {
+          await upsertTranslation.run([a.verse_key, 1, a.translation_en]);
+        }
+        if (a.translation_am) {
+          await upsertTranslation.run([a.verse_key, 2, a.translation_am]);
+        }
+        if (a.tafsir_ar) {
+          await upsertTafsir.run([a.verse_key, 1, a.tafsir_ar]);
+        }
+        if (a.tafsir_en) {
+          await upsertTafsir.run([a.verse_key, 2, a.tafsir_en]);
+        }
+        if (a.tafsir_am) {
+          await upsertTafsir.run([a.verse_key, 3, a.tafsir_am]);
+        }
+      }
+      quranDb.save();
+      console.log(`[db] Seeded ${ayahsData.length} curated Ayahs with Amharic translations & Arabic tafsirs.`);
+    } catch (ayahErr) {
+      console.warn('[db] Failed to seed curated ayahs:', ayahErr.message);
+    }
+  }
 
   // Setup Dua tables
   await duaDb.exec(`

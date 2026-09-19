@@ -216,11 +216,13 @@ Each of the 99 Names features:
 - `POST /translation/detect` — Real-time Unicode script analysis determining language (`ar`, `am`, `en`), script family, and confidence score.
 - `GET /translation/pairs` — List of 6 supported bidirectional language pairs.
 
-### 5.5 Quran & Audio (`/api/quran`)
-- `GET /api/quran/surahs` — List of 114 Surahs with revelation metadata.
-- `GET /api/quran/surahs/:id` — Surah detail with Ayahs and translation.
+### 5.5 Quran, Tafsir & Audio (`/api/quran`)
+- `GET /api/quran/surahs` — List of all 114 Surahs enriched with English, Arabic, and Amharic names, verse counts, ruku counts, revelation place, cause of revelation, time of revelation, themes, and virtues in Arabic, Amharic, and English.
+- `GET /api/quran/surahs/:id` — Surah detail with Ayahs, Amharic/English translations, and Tafsirs.
+- `GET /api/quran/ayahs/random` — Retrieves random Ayahs (7 by default, configurable via `count` parameter) enriched with Uthmani text, Amharic & English translations, classical Tafsir exegesis, and full Surah revelation metadata (cause of revelation, time of revelation, revelation place, themes, virtues).
+- `GET /api/quran/ayahs/single` — Retrieves a single random Ayah enriched with Amharic/English translations, Tafsirs, and revelation context.
 - `GET /api/quran/ayah/:surah/:ayah` — Specific Ayah text, translation, and Tafsir.
-- `GET /api/audio/:surah/:ayah` — Audio streaming endpoint for verse recitations.
+- `GET /api/audio/:surah/:ayah` — High-quality MP3 audio streaming endpoint for verse recitations.
 
 ### 5.6 Prayer Times & Analytics (`/api/prayers`)
 - `GET /api/prayers/times` — Astronomical prayer calculation for city or coordinates.

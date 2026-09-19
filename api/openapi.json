@@ -536,13 +536,75 @@
             "type": "string",
             "example": "الفاتحة"
           },
+          "name_amharic": {
+            "type": "string",
+            "example": "አል-ፋቲሓ (ከፋች)"
+          },
+          "meaning_english": {
+            "type": "string",
+            "example": "The Opening"
+          },
+          "meaning_amharic": {
+            "type": "string",
+            "example": "መክፈቻ"
+          },
           "verses_count": {
             "type": "integer",
             "example": 7
           },
+          "rukus_count": {
+            "type": "integer",
+            "example": 1
+          },
           "revelation_place": {
             "type": "string",
             "example": "makkah"
+          },
+          "revelation_place_arabic": {
+            "type": "string",
+            "example": "مكية"
+          },
+          "revelation_place_amharic": {
+            "type": "string",
+            "example": "መካዊ"
+          },
+          "revelation_order": {
+            "type": "integer",
+            "example": 5
+          },
+          "time_of_revelation": {
+            "type": "string",
+            "example": "Early Meccan period (circa 612 CE)"
+          },
+          "time_of_revelation_arabic": {
+            "type": "string",
+            "example": "الفترة المكية المبكرة"
+          },
+          "time_of_revelation_amharic": {
+            "type": "string",
+            "example": "የመጀመሪያው የመካ ዘመን"
+          },
+          "cause_of_revelation": {
+            "type": "string",
+            "example": "Revealed as the supreme opening prayer of the Quran..."
+          },
+          "cause_of_revelation_arabic": {
+            "type": "string",
+            "example": "نزلت أم الكتاب مناجاة بين العبد وربه..."
+          },
+          "cause_of_revelation_amharic": {
+            "type": "string",
+            "example": "በአላህና በባሪያው መካከል ያለውን የጸሎት ግንኙነት ለማስተማር ወረደች..."
+          },
+          "themes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "virtues": {
+            "type": "string",
+            "example": "The greatest Surah in the Quran (Surah of Praise)."
           }
         }
       },
@@ -928,20 +990,38 @@
         "tags": [
           "Quran"
         ],
-        "summary": "Get Random Ayahs Collection",
+        "summary": "Get Random Ayahs Collection with Revelation Context",
+        "description": "Returns random Ayahs (7 by default) enriched with Amharic & English translations, Tafsir exegesis, and full Surah revelation metadata (cause of revelation, time, place, themes, and virtues in Arabic, Amharic, and English).",
         "parameters": [
           {
             "name": "count",
             "in": "query",
             "schema": {
               "type": "integer",
-              "default": 5
-            }
+              "default": 7
+            },
+            "description": "Number of random ayahs to fetch (1-50)"
+          },
+          {
+            "name": "surah",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Optional surah filter (1-114)"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Set 'wrapped' to return { count, ayahs }"
           }
         ],
         "responses": {
           "200": {
-            "description": "Random Ayahs"
+            "description": "Random Ayahs collection with translations, tafsirs, and revelation context"
           }
         }
       }
