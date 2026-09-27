@@ -1,0 +1,540 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../muslimdaily_master.sqlite"
+}
+
+model Bab {
+  id      Int     @id @default(autoincrement()) @map("_id")
+  artitle String
+  entitle String?
+  Qsm     Int?
+}
+
+model Book {
+  id        Int     @id @default(autoincrement())
+  name      String?
+  editionId Int?
+}
+
+model Edition {
+  id       Int     @id @default(autoincrement())
+  name     String?
+  language String?
+}
+
+model Fsl {
+  id             Int     @id @default(autoincrement()) @map("_id")
+  artitle        String
+  entitle        String?
+  Bab            Int?
+  topicmatchname String
+}
+
+model Hadith {
+  id           Int     @id @default(autoincrement())
+  editionId    Int?
+  bookId       Int?
+  hadithNumber Int?
+  text_ar      String?
+  text_en      String?
+  narrator     String?
+  grade        String?
+  source       String?
+  reference    String?
+}
+
+model Qsm {
+  id      Int    @id @default(autoincrement()) @map("_id")
+  artitle String
+  entitle String
+}
+
+model Section {
+  id                Int     @id @default(autoincrement())
+  name              String?
+  number            Int?
+  editionId         Int?
+  hadithNumberFirst Int?
+  hadithNumberLast  Int?
+}
+
+model Source {
+  id      Int     @id @default(autoincrement()) @map("_id")
+  artitle String
+  entitle String?
+}
+
+model Topic {
+  id      Int     @id @default(autoincrement()) @map("_id")
+  artitle String
+  entitle String?
+  Fsl     String?
+}
+
+model asmaul_husna {
+  number           Int     @id @default(autoincrement())
+  name_ar          String
+  name_ar_clean    String
+  transliteration  String
+  translation_en   String
+  translation_am   String
+  translation_ar   String
+  description_en   String
+  description_am   String
+  description_ar   String
+  quran_reference  String?
+  surah_number     Int
+  ayah_number      Int?
+  ayah_ar          String?
+  hadith_reference String?
+}
+
+model audit_logs {
+  id      Int     @id @default(autoincrement())
+  user_id Int?
+  action  String?
+  details String?
+  ts      String? @default("datetime('now')")
+}
+
+model ayah_audio {
+  surah_number Int
+  verse_number Int
+  reciter      String
+  audio_data   Bytes?
+
+  @@id([surah_number, verse_number, reciter])
+}
+
+model ayah_tafsirs {
+  verse_key String
+  tafsir_id Int
+  text      String?
+  tafsirs   tafsirs @relation(fields: [tafsir_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ayahs     ayahs   @relation(fields: [verse_key], references: [verse_key], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([verse_key, tafsir_id])
+}
+
+model ayah_translations {
+  verse_key      String
+  translation_id Int
+  text           String?
+  translations   translations @relation(fields: [translation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ayahs          ayahs        @relation(fields: [verse_key], references: [verse_key], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([verse_key, translation_id])
+}
+
+model ayah_vocabulary {
+  id           Int     @id @default(autoincrement())
+  entry_id     String?
+  surah_number Int
+  ayah_number  Int?
+  ayah_ref     String?
+  ar_text      String?
+  en_text      String?
+}
+
+model ayahs {
+  id                Int                 @id @default(autoincrement())
+  surah_number      Int
+  verse_number      Int
+  text_uthmani      String?
+  verse_key         String             @unique(map: "sqlite_autoindex_ayahs_1")
+  ayah_tafsirs      ayah_tafsirs[]      @ignore
+  ayah_translations ayah_translations[] @ignore
+  surahs            surahs             @relation(fields: [surah_number], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model bookmarks {
+  id         Int       @id @default(autoincrement())
+  username   String?
+  item_type  String?
+  item_id    String?
+  created_at DateTime? @default(now())
+
+  @@unique([username, item_type, item_id], map: "sqlite_autoindex_bookmarks_1")
+}
+
+model books {
+  id      Int       @id @default(autoincrement())
+  name_en String?   @unique(map: "sqlite_autoindex_books_1")
+  name_ar String?
+  slug    String?   @unique(map: "sqlite_autoindex_books_2")
+  hadiths hadiths[]
+}
+
+model calendar_systems {
+  id           Int     @id @default(autoincrement())
+  name         String  @unique(map: "sqlite_autoindex_calendar_systems_1")
+  description  String?
+  epoch_offset Int?    @default(0)
+  type         String? @default("tabular")
+}
+
+model calendars {
+  id         Int       @id @default(autoincrement())
+  user_id    String?
+  name       String?
+  system_id  String?
+  color      String?
+  is_default Int?      @default(0)
+  updated_at DateTime?
+}
+
+model categories {
+  id      Int     @id @default(autoincrement())
+  name_en String?
+  name_ar String?
+  duas    duas[]
+
+  @@unique([name_en, name_ar], map: "sqlite_autoindex_categories_1")
+}
+
+model challenge_participants {
+  id               Int       @id @default(autoincrement())
+  challenge_id     Int?
+  username         String?
+  current_progress Int?      @default(0)
+  status           String?   @default("in_progress")
+  updated_at       DateTime?
+
+  @@unique([challenge_id, username], map: "sqlite_autoindex_challenge_participants_1")
+}
+
+model challenges {
+  id           Int       @id @default(autoincrement())
+  group_id     Int?
+  title        String?
+  description  String?
+  type         String?
+  target_value Int?
+  start_date   DateTime?
+  end_date     DateTime?
+  created_by   String?
+}
+
+model community_groups {
+  id          Int       @id @default(autoincrement())
+  name        String?   @unique(map: "sqlite_autoindex_community_groups_1")
+  description String?
+  created_by  String?
+  created_at  DateTime? @default(now())
+}
+
+model daily_content {
+  id            Int     @id @default(autoincrement())
+  content_type  String?
+  content_id    Int?
+  date          String?
+  overridden_by String?
+
+  @@unique([date, content_type], map: "sqlite_autoindex_daily_content_1")
+}
+
+model daily_hadith {
+  date          String @id
+  hadith_id     Int?
+  overridden_by String?
+  set_by        String?   @default("system")
+  updated_at    DateTime? @default(now())
+}
+
+model daily_subscription {
+  id            Int      @id @default(autoincrement()) @map("_id")
+  subscriber_id String
+  daily_quote   Boolean?
+  daily_verse   Boolean?
+}
+
+model dictionary_entries {
+  id                 String @id
+  word_ar            String
+  word_ar_clean      String
+  word_am            String
+  word_en            String
+  transliteration_ar String?
+  transliteration_am String?
+  part_of_speech     String?
+  category           String?
+  root_ar            String?
+  definition_ar      String?
+  definition_am      String?
+  definition_en      String?
+  synonyms_json      String?
+  antonyms_json      String?
+  examples_json      String?
+}
+
+model duas {
+  id              Int         @id @default(autoincrement())
+  category_id     Int?
+  title_en        String?
+  title_ar        String?
+  content_ar      String?
+  content_en      String?
+  transliteration String?
+  reference       String?
+  categories      categories? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model entries {
+  id               String @id
+  headword         String?
+  translit         String?
+  root             String?
+  root_translit    String?
+  category         String?
+  section          String?
+  definition       String?
+  meaning          String?
+  senses_json      String?
+  usage_json       String?
+  tags_json        String?
+  total_uses       Int?
+  source_keys_json String?
+}
+
+model events {
+  id              Int       @id @default(autoincrement())
+  calendar_id     Int?
+  title           String?
+  start_ts        String?
+  end_ts          String?
+  description     String?
+  location        String?
+  recurrence_rule String?
+  priority        Int?      @default(0)
+  all_day         Int?      @default(0)
+  category_id     String?
+  updated_at      DateTime?
+}
+
+model fasting_logs {
+  id           Int     @id @default(autoincrement())
+  username     String?
+  date         String?
+  fasting_type String?
+  is_fasting   Int?    @default(0)
+
+  @@unique([username, date], map: "sqlite_autoindex_fasting_logs_1")
+}
+
+model favorites {
+  id         Int       @id @default(autoincrement())
+  username   String?
+  item_type  String?
+  item_id    String?
+  created_at DateTime? @default(now())
+
+  @@unique([username, item_type, item_id], map: "sqlite_autoindex_favorites_1")
+}
+
+model general_subscription {
+  id         Int    @id @default(autoincrement()) @map("_id")
+  subscriber String
+}
+
+model group_members {
+  id        Int       @id @default(autoincrement())
+  group_id  Int?
+  username  String?
+  joined_at DateTime? @default(now())
+
+  @@unique([group_id, username], map: "sqlite_autoindex_group_members_1")
+}
+
+model hadiths {
+  id            Int     @id @default(autoincrement())
+  book_id       Int?
+  hadith_number String?
+  text_ar       String?
+  text_en       String?
+  grade         String?
+  source        String?
+  books         books?  @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model holidays {
+  id           Int     @id @default(autoincrement())
+  country_code String?
+  name         String?
+  date         String?
+  movable      Int?    @default(0)
+  rule         String?
+  system_id    String?
+}
+
+model journal_entries {
+  id       Int     @id @default(autoincrement())
+  username String?
+  date     String?
+  notes    String?
+  mood     String?
+
+  @@unique([username, date], map: "sqlite_autoindex_journal_entries_1")
+}
+
+model notes {
+  id        Int       @id @default(autoincrement())
+  user_id   String?
+  title     String?
+  content   String?
+  is_pinned Int?      @default(0)
+  update_ts DateTime?
+}
+
+model prayer_logs {
+  id          Int       @id @default(autoincrement())
+  username    String?
+  date        String?
+  prayer_name String?
+  status      Int?      @default(0)
+  created_at  DateTime? @default(now())
+  users       users?    @relation(fields: [username], references: [username], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([username, date, prayer_name], map: "sqlite_autoindex_prayer_logs_1")
+}
+
+model prayer_timings {
+  id      Int     @id @default(autoincrement())
+  date    String?
+  city    String?
+  country String?
+  method  Int?
+  fajr    String?
+  sunrise String?
+  dhuhr   String?
+  asr     String?
+  maghrib String?
+  isha    String?
+
+  @@unique([date, city, country, method], map: "sqlite_autoindex_prayer_timings_1")
+}
+
+model quotes {
+  id      Int     @id @default(autoincrement())
+  text_ar String?
+  text_en String?
+  source  String?
+  topic   String?
+}
+
+model subscription {
+  chat_id     String @id
+  daily_quote Boolean?
+  daily_verse Boolean?
+}
+
+model surahs {
+  id                          Int     @id @default(autoincrement())
+  name_simple                 String?
+  name_arabic                 String?
+  verses_count                Int?
+  revelation_place            String?
+  name_amharic                String?
+  meaning_english             String?
+  meaning_amharic             String?
+  rukus_count                 Int?
+  revelation_place_arabic     String?
+  revelation_place_amharic    String?
+  revelation_order            Int?
+  time_of_revelation          String?
+  time_of_revelation_arabic   String?
+  time_of_revelation_amharic  String?
+  cause_of_revelation         String?
+  cause_of_revelation_arabic  String?
+  cause_of_revelation_amharic String?
+  themes_json                 String?
+  virtues                     String?
+  ayahs                       ayahs[]
+}
+
+model sync_logs {
+  id          Int       @id @default(autoincrement())
+  user_id     String?
+  client_id   String?
+  entity_type String?
+  entity_id   String?
+  operation   String?
+  payload     String?
+  timestamp   DateTime? @default(now())
+}
+
+model tafsirs {
+  id            Int            @id @default(autoincrement())
+  name          String?
+  language_name String?
+  author_name   String?
+  ayah_tafsirs  ayah_tafsirs[] @ignore
+}
+
+model tasks {
+  id              Int       @id @default(autoincrement())
+  user_id         String?
+  description     String?
+  due_ts          String?
+  completed       Int?      @default(0)
+  recurrence_rule String?
+  priority        Int?      @default(0)
+  category        String?
+  updated_at      DateTime?
+}
+
+model translations {
+  id                Int                 @id @default(autoincrement())
+  name              String?
+  language_name     String?
+  author_name       String?
+  ayah_translations ayah_translations[] @ignore
+}
+
+model user_activities {
+  id        Int       @id @default(autoincrement())
+  username  String?
+  type      String?
+  value     String?
+  metadata  String?
+  timestamp DateTime? @default(now())
+}
+
+model user_information {
+  user_id    Int       @id @default(autoincrement())
+  firstname  String?
+  lastname   String?
+  nickname   String?
+  gender     Int?      @default(0)
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+}
+
+model users {
+  id          Int           @id @default(autoincrement())
+  username    String?       @unique(map: "sqlite_autoindex_users_1")
+  email       String?       @unique(map: "sqlite_autoindex_users_2")
+  password    String?
+  role        String?       @default("user")
+  settings    String?       @default("{}")
+  bookmarks   String?       @default("[]")
+  favorites   String?       @default("[]")
+  prayer_logs prayer_logs[]
+}
+
+model words {
+  id            Int     @id @default(autoincrement()) @map("_id")
+  BookId        Int
+  Wisdom        String
+  enWisdom      String?
+  Qsm           String
+  Bab           String
+  Fsl           String
+  Topic         String
+  Source        String
+  fav           Int?    @default(0)
+  lastcheckdate String?
+}
