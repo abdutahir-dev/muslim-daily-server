@@ -246,7 +246,8 @@ export const createResource = (db, tableName, allowedFields) => async (req, res)
 export const updateResource = (db, tableName, allowedFields, idField = 'id') => async (req, res) => {
     const data = req.body;
     try {
-        const fields = allowedFields.filter(f => data[f] !== undefined);
+        const fields = Object.keys(data).filter(f => allowedFields.includes(f));
+        if (fields.length === 0) return res.status(400).json({ error: 'No valid fields' });
         const setClause = fields.map(f => `${f} = ?`).join(',');
         const values = [...fields.map(f => data[f]), req.params.id];
         await db.run(`UPDATE ${tableName} SET ${setClause} WHERE ${idField} = ?`, values);
