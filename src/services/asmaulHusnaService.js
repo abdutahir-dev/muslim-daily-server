@@ -7,14 +7,27 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataFilePath = path.join(__dirname, '..', '..', 'data', 'asmaul-husna.json');
 
 // In-memory cache loaded from JSON file
-let cachedNames = [];
-try {
-  if (fs.existsSync(dataFilePath)) {
-    const raw = fs.readFileSync(dataFilePath, 'utf8');
+let cachedNames = null;
+let loadDataPromise = null;
+
+async function _loadDataInternal() {
+  try {
+    const raw = await fs.promises.readFile(dataFilePath, 'utf8');
     cachedNames = JSON.parse(raw);
+  } catch (err) {
+    cachedNames = [];
+    if (err.code !== 'ENOENT') {
+      console.warn('[asmaulHusnaService] Failed to load data/asmaul-husna.json:', err.message);
+    }
   }
-} catch (err) {
-  console.warn('[asmaulHusnaService] Failed to load data/asmaul-husna.json:', err.message);
+}
+
+async function loadData() {
+  if (cachedNames !== null) return;
+  if (!loadDataPromise) {
+    loadDataPromise = _loadDataInternal();
+  }
+  await loadDataPromise;
 }
 
 /**
@@ -97,6 +110,7 @@ export function formatNameRecord(item, lang = 'all') {
  * Retrieves all 99 names with optional search, language localization, and pagination
  */
 export async function getAllNames(options = {}) {
+  await loadData();
   const { lang = 'all', search, page, limit } = options;
 
   let items = [...cachedNames];
@@ -154,6 +168,7 @@ export async function getAllNames(options = {}) {
  * Retrieves a single name by number (1-99), transliteration, or Arabic name
  */
 export async function getNameByIdentifier(identifier, options = {}) {
+  await loadData();
   const { lang = 'all' } = options;
   if (!identifier) return null;
 
@@ -186,6 +201,7 @@ export async function getNameByIdentifier(identifier, options = {}) {
  * Returns a random name of Allah
  */
 export async function getRandomName(options = {}) {
+  await loadData();
   const { lang = 'all' } = options;
   if (!cachedNames.length) return null;
   const randomIndex = Math.floor(Math.random() * cachedNames.length);
@@ -196,6 +212,7 @@ export async function getRandomName(options = {}) {
  * Returns a deterministic daily name of Allah for a given date
  */
 export async function getDailyName(options = {}) {
+  await loadData();
   const { date, lang = 'all' } = options;
   const targetDate = date ? new Date(date) : new Date();
 
@@ -221,6 +238,7 @@ export async function getDailyName(options = {}) {
  * Returns summary statistics about the Asmaul Husna dataset
  */
 export async function getStats() {
+  await loadData();
   return {
     total: cachedNames.length || 99,
     supportedLanguages: ['ar', 'am', 'en'],
