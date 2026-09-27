@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { asmaulHusnaDb, initDatabases } from '../db/connection.js';
+import { asmaulHusnaDb } from '../db/connection.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataFilePath = path.join(__dirname, '..', '..', 'data', 'asmaul-husna.json');
