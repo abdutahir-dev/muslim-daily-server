@@ -1,10 +1,11 @@
 import express from 'express';
 import { deenbotDb } from '../db/connection.js';
+import { authenticateToken } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 // GET /api/journal/:username/:date
-router.get('/:username/:date', async (req, res) => {
+router.get('/:username/:date', authenticateToken, async (req, res) => {
     try {
         const { username, date } = req.params;
         const entry = await deenbotDb.get(
@@ -18,7 +19,7 @@ router.get('/:username/:date', async (req, res) => {
 });
 
 // POST /api/journal/update
-router.post('/update', async (req, res) => {
+router.post('/update', authenticateToken, async (req, res) => {
     try {
         const { username, date, notes, mood } = req.body;
         await deenbotDb.run(
