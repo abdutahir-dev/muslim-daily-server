@@ -1,9 +1,9 @@
-import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, type Auth } from 'firebase/auth';
 import { getFirestore, type Firestore, doc, getDocFromServer } from 'firebase/firestore';
 import firebaseConfig from './firebaseConfig.js';
 
-const app: FirebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
 /* CRITICAL: The app will break without specifying firestoreDatabaseId */
 export const db: Firestore = getFirestore(app, firebaseConfig.firestoreDatabaseId);
