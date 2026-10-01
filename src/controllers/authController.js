@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { deenbotDb } from '../db/connection.js';
+import { appConfig } from '../config/env.js';
 
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
@@ -18,7 +19,7 @@ export const register = async (req, res) => {
         );
 
         const user = { id: result.lastID, username, email, role: 'user' };
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'your_super_secret_key_change_this_in_production');
+        const token = jwt.sign({ id: user.id }, appConfig.jwtSecret);
 
         res.status(201).json({ success: true, user, token });
     } catch (err) {
@@ -50,7 +51,7 @@ export const login = async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'your_super_secret_key_change_this_in_production');
+        const token = jwt.sign({ id: user.id }, appConfig.jwtSecret);
 
         res.json({
             success: true,
