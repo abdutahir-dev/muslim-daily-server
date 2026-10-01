@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { adminAuth, adminDb } from '../lib/firebaseAdmin.js';
+import { adminDb } from '../lib/firebaseAdmin.js';
 import { firebaseConfig } from '../lib/firebaseConfig.js';
 import { requireFirebaseAuth } from '../middleware/firebaseAuth.js';
 import { handleFirestoreError, OperationType } from '../utils/firestoreError.js';
