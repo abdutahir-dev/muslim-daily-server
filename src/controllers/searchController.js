@@ -1,4 +1,4 @@
-import { quranDb, deenbotDb } from '../db/connection.js';
+import { quranDb } from '../db/connection.js';
 
 // We'll import Duas from a JSON we'll create or just hardcode for now
 // to maintain consistency with front-end
