@@ -8,10 +8,14 @@ const dataFilePath = path.join(__dirname, '..', '..', 'data', 'asmaul-husna.json
 
 // In-memory cache loaded from JSON file
 let cachedNames = [];
+let namesByNumber = [];
 try {
   if (fs.existsSync(dataFilePath)) {
     const raw = fs.readFileSync(dataFilePath, 'utf8');
     cachedNames = JSON.parse(raw);
+    for (const name of cachedNames) {
+      namesByNumber[name.number] = name;
+    }
   }
 } catch (err) {
   console.warn('[asmaulHusnaService] Failed to load data/asmaul-husna.json:', err.message);
@@ -162,7 +166,7 @@ export async function getNameByIdentifier(identifier, options = {}) {
 
   // Match by number (1..99)
   if (!isNaN(num) && num >= 1 && num <= 99) {
-    const found = cachedNames.find(n => n.number === num);
+    const found = namesByNumber[num];
     if (found) return formatNameRecord(found, lang);
   }
 
