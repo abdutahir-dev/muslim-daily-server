@@ -1,0 +1,4 @@
+## 2026-10-01 - Missing Authentication on Journal Update Route
+**Vulnerability:** The journal routes (`/api/journal/:username/:date` and `/api/journal/update`) lacked authentication middleware, exposing them to unauthorized access (IDOR combined with unauthenticated access). Any user could view or modify any other user's journal entries.
+**Learning:** Security middleware must be explicitly applied to newly created routes, especially those handling user-specific sensitive data like journals. The absence of `authenticateToken` was likely an oversight during the creation of `journalRoutes.js`.
+**Prevention:** Establish a systematic approach to defining route middleware. When writing new routes, the first step should be evaluating and applying necessary authentication and authorization middlewares before implementing the route logic.
