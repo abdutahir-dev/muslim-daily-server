@@ -1,0 +1,4 @@
+## 2026-09-28 - [CRITICAL] SQL Injection via ORDER BY
+**Vulnerability:** SQL injection vulnerability found in `src/controllers/adminController.js` inside `listResource` where `sort` and `order` query parameters were interpolated directly into the `ORDER BY` SQL clause.
+**Learning:** Generic CRUD handlers often take shortcuts to build dynamic queries. Interpolating unchecked user-provided values like column names or sort directions circumvents standard parameterized query protection.
+**Prevention:** Always whitelist column names against an allowed set (e.g., `allowedFields`). Always coerce and strictly validate sort directions (e.g., `String(order).toUpperCase() === 'ASC' ? 'ASC' : 'DESC'`). Do not concatenate dynamic field names unless they have been explicitly validated against safe schema lists.
