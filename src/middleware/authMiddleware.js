@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { deenbotDb } from '../db/connection.js';
+import { appConfig } from '../config/env.js';
 
 export const authenticateToken = async (req, res, next) => {
     try {
@@ -9,7 +10,7 @@ export const authenticateToken = async (req, res, next) => {
             throw new Error();
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_super_secret_key_change_this_in_production');
+        const decoded = jwt.verify(token, appConfig.jwtSecret);
         const user = await deenbotDb.get('SELECT id, username, email, role FROM users WHERE id = ?', [decoded.id]);
 
         if (!user) {
