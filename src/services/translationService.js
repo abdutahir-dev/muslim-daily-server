@@ -1,4 +1,4 @@
-import { detectScript, normalizeArabic, normalizeAmharic, lookupWord } from './dictionaryService.js';
+import { normalizeArabic, normalizeAmharic, lookupWord } from './dictionaryService.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
