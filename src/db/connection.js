@@ -498,7 +498,7 @@ export async function initDatabases() {
   const surahsJsonPath = path.join(rootDir, 'data', 'quran_surahs.json');
   if (fs.existsSync(surahsJsonPath)) {
     try {
-      const surahsData = JSON.parse(fs.readFileSync(surahsJsonPath, 'utf8'));
+      const surahsData = JSON.parse(await fs.promises.readFile(surahsJsonPath, 'utf8'));
       const surahCountRow = await quranDb.get('SELECT COUNT(*) as c FROM surahs WHERE cause_of_revelation IS NOT NULL');
       if (!surahCountRow || surahCountRow.c < 114) {
         const upsertSurah = quranDb.prepare(`
@@ -567,7 +567,7 @@ export async function initDatabases() {
   const ayahsJsonPath = path.join(rootDir, 'data', 'quran_ayahs.json');
   if (fs.existsSync(ayahsJsonPath)) {
     try {
-      const ayahsData = JSON.parse(fs.readFileSync(ayahsJsonPath, 'utf8'));
+      const ayahsData = JSON.parse(await fs.promises.readFile(ayahsJsonPath, 'utf8'));
       const upsertAyah = quranDb.prepare(`
         INSERT INTO ayahs (surah_number, verse_number, text_uthmani, verse_key)
         VALUES (?, ?, ?, ?)
@@ -794,7 +794,7 @@ export async function initDatabases() {
     const jsonlPath = path.join(rootDir, 'data', 'qamus', 'entries.jsonl');
     if (fs.existsSync(jsonlPath)) {
       try {
-        const lines = fs.readFileSync(jsonlPath, 'utf8').split('\n').filter(Boolean);
+        const lines = (await fs.promises.readFile(jsonlPath, 'utf8')).split('\n').filter(Boolean);
         await qamusDb.exec('BEGIN TRANSACTION;');
         const entryStmt = qamusDb.prepare('INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
         const ayahStmt = qamusDb.prepare('INSERT INTO ayah_vocabulary (entry_id, surah_number, ayah_number, ayah_ref, ar_text, en_text) VALUES (?, ?, ?, ?, ?, ?)');
@@ -877,7 +877,7 @@ export async function initDatabases() {
     const asmaDataPath = path.join(rootDir, 'data', 'asmaul-husna.json');
     if (fs.existsSync(asmaDataPath)) {
       try {
-        const rawAsma = fs.readFileSync(asmaDataPath, 'utf8');
+        const rawAsma = await fs.promises.readFile(asmaDataPath, 'utf8');
         const asmaList = JSON.parse(rawAsma);
         const asmaStmt = asmaulHusnaDb.prepare(`
           INSERT INTO asmaul_husna (
@@ -947,7 +947,7 @@ export async function initDatabases() {
     const dictDataPath = path.join(rootDir, 'data', 'dictionary.json');
     if (fs.existsSync(dictDataPath)) {
       try {
-        const rawDict = fs.readFileSync(dictDataPath, 'utf8');
+        const rawDict = await fs.promises.readFile(dictDataPath, 'utf8');
         const dictList = JSON.parse(rawDict);
         const dictStmt = dictionaryDb.prepare(`
           INSERT INTO dictionary_entries (
