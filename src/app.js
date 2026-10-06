@@ -52,7 +52,7 @@ const allowedOrigins = process.env.CORS_ORIGINS
 const corsOptions = {
     origin: (origin, callback) => {
         // Allow requests with no origin (mobile apps, curl, same-origin) or matching allowedOrigins/github.io
-        if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin) || (origin && origin.endsWith('.github.io'))) {
+        if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin) || (origin && origin === 'https://abdutahir-dev.github.io')) {
             return callback(null, true);
         }
         return callback(new Error(`Origin ${origin} not allowed by CORS`));
