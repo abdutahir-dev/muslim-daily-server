@@ -135,6 +135,42 @@ describe('Trilingual Dictionary & Translation Service (Arabic, Amharic, English)
       expect(enDetect.confidence).toBeGreaterThan(0.8);
     });
 
+    test('detectLanguage handles edge cases (falsy, non-string, special chars, mixed languages)', () => {
+      // Falsy and invalid types
+      const nullDetect = translationService.detectLanguage(null);
+      expect(nullDetect.language).toBe('en');
+      expect(nullDetect.confidence).toBe(0.5);
+
+      const numDetect = translationService.detectLanguage(12345);
+      expect(numDetect.language).toBe('en');
+      expect(numDetect.confidence).toBe(0.5);
+
+      // Whitespace and non-alphabet strings
+      const wsDetect = translationService.detectLanguage('   ');
+      expect(wsDetect.language).toBe('en');
+      expect(wsDetect.confidence).toBe(0.7); // Math.max(0, 0.7)
+
+      const symbolsDetect = translationService.detectLanguage('!@#$ 1234');
+      expect(symbolsDetect.language).toBe('en');
+      expect(symbolsDetect.confidence).toBe(0.7);
+
+      // Mixed languages - dominant language should win
+      const mixedAr = translationService.detectLanguage('السلام hello'); // 6 arabic, 5 english
+      expect(mixedAr.language).toBe('ar');
+      expect(mixedAr.confidence).toBeCloseTo(6 / 11, 2);
+
+      const mixedEn = translationService.detectLanguage('السلام hello there'); // 6 arabic, 10 english
+      expect(mixedEn.language).toBe('en');
+      expect(mixedEn.confidence).toBeCloseTo(Math.max(10 / 16, 0.7), 2);
+
+      const mixedAm = translationService.detectLanguage('ሰላም hello'); // 3 amharic, 5 english -> en
+      expect(mixedAm.language).toBe('en');
+
+      // Ties (Arabic vs English tie -> English fallback by default logic)
+      const tieDetect = translationService.detectLanguage('سلام سلام abcd efgh'); // 8 arabic, 8 english
+      expect(tieDetect.language).toBe('en');
+    });
+
     test('getSupportedPairs lists 6 bidirectional language pairs', () => {
       const pairs = translationService.getSupportedPairs();
       expect(pairs.length).toBe(6);
